@@ -1,0 +1,197 @@
+// Contoh lokal saja. Data ini tidak dimasukkan otomatis ke Spreadsheet.
+window.HUMA_DEMO = {
+  bab: [
+    {
+      id_bab: "B001",
+      kelas: "Kelas X",
+      nama: "Mengungkap fakta alam secara objektif",
+      deskripsi:
+        "Kenali dunia di sekitarmu lewat teks laporan hasil observasi.",
+      pdf_bse: "",
+    },
+    {
+      id_bab: "B002",
+      kelas: "Kelas X",
+      nama: "Mengungkapkan kritik lewat senyuman",
+      deskripsi: "Temukan pesan dan kritik yang cerdas dalam teks anekdot.",
+      pdf_bse: "",
+    },
+    {
+      id_bab: "B003",
+      kelas: "Kelas X",
+      nama: "Menyusuri nilai dalam cerita lintas zaman",
+      deskripsi:
+        "Jelajahi hikayat, cerita pendek, dan nilai kehidupan di dalamnya.",
+      pdf_bse: "",
+    },
+    {
+      id_bab: "B004",
+      kelas: "Kelas XI",
+      nama: "Mengenalkan produk pangan lokal",
+      deskripsi: "Susun argumen yang kuat untuk mengenalkan potensi daerahmu.",
+      pdf_bse: "",
+    },
+    {
+      id_bab: "B005",
+      kelas: "Kelas XII",
+      nama: "Mengapresiasi karya sastra",
+      deskripsi: "Baca, maknai, dan tanggapi karya sastra secara kritis.",
+      pdf_bse: "",
+    },
+  ],
+  subbab: [
+    {
+      id_subbab: "SB001",
+      id_bab: "B001",
+      judul: "Mengenal teks laporan hasil observasi",
+      isi: "Laporan hasil observasi menyajikan informasi tentang objek berdasarkan pengamatan. Isinya bersifat faktual, objektif, dan disusun secara sistematis.\n\nStruktur umumnya meliputi pernyataan umum atau klasifikasi, deskripsi bagian, serta deskripsi manfaat jika relevan.\n\nCoba amati sebuah tanaman di rumahmu. Catat bentuk daun, warna, dan tempat tumbuhnya. Bedakan fakta hasil pengamatan dengan pendapat pribadi.",
+    },
+    {
+      id_subbab: "SB002",
+      id_bab: "B001",
+      judul: "Membedakan fakta dan opini",
+      isi: "Fakta adalah informasi yang dapat diperiksa kebenarannya. Opini merupakan pendapat, penilaian, atau dugaan seseorang.\n\n“Daun tanaman ini berwarna hijau” dapat diperiksa melalui pengamatan. “Tanaman ini paling indah” adalah penilaian pribadi.\n\nLatihan mandiri: tulis tiga kalimat fakta dan satu kalimat opini berdasarkan objek yang sama.",
+    },
+    {
+      id_subbab: "SB003",
+      id_bab: "B001",
+      judul: "Menyusun laporan pengamatan",
+      isi: "Tentukan objek dan tujuan pengamatan. Kumpulkan catatan yang dapat diperiksa. Kelompokkan temuan berdasarkan bagian atau cirinya.\n\nSusun pernyataan umum, lalu jelaskan bagian-bagiannya. Gunakan kalimat yang jelas dan kata yang tepat. Baca ulang untuk memastikan tidak ada penilaian pribadi yang disajikan sebagai fakta.",
+    },
+    {
+      id_subbab: "SB004",
+      id_bab: "B002",
+      judul: "Memahami pesan di balik anekdot",
+      isi: "Anekdot adalah cerita singkat yang dapat memuat humor dan kritik. Untuk menemukan pesannya, perhatikan tokoh, situasi, dan bagian yang mengejutkan.\n\nTanyakan: perilaku apa yang dikritik? Mengapa kejadian itu terasa lucu atau ironis? Pesan tidak selalu dinyatakan secara langsung.",
+    },
+    {
+      id_subbab: "SB005",
+      id_bab: "B003",
+      judul: "Nilai kehidupan dalam hikayat",
+      isi: "Hikayat merupakan karya sastra lama yang sering mengisahkan tokoh luar biasa. Nilai moral, sosial, dan budaya dapat ditemukan melalui tindakan tokoh dan akibatnya.\n\nBandingkan nilai dalam cerita dengan kehidupan sekarang. Sertakan bukti dari teks untuk mendukung pendapatmu.",
+    },
+    {
+      id_subbab: "SB006",
+      id_bab: "B004",
+      judul: "Membangun argumen dengan bukti",
+      isi: "Argumen yang baik menghubungkan pendapat dengan alasan dan bukti yang relevan. Hindari menyimpulkan sesuatu hanya dari satu contoh.\n\nPilih satu pangan lokal. Tuliskan pendapat tentang manfaatnya, kemudian cari data atau hasil pengamatan yang dapat mendukung pendapat tersebut.",
+    },
+    {
+      id_subbab: "SB007",
+      id_bab: "B005",
+      judul: "Membaca cerpen secara kritis",
+      isi: "Perhatikan hubungan antara tokoh, konflik, latar, dan sudut pandang. Makna cerita dibangun oleh hubungan unsur-unsur tersebut.\n\nTuliskan tanggapanmu dengan pola: pendapat, bukti berupa bagian cerita, lalu penjelasan mengapa bukti itu mendukung pendapat.",
+    },
+  ],
+  kamus: [
+    {
+      id: "K1",
+      dayak: "Huma Betang",
+      indo: "Rumah panjang / rumah adat",
+      inggris: "Longhouse",
+      kategori: "Budaya",
+    },
+    {
+      id: "K2",
+      dayak: "Bawi",
+      indo: "Perempuan",
+      inggris: "Woman",
+      kategori: "Kata benda",
+    },
+    {
+      id: "K3",
+      dayak: "Hatue",
+      indo: "Laki-laki",
+      inggris: "Man",
+      kategori: "Kata benda",
+    },
+    {
+      id: "K4",
+      dayak: "Kuman",
+      indo: "Makan",
+      inggris: "Eat",
+      kategori: "Kata kerja",
+    },
+    {
+      id: "K5",
+      dayak: "Mihop",
+      indo: "Minum",
+      inggris: "Drink",
+      kategori: "Kata kerja",
+    },
+    {
+      id: "K6",
+      dayak: "Belom Bahadat",
+      indo: "Hidup beradab",
+      inggris: "Living with ethics",
+      kategori: "Filosofi",
+    },
+  ],
+  tka: [],
+  game: [],
+  progress: [],
+  rekap_progress: [],
+  users: [],
+};
+window.HUMA_QUESTIONS = [
+  {
+    text: "Siswa kelas X mengamati taman sekolah selama tujuh hari. Mereka mencatat bahwa tanaman yang disiram setiap pagi memiliki daun lebih segar daripada tanaman yang jarang disiram.",
+    q: "Pernyataan mana yang sesuai dengan informasi dalam teks?",
+    options: [
+      "Semua tanaman harus disiram dua kali sehari.",
+      "Pengamatan dilakukan selama satu minggu.",
+      "Taman sekolah adalah taman paling indah.",
+      "Tanaman tanpa air selalu mati dalam tujuh hari.",
+    ],
+    answer: 1,
+    why: "Teks menyebut pengamatan selama tujuh hari, yang sama dengan satu minggu. Pilihan lain tidak didukung oleh teks.",
+  },
+  {
+    text: "Perpustakaan sekolah memperpanjang jam buka. Kini, siswa dapat membaca hingga pukul empat sore. Kebijakan ini memberi kesempatan kepada siswa yang mengikuti kegiatan tambahan untuk tetap berkunjung.",
+    q: "Apa gagasan utama paragraf tersebut?",
+    options: [
+      "Siswa wajib mengikuti kegiatan tambahan.",
+      "Semua siswa pulang pukul empat.",
+      "Perpanjangan jam buka perpustakaan memperluas kesempatan berkunjung.",
+      "Perpustakaan hanya digunakan setelah pelajaran.",
+    ],
+    answer: 2,
+    why: "Kalimat-kalimat penjelas membahas tambahan kesempatan berkunjung berkat jam buka yang lebih panjang.",
+  },
+  {
+    text: "“Hebat sekali, kamu datang saat rapat sudah selesai,” kata ketua kelas kepada teman yang terlambat.",
+    q: "Tuturan tersebut terutama menyampaikan…",
+    options: [
+      "Pujian yang tulus.",
+      "Permintaan memulai rapat.",
+      "Informasi jadwal pelajaran.",
+      "Sindiran atas keterlambatan.",
+    ],
+    answer: 3,
+    why: "Pujian berlawanan dengan situasi yang terjadi sehingga berfungsi sebagai sindiran atau ironi.",
+  },
+  {
+    text: "Produk pangan lokal dapat menjadi pilihan konsumsi sehari-hari. Selain membantu usaha petani setempat, pilihan ini dapat memperpendek jarak distribusi.",
+    q: "Alasan yang mendukung pendapat penulis adalah…",
+    options: [
+      "Pangan lokal membantu usaha petani setempat.",
+      "Semua pangan impor berbahaya.",
+      "Pangan lokal selalu gratis.",
+      "Distribusi pangan tidak diperlukan.",
+    ],
+    answer: 0,
+    why: "Dukungan terhadap usaha petani setempat dinyatakan langsung sebagai alasan memilih pangan lokal.",
+  },
+  {
+    text: "Para siswa berdiskusi untuk menyusun laporan hasil pengamatan.",
+    q: "Perbaikan mana yang tetap efektif dan tidak mengubah makna?",
+    options: [
+      "Para siswa-siswa berdiskusi bersama-sama untuk agar menyusun laporan.",
+      "Siswa berdiskusi untuk menyusun laporan hasil pengamatan.",
+      "Semua para siswa berdiskusi untuk laporan pengamatan hasil.",
+      "Siswa adalah merupakan berdiskusi menyusun laporan.",
+    ],
+    answer: 1,
+    why: "Bentuk “siswa” sudah dapat merujuk pada kelompok dalam konteks ini. Pilihan lain memuat pengulangan atau susunan yang tidak efektif.",
+  },
+];

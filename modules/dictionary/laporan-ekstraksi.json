@@ -1,0 +1,1692 @@
+{
+  "imported": 2323,
+  "skipped": [
+    {
+      "word": "magah",
+      "page": 26,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "magah -* maagah;"
+    },
+    {
+      "word": "hagas",
+      "page": 26,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hagas -* haagas;"
+    },
+    {
+      "word": "agui",
+      "page": 27,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "agui • ten (sungai) bergerombol memudiki sungai"
+    },
+    {
+      "word": "hagui",
+      "page": 27,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hagui -* haagui;"
+    },
+    {
+      "word": "majar",
+      "page": 27,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "majar -* maajar;"
+    },
+    {
+      "word": "bajar",
+      "page": 27,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bajar 4 baajar;"
+    },
+    {
+      "word": "majuk",
+      "page": 27,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "majuk 4 maajuk;"
+    },
+    {
+      "word": "ake",
+      "page": 27,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ake. aken /ak&n/ n keponakan: en tuh anakmu? beken, -- mi anakmu? bukan, keponakan;"
+    },
+    {
+      "word": "malan",
+      "page": 28,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "malan 4 maalan;"
+    },
+    {
+      "word": "halit",
+      "page": 28,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "halit -* haalit;"
+    },
+    {
+      "word": "ambai",
+      "page": 29,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ambai •"
+    },
+    {
+      "word": "mambai",
+      "page": 29,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mambai - maambai;"
+    },
+    {
+      "word": "hambai",
+      "page": 29,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hambai 4 haambai;"
+    },
+    {
+      "word": "mambet",
+      "page": 29,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mambet -* maambet;"
+    },
+    {
+      "word": "mampar",
+      "page": 29,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampar 4 maampar;"
+    },
+    {
+      "word": "mampun",
+      "page": 30,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampun 4 maampun;"
+    },
+    {
+      "word": "mampung",
+      "page": 30,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampung - maampung;"
+    },
+    {
+      "word": "manak",
+      "page": 30,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "manak -* maanak;"
+    },
+    {
+      "word": "mandak",
+      "page": 30,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mandak 4 maandalç"
+    },
+    {
+      "word": "andau",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "andau • andau/andaw/n hari: -- hai han raya; bentuk -- tengah han; gantung -- tinggi han;"
+    },
+    {
+      "word": "andau",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "andau;"
+    },
+    {
+      "word": "mandep",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mandep 4 maandep;"
+    },
+    {
+      "word": "handep",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "handep 4 haandep;"
+    },
+    {
+      "word": "aring",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "aring;"
+    },
+    {
+      "word": "mandui",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mandui 4 maandui;"
+    },
+    {
+      "word": "mampaandui",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampaandui;"
+    },
+    {
+      "word": "pandui",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pandui 4 paandui;"
+    },
+    {
+      "word": "pampandui",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pampandui 4"
+    },
+    {
+      "word": "pampaandui",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pampaandui;"
+    },
+    {
+      "word": "pamandui",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pamandui 4 pamaandui;"
+    },
+    {
+      "word": "mandup",
+      "page": 31,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mandup 4 maandup;"
+    },
+    {
+      "word": "pangang",
+      "page": 32,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pangang - paangang;"
+    },
+    {
+      "word": "mangang",
+      "page": 32,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mangang - maangang;"
+    },
+    {
+      "word": "angka",
+      "page": 32,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "angka - angkal / angkaangkaadj setengah-setengah: kahandake tikas -- bewei niatnya hanya setengah-setengah"
+    },
+    {
+      "word": "mapil",
+      "page": 33,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mapil -* maapil;"
+    },
+    {
+      "word": "mapul",
+      "page": 33,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mapul - mamapui;"
+    },
+    {
+      "word": "arok",
+      "page": 33,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "arok"
+    },
+    {
+      "word": "haring",
+      "page": 33,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "haring -* haaring;"
+    },
+    {
+      "word": "marok",
+      "page": 33,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "marok -* maarok;"
+    },
+    {
+      "word": "jukung",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "jukung;"
+    },
+    {
+      "word": "harut",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "harut - haarut;"
+    },
+    {
+      "word": "hasang",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hasang -* haasang;"
+    },
+    {
+      "word": "hasep",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hasep -* haasep;"
+    },
+    {
+      "word": "masi",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "masi 4 maasi;"
+    },
+    {
+      "word": "pasi",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pasi -* paasi;"
+    },
+    {
+      "word": "pamasi",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pamasi 4 pamaasi;"
+    },
+    {
+      "word": "masip",
+      "page": 34,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "masip 4 maasip;"
+    },
+    {
+      "word": "atawa",
+      "page": 35,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "atawa •"
+    },
+    {
+      "word": "matep",
+      "page": 35,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "matep --> maatep;"
+    },
+    {
+      "word": "ati",
+      "page": 35,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ati 4 atun"
+    },
+    {
+      "word": "mawat",
+      "page": 35,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mawat 4 maawat; • awis"
+    },
+    {
+      "word": "mawi",
+      "page": 35,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mawi 4 maawi;"
+    },
+    {
+      "word": "pamawi",
+      "page": 35,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pamawi 4 pamaawi;"
+    },
+    {
+      "word": "ba",
+      "page": 37,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ba- 1 pref prefiks berba- + baju - babaju berbaju; ha- + reken - bareken berhitung; ha- + rumbczk - berlubang; 2 morfem terikat pembentuk adjektiva: ha- + handang - hahandang merah; ha- + hatap 4 bahalap cantik, bagus; ha- + lemu -9 balemu Iemah"
+    },
+    {
+      "word": "belum",
+      "page": 39,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "belum"
+    },
+    {
+      "word": "buntau",
+      "page": 41,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "buntau"
+    },
+    {
+      "word": "cangkirik",
+      "page": 43,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "cangkirik"
+    },
+    {
+      "word": "kalapiting",
+      "page": 43,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kalapiting"
+    },
+    {
+      "word": "damang",
+      "page": 45,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "damang"
+    },
+    {
+      "word": "datah",
+      "page": 47,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "datah •"
+    },
+    {
+      "word": "deroh",
+      "page": 49,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "deroh •"
+    },
+    {
+      "word": "dinding",
+      "page": 49,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "dinding"
+    },
+    {
+      "word": "dungil",
+      "page": 53,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "dungil"
+    },
+    {
+      "word": "hebes",
+      "page": 55,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hebes -* haebes;"
+    },
+    {
+      "word": "mekei",
+      "page": 55,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mekei - maekei;"
+    },
+    {
+      "word": "kekei",
+      "page": 55,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kekei -* kaekei;"
+    },
+    {
+      "word": "melai",
+      "page": 55,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "melai -* maelai;"
+    },
+    {
+      "word": "mela-melai",
+      "page": 55,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mela-melai 4 maela-elai;"
+    },
+    {
+      "word": "mampelai",
+      "page": 56,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampelai 4 mampaelai;"
+    },
+    {
+      "word": "pelai",
+      "page": 56,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pelai.3 paelai;"
+    },
+    {
+      "word": "pampelai",
+      "page": 56,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pampelai.3 pampaelai;"
+    },
+    {
+      "word": "empu",
+      "page": 57,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "empu •"
+    },
+    {
+      "word": "en",
+      "page": 57,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "en -* narai"
+    },
+    {
+      "word": "enah",
+      "page": 57,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "enah • enta"
+    },
+    {
+      "word": "endus",
+      "page": 57,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "endus -3 pali"
+    },
+    {
+      "word": "mengkak",
+      "page": 57,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mengkak -* maengkak;"
+    },
+    {
+      "word": "bengkak",
+      "page": 57,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bengkak 4 baengkak;"
+    },
+    {
+      "word": "mentai",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mentai 4 maentai;"
+    },
+    {
+      "word": "mentang",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mentang - maentang;"
+    },
+    {
+      "word": "bentang",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bentang -* baentang;"
+    },
+    {
+      "word": "hentang",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hentang 4 haentang;"
+    },
+    {
+      "word": "menter",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "menter 4 maenter;"
+    },
+    {
+      "word": "tapenter",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tapenter -* tapaenter;"
+    },
+    {
+      "word": "pamenter",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pamenter -* pamaenter;"
+    },
+    {
+      "word": "impenter",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "impenter 4 impaenter;"
+    },
+    {
+      "word": "penter",
+      "page": 58,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "penter 4 paenter;"
+    },
+    {
+      "word": "enyak",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "enyak"
+    },
+    {
+      "word": "menyak",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "menyak - maenyalc"
+    },
+    {
+      "word": "menyau",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "menyau - maenyau;"
+    },
+    {
+      "word": "penyau",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "penyau - paenyau;"
+    },
+    {
+      "word": "menyet",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "menyet - maenyet;"
+    },
+    {
+      "word": "tapenyet",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tapenyet - tapaenyet;"
+    },
+    {
+      "word": "penyet",
+      "page": 59,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "penyet -* paenyet;"
+    },
+    {
+      "word": "mambesei",
+      "page": 60,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mambesei -* mambaesei;"
+    },
+    {
+      "word": "imbesei",
+      "page": 60,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "imbesei - imbaesei"
+    },
+    {
+      "word": "metun",
+      "page": 60,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "metun -* maetun;"
+    },
+    {
+      "word": "ewau",
+      "page": 60,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ewau 4 hewau"
+    },
+    {
+      "word": "ewui",
+      "page": 60,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ewui -* hewui"
+    },
+    {
+      "word": "gabas",
+      "page": 61,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "gabas •"
+    },
+    {
+      "word": "asal-asalan",
+      "page": 61,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "asal-asalan"
+    },
+    {
+      "word": "cangkir",
+      "page": 61,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "cangkir;"
+    },
+    {
+      "word": "gancang",
+      "page": 63,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "gancang •"
+    },
+    {
+      "word": "garantung",
+      "page": 63,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "garantung"
+    },
+    {
+      "word": "gau",
+      "page": 65,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "gau •"
+    },
+    {
+      "word": "gawian",
+      "page": 65,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "gawian - panggawi;"
+    },
+    {
+      "word": "gayar",
+      "page": 65,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "gayar"
+    },
+    {
+      "word": "giri",
+      "page": 67,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "giri • g jadi latah oleh paman menggunakan ulat;"
+    },
+    {
+      "word": "hampul",
+      "page": 69,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hampul"
+    },
+    {
+      "word": "hawen",
+      "page": 69,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hawen;"
+    },
+    {
+      "word": "hapuk",
+      "page": 71,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hapuk •"
+    },
+    {
+      "word": "mewui",
+      "page": 72,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mewui - mahewui;"
+    },
+    {
+      "word": "hila",
+      "page": 73,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hila •"
+    },
+    {
+      "word": "hinje",
+      "page": 73,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hinje"
+    },
+    {
+      "word": "miap",
+      "page": 75,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "miap 4 maiap;"
+    },
+    {
+      "word": "mihik",
+      "page": 75,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mihik 4 maihilç"
+    },
+    {
+      "word": "ihup",
+      "page": 75,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ihup"
+    },
+    {
+      "word": "mihup",
+      "page": 75,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mihup 4 maihup;"
+    },
+    {
+      "word": "kihup",
+      "page": 76,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kihup - kaihup;"
+    },
+    {
+      "word": "pamihup",
+      "page": 76,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pamihup - pamaihup;"
+    },
+    {
+      "word": "mije-mije",
+      "page": 76,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mije-mije -* maije-maije;"
+    },
+    {
+      "word": "milang",
+      "page": 76,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "milang 4 mailang;"
+    },
+    {
+      "word": "milim",
+      "page": 76,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "milim 4 maiim;"
+    },
+    {
+      "word": "jut",
+      "page": 77,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "jut • menutupi kelakuan anaknya;"
+    },
+    {
+      "word": "milit",
+      "page": 77,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "milit - maiiit;"
+    },
+    {
+      "word": "mimbui",
+      "page": 77,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mimbui -* maimbul;"
+    },
+    {
+      "word": "mimeh",
+      "page": 77,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mimeh --> maimeh;"
+    },
+    {
+      "word": "mimes",
+      "page": 77,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mimes 4 maimes;"
+    },
+    {
+      "word": "bindah",
+      "page": 78,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bindah - baindah;"
+    },
+    {
+      "word": "mindah",
+      "page": 78,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mindah - maindah;"
+    },
+    {
+      "word": "pamindah",
+      "page": 78,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pamindah - pamaindah;"
+    },
+    {
+      "word": "ingkang",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ingkang"
+    },
+    {
+      "word": "mingkang",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mingkang -* maingkang;"
+    },
+    {
+      "word": "binih",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "binih 4 bainih;"
+    },
+    {
+      "word": "imbinih",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "imbinih 4 imbainib;"
+    },
+    {
+      "word": "minjok",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "minjok 4 mainjok;"
+    },
+    {
+      "word": "minyop",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "minyop 4 mainyop;"
+    },
+    {
+      "word": "mipen",
+      "page": 79,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mipen 4 maipen;"
+    },
+    {
+      "word": "mampipen",
+      "page": 80,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampipen -* mampai pen;"
+    },
+    {
+      "word": "kipen",
+      "page": 80,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kipen -* kaipen;"
+    },
+    {
+      "word": "bise",
+      "page": 80,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bise 4 baise;"
+    },
+    {
+      "word": "mise",
+      "page": 80,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mise 4 maise;"
+    },
+    {
+      "word": "bisek",
+      "page": 80,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bisek 4 baiselc"
+    },
+    {
+      "word": "itung",
+      "page": 81,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "itung •"
+    },
+    {
+      "word": "mite",
+      "page": 81,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mite -* maite;"
+    },
+    {
+      "word": "mitung",
+      "page": 81,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mitung -* maitung;"
+    },
+    {
+      "word": "hiweh",
+      "page": 81,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hiweh 4 haiweh;"
+    },
+    {
+      "word": "jakit",
+      "page": 83,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "jakit • j menjual tanah jut karena terdesak mengobatai anaknya"
+    },
+    {
+      "word": "jambua",
+      "page": 83,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "jambua"
+    },
+    {
+      "word": "jaring",
+      "page": 85,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "jaring • jadi tahi motel pohonjorau itu sudah mati"
+    },
+    {
+      "word": "juju-juju",
+      "page": 86,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "juju-juju. jajuju, jua-juan,"
+    },
+    {
+      "word": "jukung",
+      "page": 87,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "jukung"
+    },
+    {
+      "word": "kadian",
+      "page": 89,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kadian •"
+    },
+    {
+      "word": "mahit",
+      "page": 90,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mahit -* mangahit;"
+    },
+    {
+      "word": "kait",
+      "page": 91,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kait •"
+    },
+    {
+      "word": "kaleker",
+      "page": 93,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kaleker • k"
+    },
+    {
+      "word": "kalunen",
+      "page": 93,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kalunen"
+    },
+    {
+      "word": "kalute",
+      "page": 94,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kalute • k"
+    },
+    {
+      "word": "kambutep",
+      "page": 94,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kambutep"
+    },
+    {
+      "word": "kameluh",
+      "page": 95,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kameluh •"
+    },
+    {
+      "word": "kanjerae",
+      "page": 97,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kanjerae • korban yg diikat di sebuah tiang;"
+    },
+    {
+      "word": "karaen",
+      "page": 98,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "karaen •"
+    },
+    {
+      "word": "karani",
+      "page": 99,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "karani •"
+    },
+    {
+      "word": "karehak",
+      "page": 100,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "karehak"
+    },
+    {
+      "word": "karuhi",
+      "page": 101,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "karuhi • k"
+    },
+    {
+      "word": "kasing",
+      "page": 102,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kasing"
+    },
+    {
+      "word": "ga",
+      "page": 102,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ga • katip lontar buah yang belum matang itut;"
+    },
+    {
+      "word": "katipei",
+      "page": 103,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "katipei • 1katipei Ikatipy/ n perekat dr getah kayu (untuk hulu parang, beliung, dsb): sasar bahali gaun -- intu himba semakin sulit mencari katipei di hutan 2katipei n penyakit pd kelopak mata unggas: kana --ample matan manuk te kena katipel kelihatannya mata ayam itu 1katok /kaiok/ v ketuk tt pintu, dinding atau alat Iainnya: sahelu bara tame, -- atep tel sebelum masuk, ketoklah pint u"
+    },
+    {
+      "word": "keang",
+      "page": 103,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "keang"
+    },
+    {
+      "word": "kekei",
+      "page": 104,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kekei"
+    },
+    {
+      "word": "kekei",
+      "page": 104,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kekei-* ekei"
+    },
+    {
+      "word": "kepa",
+      "page": 105,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kepa • k ditumbuk: wayah - musim membuat makanan dari ketan dengan cara menyanggrai dan ditumbuk"
+    },
+    {
+      "word": "kiham",
+      "page": 105,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kiham"
+    },
+    {
+      "word": "kihis",
+      "page": 106,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kihis"
+    },
+    {
+      "word": "kius",
+      "page": 107,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kius • manyalenga matanya bertahi-tahi karena bangun tiba-tiba;"
+    },
+    {
+      "word": "hung",
+      "page": 108,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hung -- pron di mana: - ketun melai di mana kalian tinggal;"
+    },
+    {
+      "word": "akan",
+      "page": 108,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "akan -- pron ke mana: - ketun tulak ke mana kalian pergi"
+    },
+    {
+      "word": "kuluk",
+      "page": 109,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kuluk • k"
+    },
+    {
+      "word": "kuluk",
+      "page": 109,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kuluk -*takuluk"
+    },
+    {
+      "word": "kutak",
+      "page": 110,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kutak"
+    },
+    {
+      "word": "kute",
+      "page": 110,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kute -* kalute"
+    },
+    {
+      "word": "kutuh",
+      "page": 110,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "kutuh 4 kalutuh;"
+    },
+    {
+      "word": "laduk",
+      "page": 111,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "laduk"
+    },
+    {
+      "word": "lajur",
+      "page": 113,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lajur • lal"
+    },
+    {
+      "word": "langena",
+      "page": 113,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "langena"
+    },
+    {
+      "word": "Was",
+      "page": 114,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "Was • gawingku kajari pekerjaanku tanggung selesai"
+    },
+    {
+      "word": "lambaga",
+      "page": 114,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lambaga"
+    },
+    {
+      "word": "lambak",
+      "page": 115,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lambak • la 'lambak /lambak/ n saat; ketika: -- ie mamisi kan sungei, indue jadi dumah ketika dia memancing di sungal, ibunya sudah datang 2lambak v semal ft bibit tanaman: -- paung terung tub hung petak! semal bibit terong mi di tanah!;"
+    },
+    {
+      "word": "ampang",
+      "page": 115,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ampang"
+    },
+    {
+      "word": "Ianga-Iangai",
+      "page": 116,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "Ianga-Iangai. Ialangai v telentang; terbentang; tergeletak: ie menter bentuk huma dia berba ring telentang di tengah-tengah ruangan; m a I a n g a I V menelentangkan tt din: haranan kabusaue ie — hung dapur Ia menelantangkan diri di dapur karena terlalu mabuk"
+    },
+    {
+      "word": "Ianggir",
+      "page": 117,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "Ianggir • tuh banyihi tutu pisau kecil mi sangat tajam"
+    },
+    {
+      "word": "lapak",
+      "page": 117,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lapak"
+    },
+    {
+      "word": "lapas",
+      "page": 118,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lapas"
+    },
+    {
+      "word": "lasung",
+      "page": 119,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lasung •"
+    },
+    {
+      "word": "lawan",
+      "page": 119,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lawan"
+    },
+    {
+      "word": "lawa-lawa",
+      "page": 119,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lawa-lawa. lalawa Ilalawaqi n sarang Iaba-Iaba: are-- intu huang huma ]e dia ielai te banyak sarang laba-laba di dalam rumah yang tidak dihuni itu 'lawan /lawan/ v tentang; tdk tunduk atau patuh: -- ewen auh uluh bakas te mereka tentang perkataan orang tua itu;"
+    },
+    {
+      "word": "leger",
+      "page": 121,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "leger • kesombongan itu jangan dibiasakan;"
+    },
+    {
+      "word": "Iepah",
+      "page": 123,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "Iepah • kobaran api yang besar itu melelehkan besi;"
+    },
+    {
+      "word": "like",
+      "page": 125,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "like • lim"
+    },
+    {
+      "word": "mbah",
+      "page": 125,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mbah"
+    },
+    {
+      "word": "lombok",
+      "page": 127,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "lombok •"
+    },
+    {
+      "word": "mait",
+      "page": 129,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mait"
+    },
+    {
+      "word": "mam",
+      "page": 130,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mam- 1 pref alomorf dr prefiks mangutk membentuk kata kerja yg berfonem awal konsonan /b/, /p/ tetapi tdk terjadi peluluhan: mang- + busau - mambusau memabukkan; mang- + baleh mambaleh - membalas; mang- + belep-1 mambelep memadamkan; mang- + paunduk mampunduk - mendudukkan; mang- + parnatei4 mampatei mematikan; mang- + papukan -91 mampukan mencuci pakaian; mang- + paendeng mampendeng - mendirikan; 2 pref alomorf dr prefiks manguntuk membentuk kata kerja yg berfonem awal konsonan /p/ clan terjadi peluluhan: mang- + pakau 4 mamakau mematikan pohon dg cara membuang kulitnya; mang- + punu 4 mamunu menombak; mang- + pusit 4 mamusit memecahkan; mang- + pisi4 mamisi memancing mamar/mamar/ n luwak; musang bulan: -- te ka kikeh manuk luwak itu paling ditakuti aya m"
+    },
+    {
+      "word": "mandam",
+      "page": 131,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mandam • candak-) mancandak menghentikan (aliran darah); mang- + cutup - manculup mencelupkan; mang- + dadeko - mandeko melipat (kaki, tangan); mang- + duan - manduan mengambil; man g- + juju - manjuju mendorong; mang- +juhu - manjuhu menggulai (sayur); mang- + tatehau mantehau memanggil; mang- + tatejek - mantejek menancapkan; mang- + tatukan - mantukan menyalakan api (di para-para); 2 alomorf dr prefiks mangutk membentuk kata kerja yg berfonem awal konsonan Al dan terjadi peluluhan: mang- + tejep-) manejep membacok; mang- + takau-,' manakau mencuri; mang- + tapei,S manapei menyibak;mang- + tenga-' manenga memberi"
+    },
+    {
+      "word": "mampamatei",
+      "page": 132,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampamatei 3"
+    },
+    {
+      "word": "mampatei",
+      "page": 132,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mampatei;"
+    },
+    {
+      "word": "pampamatei",
+      "page": 132,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pampamatei-* pampatei;"
+    },
+    {
+      "word": "mengan",
+      "page": 133,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mengan •"
+    },
+    {
+      "word": "nagara",
+      "page": 134,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "nagara"
+    },
+    {
+      "word": "nih",
+      "page": 135,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "nih • n 2 kata ganti milik orang pertama tunggal jika melekat di akhir kata dasar berfonem akhir vokal: huma-- rumahku; jela-- lidahku; kabele-- ketidakinginanku; pal-- kakiku; buwu-- bubuku; kabongo-- rakusku; lih -ku"
+    },
+    {
+      "word": "nih",
+      "page": 135,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "nih - kanih"
+    },
+    {
+      "word": "nyatu",
+      "page": 135,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "nyatu"
+    },
+    {
+      "word": "pagun",
+      "page": 137,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pagun - magun"
+    },
+    {
+      "word": "pais",
+      "page": 137,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pais"
+    },
+    {
+      "word": "pajahe",
+      "page": 138,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pajahe • dr tepung dicampur (buah pisang, ubi, dsb) yg dibungkus daun pisang dan dikukus;jenis kue: --pisang are injaja mina pais pisang banyak dijual tante; -- pisang n We pisang yg dibungkus daun pisang"
+    },
+    {
+      "word": "pakihang",
+      "page": 139,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pakihang • p -- menggunakan pakaian; -- adat pakaian resmi khas daerah"
+    },
+    {
+      "word": "palempang",
+      "page": 139,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "palempang"
+    },
+    {
+      "word": "paleng",
+      "page": 140,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "paleng"
+    },
+    {
+      "word": "panga",
+      "page": 141,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "panga • p kayu bakarmu ml tidak beratu ran;"
+    },
+    {
+      "word": "panjar",
+      "page": 141,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "panjar"
+    },
+    {
+      "word": "dampuhan",
+      "page": 141,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "dampuhan"
+    },
+    {
+      "word": "paria",
+      "page": 143,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "paria • p hutan; melai intu -- kayu tinggal di tengah hutan; --haban dalam keadaan sakit; -- haban ie tulak mamisi dalam keadaan sakit ia pergi memancing; -- uluh are di tengah orang banyak; eta basingi -- uluh are jangan marah di tengah orang banyak"
+    },
+    {
+      "word": "cacar",
+      "page": 143,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "cacar"
+    },
+    {
+      "word": "pasang",
+      "page": 144,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pasang -- bumi tumbuhan hutan (di Kalimantan) yg akarnya dapat dijadikan obat"
+    },
+    {
+      "word": "panga",
+      "page": 144,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "panga;"
+    },
+    {
+      "word": "pasut",
+      "page": 145,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pasut • p"
+    },
+    {
+      "word": "payah",
+      "page": 145,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "payah"
+    },
+    {
+      "word": "piring",
+      "page": 147,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "piring •"
+    },
+    {
+      "word": "pali",
+      "page": 147,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pali"
+    },
+    {
+      "word": "puar",
+      "page": 148,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "puar •"
+    },
+    {
+      "word": "pukung",
+      "page": 149,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pukung •"
+    },
+    {
+      "word": "pusak",
+      "page": 149,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pusak"
+    },
+    {
+      "word": "pusu",
+      "page": 150,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "pusu"
+    },
+    {
+      "word": "renya",
+      "page": 152,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "renya-renyau, rarenyau ad] agak ganyar: uwi te - ubi itu agak ganyar;"
+    },
+    {
+      "word": "rutik",
+      "page": 154,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "rutik • ruy raja te — jubah raja itu berjumbai-jumbai;"
+    },
+    {
+      "word": "yung-rayang",
+      "page": 154,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "yung-rayang"
+    },
+    {
+      "word": "sabab",
+      "page": 155,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "sabab • S sabab Isababl n sebab, gara-gara; lantaran, karena; hal yg menjadi: narai -- ewen hadari apa sebab mereka Ian"
+    },
+    {
+      "word": "salia",
+      "page": 156,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "salia"
+    },
+    {
+      "word": "saraba",
+      "page": 157,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "saraba •"
+    },
+    {
+      "word": "sipat",
+      "page": 158,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "sipat"
+    },
+    {
+      "word": "susah",
+      "page": 159,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "susah . s"
+    },
+    {
+      "word": "susun",
+      "page": 159,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "susun"
+    },
+    {
+      "word": "taji",
+      "page": 161,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "taji • tam"
+    },
+    {
+      "word": "mbak",
+      "page": 161,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mbak"
+    },
+    {
+      "word": "tambekuh",
+      "page": 162,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tambekuh •"
+    },
+    {
+      "word": "tantai",
+      "page": 163,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tantai •"
+    },
+    {
+      "word": "tapei",
+      "page": 163,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tapei"
+    },
+    {
+      "word": "tapel",
+      "page": 164,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tapel"
+    },
+    {
+      "word": "teken",
+      "page": 165,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "teken • sarjana yang masuk penjara karena citra tidak balk 'teken /teken/ v tanda tangan: -- surat jituh tanda tangan surat ml 2teken n tongkat; galah: hapan -- mangat dia sangkarah gunakan galah agar tidak kandas; -- parei n jenis tanaman berbatang lunak, akarnya djadikan bahan kosmetik"
+    },
+    {
+      "word": "tirem",
+      "page": 166,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tirem •"
+    },
+    {
+      "word": "tundek",
+      "page": 167,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tundek •"
+    },
+    {
+      "word": "tuyang",
+      "page": 167,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "tuyang"
+    },
+    {
+      "word": "muap",
+      "page": 168,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "muap -*muap;"
+    },
+    {
+      "word": "mubah",
+      "page": 168,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mubah - maubah;"
+    },
+    {
+      "word": "hubah",
+      "page": 168,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hubah - haubah;"
+    },
+    {
+      "word": "udar",
+      "page": 169,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "udar •"
+    },
+    {
+      "word": "muhat",
+      "page": 169,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "muhat -* mauhat;"
+    },
+    {
+      "word": "muhus",
+      "page": 169,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "muhus-* mauhus;"
+    },
+    {
+      "word": "mukei",
+      "page": 170,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mukei 4 maukei;"
+    },
+    {
+      "word": "bukei",
+      "page": 170,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "bukei 4 baukei;"
+    },
+    {
+      "word": "mukung",
+      "page": 170,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mukung -* maukung;"
+    },
+    {
+      "word": "mukur",
+      "page": 170,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mukur 4 maukur;"
+    },
+    {
+      "word": "ukur",
+      "page": 171,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ukur • 2ukur adv kira-kira, sehingga, supaya: rima helu -- dia sala manggawie pikir dulu supaya tidak salah mengerjakannya;"
+    },
+    {
+      "word": "uluh",
+      "page": 171,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "uluh"
+    },
+    {
+      "word": "hulir",
+      "page": 171,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "hulir-* haulir;"
+    },
+    {
+      "word": "mumah",
+      "page": 172,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mumah-* maumah;"
+    },
+    {
+      "word": "humah",
+      "page": 172,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "humah-* haumah;"
+    },
+    {
+      "word": "umpama",
+      "page": 172,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "umpama"
+    },
+    {
+      "word": "umpan",
+      "page": 173,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "umpan • u"
+    },
+    {
+      "word": "unggum",
+      "page": 173,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "unggum"
+    },
+    {
+      "word": "munduk",
+      "page": 173,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "munduk-* maunduic"
+    },
+    {
+      "word": "ungku",
+      "page": 174,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "ungku"
+    },
+    {
+      "word": "up",
+      "page": 174,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "up • urap"
+    },
+    {
+      "word": "urap",
+      "page": 175,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "urap • 2 urap n air atau minyak yg sudah diberi doa (berkat): minyak -- minyakberkat"
+    },
+    {
+      "word": "usuk",
+      "page": 175,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "usuk"
+    },
+    {
+      "word": "musuk",
+      "page": 175,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "musuk - mausulç"
+    },
+    {
+      "word": "uta",
+      "page": 176,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "uta •"
+    },
+    {
+      "word": "silih",
+      "page": 176,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "silih"
+    },
+    {
+      "word": "mutik",
+      "page": 176,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "mutik-* mautik;"
+    },
+    {
+      "word": "uyat",
+      "page": 177,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "uyat •"
+    },
+    {
+      "word": "uyuh",
+      "page": 177,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "uyuh"
+    },
+    {
+      "word": "wadai",
+      "page": 178,
+      "reason": "rujukan atau definisi tidak dapat dipisahkan",
+      "raw": "wadai"
+    }
+  ],
+  "note": "Rujukan dan hasil tidak pasti disimpan untuk pemeriksaan manual."
+}

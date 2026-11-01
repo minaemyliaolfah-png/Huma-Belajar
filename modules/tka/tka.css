@@ -1,0 +1,35 @@
+
+        #selectModePage:not(.hidden) { display: flex; }
+        #syncPanel { position: relative; z-index: 40; }
+        #examPage header { gap: 12px; }
+        #examPage header > div:first-child { min-width: 0; flex: 1; }
+        #examPage header > div:first-child > div { min-width: 0; }
+        #timerContainer { flex-shrink: 0; }
+        @media (max-width: 767px) {
+            #modeBadge { display: block; margin-left: 0; margin-top: 4px; white-space: normal; }
+            #questionNumberTitle { font-size: 18px; }
+            #questionText { text-align: left; }
+            #optionsContainer table { min-width: 500px; }
+        }
+        body { background-color: #f1f5f9; color: #334155; -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .option-card input[type="radio"], .option-card input[type="checkbox"] { display: none; }
+        .option-card label { display: flex; align-items: flex-start; padding: 16px; margin-bottom: 12px; background-color: #ffffff; border: 2px solid #e2e8f0; border-radius: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .option-card label:hover { border-color: #cbd5e1; background-color: #f8fafc; }
+        .option-card input[type="radio"]:checked + label, .option-card input[type="checkbox"]:checked + label { border-color: #4f46e5; background-color: #eef2ff; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1); }
+        .check-indicator { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #cbd5e1; margin-right: 12px; margin-top: 2px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .option-card input[type="checkbox"] + label .check-indicator { border-radius: 6px; }
+        .option-card input:checked + label .check-indicator { border-color: #4f46e5; background-color: #4f46e5; }
+        .option-card input:checked + label .check-indicator::after { content: ''; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); margin-bottom: 2px; }
+        .correct-cell { background-color: #d1fae5 !important; color: #047857; font-weight: 700; text-align: center; } 
+        .incorrect-cell { background-color: #ffe4e6 !important; color: #be123c; font-weight: 700; text-align: center; }
+        .mode-radio input[type="radio"]:checked + div { border-color: #4f46e5; background-color: #eef2ff; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1); }
+        .mode-radio input[type="radio"]:checked + div .check-icon { opacity: 1; transform: scale(1); }
+        /* Loader Spinner */
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #4f46e5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    

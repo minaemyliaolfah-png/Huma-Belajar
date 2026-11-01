@@ -1,0 +1,3005 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ular Tangga Bahasa Indonesia: Petualangan Majas & Peribahasa</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka (Judul/Game) & Plus Jakarta Sans (Teks Bacaan/Soal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --font-game: 'Fredoka', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: radial-gradient(circle at top left, #1e293b 0%, #0f172a 55%, #020617 100%);
+            color: #f8fafc;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .font-game {
+            font-family: var(--font-game);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Board Container & Aspect Ratio */
+        .board-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: min(76vh, 720px);
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 10px;
+            background: linear-gradient(145deg, #b45309, #78350f, #451a03);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.65),
+                inset 0 2px 4px rgba(255, 255, 255, 0.35),
+                0 0 0 4px #f59e0b;
+        }
+
+        .board-grid {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #451a03;
+            background: #fef3c7;
+        }
+
+        /* Individual Square Styling */
+        .board-cell {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3px 5px;
+            border: 1px solid rgba(120, 53, 15, 0.16);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .cell-num {
+            font-family: var(--font-game);
+            font-weight: 700;
+            font-size: clamp(0.62rem, 1.3vw, 0.95rem);
+            line-height: 1;
+            z-index: 2;
+        }
+
+        .cell-badge {
+            font-size: clamp(0.5rem, 0.95vw, 0.72rem);
+            line-height: 1;
+            align-self: flex-end;
+            z-index: 2;
+            padding: 2px 4px;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+        }
+
+        /* SVG Overlay for Ladders & Snakes */
+        .board-svg-overlay {
+            position: absolute;
+            inset: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            pointer-events: none;
+            z-index: 15;
+            overflow: visible;
+        }
+
+        /* Pawns Layer */
+        .pawns-layer {
+            position: absolute;
+            inset: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            pointer-events: none;
+            z-index: 25;
+        }
+
+        .pawn-token {
+            position: absolute;
+            width: 8.2%;
+            height: 8.2%;
+            transform: translate(-50%, -50%);
+            transition: left 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.25s ease;
+            z-index: 26;
+            filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.55));
+        }
+
+        .pawn-token.active-turn {
+            z-index: 35;
+        }
+
+        .pawn-token.active-turn::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 9999px;
+            border: 3px solid #fde047;
+            animation: pulseRing 1.4s infinite ease-out;
+        }
+
+        .pawn-token.hopping {
+            animation: pawnHop 0.26s ease-out;
+        }
+
+        @keyframes pawnHop {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -88%) scale(1.22); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(0.85); opacity: 1; }
+            100% { transform: scale(1.45); opacity: 0; }
+        }
+
+        /* 3D Dice Cube */
+        .scene-3d {
+            width: 86px;
+            height: 86px;
+            perspective: 500px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .cube-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-43px) rotateX(-18deg) rotateY(24deg);
+            transition: transform 1.05s cubic-bezier(0.18, 0.89, 0.32, 1.18);
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 86px;
+            height: 86px;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+            border: 3px solid #cbd5e1;
+            border-radius: 16px;
+            box-shadow: inset 0 0 12px rgba(0,0,0,0.12), 0 4px 10px rgba(0,0,0,0.25);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            padding: 10px;
+            backface-visibility: hidden;
+        }
+
+        .pip {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #334155, #0f172a);
+            place-self: center;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+        }
+
+        .pip.red-pip {
+            background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b);
+            width: 19px;
+            height: 19px;
+        }
+
+        .face-1 { transform: rotateY(0deg) translateZ(43px); }
+        .face-2 { transform: rotateY(180deg) translateZ(43px); }
+        .face-3 { transform: rotateY(90deg) translateZ(43px); }
+        .face-4 { transform: rotateY(-90deg) translateZ(43px); }
+        .face-5 { transform: rotateX(90deg) translateZ(43px); }
+        .face-6 { transform: rotateX(-90deg) translateZ(43px); }
+
+        /* Snake Tongue Flicker Animation */
+        @keyframes tongueFlick {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.55); }
+        }
+        .snake-tongue {
+            transform-origin: center top;
+            animation: tongueFlick 1.2s infinite ease-in-out;
+        }
+
+        /* Floating Banner Animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+        .float-slow {
+            animation: floatSlow 3s ease-in-out infinite;
+        }
+
+        /* Confetti Canvas */
+        #confettiCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+        @media(max-width:640px){header{position:relative!important}.board-wrapper{max-width:min(100%,590px);padding:6px;border-radius:15px}.board-svg-overlay,.pawns-layer{inset:6px;width:calc(100% - 12px);height:calc(100% - 12px)}.board-cell{padding:1px 2px}.cell-num{font-size:clamp(8px,2.5vw,12px)}.cell-badge{font-size:7px;padding:1px 2px}#setupModal,#quizModal{align-items:flex-start}#setupModal>div,#quizModal>div{margin:12px auto}button{touch-action:manipulation}}
+        @media(min-width:1024px){.board-wrapper{max-width:min(78vh,760px)}}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Canvas Konfeti untuk Pemenang -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="w-full bg-slate-900/90 backdrop-blur-md border-b border-amber-500/30 px-3 sm:px-6 py-2.5 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <!-- Brand Title -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-200/40">
+                    <i class="fa-solid fa-dragon text-white text-lg sm:text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-game text-lg sm:text-2xl font-bold tracking-wide bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
+                            ULAR TANGGA NUSANTARA
+                        </h1>
+                        <span id="topicBadgeHeader" class="hidden md:inline-block text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                            Majas & Peribahasa
+                        </span>
+                    </div>
+                    <p class="text-[11px] sm:text-xs text-slate-400">Petualangan Kuis Bahasa Indonesia Interaktif</p>
+                </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-1.5 sm:gap-2.5">
+                <button onclick="openQuestionManager()" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-indigo-600/25 hover:bg-indigo-600/40 text-indigo-200 border border-indigo-400/30 text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition" title="Kelola / Tambah Soal Guru">
+                    <i class="fa-solid fa-book-open-reader text-indigo-300"></i>
+                    <span class="hidden sm:inline">Bank Soal</span>
+                    <span id="totalQuestionCountBadge" class="bg-indigo-500 text-white text-[11px] px-1.5 py-0.2 rounded-full">60</span>
+                </button>
+
+                <button onclick="openRulesModal()" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600/50 text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition" title="Aturan Permainan">
+                    <i class="fa-solid fa-circle-question text-amber-400"></i>
+                    <span class="hidden md:inline">Aturan</span>
+                </button>
+
+                <button id="soundToggleBtn" onclick="toggleSound()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-600/50 flex items-center justify-center transition" title="Suara Aktif/Bisu">
+                    <i id="soundIcon" class="fa-solid fa-volume-high"></i>
+                </button>
+
+                <button onclick="openSetupModal()" class="px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-lg shadow-orange-600/20 transition">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>Main Baru</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN GAME LAYOUT -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-5 py-3 sm:py-5 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+        <!-- LEFT COLUMN: PAPAN ULAR TANGGA (7 Cols on Desktop) -->
+        <div class="lg:col-span-7 xl:col-span-8 flex flex-col items-center justify-center w-full">
+            <div class="board-wrapper">
+                <!-- 10x10 Grid Cells -->
+                <div id="boardGrid" class="board-grid"></div>
+
+                <!-- SVG Layer for Ladders & Snakes -->
+                <svg id="boardSvg" class="board-svg-overlay" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
+
+                <!-- Pawns Container -->
+                <div id="pawnsLayer" class="pawns-layer"></div>
+            </div>
+
+            <!-- Legend Bar under Board -->
+            <div class="mt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-5 px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-700/60 text-xs text-slate-300">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
+                    <span><strong>Dadu Jalan:</strong> Jawab benar untuk melangkah</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="px-1.5 py-0.5 rounded bg-emerald-600 text-white font-bold text-[10px]"><i class="fa-solid fa-stairs"></i> Tangga</span>
+                    <span>Jawab benar untuk naik!</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="px-1.5 py-0.5 rounded bg-rose-600 text-white font-bold text-[10px]"><i class="fa-solid fa-staff-snake"></i> Ular</span>
+                    <span>Jawab benar agar selamat & tidak turun!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: CONTROL PANEL, DICE, PLAYERS, LOG (5 Cols on Desktop) -->
+        <div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-3.5 w-full">
+
+            <!-- TURN & 3D DICE CARD -->
+            <div class="rounded-2xl bg-slate-900/90 border-2 border-amber-500/40 shadow-2xl p-4 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- Active Turn Header -->
+                <div class="flex items-center justify-between border-b border-slate-700/70 pb-3 mb-3">
+                    <div class="flex items-center gap-2.5">
+                        <div id="turnPawnPreview" class="w-11 h-11 rounded-xl flex items-center justify-center bg-slate-800 border border-slate-600 shadow-inner"></div>
+                        <div>
+                            <span class="text-[11px] uppercase tracking-wider font-bold text-amber-400 block">Giliran Bermain</span>
+                            <h2 id="turnPlayerName" class="font-game text-xl font-bold text-white leading-tight">Garuda Merah</h2>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[11px] text-slate-400 block">Posisi Kotak</span>
+                        <span id="turnPlayerPos" class="font-game text-2xl font-bold text-amber-300">1</span>
+                    </div>
+                </div>
+
+                <!-- 3D Dice & Roll Button Row -->
+                <div class="grid grid-cols-12 items-center gap-3 py-2">
+                    <!-- 3D Cube -->
+                    <div class="col-span-5 flex flex-col items-center justify-center">
+                        <div class="scene-3d" onclick="handleRollClick()" title="Klik untuk mengocok dadu">
+                            <div id="diceCube" class="cube-3d">
+                                <!-- Face 1 -->
+                                <div class="cube-face face-1">
+                                    <div></div><div></div><div></div>
+                                    <div></div><div class="pip red-pip"></div><div></div>
+                                    <div></div><div></div><div></div>
+                                </div>
+                                <!-- Face 2 -->
+                                <div class="cube-face face-2">
+                                    <div class="pip"></div><div></div><div></div>
+                                    <div></div><div></div><div></div>
+                                    <div></div><div></div><div class="pip"></div>
+                                </div>
+                                <!-- Face 3 -->
+                                <div class="cube-face face-3">
+                                    <div class="pip"></div><div></div><div></div>
+                                    <div></div><div class="pip"></div><div></div>
+                                    <div></div><div></div><div class="pip"></div>
+                                </div>
+                                <!-- Face 4 -->
+                                <div class="cube-face face-4">
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                    <div></div><div></div><div></div>
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                </div>
+                                <!-- Face 5 -->
+                                <div class="cube-face face-5">
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                    <div></div><div class="pip"></div><div></div>
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                </div>
+                                <!-- Face 6 -->
+                                <div class="cube-face face-6">
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                    <div class="pip"></div><div></div><div class="pip"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <span id="diceResultLabel" class="mt-2.5 text-xs font-bold text-slate-300 bg-slate-800/90 px-2.5 py-0.5 rounded-full border border-slate-700">
+                            Siap Dikocok
+                        </span>
+                    </div>
+
+                    <!-- Roll Button & Status -->
+                    <div class="col-span-7 flex flex-col gap-2">
+                        <button id="rollDiceBtn" onclick="handleRollClick()" class="w-full py-3.5 px-4 rounded-2xl font-game text-lg font-bold text-slate-950 bg-gradient-to-b from-amber-300 via-amber-400 to-orange-500 hover:from-amber-200 hover:to-orange-400 active:scale-95 transition shadow-[0_6px_0_#9a3412,0_10px_20px_rgba(245,158,11,0.3)] flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-dice text-xl"></i>
+                            <span>KOCOK DADU!</span>
+                        </button>
+                        <div id="turnStatusBanner" class="text-xs text-center text-slate-300 bg-slate-800/70 rounded-xl px-3 py-2 border border-slate-700/70 leading-relaxed">
+                            Klik <strong>Kocok Dadu</strong> lalu jawab soal Bahasa Indonesia untuk melangkah!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLAYERS SCOREBOARD LIST -->
+            <div class="rounded-2xl bg-slate-900/90 border border-slate-700/80 p-3.5 shadow-xl">
+                <div class="flex items-center justify-between mb-2.5">
+                    <h3 class="font-game text-sm uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-amber-400"></i> Klasemen Pemain
+                    </h3>
+                    <span id="gameModeSubtext" class="text-[11px] text-slate-400">Target: Kotak 100</span>
+                </div>
+                <div id="playersListContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+            <!-- ACTIVITY LOG -->
+            <div class="rounded-2xl bg-slate-900/90 border border-slate-700/80 p-3.5 shadow-xl">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-game text-sm uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-scroll text-emerald-400"></i> Catatan Petualangan
+                    </h3>
+                    <span class="text-[11px] text-slate-500">Riwayat Giliran</span>
+                </div>
+                <div id="gameLogContainer" class="h-28 overflow-y-auto space-y-1.5 pr-1 text-xs">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==========================================
+         MODAL 1: KUIS PERTANYAAN (JALAN / TANGGA / ULAR)
+         ========================================== -->
+    <div id="quizModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div id="quizCard" class="w-full max-w-2xl rounded-3xl bg-slate-900 border-2 border-amber-500/60 shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden my-auto transform transition-all">
+            
+            <!-- Modal Top Banner (Dynamic Color based on Stage: Move, Ladder, Snake) -->
+            <div id="quizHeaderBanner" class="px-5 py-4 bg-gradient-to-r from-amber-600 to-orange-600 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div id="quizStageIcon" class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-white text-2xl shadow-inner">
+                        <i class="fa-solid fa-dice"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span id="quizStageBadge" class="text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-950/40 text-amber-200">
+                                SOAL LANGKAH JALAN
+                            </span>
+                            <span id="quizCategoryBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-white/20 text-white">
+                                Majas
+                            </span>
+                        </div>
+                        <h3 id="quizHeaderTitle" class="font-game text-lg sm:text-xl font-bold text-white mt-0.5">
+                            Jawab Benar untuk Maju 5 Langkah!
+                        </h3>
+                    </div>
+                </div>
+                <!-- Player Indicator inside Quiz -->
+                <div class="hidden sm:flex items-center gap-2 bg-slate-950/35 px-3 py-1.5 rounded-xl border border-white/15">
+                    <div id="quizPlayerAvatar" class="w-7 h-7"></div>
+                    <span id="quizPlayerName" class="text-xs font-bold text-white">Garuda</span>
+                </div>
+            </div>
+
+            <!-- Question Body -->
+            <div class="p-5 sm:p-6 space-y-4">
+                <!-- Context / Stakes Explanation -->
+                <div id="quizStakesAlert" class="px-3.5 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-slate-300 flex items-center gap-2.5">
+                    <i class="fa-solid fa-circle-info text-amber-400 text-base"></i>
+                    <span id="quizStakesText">Jika benar, pionmu maju sesuai angka dadu. Jika salah, pion tetap di tempat!</span>
+                </div>
+
+                <!-- Question Box -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-800/90 to-slate-800/50 border border-slate-600/60 shadow-inner">
+                    <p id="quizQuestionText" class="text-base sm:text-lg md:text-xl font-semibold text-white leading-relaxed">
+                        Pertanyaan akan muncul di sini...
+                    </p>
+                </div>
+
+                <!-- Options Grid (A, B, C, D) -->
+                <div id="quizOptionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                    <!-- Dynamically populated buttons -->
+                </div>
+
+                <!-- Feedback & Explanation Box (Hidden until answered) -->
+                <div id="quizFeedbackBox" class="hidden rounded-2xl p-4 border transition-all">
+                    <div class="flex items-start gap-3">
+                        <div id="quizFeedbackIcon" class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 text-lg font-bold mt-0.5"></div>
+                        <div class="flex-1">
+                            <h4 id="quizFeedbackTitle" class="font-game text-base sm:text-lg font-bold">Jawaban Benar!</h4>
+                            <p id="quizExplanationText" class="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed"></p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <button id="quizContinueBtn" onclick="proceedAfterQuiz()" class="px-6 py-2.5 rounded-xl font-game font-bold text-sm sm:text-base bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-lg transition flex items-center gap-2">
+                            <span>Lanjutkan Permainan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL 2: PENGATURAN PERMAINAN BARU (SETUP)
+         ========================================== -->
+    <div id="setupModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div class="w-full max-w-xl rounded-3xl bg-slate-900 border-2 border-amber-500/50 shadow-2xl overflow-hidden my-auto">
+            <div class="px-6 py-4 bg-gradient-to-r from-amber-500 to-orange-600 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-sliders text-slate-950 text-xl"></i>
+                    <h2 class="font-game text-xl font-bold text-slate-950">Pengaturan Permainan Kelas</h2>
+                </div>
+                <button onclick="closeSetupModal()" class="w-8 h-8 rounded-lg bg-slate-950/20 hover:bg-slate-950/35 text-slate-950 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 sm:p-6 space-y-5">
+                <!-- Topic Selection -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+                        1. Pilih Topik Soal Bahasa Indonesia
+                    </label>
+                    <div class="grid grid-cols-3 gap-2.5">
+                        <button type="button" onclick="selectTopicOption('campuran')" id="topicBtn_campuran" class="topic-opt-btn p-3 rounded-xl border-2 border-amber-400 bg-amber-500/20 text-white text-center transition">
+                            <i class="fa-solid fa-layer-group text-amber-400 text-lg mb-1 block"></i>
+                            <span class="font-bold text-xs sm:text-sm block">Campuran</span>
+                            <span class="text-[10px] text-slate-300">Majas & Peribahasa</span>
+                        </button>
+                        <button type="button" onclick="selectTopicOption('majas')" id="topicBtn_majas" class="topic-opt-btn p-3 rounded-xl border-2 border-slate-700 bg-slate-800/70 text-slate-300 text-center transition">
+                            <i class="fa-solid fa-feather-pointed text-sky-400 text-lg mb-1 block"></i>
+                            <span class="font-bold text-xs sm:text-sm block">Khusus Majas</span>
+                            <span class="text-[10px] text-slate-400">Gaya Bahasa</span>
+                        </button>
+                        <button type="button" onclick="selectTopicOption('peribahasa')" id="topicBtn_peribahasa" class="topic-opt-btn p-3 rounded-xl border-2 border-slate-700 bg-slate-800/70 text-slate-300 text-center transition">
+                            <i class="fa-solid fa-scroll text-emerald-400 text-lg mb-1 block"></i>
+                            <span class="font-bold text-xs sm:text-sm block">Peribahasa</span>
+                            <span class="text-[10px] text-slate-400">Pepatah & Ungkapan</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Number of Players / Teams -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+                        2. Jumlah Pemain / Kelompok
+                    </label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button type="button" onclick="selectPlayerCount(1)" id="pCountBtn_1" class="pcount-btn py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs sm:text-sm font-bold text-slate-300">1 Pemain (Lawan Bot)</button>
+                        <button type="button" onclick="selectPlayerCount(2)" id="pCountBtn_2" class="pcount-btn py-2 rounded-xl border-2 border-amber-400 bg-amber-500/20 text-xs sm:text-sm font-bold text-white">2 Tim / Pemain</button>
+                        <button type="button" onclick="selectPlayerCount(3)" id="pCountBtn_3" class="pcount-btn py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs sm:text-sm font-bold text-slate-300">3 Tim / Pemain</button>
+                        <button type="button" onclick="selectPlayerCount(4)" id="pCountBtn_4" class="pcount-btn py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs sm:text-sm font-bold text-slate-300">4 Tim / Pemain</button><button type="button" onclick="selectPlayerCount(5)" id="pCountBtn_5" class="pcount-btn py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs sm:text-sm font-bold text-slate-300">5 Tim / Pemain</button><button type="button" onclick="selectPlayerCount(6)" id="pCountBtn_6" class="pcount-btn py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs sm:text-sm font-bold text-slate-300">6 Tim / Pemain</button>
+                    </div>
+                </div>
+
+                <!-- Player Names & Pawn Preview -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+                        3. Nama Tim & Karakter Pion Nusantara
+                    </label>
+                    <div id="setupPlayersInputs" class="space-y-2.5">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Start Game Button -->
+                <div class="pt-2 flex justify-end gap-2.5">
+                    <button type="button" onclick="closeSetupModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold">
+                        Batal
+                    </button>
+                    <button type="button" onclick="applySetupAndStart()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-game font-bold text-base shadow-lg shadow-emerald-600/30 flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Mulai Petualangan!</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL 3: ATURAN PERMAINAN
+         ========================================== -->
+    <div id="rulesModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div class="w-full max-w-2xl rounded-3xl bg-slate-900 border-2 border-amber-500/40 shadow-2xl overflow-hidden my-auto">
+            <div class="px-6 py-4 bg-slate-800 border-b border-slate-700 flex items-center justify-between">
+                <h2 class="font-game text-xl font-bold text-amber-400 flex items-center gap-2">
+                    <i class="fa-solid fa-book-bookmark"></i> Aturan Main Ular Tangga Bahasa Indonesia
+                </h2>
+                <button onclick="closeRulesModal()" class="w-8 h-8 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4 text-sm text-slate-300 leading-relaxed max-h-[75vh] overflow-y-auto">
+                <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg shrink-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-amber-300 text-base">Tahap 1: Kocok Dadu & Soal Langkah Jalan</h4>
+                        <p class="mt-0.5 text-xs sm:text-sm">Pemain mengklik dadu 3D. Setelah angka dadu (1–6) keluar, <strong>Soal Langkah Jalan</strong> akan muncul. Jika dijawab <strong>BENAR</strong>, pion melompat maju sesuai angka dadu. Jika <strong>SALAH</strong>, pion batal melangkah (tetap di tempat) dan giliran berpindah.</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-bold text-lg shrink-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-emerald-300 text-base">Tahap 2A: Tantangan Naik Tangga!</h4>
+                        <p class="mt-0.5 text-xs sm:text-sm">Apabila pion berhenti tepat di <strong>Kaki Tangga</strong>, muncul <strong>Soal Tantangan Naik Tangga</strong>. Jawab <strong>BENAR</strong> agar pion memanjat naik ke puncak tangga! Jika <strong>SALAH</strong>, pion tetap berada di kotak kaki tangga.</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center font-bold text-lg shrink-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-rose-300 text-base">Tahap 2B: Penyelamatan dari Kepala Ular!</h4>
+                        <p class="mt-0.5 text-xs sm:text-sm">Apabila pion berhenti tepat di <strong>Kepala Ular</strong>, jangan panik! Akan muncul <strong>Soal Penyelamatan Ular</strong>. Jika dijawab <strong>BENAR</strong>, pionmu selamat dan tidak jadi turun! Namun jika <strong>SALAH</strong>, pion akan tergelincir turun menyusuri tubuh ular hingga ke ekornya.</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500 text-white flex items-center justify-center font-bold text-lg shrink-0">4</div>
+                    <div>
+                        <h4 class="font-bold text-indigo-300 text-base">Menuju Kotak 100 (Garis Finis)</h4>
+                        <p class="mt-0.5 text-xs sm:text-sm">Pemain atau tim pertama yang berhasil mencapai <strong>Kotak 100</strong> dinobatkan sebagai <strong>Duta Bahasa Nusantara</strong>! Jika angka dadu melebihi kotak 100, pion akan memantul mundur sesuai sisa langkah.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="px-6 py-3.5 bg-slate-800/80 border-t border-slate-700 flex justify-end">
+                <button onclick="closeRulesModal()" class="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm">
+                    Siap Bermain!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL 4: KELOLA & TAMBAH SOAL GURU
+         ========================================== -->
+    <div id="questionManagerModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div class="w-full max-w-3xl rounded-3xl bg-slate-900 border-2 border-indigo-500/50 shadow-2xl overflow-hidden my-auto">
+            <div class="px-6 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-chalkboard-user text-white text-xl"></i>
+                    <h2 class="font-game text-xl font-bold text-white">Bank Soal Guru (Majas & Peribahasa)</h2>
+                </div>
+                <button onclick="closeQuestionManager()" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-white/25 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 sm:p-6 space-y-5 max-h-[80vh] overflow-y-auto">
+                <!-- Form Tambah Soal Baru -->
+                <div class="p-4 rounded-2xl bg-slate-800/90 border border-slate-700 space-y-3">
+                    <h3 class="font-game text-base font-bold text-indigo-300 flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle"></i> Tambah Soal Custom Baru
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="text-xs text-slate-400 block mb-1">Kategori</label>
+                            <select id="newQCategory" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                                <option value="majas">Majas (Gaya Bahasa)</option>
+                                <option value="peribahasa">Peribahasa & Ungkapan</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="text-xs text-slate-400 block mb-1">Sub-Topik / Jenis (Contoh: Majas Hiperbola / Makna Peribahasa)</label>
+                            <input id="newQSubtopic" type="text" placeholder="Contoh: Majas Personifikasi" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-slate-400 block mb-1">Pertanyaan</label>
+                        <textarea id="newQText" rows="2" placeholder="Tulis kalimat soal di sini..." class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <input id="newQOpt0" type="text" placeholder="Opsi A" class="rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                        <input id="newQOpt1" type="text" placeholder="Opsi B" class="rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                        <input id="newQOpt2" type="text" placeholder="Opsi C" class="rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                        <input id="newQOpt3" type="text" placeholder="Opsi D" class="rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
+                        <div>
+                            <label class="text-xs text-slate-400 block mb-1">Kunci Jawaban Benar</label>
+                            <select id="newQAnswer" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-emerald-400 font-bold">
+                                <option value="0">Opsi A</option>
+                                <option value="1">Opsi B</option>
+                                <option value="2">Opsi C</option>
+                                <option value="3">Opsi D</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="text-xs text-slate-400 block mb-1">Pembahasan Singkat</label>
+                            <input id="newQExp" type="text" placeholder="Penjelasan mengapa jawaban tersebut benar..." class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                        <span id="addQStatusMsg" class="text-xs text-emerald-400 font-semibold"></span>
+                        <button onclick="addNewCustomQuestion()" class="px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-floppy-disk"></i> Simpan Soal ke Bank
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Daftar Soal -->
+                <div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                        <h4 class="font-game text-sm uppercase tracking-wider text-slate-300">
+                            Daftar Soal Tersedia (<span id="managerCountLabel">60</span> Soal)
+                        </h4>
+                        <div class="flex gap-1.5">
+                            <button onclick="renderQuestionManagerList('all')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-200">Semua</button>
+                            <button onclick="renderQuestionManagerList('majas')" class="px-2.5 py-1 rounded-lg bg-sky-900/50 hover:bg-sky-800/60 text-xs text-sky-200">Majas</button>
+                            <button onclick="renderQuestionManagerList('peribahasa')" class="px-2.5 py-1 rounded-lg bg-emerald-900/50 hover:bg-emerald-800/60 text-xs text-emerald-200">Peribahasa</button>
+                        </div>
+                    </div>
+                    <div id="questionManagerList" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL 5: PEMENANG / SELESAI PERMAINAN
+         ========================================== -->
+    <div id="winnerModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="w-full max-w-lg rounded-3xl bg-slate-900 border-2 border-amber-400 shadow-[0_0_80px_rgba(251,191,36,0.35)] overflow-hidden text-center p-6 sm:p-8 space-y-5">
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-amber-300 via-yellow-400 to-orange-500 mx-auto flex items-center justify-center shadow-xl border-2 border-white/40 float-slow">
+                <i class="fa-solid fa-crown text-slate-950 text-4xl"></i>
+            </div>
+            <div>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400 bg-amber-500/15 px-3 py-1 rounded-full border border-amber-400/30">
+                    Juara Petualangan Bahasa
+                </span>
+                <h2 id="winnerNameTitle" class="font-game text-3xl sm:text-4xl font-bold text-white mt-2">
+                    Garuda Merah Menang!
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                    Berhasil mencapai puncak Kotak 100 dan menguasai kuis Majas & Peribahasa!
+                </p>
+            </div>
+
+            <!-- Final Stats Table -->
+            <div id="winnerStatsList" class="bg-slate-800/80 rounded-2xl p-3.5 border border-slate-700 text-left space-y-2">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="flex items-center justify-center gap-3 pt-2">
+                <button onclick="openSetupModal(); closeWinnerModal();" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm">
+                    Atur Ulang Tim
+                </button>
+                <button onclick="restartSameGame()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-game font-bold text-base shadow-lg flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Main Lagi!</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================================
+           1. DEFINISI ULAR & TANGGA (ARAH BERVARIASI: KIRI, KANAN, TEGAK, MELINTANG)
+           ========================================================================= */
+        // 8 Tangga dengan variasi arah kemiringan (kiri, kanan, tegak, diagonal panjang)
+        const LADDERS = [
+            { from: 4,  to: 25, color: '#d97706', railLight: '#fde68a' }, // Miring kanan
+            { from: 8,  to: 31, color: '#b45309', railLight: '#fcd34d' }, // Miring kanan tajam
+            { from: 13, to: 46, color: '#059669', railLight: '#6ee7b7' }, // Miring kiri panjang
+            { from: 22, to: 42, color: '#d97706', railLight: '#fde68a' }, // Tegak vertikal
+            { from: 36, to: 57, color: '#0284c7', railLight: '#7dd3fc' }, // Miring kiri sedang
+            { from: 50, to: 69, color: '#b45309', railLight: '#fcd34d' }, // Miring kiri di sisi kanan
+            { from: 63, to: 85, color: '#7c3aed', railLight: '#c4b5fd' }, // Miring kanan atas
+            { from: 74, to: 92, color: '#059669', railLight: '#6ee7b7' }  // Miring kanan ke baris puncak
+        ];
+
+        // 7 Ular dengan warna corak berbeda dan arah meliuk bervariasi
+        const SNAKES = [
+            {
+                from: 28, to: 6,
+                name: 'Ular Zamrud',
+                bodyColor: '#10b981', patternColor: '#064e3b', bellyColor: '#a7f3d0',
+                curveOffset: -55 // Miring kanan-bawah
+            },
+            {
+                from: 39, to: 18,
+                name: 'Ular Amethyst',
+                bodyColor: '#8b5cf6', patternColor: '#4c1d95', bellyColor: '#ddd6fe',
+                curveOffset: 50  // Tegak meliuk S
+            },
+            {
+                from: 48, to: 16,
+                name: 'Ular Kobra Karang',
+                bodyColor: '#f43f5e', patternColor: '#881337', bellyColor: '#fecdd3',
+                curveOffset: 65  // Miring kiri-bawah panjang
+            },
+            {
+                from: 66, to: 45,
+                name: 'Ular Safir Biru',
+                bodyColor: '#0ea5e9', patternColor: '#0c4a6e', bellyColor: '#bae6fd',
+                curveOffset: -50 // Miring kiri-bawah
+            },
+            {
+                from: 79, to: 58,
+                name: 'Ular Sanca Emas',
+                bodyColor: '#eab308', patternColor: '#713f12', bellyColor: '#fef08a',
+                curveOffset: 55  // Miring kanan-bawah
+            },
+            {
+                from: 89, to: 53,
+                name: 'Ular Naga Api',
+                bodyColor: '#f97316', patternColor: '#7c2d12', bellyColor: '#fed7aa',
+                curveOffset: -65 // Miring kiri-bawah panjang
+            },
+            {
+                from: 98, to: 62,
+                name: 'Ular Raja Nusantara',
+                bodyColor: '#ec4899', patternColor: '#831843', bellyColor: '#fbcfe8',
+                curveOffset: 65  // Dekat 100, miring kiri-bawah dramatis
+            }
+        ];
+
+        /* =========================================================================
+           2. DESAIN KARAKTER PION NUSANTARA (SVG IKONIK & BERWARNA)
+           ========================================================================= */
+        const PAWN_TEMPLATES = [
+            {
+                id: 0,
+                defaultName: 'Tim Garuda Merah',
+                color: '#ef4444',
+                border: '#fef08a',
+                svg: `<svg viewBox="0 0 64 64" class="w-full h-full">
+                        <defs>
+                            <radialGradient id="gGaruda" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#f87171"/>
+                                <stop offset="60%" stop-color="#dc2626"/>
+                                <stop offset="100%" stop-color="#7f1d1d"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- Base Pedestal -->
+                        <ellipse cx="32" cy="56" rx="20" ry="6" fill="#450a0a" stroke="#f59e0b" stroke-width="2"/>
+                        <!-- Body Shield -->
+                        <path d="M16 52 C16 32, 22 22, 32 10 C42 22, 48 32, 48 52 Z" fill="url(#gGaruda)" stroke="#fde047" stroke-width="2.5"/>
+                        <!-- Crown & Wings Icon -->
+                        <path d="M12 28 Q22 18 32 26 Q42 18 52 28 Q42 36 32 32 Q22 36 12 28 Z" fill="#fbbf24" stroke="#78350f" stroke-width="1.5"/>
+                        <circle cx="32" cy="20" r="8" fill="#fef08a" stroke="#b45309" stroke-width="2"/>
+                        <!-- Beak & Eyes -->
+                        <polygon points="32,21 28,25 32,29 36,25" fill="#ea580c"/>
+                        <circle cx="29" cy="18" r="1.6" fill="#1e293b"/>
+                        <circle cx="35" cy="18" r="1.6" fill="#1e293b"/>
+                      </svg>`
+            },
+            {
+                id: 1,
+                defaultName: 'Tim Harimau Emas',
+                color: '#f59e0b',
+                border: '#ffffff',
+                svg: `<svg viewBox="0 0 64 64" class="w-full h-full">
+                        <defs>
+                            <radialGradient id="gTiger" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#fde047"/>
+                                <stop offset="55%" stop-color="#f59e0b"/>
+                                <stop offset="100%" stop-color="#78350f"/>
+                            </radialGradient>
+                        </defs>
+                        <ellipse cx="32" cy="56" rx="20" ry="6" fill="#451a03" stroke="#fde68a" stroke-width="2"/>
+                        <path d="M16 52 C16 32, 22 22, 32 12 C42 22, 48 32, 48 52 Z" fill="url(#gTiger)" stroke="#fffbeb" stroke-width="2.5"/>
+                        <!-- Ears -->
+                        <circle cx="22" cy="14" r="5" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+                        <circle cx="42" cy="14" r="5" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+                        <!-- Head -->
+                        <circle cx="32" cy="23" r="10" fill="#fbbf24" stroke="#451a03" stroke-width="2"/>
+                        <!-- Stripes -->
+                        <path d="M24 20 L27 21 M40 20 L37 21 M25 25 L28 25 M39 25 L36 25" stroke="#1e293b" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="29" cy="21" r="1.7" fill="#0f172a"/>
+                        <circle cx="35" cy="21" r="1.7" fill="#0f172a"/>
+                        <polygon points="32,24 29,27 35,27" fill="#be123c"/>
+                      </svg>`
+            },
+            {
+                id: 2,
+                defaultName: 'Tim Cendrawasih Biru',
+                color: '#0ea5e9',
+                border: '#bae6fd',
+                svg: `<svg viewBox="0 0 64 64" class="w-full h-full">
+                        <defs>
+                            <radialGradient id="gBird" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#38bdf8"/>
+                                <stop offset="60%" stop-color="#0284c7"/>
+                                <stop offset="100%" stop-color="#0c4a6e"/>
+                            </radialGradient>
+                        </defs>
+                        <ellipse cx="32" cy="56" rx="20" ry="6" fill="#082f49" stroke="#38bdf8" stroke-width="2"/>
+                        <path d="M16 52 C16 32, 22 22, 32 12 C42 22, 48 32, 48 52 Z" fill="url(#gBird)" stroke="#e0f2fe" stroke-width="2.5"/>
+                        <!-- Plume Crown -->
+                        <path d="M26 12 Q32 4 38 12" fill="none" stroke="#fde047" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="32" cy="22" r="9.5" fill="#38bdf8" stroke="#e0f2fe" stroke-width="2"/>
+                        <polygon points="32,22 28,26 32,30 36,26" fill="#facc15"/>
+                        <circle cx="29" cy="20" r="1.7" fill="#0f172a"/>
+                        <circle cx="35" cy="20" r="1.7" fill="#0f172a"/>
+                      </svg>`
+            },
+            {
+                id: 3,
+                defaultName: 'Tim Kancil Hijau',
+                color: '#10b981',
+                border: '#a7f3d0',
+                svg: `<svg viewBox="0 0 64 64" class="w-full h-full">
+                        <defs>
+                            <radialGradient id="gKancil" cx="35%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#34d399"/>
+                                <stop offset="60%" stop-color="#059669"/>
+                                <stop offset="100%" stop-color="#064e3b"/>
+                            </radialGradient>
+                        </defs>
+                        <ellipse cx="32" cy="56" rx="20" ry="6" fill="#022c22" stroke="#34d399" stroke-width="2"/>
+                        <path d="M16 52 C16 32, 22 22, 32 12 C42 22, 48 32, 48 52 Z" fill="url(#gKancil)" stroke="#d1fae5" stroke-width="2.5"/>
+                        <!-- Leaf/Ears -->
+                        <ellipse cx="23" cy="14" rx="3.5" ry="7" transform="rotate(-25 23 14)" fill="#10b981" stroke="#ecfdf5" stroke-width="1.5"/>
+                        <ellipse cx="41" cy="14" rx="3.5" ry="7" transform="rotate(25 41 14)" fill="#10b981" stroke="#ecfdf5" stroke-width="1.5"/>
+                        <circle cx="32" cy="23" r="9.5" fill="#6ee7b7" stroke="#064e3b" stroke-width="2"/>
+                        <circle cx="29" cy="21" r="1.7" fill="#064e3b"/>
+                        <circle cx="35" cy="21" r="1.7" fill="#064e3b"/>
+                        <circle cx="32" cy="25" r="2.2" fill="#047857"/>
+                      </svg>`
+            }
+        ];
+
+        /* =========================================================================
+           3. BANK SOAL BAHASA INDONESIA (60 SOAL PILIHAN GANDA: MAJAS & PERIBAHASA)
+           ========================================================================= */
+        const DEFAULT_QUESTIONS = [
+            // --- KATEGORI: MAJAS (30 SOAL) ---
+            {
+                category: 'majas',
+                subtopic: 'Majas Personifikasi',
+                q: 'Perhatikan kalimat berikut: "Angin malam berbisik lirih menyampaikan rindu kepada dedaunan." Kalimat tersebut menggunakan majas...',
+                options: ['Metafora', 'Personifikasi', 'Hiperbola', 'Litotes'],
+                answer: 1,
+                exp: 'Majas Personifikasi memberikan sifat atau perilaku manusia (berbisik menyampaikan rindu) kepada benda mati (angin malam).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Metafora',
+                q: '"Si Jago Merah melahap habis deretan ruko di pasar tradisional tadi malam." Ungkapan "Si Jago Merah" merupakan contoh majas...',
+                options: ['Metafora', 'Simile', 'Eufemisme', 'Ironi'],
+                answer: 0,
+                exp: 'Majas Metafora adalah perbandingan langsung tanpa kata penghubung. "Si Jago Merah" adalah kiasan langsung untuk api kebakaran.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Hiperbola',
+                q: '"Suara teriakannya menggelegar membelah angkasa hingga memekakkan telinga." Gaya bahasa pada kalimat tersebut adalah...',
+                options: ['Litotes', 'Hiperbola', 'Paradoks', 'Sinekdoke'],
+                answer: 1,
+                exp: 'Majas Hiperbola mengungkapkan sesuatu secara berlebihan (membelah angkasa) untuk memberikan kesan dramatis.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Litotes',
+                q: '"Silakan mampir ke gubuk reot kami untuk sekadar minum air putih." Kalimat yang diucapkan pemilik rumah mewah tersebut menggunakan majas...',
+                options: ['Ironi', 'Sarkasme', 'Litotes', 'Eufemisme'],
+                answer: 2,
+                exp: 'Majas Litotes memperkecil atau merendahkan keadaan sebenarnya (menyebut rumah bagus sebagai "gubuk reot") untuk tujuan kesopanan/merendah.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Simile (Asosiasi)',
+                q: '"Semangat belajarnya sangat membara bagaikan api unggun yang tak kunjung padam." Kalimat ini mengandung majas...',
+                options: ['Metafora', 'Simile (Asosiasi)', 'Personifikasi', 'Antitesis'],
+                answer: 1,
+                exp: 'Majas Simile membandingkan dua hal secara eksplisit menggunakan kata penghubung seperti "bagaikan", "bak", "ibarat", atau "laksana".'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Ironi',
+                q: '"Rapi sekali kamarmu, sampai-sampai tidak ada satu pun ruang di lantai untuk berpijak!" Kalimat sindiran halus ini termasuk majas...',
+                options: ['Sarkasme', 'Ironi', 'Sinisme', 'Litotes'],
+                answer: 1,
+                exp: 'Majas Ironi adalah sindiran halus yang menyatakan kebalikan dari fakta sebenarnya (memuji "rapi sekali" padahal sangat berantakan).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Eufemisme',
+                q: '"Banyak penyandang tunanetra yang berprestasi di bidang musik dan sastra." Penggunaan kata "tunanetra" untuk menggantikan kata "buta" disebut majas...',
+                options: ['Eufemisme', 'Metafora', 'Pleonasme', 'Alusio'],
+                answer: 0,
+                exp: 'Majas Eufemisme menghaluskan kata atau ungkapan yang dianggap kurang sopan atau kasar agar terdengar lebih santun.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Paradoks',
+                q: '"Ibu merasa kesepian di tengah keramaian kota metropolitan yang hiruk-pikuk." Kalimat tersebut menggunakan majas...',
+                options: ['Antitesis', 'Paradoks', 'Hiperbola', 'Klimaks'],
+                answer: 1,
+                exp: 'Majas Paradoks menggambarkan dua keadaan yang seolah bertentangan dalam satu situasi namun mengandung kebenaran (kesepian di tengah keramaian).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Antitesis',
+                q: '"Tua muda, besar kecil, maupun kaya miskin memiliki hak yang sama di mata hukum." Pasangan kata berlawanan berurutan ini adalah majas...',
+                options: ['Paradoks', 'Repetisi', 'Antitesis', 'Klimaks'],
+                answer: 2,
+                exp: 'Majas Antitesis menggunakan pasangan kata yang artinya berlawanan secara berurutan (tua-muda, besar-kecil, kaya-miskin).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Sinekdoke Pars Pro Toto',
+                q: '"Setiap kepala dikenakan biaya iuran kebersihan sebesar sepuluh ribu rupiah." Kata "kepala" yang mewakili seluruh individu merupakan majas...',
+                options: ['Sinekdoke Totem Pro Parte', 'Sinekdoke Pars Pro Toto', 'Metonimia', 'Metafora'],
+                answer: 1,
+                exp: 'Sinekdoke Pars Pro Toto menyebutkan sebagian (kepala) untuk mewakili keseluruhan (satu orang utuh).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Sinekdoke Totem Pro Parte',
+                q: '"Indonesia berhasil meraih medali emas cabang bulu tangkis di ajang Olimpiade." Penyebutan "Indonesia" untuk mewakili atlet yang bertanding adalah majas...',
+                options: ['Sinekdoke Totem Pro Parte', 'Sinekdoke Pars Pro Toto', 'Hiperbola', 'Personifikasi'],
+                answer: 0,
+                exp: 'Sinekdoke Totem Pro Parte menyebutkan keseluruhan (Indonesia) untuk mewakili sebagian (atlet bulu tangkis).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Pleonasme',
+                q: '"Para siswa diminta maju ke depan untuk mengumpulkan tugas." Kalimat tersebut mengandung majas...',
+                options: ['Repetisi', 'Klimaks', 'Pleonasme', 'Paralelisme'],
+                answer: 2,
+                exp: 'Majas Pleonasme menambahkan keterangan yang sebenarnya sudah jelas/berlebihan (kata "maju" sudah pasti "ke depan").'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Klimaks',
+                q: '"Mulai dari tingkat desa, kecamatan, kabupaten, hingga provinsi turut merayakan Hari Kemerdekaan." Urutan meningkat ini disebut majas...',
+                options: ['Antiklimaks', 'Klimaks', 'Repetisi', 'Antitesis'],
+                answer: 1,
+                exp: 'Majas Klimaks mengurutkan gagasan dari tingkatan yang paling rendah/kecil menuju tingkatan yang semakin tinggi/besar.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Antiklimaks',
+                q: '"Kepala sekolah, para guru, staf tata usaha, hingga seluruh siswa hadir dalam upacara pagi ini." Gaya bahasa tersebut adalah...',
+                options: ['Klimaks', 'Antiklimaks', 'Pleonasme', 'totem pro parte'],
+                answer: 1,
+                exp: 'Majas Antiklimaks mengurutkan hal dari tingkatan paling tinggi (Kepala Sekolah) menurun ke tingkatan yang lebih rendah.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Metonimia',
+                q: '"Ayah berangkat ke kantor naik Kijang, sedangkan Kakak naik Honda." Penyebutan merek dagang untuk mewakili benda tersebut dinamakan majas...',
+                options: ['Metafora', 'Metonimia', 'Simile', 'Alusio'],
+                answer: 1,
+                exp: 'Majas Metonimia menggunakan nama merek atau ciri khas untuk menggantikan benda aslinya (Kijang = mobil, Honda = motor).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Repetisi',
+                q: '"Kita harus semangat belajar, semangat berkarya, dan semangat menggapai cita-cita!" Pengulangan kata "semangat" merupakan majas...',
+                options: ['Pleonasme', 'Repetisi', 'Klimaks', 'Eufemisme'],
+                answer: 1,
+                exp: 'Majas Repetisi adalah pengulangan kata atau frasa yang sama dalam sebuah kalimat untuk memberikan penekanan makna.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Metafora',
+                q: '"Sebagai tulang punggung keluarga, Pak Budi bekerja keras tanpa kenal lelah." Makna ungkapan bermajas metafora "tulang punggung" adalah...',
+                options: ['Orang yang paling tua', 'Penopang nafkah utama keluarga', 'Orang yang sedang sakit punggung', 'Anak kesayangan'],
+                answer: 1,
+                exp: '"Tulang punggung" adalah metafora yang berarti seseorang yang menjadi pokok kekuatan atau pencari nafkah utama.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Personifikasi',
+                q: 'Manakah di antara kalimat berikut yang menggunakan majas Personifikasi?',
+                options: [
+                    'Wajahnya bersinar bagaikan rembulan purnama.',
+                    'Ombak pantai berlari-lari mengejar langkah kaki kami di pasir.',
+                    'Harga cabai melonjak setinggi langit di musim hujan.',
+                    'Ia adalah kutu buku yang menghabiskan waktu di perpustakaan.'
+                ],
+                answer: 1,
+                exp: '"Ombak pantai berlari-lari mengejar langkah kaki" memberikan perilaku manusia (berlari mengejar) pada ombak.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Hiperbola',
+                q: '"Air matanya mengalir menganak sungai saat mendengar kabar mengharukan itu." Majas yang terkandung dalam kalimat ini adalah...',
+                options: ['Personifikasi', 'Litotes', 'Hiperbola', 'Simile'],
+                answer: 2,
+                exp: 'Menggambarkan air mata yang mengalir hingga "menganak sungai" adalah pernyataan berlebih-lebihan (Hiperbola).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Simile',
+                q: '"Dua saudara kembar itu selalu rukun laksana air dengan tepian." Kata "laksana" menandakan bahwa kalimat ini menggunakan majas...',
+                options: ['Simile (Asosiasi)', 'Metafora', 'Personifikasi', 'Paradoks'],
+                answer: 0,
+                exp: 'Kata "laksana" merupakan penanda perbandingan langsung/eksplisit yang menjadi ciri utama Majas Simile.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Metafora',
+                q: '"Jangan suka menjadi lintah darat yang menyengsarakan warga sekitar!" Ungkapan "lintah darat" dalam majas metafora berarti...',
+                options: ['Orang yang suka menolong', 'Peminjam uang dengan bunga sangat tinggi (rentenir)', 'Pedagang tanah', 'Petani sawah'],
+                answer: 1,
+                exp: '"Lintah darat" adalah kiasan metafora untuk rentenir yang meminjamkan uang dengan bunga mencekik.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Alusio',
+                q: '"Kota Bandung memang layak dijuluki Paris van Java karena keindahan dan mode pakaiannya." Kalimat ini menggunakan majas...',
+                options: ['Alusio', 'Ironi', 'Litotes', 'Pleonasme'],
+                answer: 0,
+                exp: 'Majas Alusio merujuk pada tokoh, tempat, atau peristiwa sejarah/legenda yang sudah dikenal umum (Paris van Java).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Eufemisme',
+                q: 'Kalimat manakah yang menggunakan majas Eufemisme (penghalusan makna)?',
+                options: [
+                    'Karyawan itu dipecat dengan tidak hormat kemarin.',
+                    'Beberapa pekerja terpaksa dirumahkan akibat efisiensi perusahaan.',
+                    'Suaranya menggelegar membelah langit siang.',
+                    'Anak itu malas sekali seperti keledai.'
+                ],
+                answer: 1,
+                exp: 'Kata "dirumahkan" merupakan bentuk penghalusan (Eufemisme) dari kata "diberhentikan/di-PHK".'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Litotes',
+                q: '"Terimalah bingkisan yang tidak seberapa ini sebagai tanda terima kasih kami." Kalimat tersebut merupakan contoh majas...',
+                options: ['Hiperbola', 'Litotes', 'Ironi', 'Metafora'],
+                answer: 1,
+                exp: 'Menyebut pemberian sendiri sebagai "bingkisan yang tidak seberapa" bertujuan untuk merendahkan diri secara sopan (Litotes).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Sinekdoke Pars Pro Toto',
+                q: '"Sudah lama aku tidak melihat batang hidungnya di kampung ini." Ungkapan "batang hidungnya" termasuk majas...',
+                options: ['Sinekdoke Pars Pro Toto', 'Sinekdoke Totem Pro Parte', 'Simile', 'Antitesis'],
+                answer: 0,
+                exp: 'Menyebut bagian kecil tubuh ("batang hidung") untuk mewakili kehadiran seluruh sosok seseorang adalah Pars Pro Toto.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Ironi',
+                q: '"Wah, pagi sekali kamu datang, matahari saja sudah tepat di atas kepala!" Majas yang digunakan untuk menyindir orang yang terlambat ini adalah...',
+                options: ['Litotes', 'Ironi', 'Eufemisme', 'Personifikasi'],
+                answer: 1,
+                exp: 'Menyindir orang yang datang siang hari dengan ucapan "Wah, pagi sekali kamu datang" adalah kebalikan fakta (Ironi).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Metafora',
+                q: '"Perpustakaan adalah gudang ilmu bagi siapa saja yang gemar membaca." Ungkapan "gudang ilmu" pada kalimat tersebut termasuk majas...',
+                options: ['Personifikasi', 'Simile', 'Metafora', 'Hiperbola'],
+                answer: 2,
+                exp: 'Membandingkan perpustakaan secara langsung sebagai "gudang ilmu" tanpa kata pembanding merupakan Majas Metafora.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Personifikasi',
+                q: '"Matahari pagi tersenyum ramah menyapa para petani yang mulai turun ke sawah." Majas apakah yang terdapat pada kalimat tersebut?',
+                options: ['Hiperbola', 'Personifikasi', 'Metafora', 'Paradoks'],
+                answer: 1,
+                exp: 'Matahari digambarkan seolah-olah manusia yang bisa "tersenyum ramah menyapa", sehingga termasuk Majas Personifikasi.'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Pleonasme',
+                q: '"Darah merah segar mengalir dari luka di lututnya setelah terjatuh dari sepeda." Mengapa kalimat ini disebut mengandung majas Pleonasme?',
+                options: [
+                    'Karena membandingkan darah dengan sepeda',
+                    'Karena darah sudah pasti berwarna merah sehingga kata "merah" memperjelas hal yang sudah pasti',
+                    'Karena menggunakan kata-kata yang kasar',
+                    'Karena menyindir orang yang jatuh'
+                ],
+                answer: 1,
+                exp: 'Darah manusia secara alami berwarna merah, sehingga frasa "darah merah" adalah penegasan berlebih (Pleonasme).'
+            },
+            {
+                category: 'majas',
+                subtopic: 'Majas Paradoks',
+                q: '"Kakek itu tetap berjiwa muda meskipun usianya sudah sangat tua." Pertentangan makna yang mengandung kebenaran ini disebut majas...',
+                options: ['Paradoks', 'Hiperbola', 'Eufemisme', 'Metonimia'],
+                answer: 0,
+                exp: 'Mempertentangkan "berjiwa muda" dengan "usia sangat tua" pada satu subjek yang sama adalah Majas Paradoks.'
+            },
+
+            // --- KATEGORI: PERIBAHASA (30 SOAL) ---
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Apa makna dari peribahasa "Bagai air di daun talas"?',
+                options: [
+                    'Orang yang sangat pandai menjaga rahasia',
+                    'Orang yang tidak tetap pendiriannya (mudah berubah-ubah)',
+                    'Dua orang yang bersahabat sangat dekat',
+                    'Pekerjaan yang dilakukan dengan gotong royong'
+                ],
+                answer: 1,
+                exp: 'Air di atas daun talas mudah menggelinding ke sana kemari tanpa menempel, melambangkan orang yang tidak punya pendirian tetap.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Melengkapi Peribahasa',
+                q: 'Lengkapi peribahasa berikut: "Berakit-rakit ke hulu, berenang-renang ke tepian. Bersakit-sakit dahulu, ... kemudian."',
+                options: [
+                    'bermalas-malas',
+                    'bersenang-senang',
+                    'berlari-lari',
+                    'berkaya-kaya'
+                ],
+                answer: 1,
+                exp: 'Peribahasa lengkapnya: "Bersakit-sakit dahulu, bersenang-senang kemudian" (bekerja keras dulu untuk meraih kebahagiaan).'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Tong kosong nyaring bunyinya." Peribahasa tersebut memiliki arti...',
+                options: [
+                    'Orang yang bodoh atau kurang ilmu biasanya paling banyak bicara/menyombongkan diri',
+                    'Alat musik yang rusak suaranya lebih keras',
+                    'Orang yang pendiam biasanya tidak tahu apa-apa',
+                    'Kebaikan seseorang akan terdengar ke mana-mana'
+                ],
+                answer: 0,
+                exp: '"Tong kosong nyaring bunyinya" mengibaratkan orang yang dangkal ilmunya tetapi gemar membual atau banyak bicara.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Ilustrasi ke Peribahasa',
+                q: 'Raka sudah ditolong oleh Dito saat kesulitan, tetapi Raka justru membalasnya dengan perbuatan buruk. Peribahasa yang tepat adalah...',
+                options: [
+                    'Air susu dibalas dengan air tuba',
+                    'Air beriak tanda tak dalam',
+                    'Sambil menyelam minum air',
+                    'Bagai pinang dibelah dua'
+                ],
+                answer: 0,
+                exp: '"Air susu (kebaikan) dibalas dengan air tuba (racun/kejahatan)" menggambarkan kebaikan yang dibalas dengan kejahatan.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Peribahasa "Seperti ilmu padi, kian berisi kian merunduk" mengajarkan kita untuk...',
+                options: [
+                    'Semakin pandai dan tinggi ilmu, semakin rendah hati dan tidak sombong',
+                    'Selalu menunduk saat berjalan di sawah',
+                    'Menyembunyikan kepandaian agar tidak diminta membantu teman',
+                    'Bekerja hanya pada musim panen saja'
+                ],
+                answer: 0,
+                exp: 'Padi yang berisi bulir penuh akan merunduk; artinya semakin berilmu seseorang, ia semakin santun dan rendah hati.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Melengkapi Peribahasa',
+                q: 'Lengkapi peribahasa ini: "Sepandai-pandai tupai melompat, sekali waktu ... juga."',
+                options: [
+                    'terbang',
+                    'jatuh',
+                    'berlari',
+                    'tertidur'
+                ],
+                answer: 1,
+                exp: '"Sepandai-pandai tupai melompat, sekali waktu jatuh juga" artinya sepintar-pintarnya manusia pasti pernah berbuat salah.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Ilustrasi ke Peribahasa',
+                q: 'Sinta pergi ke perpustakaan kota untuk mengembalikan buku sekaligus mewawancarai pustakawan untuk tugas sekolahnya. Peribahasa yang sesuai adalah...',
+                options: [
+                    'Sambil menyelam minum air',
+                    'Besar pasak daripada tiang',
+                    'Bagai pungguk merindukan bulan',
+                    'Gajah di pelupuk mata tak tampak'
+                ],
+                answer: 0,
+                exp: '"Sambil menyelam minum air" berarti menyelesaikan dua atau lebih pekerjaan sekaligus dalam satu waktu.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Apakah arti dari peribahasa "Besar pasak daripada tiang"?',
+                options: [
+                    'Rumah yang dibangun dengan tiang kayu raksasa',
+                    'Lebih besar pengeluaran daripada pendapatan (boros)',
+                    'Memiliki cita-cita yang sangat tinggi',
+                    'Orang yang kuat membantu orang yang lemah'
+                ],
+                answer: 1,
+                exp: '"Besar pasak daripada tiang" berarti pengeluaran belanja lebih besar daripada penghasilan yang didapat.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Melengkapi Peribahasa',
+                q: '"Kuman di seberang lautan tampak, ... di pelupuk mata tiada tampak." Kata yang tepat untuk melengkapi peribahasa tersebut adalah...',
+                options: [
+                    'semut',
+                    'gajah',
+                    'burung',
+                    'kapal'
+                ],
+                answer: 1,
+                exp: '"Kuman di seberang lautan tampak, gajah di pelupuk mata tiada tampak" artinya kesalahan kecil orang lain terlihat jelas, tetapi kesalahan besar diri sendiri tidak disadari.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Dua anak kembar itu wajah dan sifatnya sangat mirip, "Bagai pinang dibelah dua". Arti peribahasa tersebut adalah...',
+                options: [
+                    'Sangat mirip dan serupa satu sama lain',
+                    'Selalu bertengkar setiap hari',
+                    'Berbeda pendapat namun tetap bersatu',
+                    'Saling berbagi makanan secara adil'
+                ],
+                answer: 0,
+                exp: 'Buah pinang jika dibelah dua menghasilkan dua bagian yang identik/kembar, melambangkan dua hal yang sangat mirip.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Di mana bumi dipijak, di situ langit dijunjung." Peribahasa ini menasihati kita agar...',
+                options: [
+                    'Selalu menghormati dan mematuhi adat istiadat di tempat kita berada',
+                    'Membangun rumah yang tinggi sampai menyentuh langit',
+                    'Tidak pernah pergi merantau ke daerah lain',
+                    'Hanya berteman dengan orang dari daerah yang sama'
+                ],
+                answer: 0,
+                exp: 'Kita wajib menghormati aturan, budaya, dan adat istiadat di mana pun kita tinggal atau berkunjung.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Ilustrasi ke Peribahasa',
+                q: 'Warga Desa Sukamaju selalu bergotong royong menyelesaikan pekerjaan berat maupun ringan bersama-sama. Peribahasa yang paling tepat adalah...',
+                options: [
+                    'Berat sama dipikul, ringan sama dijinjing',
+                    'Ada udang di balik batu',
+                    'Lempar batu sembunyi tangan',
+                    'Bagai musuh dalam selimut'
+                ],
+                answer: 0,
+                exp: '"Berat sama dipikul, ringan sama dijinjing" menggambarkan kerukunan dan kebersamaan dalam suka maupun duka.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Apa maksud dari peribahasa "Lempar batu sembunyi tangan"?',
+                options: [
+                    'Melakukan perbuatan buruk/kesalahan lalu pura-pura tidak tahu agar lepas dari tanggung jawab',
+                    'Bermain lempar tangkap batu di sungai',
+                    'Memberikan bantuan secara diam-diam tanpa ingin dipuji',
+                    'Menyimpan barang berharga di tempat tersembunyi'
+                ],
+                answer: 0,
+                exp: '"Lempar batu sembunyi tangan" adalah kiasan bagi orang yang berbuat ulah/masalah tetapi tidak berani bertanggung jawab.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Ada udang di balik batu." Makna dari peribahasa tersebut adalah...',
+                options: [
+                    'Mencari ikan dan udang di sungai berbatu',
+                    'Ada maksud atau tujuan tersembunyi di balik suatu tindakan/kebaikan',
+                    'Orang yang sangat jujur dan apa adanya',
+                    'Rezeki yang datang secara tiba-tiba'
+                ],
+                answer: 1,
+                exp: '"Ada udang di balik batu" berarti adanya pamrih atau maksud tersembunyi di balik sikap seseorang.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Melengkapi Peribahasa',
+                q: 'Lengkapi peribahasa berikut: "Karena nila setitik, rusak ... sebelanga."',
+                options: [
+                    'air',
+                    'susu',
+                    'madu',
+                    'minyak'
+                ],
+                answer: 1,
+                exp: '"Karena nila setitik, rusak susu sebelanga" artinya karena satu kesalahan kecil, seluruh kebaikan yang sudah ada ikut tercemar.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Ilustrasi ke Peribahasa',
+                q: 'Setiap hari Andi menabung uang sakunya sedikit demi sedikit hingga akhirnya cukup untuk membeli sepeda baru. Peribahasa yang sesuai adalah...',
+                options: [
+                    'Sedikit demi sedikit, lama-lama menjadi bukit',
+                    'Bagai menegakkan benang basah',
+                    'Hangat-hangat tahi ayam',
+                    'Seperti kacang lupa akan kulitnya'
+                ],
+                answer: 0,
+                exp: '"Sedikit demi sedikit, lama-lama menjadi bukit" berarti usaha kecil yang dilakukan terus-menerus akan memberikan hasil yang besar.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Seperti kacang lupa akan kulitnya." Peribahasa ini ditujukan kepada orang yang...',
+                options: [
+                    'Gemar makan kacang rebus',
+                    'Melupakan asal-usulnya atau orang yang pernah menolongnya setelah menjadi sukses',
+                    'Rajin bertani di ladang',
+                    'Selalu mengingat jasa guru dan orang tua'
+                ],
+                answer: 1,
+                exp: 'Kacang tumbuh dari kulitnya; peribahasa ini menyindir orang yang sombong dan lupa daratan/asal-usulnya.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Apa arti dari peribahasa "Hangat-hangat tahi ayam"?',
+                options: [
+                    'Kemauan atau semangat yang menggebu-gebu di awal saja, namun cepat bosan dan berhenti',
+                    'Masakan yang disajikan selagi masih hangat',
+                    'Persahabatan yang sangat erat dan hangat',
+                    'Orang yang rajin bangun pagi saat ayam berkokok'
+                ],
+                answer: 0,
+                exp: '"Hangat-hangat tahi ayam" menggambarkan semangat yang hanya sebentar di permulaan lalu cepat luntur.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Nasi sudah menjadi bubur." Peribahasa tersebut menggambarkan keadaan...',
+                options: [
+                    'Perbuatan atau peristiwa yang sudah telanjur terjadi dan tidak dapat diubah kembali',
+                    'Memasak sarapan pagi untuk keluarga',
+                    'Kesulitan yang berubah menjadi kemudahan',
+                    'Pekerjaan yang sangat mudah diselesaikan'
+                ],
+                answer: 0,
+                exp: 'Nasi yang sudah menjadi bubur tidak bisa dikembalikan menjadi nasi; artinya hal yang sudah telanjur terjadi.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Melengkapi Peribahasa',
+                q: 'Lengkapi peribahasa ini: "Malu bertanya, ... di jalan."',
+                options: [
+                    'cepat',
+                    'sesat',
+                    'lelah',
+                    'ramai'
+                ],
+                answer: 1,
+                exp: '"Malu bertanya, sesat di jalan" artinya jika segan bertanya saat tidak tahu, kita akan mengalami kesulitan atau kekeliruan.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Bagai menegakkan benang basah." Makna peribahasa ini adalah...',
+                options: [
+                    'Melakukan suatu pekerjaan yang mustahil atau sia-sia belaka',
+                    'Menjahit pakaian dengan sangat rapi',
+                    'Bekerja dengan penuh kesabaran hingga berhasil',
+                    'Menolong orang yang sedang kesusahan'
+                ],
+                answer: 0,
+                exp: 'Benang yang basah lemas tidak mungkin ditegakkan berdiri; artinya melakukan hal yang mustahil berhasil.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Ilustrasi ke Peribahasa',
+                q: 'Pak Hasan yang seorang pelukis terkenal memiliki anak yang juga sangat berbakat melukis. Peribahasa yang tepat untuk menggambarkan hal ini adalah...',
+                options: [
+                    'Buah jatuh tidak jauh dari pohonnya',
+                    'Bagai kucing dengan anjing',
+                    'Pucuk dicinta ulam pun tiba',
+                    'Tak ada gading yang tak retak'
+                ],
+                answer: 0,
+                exp: '"Buah jatuh tidak jauh dari pohonnya" berarti sifat atau bakat anak biasanya tidak jauh berbeda dari orang tuanya.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Pucuk dicinta ulam pun tiba." Arti dari peribahasa tersebut adalah...',
+                options: [
+                    'Mendapatkan sesuatu yang memang sedang sangat diharapkan atau diinginkan',
+                    'Kehilangan barang berharga di perjalanan',
+                    'Menanam sayuran di kebun belakang rumah',
+                    'Menolak pemberian dari orang lain'
+                ],
+                answer: 0,
+                exp: '"Pucuk dicinta ulam pun tiba" berarti memperoleh sesuatu tepat seperti yang sedang diharapkan (bahkan lebih baik).'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Tak ada gading yang tak retak." Peribahasa tersebut mengandung pesan bahwa...',
+                options: [
+                    'Gajah harus dilindungi di hutan',
+                    'Tidak ada sesuatu atau manusia pun di dunia ini yang benar-benar sempurna tanpa kekurangan',
+                    'Barang yang pecah harus segera diperbaiki',
+                    'Kejujuran adalah harta yang paling berharga'
+                ],
+                answer: 1,
+                exp: 'Sekuat dan seindah apa pun gading gajah pasti memiliki retakan halus; artinya tidak ada manusia yang luput dari kekurangan.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: 'Apa arti dari peribahasa "Sudah jatuh tertimpa tangga"?',
+                options: [
+                    'Mendapatkan musibah atau kesusahan secara bertubi-tubi (beruntun)',
+                    'Berhasil memanjat tangga yang sangat tinggi',
+                    'Menolong teman yang terjatuh dari tangga',
+                    'Berhati-hati saat memperbaiki atap rumah'
+                ],
+                answer: 0,
+                exp: '"Sudah jatuh tertimpa tangga" menggambarkan seseorang yang mengalami kemalangan beruntun dalam waktu berdekatan.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Melengkapi Peribahasa',
+                q: 'Lengkapi peribahasa berikut: "Sekali merengkuh dayung, dua tiga ... terlampaui."',
+                options: [
+                    'sungai',
+                    'pulau',
+                    'perahu',
+                    'ombak'
+                ],
+                answer: 1,
+                exp: '"Sekali merengkuh dayung, dua tiga pulau terlampaui" artinya sekali melakukan pekerjaan, beberapa tujuan tercapai sekaligus.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Bagai telur di ujung tanduk." Peribahasa ini melukiskan situasi yang...',
+                options: [
+                    'Sangat aman dan tenteram',
+                    'Sangat genting, berbahaya, dan terancam setiap saat',
+                    'Penuh dengan kegembiraan',
+                    'Mudah diselesaikan dengan cepat'
+                ],
+                answer: 1,
+                exp: 'Telur di ujung tanduk sangat mudah jatuh dan pecah, menggambarkan keadaan yang sangat kritis atau terancam bahaya.'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Hemat pangkal kaya, rajin pangkal pandai." Pesan utama dari peribahasa ini adalah...',
+                options: [
+                    'Hidup hemat membawa kecukupan, dan rajin belajar membawa kepandaian',
+                    'Orang kaya tidak perlu belajar lagi',
+                    'Kita harus menabung tanpa boleh membeli buku',
+                    'Kepandaian hanya milik orang yang kaya'
+                ],
+                answer: 0,
+                exp: 'Peribahasa klasik yang mengajarkan disiplin menabung (hemat) serta ketekunan menuntut ilmu (rajin).'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Ilustrasi ke Peribahasa',
+                q: 'Ketika berdiskusi, Budi yang sebenarnya belum memahami materi justru berbicara paling keras dan mendominasi, sedangkan Rani yang juara olimpiade berbicara tenang dan berisi. Peribahasa untuk situasi ini adalah...',
+                options: [
+                    'Air beriak tanda tak dalam, air tenang menghanyutkan',
+                    'Bagai makan buah simalakama',
+                    'Ada gula ada semut',
+                    'Jauh di mata dekat di hati'
+                ],
+                answer: 0,
+                exp: '"Air beriak tanda tak dalam" (banyak bicara tanda kurang ilmu), sedangkan "air tenang menghanyutkan" (orang pendiam namun berilmu tinggi).'
+            },
+            {
+                category: 'peribahasa',
+                subtopic: 'Makna Peribahasa',
+                q: '"Bagai makan buah simalakama." Peribahasa tersebut menggambarkan kondisi seseorang yang...',
+                options: [
+                    'Sedang menikmati buah-buahan segar hasil panen',
+                    'Menghadapi pilihan yang serba sulit; dipilih salah satu atau tidak dipilih sama-sama merugikan',
+                    'Mendapatkan keuntungan besar dari dua arah',
+                    'Berbagi makanan dengan tetangga sekitar'
+                ],
+                answer: 1,
+                exp: 'Buah simalakama diibaratkan dimakan ibu mati, tak dimakan ayah mati; artinya berada dalam dilema yang serba salah.'
+            }
+        ];
+
+        /* =========================================================================
+           4. SISTEM AUDIO INTERAKTIF (WEB AUDIO API SYNTHESIZER)
+           ========================================================================= */
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('soundIcon');
+            if (soundEnabled) {
+                icon.className = 'fa-solid fa-volume-high';
+                playSound('click');
+            } else {
+                icon.className = 'fa-solid fa-volume-xmark text-slate-500';
+            }
+        }
+
+        function playSound(type) { if (document.documentElement.dataset.humaHidden === "1") return;
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+
+                if (type === 'click') {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(520, now);
+                    osc.frequency.exponentialRampToValueAtTime(260, now + 0.06);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.06);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.06);
+                } else if (type === 'dice') {
+                    // Suara kocok dadu beruntun
+                    for (let i = 0; i < 7; i++) {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(220 + Math.random() * 380, now + i * 0.11);
+                        gain.gain.setValueAtTime(0.14, now + i * 0.11);
+                        gain.gain.exponentialRampToValueAtTime(0.008, now + i * 0.11 + 0.08);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + i * 0.11);
+                        osc.stop(now + i * 0.11 + 0.08);
+                    }
+                } else if (type === 'hop') {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(320, now);
+                    osc.frequency.exponentialRampToValueAtTime(640, now + 0.11);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } else if (type === 'correct') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5 E5 G5 C6
+                    notes.forEach((freq, idx) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                        gain.gain.setValueAtTime(0.2, now + idx * 0.08);
+                        gain.gain.exponentialRampToValueAtTime(0.008, now + idx * 0.08 + 0.25);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + idx * 0.08);
+                        osc.stop(now + idx * 0.08 + 0.25);
+                    });
+                } else if (type === 'wrong') {
+                    const notes = [311.13, 277.18, 233.08]; // D#4 C#4 A#3
+                    notes.forEach((freq, idx) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.14);
+                        gain.gain.setValueAtTime(0.15, now + idx * 0.14);
+                        gain.gain.exponentialRampToValueAtTime(0.008, now + idx * 0.14 + 0.22);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + idx * 0.14);
+                        osc.stop(now + idx * 0.14 + 0.22);
+                    });
+                } else if (type === 'ladder') {
+                    const notes = [392.00, 440.00, 493.88, 523.25, 587.33, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.065);
+                        gain.gain.setValueAtTime(0.18, now + idx * 0.065);
+                        gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.065 + 0.18);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + idx * 0.065);
+                        osc.stop(now + idx * 0.065 + 0.18);
+                    });
+                } else if (type === 'snake') {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(620, now);
+                    osc.frequency.exponentialRampToValueAtTime(130, now + 0.75);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.75);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.75);
+                } else if (type === 'win') {
+                    const fanfare = [523.25, 523.25, 523.25, 659.25, 783.99, 659.25, 783.99, 1046.50];
+                    const times   = [0, 0.13, 0.26, 0.40, 0.60, 0.80, 0.95, 1.15];
+                    fanfare.forEach((freq, idx) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, now + times[idx]);
+                        gain.gain.setValueAtTime(0.24, now + times[idx]);
+                        gain.gain.exponentialRampToValueAtTime(0.008, now + times[idx] + 0.35);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + times[idx]);
+                        osc.stop(now + times[idx] + 0.35);
+                    });
+                }
+            } catch (e) {
+                // Ignore audio errors if blocked by browser autoplay policy
+            }
+        }
+
+        /* =========================================================================
+           5. STATE PERMAINAN & KONFIGURASI
+           ========================================================================= */
+        let customQuestions = [];
+        let selectedTopic = 'campuran'; // 'campuran' | 'majas' | 'peribahasa'
+        let setupPlayerCount = 2;
+        let players = [];
+        let currentPlayerIdx = 0;
+        let currentDiceValue = 1;
+        let isTurnBusy = false;
+        let usedQuestionIndices = new Set();
+
+        // State Kuis Aktif
+        // stage: 'MOVE' (Soal Langkah Jalan) | 'LADDER' (Soal Naik Tangga) | 'SNAKE' (Soal Penyelamatan Ular)
+        let activeQuizContext = null;
+
+        // Rotasi kumulatif dadu 3D agar selalu berputar mulus
+        let diceSpinsX = 0;
+        let diceSpinsY = 0;
+
+        /* =========================================================================
+           6. KOORDINAT PAPAN 10x10 (BOUSTROPHEDON / ZIG-ZAG 1 SAMPAI 100)
+           ========================================================================= */
+        // Mengembalikan baris (0=atas, 9=bawah) dan kolom (0=kiri, 9=kanan) untuk angka 1..100
+        function getRowColFromSquare(num) {
+            const n = Math.max(1, Math.min(100, num));
+            const rowFromBottom = Math.floor((n - 1) / 10); // 0..9
+            const row = 9 - rowFromBottom;                  // 9..0
+            const idxInRow = (n - 1) % 10;                  // 0..9
+            const col = (rowFromBottom % 2 === 0) ? idxInRow : (9 - idxInRow);
+            return { row, col };
+        }
+
+        // Mengembalikan angka kotak (1..100) dari baris (0..9) dan kolom (0..9)
+        function getSquareFromRowCol(row, col) {
+            const rowFromBottom = 9 - row;
+            const base = rowFromBottom * 10;
+            const offset = (rowFromBottom % 2 === 0) ? (col + 1) : (10 - col);
+            return base + offset;
+        }
+
+        // Mengembalikan titik tengah (x, y) dalam skala SVG 0..1000 dan persentase CSS 0..100%
+        function getSquareCenter(num) {
+            const { row, col } = getRowColFromSquare(num);
+            return {
+                svgX: col * 100 + 50,
+                svgY: row * 100 + 50,
+                pctX: col * 10 + 5,
+                pctY: row * 10 + 5
+            };
+        }
+
+        /* =========================================================================
+           7. RENDER PAPAN 10x10, TANGGA 3D, DAN ULAR MELIUK BERCORAK
+           ========================================================================= */
+        function renderBoardGrid() {
+            const gridEl = document.getElementById('boardGrid');
+            gridEl.innerHTML = '';
+
+            // Palet warna kotak estetik bergantian
+            const lightPalette = ['#fffbeb', '#fef3c7', '#ecfdf5', '#f0f9ff'];
+            const darkPalette  = ['#fde68a', '#fed7aa', '#a7f3d0', '#bae6fd'];
+
+            for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                    const sqNum = getSquareFromRowCol(r, c);
+                    const cell = document.createElement('div');
+                    cell.className = 'board-cell';
+                    cell.id = `cell-${sqNum}`;
+
+                    // Warna papan catur hangat
+                    const isEven = (r + c) % 2 === 0;
+                    const rowBand = Math.floor((9 - r) / 3) % 4;
+                    let bg = isEven ? lightPalette[rowBand] : darkPalette[rowBand];
+                    let numColor = '#451a03';
+
+                    // Cek apakah kaki tangga atau kepala ular
+                    const ladderObj = LADDERS.find(l => l.from === sqNum);
+                    const snakeObj  = SNAKES.find(s => s.from === sqNum);
+
+                    if (sqNum === 1) {
+                        bg = 'linear-gradient(135deg, #10b981, #059669)';
+                        numColor = '#ffffff';
+                    } else if (sqNum === 100) {
+                        bg = 'linear-gradient(135deg, #f59e0b, #d97706, #b45309)';
+                        numColor = '#ffffff';
+                    } else if (ladderObj) {
+                        bg = 'linear-gradient(135deg, #d1fae5, #6ee7b7)';
+                    } else if (snakeObj) {
+                        bg = 'linear-gradient(135deg, #ffe4e6, #fda4af)';
+                    }
+
+                    cell.style.background = bg;
+
+                    // Nomor Kotak
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'cell-num';
+                    numSpan.style.color = numColor;
+                    numSpan.textContent = sqNum;
+                    cell.appendChild(numSpan);
+
+                    // Badge Khusus (Start, Finis, Kaki Tangga, Kepala Ular)
+                    if (sqNum === 1) {
+                        const badge = document.createElement('span');
+                        badge.className = 'cell-badge bg-white/90 text-emerald-800';
+                        badge.innerHTML = '<i class="fa-solid fa-flag-checkered"></i> MULAI';
+                        cell.appendChild(badge);
+                    } else if (sqNum === 100) {
+                        const badge = document.createElement('span');
+                        badge.className = 'cell-badge bg-yellow-300 text-amber-950';
+                        badge.innerHTML = '<i class="fa-solid fa-crown"></i> FINIS';
+                        cell.appendChild(badge);
+                    } else if (ladderObj) {
+                        const badge = document.createElement('span');
+                        badge.className = 'cell-badge bg-emerald-600 text-white';
+                        badge.title = `Kaki Tangga: Jawab benar untuk naik ke kotak ${ladderObj.to}`;
+                        badge.innerHTML = `<i class="fa-solid fa-arrow-trend-up"></i> ${ladderObj.to}`;
+                        cell.appendChild(badge);
+                    } else if (snakeObj) {
+                        const badge = document.createElement('span');
+                        badge.className = 'cell-badge bg-rose-600 text-white';
+                        badge.title = `Kepala Ular: Jawab benar agar tidak turun ke kotak ${snakeObj.to}`;
+                        badge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${snakeObj.to}`;
+                        cell.appendChild(badge);
+                    }
+
+                    gridEl.appendChild(cell);
+                }
+            }
+        }
+
+        function renderSnakesAndLaddersSVG() {
+            const svg = document.getElementById('boardSvg');
+            let html = `
+                <defs>
+                    <filter id="dropShadowSvg" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.48"/>
+                    </filter>
+                </defs>
+            `;
+
+            // 1. GAMBAR SEMUA TANGGA (Arah Bervariasi)
+            LADDERS.forEach((lad, idx) => {
+                const start = getSquareCenter(lad.from);
+                const end   = getSquareCenter(lad.to);
+                const dx = end.svgX - start.svgX;
+                const dy = end.svgY - start.svgY;
+                const length = Math.hypot(dx, dy);
+
+                // Vektor satuan arah tangga & vektor tegak lurus (normal) untuk lebar tangga
+                const ux = dx / length;
+                const uy = dy / length;
+                const nx = -uy;
+                const ny = ux;
+
+                const halfWidth = 17; // Setengah lebar tangga dalam unit SVG
+
+                // Titik rel kiri dan rel kanan
+                const l1x = start.svgX + nx * halfWidth;
+                const l1y = start.svgY + ny * halfWidth;
+                const l2x = end.svgX + nx * halfWidth;
+                const l2y = end.svgY + ny * halfWidth;
+
+                const r1x = start.svgX - nx * halfWidth;
+                const r1y = start.svgY - ny * halfWidth;
+                const r2x = end.svgX - nx * halfWidth;
+                const r2y = end.svgY - ny * halfWidth;
+
+                // Anak tangga (Rungs) setiap 34 unit
+                const numRungs = Math.max(4, Math.floor(length / 34));
+                let rungsSvg = '';
+                for (let i = 1; i < numRungs; i++) {
+                    const t = i / numRungs;
+                    const cx = start.svgX + dx * t;
+                    const cy = start.svgY + dy * t;
+                    const rx1 = cx + nx * (halfWidth - 1);
+                    const ry1 = cy + ny * (halfWidth - 1);
+                    const rx2 = cx - nx * (halfWidth - 1);
+                    const ry2 = cy - ny * (halfWidth - 1);
+
+                    rungsSvg += `
+                        <line x1="${rx1}" y1="${ry1}" x2="${rx2}" y2="${ry2}" stroke="#451a03" stroke-width="9" stroke-linecap="round"/>
+                        <line x1="${rx1}" y1="${ry1}" x2="${rx2}" y2="${ry2}" stroke="${lad.color}" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="${rx1}" y1="${ry1}" x2="${rx2}" y2="${ry2}" stroke="${lad.railLight}" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+                    `;
+                }
+
+                html += `
+                    <g filter="url(#dropShadowSvg)" opacity="0.95">
+                        <!-- Anak Tangga -->
+                        ${rungsSvg}
+                        <!-- Tiang Kiri -->
+                        <line x1="${l1x}" y1="${l1y}" x2="${l2x}" y2="${l2y}" stroke="#451a03" stroke-width="11" stroke-linecap="round"/>
+                        <line x1="${l1x}" y1="${l1y}" x2="${l2x}" y2="${l2y}" stroke="${lad.color}" stroke-width="7.5" stroke-linecap="round"/>
+                        <line x1="${l1x}" y1="${l1y}" x2="${l2x}" y2="${l2y}" stroke="${lad.railLight}" stroke-width="2.2" stroke-linecap="round"/>
+                        <!-- Tiang Kanan -->
+                        <line x1="${r1x}" y1="${r1y}" x2="${r2x}" y2="${r2y}" stroke="#451a03" stroke-width="11" stroke-linecap="round"/>
+                        <line x1="${r1x}" y1="${r1y}" x2="${r2x}" y2="${r2y}" stroke="${lad.color}" stroke-width="7.5" stroke-linecap="round"/>
+                        <line x1="${r1x}" y1="${r1y}" x2="${r2x}" y2="${r2y}" stroke="${lad.railLight}" stroke-width="2.2" stroke-linecap="round"/>
+                    </g>
+                `;
+            });
+
+            // 2. GAMBAR SEMUA ULAR (Kurva S Meliuk, Corak Sisik, Kepala Ekspresif & Lidah Bercabang)
+            SNAKES.forEach((snk, idx) => {
+                const head = getSquareCenter(snk.from); // Angka besar (Kepala)
+                const tail = getSquareCenter(snk.to);   // Angka kecil (Ekor)
+
+                const dx = tail.svgX - head.svgX;
+                const dy = tail.svgY - head.svgY;
+                const len = Math.hypot(dx, dy);
+                const nx = -dy / len;
+                const ny = dx / len;
+
+                // Buat titik kontrol S-Curve 2 gelombang agar ular tampak meliuk organik
+                const midX = head.svgX + dx * 0.5;
+                const midY = head.svgY + dy * 0.5;
+
+                const c1x = head.svgX + dx * 0.25 + nx * snk.curveOffset;
+                const c1y = head.svgY + dy * 0.25 + ny * snk.curveOffset;
+
+                const c2x = head.svgX + dx * 0.75 - nx * snk.curveOffset;
+                const c2y = head.svgY + dy * 0.75 - ny * snk.curveOffset;
+
+                const pathData = `M ${head.svgX} ${head.svgY} Q ${c1x} ${c1y} ${midX} ${midY} T ${tail.svgX} ${tail.svgY}`;
+
+                // Hitung sudut kepala ular menghadap ke arah liukan pertama
+                const angleRad = Math.atan2(c1y - head.svgY, c1x - head.svgX);
+                const angleDeg = (angleRad * 180) / Math.PI - 90;
+
+                html += `
+                    <g filter="url(#dropShadowSvg)">
+                        <!-- Outline Gelap Tubuh Ular -->
+                        <path id="snakePath-${snk.from}" d="${pathData}" fill="none" stroke="${snk.patternColor}" stroke-width="24" stroke-linecap="round"/>
+                        <!-- Warna Utama Tubuh Ular -->
+                        <path d="${pathData}" fill="none" stroke="${snk.bodyColor}" stroke-width="18" stroke-linecap="round"/>
+                        <!-- Corak Belang/Sisik Punggung -->
+                        <path d="${pathData}" fill="none" stroke="${snk.patternColor}" stroke-width="12" stroke-linecap="butt" stroke-dasharray="12 14" opacity="0.65"/>
+                        <!-- Kilau Perut/Punggung Tengah -->
+                        <path d="${pathData}" fill="none" stroke="${snk.bellyColor}" stroke-width="4" stroke-linecap="round" stroke-dasharray="6 18" opacity="0.85"/>
+
+                        <!-- Ujung Ekor Meruncing -->
+                        <circle cx="${tail.svgX}" cy="${tail.svgY}" r="5" fill="${snk.bodyColor}" stroke="${snk.patternColor}" stroke-width="2"/>
+
+                        <!-- Kepala Ular Ekspresif di Kotak Angka Besar -->
+                        <g transform="translate(${head.svgX}, ${head.svgY}) rotate(${angleDeg})">
+                            <!-- Lidah Bercabang Merah -->
+                            <path class="snake-tongue" d="M 0 18 L 0 33 M 0 28 L -5 35 M 0 28 L 5 35" stroke="#ef4444" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+                            <!-- Bentuk Kepala Berlian Membulat -->
+                            <path d="M 0 -16 C 16 -14, 20 6, 10 20 C 4 25, -4 25, -10 20 C -20 6, -16 -14, 0 -16 Z" fill="${snk.bodyColor}" stroke="${snk.patternColor}" stroke-width="3"/>
+                            <!-- Corak Mahkota Kepala -->
+                            <circle cx="0" cy="-2" r="5" fill="${snk.bellyColor}" opacity="0.7"/>
+                            <!-- Mata Kiri & Kanan -->
+                            <circle cx="-8" cy="4" r="4.8" fill="#fef08a" stroke="#0f172a" stroke-width="1.5"/>
+                            <circle cx="8" cy="4" r="4.8" fill="#fef08a" stroke="#0f172a" stroke-width="1.5"/>
+                            <!-- Pupil Mata Reptil -->
+                            <ellipse cx="-8" cy="5" rx="1.6" ry="3.2" fill="#0f172a"/>
+                            <ellipse cx="8" cy="5" rx="1.6" ry="3.2" fill="#0f172a"/>
+                            <!-- Lubang Hidung -->
+                            <circle cx="-3" cy="15" r="1.2" fill="${snk.patternColor}"/>
+                            <circle cx="3" cy="15" r="1.2" fill="${snk.patternColor}"/>
+                        </g>
+                    </g>
+                `;
+            });
+
+            svg.innerHTML = html;
+        }
+
+        /* =========================================================================
+           8. MANAJEMEN PION PEMAIN & ANIMASI PERGERAKAN
+           ========================================================================= */
+        function renderPawnTokens() {
+            const layer = document.getElementById('pawnsLayer');
+            layer.innerHTML = '';
+
+            players.forEach((p, idx) => {
+                const token = document.createElement('div');
+                token.id = `pawn-${idx}`;
+                token.className = `pawn-token ${idx === currentPlayerIdx ? 'active-turn' : ''}`;
+                token.innerHTML = PAWN_TEMPLATES[p.templateId].svg;
+                layer.appendChild(token);
+            });
+
+            updateAllPawnPositions();
+        }
+
+        // Mengatur koordinat setiap pion, termasuk offset rapi jika beberapa pion berada di kotak yang sama
+        function updateAllPawnPositions() {
+            // Kelompokkan pemain berdasarkan kotak tempat mereka berdiri
+            const groups = {};
+            players.forEach((p, idx) => {
+                if (!groups[p.pos]) groups[p.pos] = [];
+                groups[p.pos].push(idx);
+            });
+
+            // Offset relatif (dalam persen papan) jika >1 pion di satu kotak
+            const multiOffsets = {
+                1: [{ dx: 0, dy: 0 }],
+                2: [{ dx: -1.6, dy: -1.2 }, { dx: 1.6, dy: 1.2 }],
+                3: [{ dx: 0, dy: -1.8 }, { dx: -1.8, dy: 1.4 }, { dx: 1.8, dy: 1.4 }],
+                4: [{ dx: -1.7, dy: -1.7 }, { dx: 1.7, dy: -1.7 }, { dx: -1.7, dy: 1.7 }, { dx: 1.7, dy: 1.7 }], 5: [{dx:-2.2,dy:-1.7},{dx:0,dy:-1.7},{dx:2.2,dy:-1.7},{dx:-1.1,dy:1.7},{dx:1.1,dy:1.7}], 6: [{dx:-2.2,dy:-1.7},{dx:0,dy:-1.7},{dx:2.2,dy:-1.7},{dx:-2.2,dy:1.7},{dx:0,dy:1.7},{dx:2.2,dy:1.7}]
+            };
+
+            players.forEach((p, idx) => {
+                const token = document.getElementById(`pawn-${idx}`);
+                if (!token) return;
+
+                const center = getSquareCenter(p.pos);
+                const cellGroup = groups[p.pos] || [idx];
+                const slotIdx = cellGroup.indexOf(idx);
+                const offsetList = multiOffsets[cellGroup.length] || multiOffsets[1];
+                const off = offsetList[slotIdx] || { dx: 0, dy: 0 };
+
+                token.style.left = `${center.pctX + off.dx}%`;
+                token.style.top  = `${center.pctY + off.dy}%`;
+
+                if (idx === currentPlayerIdx) {
+                    token.classList.add('active-turn');
+                } else {
+                    token.classList.remove('active-turn');
+                }
+            });
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Animasi melompat kotak demi kotak
+        async function animatePawnSteps(playerIdx, steps) {
+            const p = players[playerIdx];
+            const token = document.getElementById(`pawn-${playerIdx}`);
+            let direction = 1; // Maju, namun jika lewat 100 akan memantul mundur
+
+            for (let s = 0; s < steps; s++) {
+                if (p.pos === 100) {
+                    direction = -1;
+                }
+                p.pos += direction;
+                if (p.pos === 100) {
+                    direction = -1;
+                }
+
+                playSound('hop');
+                if (token) {
+                    token.classList.remove('hopping');
+                    void token.offsetWidth; // Reflow
+                    token.classList.add('hopping');
+                }
+
+                updateAllPawnPositions();
+                updateTurnSidebarUI();
+                await sleep(290);
+            }
+        }
+
+        // Animasi meluncur naik tangga
+        async function animatePawnClimbLadder(playerIdx, fromSq, toSq) {
+            const p = players[playerIdx];
+            const token = document.getElementById(`pawn-${playerIdx}`);
+            playSound('ladder');
+
+            if (token) {
+                token.style.transition = 'left 0.85s cubic-bezier(0.22, 1, 0.36, 1), top 0.85s cubic-bezier(0.22, 1, 0.36, 1)';
+            }
+            p.pos = toSq;
+            updateAllPawnPositions();
+            updateTurnSidebarUI();
+            await sleep(900);
+            if (token) {
+                token.style.transition = '';
+            }
+        }
+
+        // Animasi tergelincir menyusuri tubuh ular (mengikuti titik-titik SVG path ular!)
+        async function animatePawnSlideSnake(playerIdx, fromSq, toSq) {
+            const p = players[playerIdx];
+            const token = document.getElementById(`pawn-${playerIdx}`);
+            const pathEl = document.getElementById(`snakePath-${fromSq}`);
+            playSound('snake');
+
+            if (pathEl && token) {
+                const totalLen = pathEl.getTotalLength();
+                const frames = 22;
+                token.style.transition = 'none';
+                for (let i = 1; i <= frames; i++) {
+                    const pt = pathEl.getPointAtLength((i / frames) * totalLen);
+                    token.style.left = `${pt.x / 10}%`;
+                    token.style.top  = `${pt.y / 10}%`;
+                    await sleep(32);
+                }
+                token.style.transition = '';
+            }
+
+            p.pos = toSq;
+            updateAllPawnPositions();
+            updateTurnSidebarUI();
+            await sleep(250);
+        }
+
+        /* =========================================================================
+           9. ALUR GILIRAN, KOCOK DADU 3D & KUIS BERTINGKAT (SESUAI INSTRUKSI)
+           ========================================================================= */
+        async function handleRollClick() {
+            if (isTurnBusy) return;
+            const currentPlayer = players[currentPlayerIdx];
+            if (!currentPlayer) return;
+
+            isTurnBusy = true;
+            updateRollButtonState();
+
+            // 1. Tentukan angka dadu 1-6 dan putar kubus 3D
+            currentDiceValue = Math.floor(Math.random() * 6) + 1;
+            playSound('dice');
+            rotate3DDiceTo(currentDiceValue);
+
+            document.getElementById('diceResultLabel').textContent = 'Mengocok...';
+            document.getElementById('turnStatusBanner').innerHTML = `<i class="fa-solid fa-spinner fa-spin text-amber-400 mr-1"></i> Dadu sedang berputar...`;
+
+            await sleep(1100);
+
+            document.getElementById('diceResultLabel').innerHTML = `Angka Dadu: <strong class="text-amber-300 text-sm">${currentDiceValue}</strong>`;
+            addGameLog(`<strong>${currentPlayer.name}</strong> mengocok dadu dan mendapat angka <strong>${currentDiceValue}</strong>.`, 'info');
+
+            await sleep(350);
+
+            // 2. TAHAP 1: Munculkan Modal Soal Langkah Jalan!
+            openQuizForStage('MOVE', {
+                dice: currentDiceValue
+            });
+        }
+
+        function rotate3DDiceTo(val) {
+            const cube = document.getElementById('diceCube');
+            // Sudut target untuk setiap sisi dadu
+            const faceAngles = {
+                1: { x: 0,   y: 0 },
+                2: { x: 0,   y: 180 },
+                3: { x: 0,   y: -90 },
+                4: { x: 0,   y: 90 },
+                5: { x: -90, y: 0 },
+                6: { x: 90,  y: 0 }
+            };
+
+            diceSpinsX += 2;
+            diceSpinsY += 2;
+
+            const targetX = diceSpinsX * 360 + faceAngles[val].x;
+            const targetY = diceSpinsY * 360 + faceAngles[val].y;
+
+            cube.style.transform = `translateZ(-43px) rotateX(${targetX}deg) rotateY(${targetY}deg)`;
+        }
+
+        // Ambil 1 soal acak sesuai filter topik (Campuran / Majas / Peribahasa)
+        function pickRandomQuestion() {
+            const allQuestions = [...DEFAULT_QUESTIONS, ...customQuestions];
+            let pool = allQuestions.map((q, idx) => ({ ...q, _id: idx }));
+
+            if (selectedTopic === 'majas') {
+                pool = pool.filter(q => q.category === 'majas');
+            } else if (selectedTopic === 'peribahasa') {
+                pool = pool.filter(q => q.category === 'peribahasa');
+            }
+
+            let available = pool.filter(q => !usedQuestionIndices.has(q._id));
+            if (available.length === 0) {
+                usedQuestionIndices.clear();
+                available = pool;
+            }
+
+            const chosen = available[Math.floor(Math.random() * available.length)];
+            usedQuestionIndices.add(chosen._id);
+            return chosen;
+        }
+
+        // Menampilkan Modal Kuis sesuai Tahap ('MOVE' | 'LADDER' | 'SNAKE')
+        function openQuizForStage(stage, meta) {
+            const player = players[currentPlayerIdx];
+            const question = pickRandomQuestion();
+
+            activeQuizContext = {
+                stage,
+                meta,
+                question,
+                answered: false,
+                isCorrect: false
+            };
+
+            const modal = document.getElementById('quizModal');
+            const banner = document.getElementById('quizHeaderBanner');
+            const stageIcon = document.getElementById('quizStageIcon');
+            const stageBadge = document.getElementById('quizStageBadge');
+            const catBadge = document.getElementById('quizCategoryBadge');
+            const headerTitle = document.getElementById('quizHeaderTitle');
+            const stakesAlert = document.getElementById('quizStakesAlert');
+            const stakesText = document.getElementById('quizStakesText');
+
+            // Avatar & Nama Pemain di Pojok Kuis
+            document.getElementById('quizPlayerAvatar').innerHTML = PAWN_TEMPLATES[player.templateId].svg;
+            document.getElementById('quizPlayerName').textContent = player.name;
+
+            // Kategori Soal
+            catBadge.textContent = question.subtopic || (question.category === 'majas' ? 'Majas' : 'Peribahasa');
+
+            // Kustomisasi Tampilan berdasarkan Tahap (Jalan vs Tangga vs Ular)
+            if (stage === 'MOVE') {
+                banner.className = 'px-5 py-4 bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 flex items-center justify-between gap-3';
+                stageIcon.innerHTML = `<i class="fa-solid fa-dice-${['one','two','three','four','five','six'][meta.dice - 1] || 'six'}"></i>`;
+                stageBadge.textContent = `TAHAP 1 • SOAL LANGKAH JALAN (DADU: ${meta.dice})`;
+                headerTitle.textContent = `Jawab Benar untuk Maju ${meta.dice} Kotak!`;
+                stakesAlert.className = 'px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-xs sm:text-sm text-amber-200 flex items-center gap-2.5';
+                stakesText.innerHTML = `<strong>Aturan Jalan:</strong> Jika dijawab <strong>BENAR</strong>, pion maju <strong>${meta.dice} langkah</strong>. Jika <strong>SALAH</strong>, pion tetap di tempat!`;
+            } else if (stage === 'LADDER') {
+                banner.className = 'px-5 py-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 flex items-center justify-between gap-3';
+                stageIcon.innerHTML = `<i class="fa-solid fa-stairs"></i>`;
+                stageBadge.textContent = `TAHAP 2 • TANTANGAN NAIK TANGGA!`;
+                headerTitle.textContent = `Jawab Benar untuk Memanjat ke Kotak ${meta.to}!`;
+                stakesAlert.className = 'px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-xs sm:text-sm text-emerald-200 flex items-center gap-2.5';
+                stakesText.innerHTML = `<strong>Kaki Tangga (Kotak ${meta.from}):</strong> Jawab <strong>BENAR</strong> untuk langsung memanjat naik ke <strong>Kotak ${meta.to}</strong>! Jika salah, kamu batal naik tangga.`;
+            } else if (stage === 'SNAKE') {
+                banner.className = 'px-5 py-4 bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 flex items-center justify-between gap-3';
+                stageIcon.innerHTML = `<i class="fa-solid fa-staff-snake"></i>`;
+                stageBadge.textContent = `TAHAP 2 • PENYELAMATAN DARI ULAR!`;
+                headerTitle.textContent = `Awas ${meta.snakeName}! Jawab Benar Agar Tidak Turun!`;
+                stakesAlert.className = 'px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/40 text-xs sm:text-sm text-rose-200 flex items-center gap-2.5';
+                stakesText.innerHTML = `<strong>Kepala Ular (Kotak ${meta.from}):</strong> Jawab <strong>BENAR</strong> agar <strong>SELAMAT</strong> dan tetap di kotak ${meta.from}! Jika <strong>SALAH</strong>, pionmu tergelincir turun ke <strong>Kotak ${meta.to}</strong>!`;
+            }
+
+            // Teks Pertanyaan
+            document.getElementById('quizQuestionText').textContent = question.q;
+
+            // Render Opsi A, B, C, D
+            const optsContainer = document.getElementById('quizOptionsContainer');
+            optsContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            question.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `quizOptBtn-${idx}`;
+                btn.onclick = () => submitQuizAnswer(idx);
+                btn.className = 'w-full text-left p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700/90 border-2 border-slate-700 hover:border-amber-400/70 transition flex items-start gap-3 group';
+                btn.innerHTML = `
+                    <span class="w-8 h-8 rounded-xl bg-slate-900 group-hover:bg-amber-400 group-hover:text-slate-950 text-amber-300 font-game font-bold text-sm flex items-center justify-center shrink-0 border border-slate-600 transition">
+                        ${letters[idx]}
+                    </span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-100 leading-snug pt-1">${optText}</span>
+                `;
+                optsContainer.appendChild(btn);
+            });
+
+            // Sembunyikan kotak pembahasan sampai dijawab
+            document.getElementById('quizFeedbackBox').classList.add('hidden');
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Jika pemain saat ini adalah Bot/AI, otomatis jawab setelah jeda singkat
+            if (player.isBot) {
+                setTimeout(() => {
+                    if (activeQuizContext && !activeQuizContext.answered) {
+                        // AI memiliki peluang 75% menjawab benar
+                        const botAccurate = Math.random() < 0.75;
+                        let chosenIdx = question.answer;
+                        if (!botAccurate) {
+                            const wrongIndices = [0, 1, 2, 3].filter(i => i !== question.answer);
+                            chosenIdx = wrongIndices[Math.floor(Math.random() * wrongIndices.length)];
+                        }
+                        submitQuizAnswer(chosenIdx);
+                    }
+                }, 1400);
+            }
+        }
+
+        // Mengevaluasi Jawaban Siswa
+        function submitQuizAnswer(selectedIdx) {
+            if (!activeQuizContext || activeQuizContext.answered) return;
+            activeQuizContext.answered = true;
+
+            const { question, stage, meta } = activeQuizContext;
+            const isCorrect = (selectedIdx === question.answer);
+            activeQuizContext.isCorrect = isCorrect;
+
+            const player = players[currentPlayerIdx];
+            player.totalAnswered++;
+            if (isCorrect) player.correctCount++;
+
+            // Highlight tombol jawaban benar & salah
+            question.options.forEach((_, idx) => {
+                const btn = document.getElementById(`quizOptBtn-${idx}`);
+                if (!btn) return;
+                btn.disabled = true;
+
+                if (idx === question.answer) {
+                    btn.className = 'w-full text-left p-3.5 rounded-2xl bg-emerald-500/25 border-2 border-emerald-400 flex items-start gap-3';
+                } else if (idx === selectedIdx && !isCorrect) {
+                    btn.className = 'w-full text-left p-3.5 rounded-2xl bg-rose-500/25 border-2 border-rose-400 flex items-start gap-3';
+                } else {
+                    btn.className = 'w-full text-left p-3.5 rounded-2xl bg-slate-800/40 border border-slate-800 opacity-50 flex items-start gap-3';
+                }
+            });
+
+            // Tampilkan Kotak Pembahasan & Konsekuensi Langkah
+            const fbBox = document.getElementById('quizFeedbackBox');
+            const fbIcon = document.getElementById('quizFeedbackIcon');
+            const fbTitle = document.getElementById('quizFeedbackTitle');
+            const fbExp = document.getElementById('quizExplanationText');
+            const contBtn = document.getElementById('quizContinueBtn');
+
+            fbBox.classList.remove('hidden');
+
+            if (isCorrect) {
+                playSound('correct');
+                fbBox.className = 'rounded-2xl p-4 bg-emerald-950/80 border-2 border-emerald-500/60 transition-all';
+                fbIcon.className = 'w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 text-lg font-bold mt-0.5';
+                fbIcon.innerHTML = '<i class="fa-solid fa-check"></i>';
+
+                if (stage === 'MOVE') {
+                    fbTitle.className = 'font-game text-base sm:text-lg font-bold text-emerald-300';
+                    fbTitle.textContent = `Jawaban Tepat! Pion Maju ${meta.dice} Langkah!`;
+                    contBtn.innerHTML = `<span>Melangkah Maju (${meta.dice} Kotak)</span> <i class="fa-solid fa-shoe-prints"></i>`;
+                } else if (stage === 'LADDER') {
+                    fbTitle.className = 'font-game text-base sm:text-lg font-bold text-emerald-300';
+                    fbTitle.textContent = `Luar Biasa! Kamu Berhasil Memanjat Tangga ke Kotak ${meta.to}!`;
+                    contBtn.innerHTML = `<span>Panjat Tangga Sekarang!</span> <i class="fa-solid fa-stairs"></i>`;
+                } else if (stage === 'SNAKE') {
+                    fbTitle.className = 'font-game text-base sm:text-lg font-bold text-emerald-300';
+                    fbTitle.textContent = `Selamat! Jawabanmu Benar, Kamu Tidak Jadi Turun Ular!`;
+                    contBtn.innerHTML = `<span>Tetap Aman di Kotak ${meta.from}</span> <i class="fa-solid fa-shield-heart"></i>`;
+                }
+            } else {
+                playSound('wrong');
+                fbBox.className = 'rounded-2xl p-4 bg-rose-950/80 border-2 border-rose-500/60 transition-all';
+                fbIcon.className = 'w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0 text-lg font-bold mt-0.5';
+                fbIcon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+
+                const correctLetter = ['A', 'B', 'C', 'D'][question.answer];
+                if (stage === 'MOVE') {
+                    fbTitle.className = 'font-game text-base sm:text-lg font-bold text-rose-300';
+                    fbTitle.textContent = `Kurang Tepat (Kunci: ${correctLetter}). Pion Batal Melangkah!`;
+                    contBtn.innerHTML = `<span>Akhiri Giliran</span> <i class="fa-solid fa-forward-step"></i>`;
+                } else if (stage === 'LADDER') {
+                    fbTitle.className = 'font-game text-base sm:text-lg font-bold text-rose-300';
+                    fbTitle.textContent = `Kurang Tepat (Kunci: ${correctLetter}). Gagal Naik Tangga!`;
+                    contBtn.innerHTML = `<span>Tetap di Kaki Tangga</span> <i class="fa-solid fa-arrow-right"></i>`;
+                } else if (stage === 'SNAKE') {
+                    fbTitle.className = 'font-game text-base sm:text-lg font-bold text-rose-300';
+                    fbTitle.textContent = `Kurang Tepat (Kunci: ${correctLetter}). Awas Tergelincir Ular ke Kotak ${meta.to}!`;
+                    contBtn.innerHTML = `<span>Turun Ular ke Kotak ${meta.to}</span> <i class="fa-solid fa-arrow-trend-down"></i>`;
+                }
+            }
+
+            fbExp.innerHTML = `<strong>Pembahasan:</strong> ${question.exp}`;
+            updateTurnSidebarUI();
+
+            // Jika Bot, klik lanjut otomatis
+            if (player.isBot) {
+                setTimeout(() => {
+                    proceedAfterQuiz();
+                }, 1700);
+            }
+        }
+
+        // Eksekusi Pergerakan Pion Setelah Menutup Modal Kuis
+        async function proceedAfterQuiz() {
+            if (!activeQuizContext) return;
+            const { stage, meta, isCorrect } = activeQuizContext;
+            const player = players[currentPlayerIdx];
+
+            // Tutup Modal
+            const modal = document.getElementById('quizModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            activeQuizContext = null;
+
+            // --- LOGIKA TAHAP 1: SOAL LANGKAH JALAN ---
+            if (stage === 'MOVE') {
+                if (!isCorrect) {
+                    addGameLog(`<strong>${player.name}</strong> salah menjawab soal jalan. Pion tetap di <strong>Kotak ${player.pos}</strong>.`, 'warn');
+                    document.getElementById('turnStatusBanner').innerHTML = `Jawaban belum tepat. Pion tetap di Kotak ${player.pos}.`;
+                    await sleep(500);
+                    advanceToNextPlayer();
+                    return;
+                }
+
+                // Jawab Benar -> Pion melompat maju sesuai angka dadu!
+                document.getElementById('turnStatusBanner').innerHTML = `Jawaban benar! Melangkah maju <strong>${meta.dice} kotak</strong>...`;
+                await animatePawnSteps(currentPlayerIdx, meta.dice);
+                addGameLog(`<strong>${player.name}</strong> menjawab benar dan maju ke <strong>Kotak ${player.pos}</strong>.`, 'success');
+
+                // Cek apakah sudah mencapai Kotak 100
+                if (player.pos === 100) {
+                    triggerVictory(player);
+                    return;
+                }
+
+                // TAHAP 2: Cek apakah mendarat di Kaki Tangga atau Kepala Ular
+                const ladderFound = LADDERS.find(l => l.from === player.pos);
+                const snakeFound  = SNAKES.find(s => s.from === player.pos);
+
+                if (ladderFound) {
+                    addGameLog(`<strong>${player.name}</strong> berhenti di Kaki Tangga (Kotak ${ladderFound.from})! Tantangan naik ke Kotak ${ladderFound.to}!`, 'info');
+                    document.getElementById('turnStatusBanner').innerHTML = `Berhenti di Kaki Tangga! Jawab soal untuk naik ke Kotak ${ladderFound.to}!`;
+                    await sleep(550);
+                    openQuizForStage('LADDER', ladderFound);
+                    return;
+                }
+
+                if (snakeFound) {
+                    addGameLog(`<strong>${player.name}</strong> menginjak Kepala ${snakeFound.name} di Kotak ${snakeFound.from}! Jawab benar agar selamat!`, 'warn');
+                    document.getElementById('turnStatusBanner').innerHTML = `Awas Kepala Ular! Jawab soal dengan benar agar tidak turun!`;
+                    await sleep(550);
+                    openQuizForStage('SNAKE', {
+                        from: snakeFound.from,
+                        to: snakeFound.to,
+                        snakeName: snakeFound.name
+                    });
+                    return;
+                }
+
+                // Jika kotak biasa, lanjut ke pemain berikutnya
+                await sleep(400);
+                advanceToNextPlayer();
+                return;
+            }
+
+            // --- LOGIKA TAHAP 2A: SOAL TANTANGAN NAIK TANGGA ---
+            if (stage === 'LADDER') {
+                if (isCorrect) {
+                    addGameLog(`Hebat! <strong>${player.name}</strong> menjawab benar dan memanjat tangga dari <strong>Kotak ${meta.from} ke ${meta.to}</strong>!`, 'success');
+                    document.getElementById('turnStatusBanner').innerHTML = `Berhasil memanjat tangga menuju Kotak ${meta.to}!`;
+                    await animatePawnClimbLadder(currentPlayerIdx, meta.from, meta.to);
+                } else {
+                    addGameLog(`<strong>${player.name}</strong> gagal menjawab tantangan tangga dan tetap di <strong>Kotak ${meta.from}</strong>.`, 'warn');
+                    document.getElementById('turnStatusBanner').innerHTML = `Gagal naik tangga. Pion tetap di Kotak ${meta.from}.`;
+                    await sleep(450);
+                }
+
+                if (player.pos === 100) {
+                    triggerVictory(player);
+                    return;
+                }
+                advanceToNextPlayer();
+                return;
+            }
+
+            // --- LOGIKA TAHAP 2B: SOAL PENYELAMATAN KEPALA ULAR ---
+            if (stage === 'SNAKE') {
+                if (isCorrect) {
+                    playSound('correct');
+                    addGameLog(`Selamat! <strong>${player.name}</strong> menjawab benar dan lolos dari patukan ${meta.snakeName} di <strong>Kotak ${meta.from}</strong>!`, 'success');
+                    document.getElementById('turnStatusBanner').innerHTML = `Selamat! Pion bertahan di Kotak ${meta.from} tanpa turun!`;
+                    await sleep(550);
+                } else {
+                    addGameLog(`Yah! <strong>${player.name}</strong> salah menjawab soal penyelamatan dan tergelincir turun ke <strong>Kotak ${meta.to}</strong>!`, 'danger');
+                    document.getElementById('turnStatusBanner').innerHTML = `Yah! Pion tergelincir turun ular ke Kotak ${meta.to}...`;
+                    await animatePawnSlideSnake(currentPlayerIdx, meta.from, meta.to);
+                }
+
+                advanceToNextPlayer();
+                return;
+            }
+        }
+
+        function advanceToNextPlayer() {
+            currentPlayerIdx = (currentPlayerIdx + 1) % players.length;
+            isTurnBusy = false;
+            updateAllPawnPositions();
+            updateTurnSidebarUI();
+            updateRollButtonState();
+
+            const nextP = players[currentPlayerIdx];
+            document.getElementById('turnStatusBanner').innerHTML = `Giliran <strong>${nextP.name}</strong>. Klik <strong>Kocok Dadu</strong> untuk memulai!`;
+
+            // Jika giliran Bot/AI, otomatis kocok dadu
+            if (nextP.isBot) {
+                setTimeout(() => {
+                    if (!isTurnBusy) handleRollClick();
+                }, 900);
+            }
+        }
+
+        /* =========================================================================
+           10. UPDATE UI SIDEBAR, KLASEMEN & RIWAYAT LOG
+           ========================================================================= */
+        function updateTurnSidebarUI() {
+            const p = players[currentPlayerIdx];
+            if (!p) return;
+
+            document.getElementById('turnPawnPreview').innerHTML = PAWN_TEMPLATES[p.templateId].svg;
+            document.getElementById('turnPlayerName').textContent = p.name;
+            document.getElementById('turnPlayerPos').textContent = p.pos;
+
+            // Render Daftar Klasemen Pemain
+            const listEl = document.getElementById('playersListContainer');
+            listEl.innerHTML = '';
+
+            players.forEach((plr, idx) => {
+                const isTurn = (idx === currentPlayerIdx);
+                const card = document.createElement('div');
+                card.className = `p-2.5 rounded-xl border transition flex items-center justify-between gap-2 ${
+                    isTurn
+                        ? 'bg-amber-500/15 border-amber-400 shadow-md'
+                        : 'bg-slate-800/70 border-slate-700/70 opacity-85'
+                }`;
+
+                const acc = plr.totalAnswered > 0 ? Math.round((plr.correctCount / plr.totalAnswered) * 100) : 0;
+
+                card.innerHTML = `
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div class="w-9 h-9 rounded-lg bg-slate-900 p-0.5 border border-slate-700 shrink-0">
+                            ${PAWN_TEMPLATES[plr.templateId].svg}
+                        </div>
+                        <div class="truncate">
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-bold text-xs sm:text-sm text-white truncate">${plr.name}</span>
+                                ${plr.isBot ? '<span class="text-[10px] px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">BOT</span>' : ''}
+                                ${isTurn ? '<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>' : ''}
+                            </div>
+                            <span class="text-[11px] text-slate-400 block">Benar: ${plr.correctCount}/${plr.totalAnswered} (${acc}%)</span>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <span class="text-[10px] text-slate-400 block">Kotak</span>
+                        <span class="font-game text-lg font-bold text-amber-300 leading-none">${plr.pos}</span>
+                    </div>
+                `;
+                listEl.appendChild(card);
+            });
+        }
+
+        function updateRollButtonState() {
+            const btn = document.getElementById('rollDiceBtn');
+            const p = players[currentPlayerIdx];
+            if (isTurnBusy || (p && p.isBot)) {
+                btn.disabled = true;
+                btn.classList.add('opacity-60', 'cursor-not-allowed');
+            } else {
+                btn.disabled = false;
+                btn.classList.remove('opacity-60', 'cursor-not-allowed');
+            }
+        }
+
+        function addGameLog(messageHtml, type = 'info') {
+            const container = document.getElementById('gameLogContainer');
+            const item = document.createElement('div');
+            const colorMap = {
+                info: 'border-sky-500/40 bg-sky-950/30 text-slate-200',
+                success: 'border-emerald-500/40 bg-emerald-950/30 text-emerald-200',
+                warn: 'border-amber-500/40 bg-amber-950/30 text-amber-200',
+                danger: 'border-rose-500/40 bg-rose-950/30 text-rose-200'
+            };
+            item.className = `px-2.5 py-1.5 rounded-lg border-l-4 ${colorMap[type] || colorMap.info}`;
+            item.innerHTML = messageHtml;
+            container.prepend(item);
+        }
+
+        /* =========================================================================
+           11. MODAL PENGATURAN PERMAINAN (SETUP PEMAIN & TOPIK)
+           ========================================================================= */
+        function openSetupModal() {
+            playSound('click');
+            renderSetupPlayerInputs();
+            const m = document.getElementById('setupModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeSetupModal() {
+            const m = document.getElementById('setupModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function selectTopicOption(topic) {
+            playSound('click');
+            selectedTopic = topic;
+            ['campuran', 'majas', 'peribahasa'].forEach(t => {
+                const btn = document.getElementById(`topicBtn_${t}`);
+                if (t === topic) {
+                    btn.className = 'topic-opt-btn p-3 rounded-xl border-2 border-amber-400 bg-amber-500/20 text-white text-center transition';
+                } else {
+                    btn.className = 'topic-opt-btn p-3 rounded-xl border-2 border-slate-700 bg-slate-800/70 text-slate-300 text-center transition';
+                }
+            });
+        }
+
+        function selectPlayerCount(count) {
+            playSound('click');
+            setupPlayerCount = count;
+            [1, 2, 3, 4, 5, 6].forEach(c => {
+                const btn = document.getElementById(`pCountBtn_${c}`);
+                if (c === count) {
+                    btn.className = 'pcount-btn py-2 rounded-xl border-2 border-amber-400 bg-amber-500/20 text-xs sm:text-sm font-bold text-white';
+                } else {
+                    btn.className = 'pcount-btn py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs sm:text-sm font-bold text-slate-300';
+                }
+            });
+            renderSetupPlayerInputs();
+        }
+
+        function renderSetupPlayerInputs() {
+            const container = document.getElementById('setupPlayersInputs');
+            container.innerHTML = '';
+
+            const actualCount = (setupPlayerCount === 1) ? 2 : setupPlayerCount;
+
+            for (let i = 0; i < actualCount; i++) {
+                const tmpl = PAWN_TEMPLATES[i];
+                const isBotDefault = (setupPlayerCount === 1 && i === 1);
+                const existingName = players[i] ? players[i].name : (isBotDefault ? 'Bot Cendekia' : tmpl.defaultName);
+
+                const row = document.createElement('div');
+                row.className = 'flex items-center gap-3 p-2.5 rounded-xl bg-slate-800/80 border border-slate-700';
+                row.innerHTML = `
+                    <div class="w-10 h-10 rounded-xl bg-slate-900 p-1 border border-slate-700 shrink-0">
+                        ${tmpl.svg}
+                    </div>
+                    <div class="flex-1">
+                        <input id="setupNameInput_${i}" type="text" value="${existingName}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs sm:text-sm text-white font-semibold focus:outline-none focus:border-amber-400">
+                    </div>
+                    <label class="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer select-none px-2">
+                        <input id="setupBotCheck_${i}" type="checkbox" ${isBotDefault ? 'checked' : ''} class="rounded accent-amber-400 w-4 h-4">
+                        <span>Bot AI</span>
+                    </label>
+                `;
+                container.appendChild(row);
+            }
+        }
+
+        function applySetupAndStart() {
+            playSound('click');
+            const actualCount = (setupPlayerCount === 1) ? 2 : setupPlayerCount;
+            players = [];
+
+            for (let i = 0; i < actualCount; i++) {
+                const nameInput = document.getElementById(`setupNameInput_${i}`);
+                const botCheck  = document.getElementById(`setupBotCheck_${i}`);
+                const pName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : PAWN_TEMPLATES[i].defaultName;
+                const isBot = botCheck ? botCheck.checked : false;
+
+                players.push({
+                    id: i,
+                    templateId: i,
+                    name: pName,
+                    pos: 1,
+                    isBot: isBot,
+                    correctCount: 0,
+                    totalAnswered: 0
+                });
+            }
+
+            // Update Header Badge Topik
+            const topicNames = {
+                campuran: 'Majas & Peribahasa',
+                majas: 'Khusus Majas',
+                peribahasa: 'Khusus Peribahasa'
+            };
+            document.getElementById('topicBadgeHeader').textContent = topicNames[selectedTopic];
+
+            currentPlayerIdx = 0;
+            isTurnBusy = false;
+            stopConfetti();
+
+            renderPawnTokens();
+            updateTurnSidebarUI();
+            updateRollButtonState();
+
+            document.getElementById('gameLogContainer').innerHTML = '';
+            addGameLog(`Permainan baru dimulai! Topik: <strong>${topicNames[selectedTopic]}</strong>. Selamat bertualang!`, 'info');
+            document.getElementById('turnStatusBanner').innerHTML = `Giliran <strong>${players[0].name}</strong>. Klik <strong>Kocok Dadu</strong> untuk memulai!`;
+
+            closeSetupModal();
+
+            if (players[0].isBot) {
+                setTimeout(() => handleRollClick(), 800);
+            }
+        }
+
+        function restartSameGame() {
+            closeWinnerModal();
+            stopConfetti();
+            players.forEach(p => {
+                p.pos = 1;
+                p.correctCount = 0;
+                p.totalAnswered = 0;
+            });
+            currentPlayerIdx = 0;
+            isTurnBusy = false;
+            renderPawnTokens();
+            updateTurnSidebarUI();
+            updateRollButtonState();
+            document.getElementById('gameLogContainer').innerHTML = '';
+            addGameLog(`Permainan diulang kembali dari Kotak 1! Semangat!`, 'info');
+        }
+
+        /* =========================================================================
+           12. MODAL ATURAN & KELOLA BANK SOAL GURU
+           ========================================================================= */
+        function openRulesModal() {
+            playSound('click');
+            const m = document.getElementById('rulesModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeRulesModal() {
+            const m = document.getElementById('rulesModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function loadCustomQuestions() {
+            try {
+                const saved = localStorage.getItem('ularTangga_customQuestions');
+                if (saved) {
+                    customQuestions = JSON.parse(saved);
+                }
+            } catch (e) {
+                customQuestions = [];
+            }
+            updateQuestionCountBadges();
+        }
+
+        function saveCustomQuestions() {
+            try {
+                localStorage.setItem('ularTangga_customQuestions', JSON.stringify(customQuestions));
+            } catch (e) {}
+            updateQuestionCountBadges();
+        }
+
+        function updateQuestionCountBadges() {
+            const total = DEFAULT_QUESTIONS.length + customQuestions.length;
+            document.getElementById('totalQuestionCountBadge').textContent = total;
+            document.getElementById('managerCountLabel').textContent = total;
+        }
+
+        function openQuestionManager() {
+            playSound('click');
+            renderQuestionManagerList('all');
+            const m = document.getElementById('questionManagerModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeQuestionManager() {
+            const m = document.getElementById('questionManagerModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function addNewCustomQuestion() {
+            const cat = document.getElementById('newQCategory').value;
+            const sub = document.getElementById('newQSubtopic').value.trim() || (cat === 'majas' ? 'Majas' : 'Peribahasa');
+            const qText = document.getElementById('newQText').value.trim();
+            const o0 = document.getElementById('newQOpt0').value.trim();
+            const o1 = document.getElementById('newQOpt1').value.trim();
+            const o2 = document.getElementById('newQOpt2').value.trim();
+            const o3 = document.getElementById('newQOpt3').value.trim();
+            const ans = parseInt(document.getElementById('newQAnswer').value, 10);
+            const exp = document.getElementById('newQExp').value.trim() || 'Jawaban sesuai kaidah Bahasa Indonesia.';
+
+            const statusEl = document.getElementById('addQStatusMsg');
+
+            if (!qText || !o0 || !o1 || !o2 || !o3) {
+                statusEl.className = 'text-xs text-rose-400 font-semibold';
+                statusEl.textContent = 'Mohon lengkapi pertanyaan dan keempat opsi A, B, C, D!';
+                return;
+            }
+
+            customQuestions.unshift({
+                category: cat,
+                subtopic: sub,
+                q: qText,
+                options: [o0, o1, o2, o3],
+                answer: ans,
+                exp: exp,
+                isCustom: true
+            });
+
+            saveCustomQuestions();
+            renderQuestionManagerList('all');
+            playSound('correct');
+
+            // Reset input
+            document.getElementById('newQText').value = '';
+            document.getElementById('newQOpt0').value = '';
+            document.getElementById('newQOpt1').value = '';
+            document.getElementById('newQOpt2').value = '';
+            document.getElementById('newQOpt3').value = '';
+            document.getElementById('newQExp').value = '';
+
+            statusEl.className = 'text-xs text-emerald-400 font-semibold';
+            statusEl.textContent = 'Soal berhasil ditambahkan ke Bank Soal!';
+            setTimeout(() => { statusEl.textContent = ''; }, 3000);
+        }
+
+        function deleteCustomQuestion(customIdx) {
+            customQuestions.splice(customIdx, 1);
+            saveCustomQuestions();
+            renderQuestionManagerList('all');
+        }
+
+        function renderQuestionManagerList(filterCat) {
+            const listEl = document.getElementById('questionManagerModal').querySelector('#questionManagerList');
+            listEl.innerHTML = '';
+
+            const combined = [
+                ...customQuestions.map((q, idx) => ({ ...q, _customIdx: idx })),
+                ...DEFAULT_QUESTIONS
+            ].filter(q => filterCat === 'all' || q.category === filterCat);
+
+            const letters = ['A', 'B', 'C', 'D'];
+
+            combined.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.className = 'p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs space-y-1';
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-bold uppercase text-[10px]">${item.subtopic}</span>
+                            ${item.isCustom ? '<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold text-[10px]">Soal Guru</span>' : ''}
+                        </div>
+                        ${item.isCustom ? `<button onclick="deleteCustomQuestion(${item._customIdx})" class="text-rose-400 hover:text-rose-300 text-xs"><i class="fa-solid fa-trash"></i> Hapus</button>` : ''}
+                    </div>
+                    <p class="font-semibold text-white">${i + 1}. ${item.q}</p>
+                    <p class="text-emerald-400">Kunci: ${letters[item.answer]}. ${item.options[item.answer]}</p>
+                `;
+                listEl.appendChild(div);
+            });
+        }
+
+        /* =========================================================================
+           13. SELEBRASI PEMENANG & KONFETI
+           ========================================================================= */
+        let confettiAnimId = null;
+
+        function triggerVictory(winner) {
+            playSound('win');
+            startConfetti();
+
+            document.getElementById('winnerNameTitle').textContent = `${winner.name} Menang!`;
+
+            const statsEl = document.getElementById('winnerStatsList');
+            statsEl.innerHTML = '';
+
+            const sorted = [...players].sort((a, b) => b.pos - a.pos);
+            sorted.forEach((p, idx) => {
+                const acc = p.totalAnswered > 0 ? Math.round((p.correctCount / p.totalAnswered) * 100) : 0;
+                const row = document.createElement('div');
+                row.className = 'flex items-center justify-between p-2.5 rounded-xl bg-slate-900/80 border border-slate-700/70 text-xs sm:text-sm';
+                row.innerHTML = `
+                    <div class="flex items-center gap-2.5">
+                        <span class="font-game font-bold text-amber-400 w-5">#${idx + 1}</span>
+                        <div class="w-7 h-7">${PAWN_TEMPLATES[p.templateId].svg}</div>
+                        <span class="font-bold text-white">${p.name}</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-amber-300 font-bold">Kotak ${p.pos}</span>
+                        <span class="text-slate-400 text-xs block">Kuis Benar: ${p.correctCount}/${p.totalAnswered} (${acc}%)</span>
+                    </div>
+                `;
+                statsEl.appendChild(row);
+            });
+
+            const m = document.getElementById('winnerModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeWinnerModal() {
+            const m = document.getElementById('winnerModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function startConfetti() {
+            const canvas = document.getElementById('confettiCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const pieces = Array.from({ length: 110 }, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                w: 8 + Math.random() * 8,
+                h: 6 + Math.random() * 6,
+                color: ['#fbbf24', '#f43f5e', '#10b981', '#38bdf8', '#a855f7'][Math.floor(Math.random() * 5)],
+                vy: 2.5 + Math.random() * 3.5,
+                vx: -1.5 + Math.random() * 3,
+                angle: Math.random() * 360,
+                vAngle: -4 + Math.random() * 8
+            }));
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                pieces.forEach(p => {
+                    p.y += p.vy;
+                    p.x += p.vx;
+                    p.angle += p.vAngle;
+                    if (p.y > canvas.height) {
+                        p.y = -20;
+                        p.x = Math.random() * canvas.width;
+                    }
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.angle * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+                });
+                confettiAnimId = requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        function stopConfetti() {
+            if (confettiAnimId) {
+                cancelAnimationFrame(confettiAnimId);
+                confettiAnimId = null;
+            }
+            const canvas = document.getElementById('confettiCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        /* =========================================================================
+           14. INISIALISASI SAAT HALAMAN DIMUAT
+           ========================================================================= */
+        window.onload = function () {
+            loadCustomQuestions();
+            renderBoardGrid();
+            renderSnakesAndLaddersSVG();
+
+            // Inisialisasi 2 Tim Default agar papan langsung siap dimainkan
+            players = [
+                { id: 0, templateId: 0, name: 'Tim Garuda Merah', pos: 1, isBot: false, correctCount: 0, totalAnswered: 0 },
+                { id: 1, templateId: 1, name: 'Tim Harimau Emas', pos: 1, isBot: false, correctCount: 0, totalAnswered: 0 }
+            ];
+
+            renderPawnTokens();
+            updateTurnSidebarUI();
+            updateRollButtonState();
+            addGameLog('Selamat datang di <strong>Ular Tangga Nusantara</strong>! Klik <strong>Kocok Dadu</strong> untuk memulai petualangan Majas & Peribahasa!', 'info');
+        };
+    </script>
+<script src="integration.js"></script></body>
+</html>

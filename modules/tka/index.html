@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>TRY OUT TKA BAHASA INDONESIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="tka.css">
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
+
+    <div id="syncPanel" class="hidden bg-amber-50 border-b border-amber-200 p-3 text-sm text-center" role="status" aria-live="polite">
+        <span id="syncMessage"></span>
+        <button id="retrySave" type="button" onclick="retryPendingSave()" class="hidden ml-2 rounded-lg bg-indigo-600 px-3 py-2 text-white font-bold">Coba simpan lagi</button>
+    </div>
+    <!-- Global API Loader Overlay -->
+    <div id="apiLoader" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[200] hidden flex flex-col items-center justify-center">
+        <div class="loader mb-4"></div>
+        <p class="text-white font-medium animate-pulse" id="apiLoaderText">Sedang menyinkronkan dengan server...</p>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="customModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 transform scale-95 transition-transform duration-300" id="customModalContent">
+            <div id="modalIcon" class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4"></div>
+            <h3 id="modalTitle" class="text-xl font-heading font-bold text-center text-slate-800 mb-2"></h3>
+            <p id="modalMessage" class="text-slate-600 text-center mb-6 text-sm leading-relaxed"></p>
+            <div class="flex justify-center gap-3" id="modalActions"></div>
+        </div>
+    </div>
+
+    <!-- Halaman Login -->
+    <div id="loginPage" class="flex-grow flex items-center justify-center p-4 relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="glass rounded-3xl shadow-xl p-8 w-full max-w-md relative z-10 border border-white/50">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-600 mb-4 shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253" /></svg>
+                </div>
+                <h1 class="text-2xl font-heading font-extrabold text-slate-800 tracking-tight">TRY OUT TKA</h1>
+                <p class="text-slate-500 mt-1 font-medium text-sm">Masuk untuk memulai ujian</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-5">
+                <div class="space-y-1">
+                    <label class="block text-sm font-semibold text-slate-700">Pilih Kelas</label>
+                    <select id="kelas" required class="block w-full rounded-xl border-slate-200 border-2 px-4 py-3 bg-white focus:border-indigo-500 focus:ring-0 transition outline-none">
+                        <option value="" disabled selected>-- Pilih Kelas Anda --</option>
+                        <option value="XII A">XII A</option>
+                        <option value="XII B">XII B</option>
+                        <option value="XII C">XII C</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-sm font-semibold text-slate-700">Nama Peserta <span class="text-xs text-slate-400 font-normal ml-1">(Pilih kelas dulu)</span></label>
+                    <select id="nama" required disabled class="block w-full rounded-xl border-slate-200 border-2 px-4 py-3 bg-slate-50 text-slate-500 focus:border-indigo-500 focus:ring-0 transition outline-none disabled:opacity-50">
+                        <option value="" disabled selected>-- Pilih Nama Anda --</option>
+                        <!-- Diisi otomatis dari Apps Script -->
+                    </select>
+                </div>
+                <button type="submit" class="w-full flex justify-center items-center py-3.5 mt-2 rounded-xl shadow-lg shadow-indigo-500/30 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-all transform hover:-translate-y-0.5">
+                    LANJUT PILIH UJIAN
+                </button>
+            </form>
+            <div class="mt-8 text-center border-t border-slate-100 pt-4">
+                <button onclick="showAdminLogin()" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition">Login sebagai Guru / Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="hidden flex-grow flex-col bg-slate-50 p-4 md:p-8 min-h-screen w-full overflow-y-auto">
+        <div class="max-w-7xl mx-auto w-full space-y-6">
+            <div class="flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div>
+                    <h1 class="text-2xl font-heading font-black text-slate-800">Dashboard Guru</h1>
+                    <p class="text-sm text-slate-500 font-medium">Analitik Hasil Ujian Siswa</p>
+                </div>
+                <button onclick="logoutAdmin()" class="px-5 py-2.5 bg-rose-50 text-rose-600 font-bold rounded-xl hover:bg-rose-100 transition text-sm">Keluar</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Rata-rata per Kelas -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="font-bold text-slate-700 mb-4 flex items-center"><span class="w-2 h-2 rounded-full bg-indigo-500 mr-2"></span> Rata-rata Skor Kelas</h2>
+                    <div id="chartKelas" class="space-y-4"></div>
+                </div>
+                <!-- Rata-rata per Mode/Paket -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="font-bold text-slate-700 mb-4 flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span> Rata-rata Skor Paket Try Out</h2>
+                    <div id="chartMode" class="space-y-4"></div>
+                </div>
+            </div>
+
+            <!-- Analisis Butir Soal -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-bold text-slate-700 flex items-center"><span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span> Analisis Kesulitan Soal</h2>
+                    <select id="selectAnalisisMode" class="border border-slate-200 rounded-lg px-3 py-1.5 text-sm outline-none focus:border-indigo-500 bg-slate-50" onchange="renderAnalisisSoal(this.value)"></select>
+                </div>
+                <div class="overflow-x-auto">
+                    <div id="analisisSoalContainer" class="flex gap-2 min-w-max pb-4"></div>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">*Grafik menunjukkan persentase siswa yang menjawab BENAR pada soal tersebut.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Halaman Pilih Mode -->
+    <div id="selectModePage" class="hidden flex-grow flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="glass rounded-3xl shadow-xl p-6 md:p-10 w-full max-w-4xl relative z-10 border border-white/50 max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-8 sticky top-0 bg-white/90 backdrop-blur-sm z-20 pb-4 pt-2 border-b border-slate-100">
+                <h1 class="text-2xl md:text-3xl font-heading font-extrabold text-slate-800 tracking-tight">Pilih Mode Ujian</h1>
+                <p class="text-slate-500 mt-1 font-medium">Silakan pilih paket soal yang akan dikerjakan</p>
+            </div>
+            
+            <form id="modeForm" class="space-y-6">
+                <section class="rounded-2xl border-2 border-indigo-200 bg-indigo-50 p-4">
+                    <h2 class="font-heading font-bold text-indigo-900 mb-2">Bahasa Indonesia Tingkat Lanjut</h2>
+                    <p class="text-xs text-slate-600 mb-4">Dua paket dari PDF sumber. Pilihan ganda, pilihan lebih dari satu, dan kategori. Setiap butir dinilai benar jika seluruh jawabannya tepat.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="mode-radio cursor-pointer"><input type="radio" name="examMode" value="simulasiLanjut" class="sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl bg-white h-full"><h3 class="font-bold">Paket E · Simulasi Lanjut</h3><p class="text-sm text-slate-600 mt-1">10 soal · 25 menit</p><p class="text-xs text-slate-500 mt-2">Proposal UKM, puisi Huesca, dan ulasan budaya. Kunci mengikuti PDF dengan catatan penyunting.</p></div></label>
+                        <label class="mode-radio cursor-pointer"><input type="radio" name="examMode" value="pilihanLanjut" class="sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl bg-white h-full"><h3 class="font-bold">Paket F · Pilihan Lanjut 2025</h3><p class="text-sm text-slate-600 mt-1">30 soal · 60 menit</p><p class="text-xs text-slate-500 mt-2">Seluruh butir tersedia, termasuk variasi nomor 23–26. Kunci usulan untuk latihan; perlu ditinjau guru.</p></div></label>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3">Durasi merupakan pengaturan latihan. Nomor sumber 1–4 dan 27–30 pada PDF kedua masih bertanda OTW dan tidak dibuat-buat.</p>
+                </section>
+                <!-- Paket A -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-3">Paket A (Paket 1)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="fullA" class="peer sr-only" checked><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Try Out Full A</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-50 (75 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniA1" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO A1</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-25 (40 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniA2" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO A2</h3><p class="text-xs text-slate-500 mt-0.5">Soal 26-50 (40 Menit)</p></div></label>
+                    </div>
+                </div>
+                <!-- Paket B -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-3">Paket B (Paket 2)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="fullB" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Try Out Full B</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-50 (75 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniB1" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO B1</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-25 (40 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniB2" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO B2</h3><p class="text-xs text-slate-500 mt-0.5">Soal 26-50 (40 Menit)</p></div></label>
+                    </div>
+                </div>
+                <!-- Paket C -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-amber-500 uppercase tracking-wider mb-3">Paket C (Paket 3)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="fullC" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Try Out Full C</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-50 (75 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniC1" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO C1</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-25 (40 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniC2" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO C2</h3><p class="text-xs text-slate-500 mt-0.5">Soal 26-50 (40 Menit)</p></div></label>
+                    </div>
+                </div>
+                <!-- Paket D -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-cyan-500 uppercase tracking-wider mb-3">Paket D (Paket 4)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="fullD" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Try Out Full D</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-50 (75 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniD1" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO D1</h3><p class="text-xs text-slate-500 mt-0.5">Soal 1-25 (40 Menit)</p></div></label>
+                        <label class="mode-radio cursor-pointer relative"><input type="radio" name="examMode" value="miniD2" class="peer sr-only"><div class="p-4 border-2 border-slate-200 rounded-xl hover:bg-slate-50 transition h-full flex flex-col justify-center"><div class="check-icon absolute top-3 right-3 text-indigo-600 opacity-0 transform scale-50 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div><h3 class="font-bold text-slate-800 text-sm">Mini TO D2</h3><p class="text-xs text-slate-500 mt-0.5">Soal 26-50 (40 Menit)</p></div></label>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-6 sticky bottom-0 bg-white/90 backdrop-blur-sm pt-4 border-t border-slate-100 pb-2">
+                    <button type="button" id="btnBackToLogin" class="w-1/3 py-4 rounded-xl border-2 border-slate-200 font-bold text-slate-600 hover:bg-slate-50 transition">Kembali</button>
+                    <button type="submit" class="w-2/3 py-4 rounded-xl shadow-lg shadow-emerald-500/30 font-bold text-white bg-emerald-500 hover:bg-emerald-600 transition transform hover:-translate-y-0.5 flex items-center justify-center">
+                        MULAI UJIAN <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Halaman Ujian -->
+    <div id="examPage" class="hidden flex-grow flex flex-col h-screen overflow-hidden bg-slate-50">
+        <header class="bg-white/90 backdrop-blur-md shadow-sm z-30 p-3 md:px-6 md:py-3 shrink-0 flex justify-between items-center border-b border-slate-200">
+            <div class="flex items-center gap-3">
+                <button id="btnOpenNav" class="md:hidden p-2.5 bg-slate-100 text-slate-700 rounded-xl hover:bg-slate-200 transition"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg></button>
+                <div class="flex flex-col">
+                    <h1 class="text-sm md:text-base font-heading font-extrabold text-slate-800">TRY OUT TKA <span id="modeBadge" class="ml-2 px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded text-xs align-middle">Paket</span></h1>
+                    <p id="studentInfo" class="text-xs font-medium text-slate-500 mt-0.5"></p>
+                </div>
+            </div>
+            <div id="timerContainer" class="flex items-center space-x-2 bg-indigo-50 border border-indigo-100 py-1.5 px-3 md:py-2 md:px-4 rounded-xl shadow-sm transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span id="timerDisplay" class="text-base md:text-lg font-bold text-indigo-700 font-mono tracking-widest">00:00</span>
+            </div>
+        </header>
+
+        <div class="flex-grow flex flex-col md:flex-row overflow-hidden relative">
+            <div id="navOverlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden md:hidden"></div>
+            
+            <div class="flex-grow overflow-y-auto p-4 md:p-6 w-full scroll-smooth" id="questionAreaScroll">
+                <div class="max-w-4xl mx-auto bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex flex-wrap gap-3 justify-between items-center mb-6 border-b border-slate-100 pb-4">
+                        <h2 class="text-xl font-heading font-extrabold text-slate-800" id="questionNumberTitle">Soal 1</h2>
+                        <span id="questionTypeBadge" class="px-3 py-1 bg-slate-100 text-xs font-semibold text-slate-600 rounded-full border border-slate-200">Pilihan Ganda</span>
+                    </div>
+                    <div id="questionText" class="text-slate-700 leading-relaxed mb-8 text-sm md:text-base text-justify whitespace-pre-line font-medium"></div>
+                    <div id="optionsContainer" class="space-y-0"></div>
+
+                    <div class="mt-10 pt-5 border-t border-slate-100 flex justify-between items-center">
+                        <button id="btnPrev" class="px-4 py-2.5 bg-white text-indigo-600 border-2 border-indigo-100 font-semibold rounded-xl hover:bg-indigo-50 transition disabled:opacity-30 flex items-center text-sm md:text-base"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg> <span class="hidden md:inline">Sebelumnya</span></button>
+                        
+                        <label class="flex items-center cursor-pointer gap-2 select-none group">
+                            <input type="checkbox" id="chkRagu" class="peer sr-only">
+                            <div class="w-6 h-6 rounded border-2 border-slate-300 peer-checked:bg-amber-400 peer-checked:border-amber-500 flex items-center justify-center transition">
+                                <svg class="w-4 h-4 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="font-bold text-slate-500 peer-checked:text-amber-500 transition text-sm">Ragu-ragu</span>
+                        </label>
+
+                        <button id="btnNext" class="px-4 py-2.5 bg-emerald-500 text-white font-bold rounded-xl shadow-md hover:bg-emerald-600 transition flex items-center text-sm md:text-base"><span class="hidden md:inline">Selanjutnya</span> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+                        <button id="btnSubmit" class="hidden px-5 py-2.5 bg-rose-500 text-white font-bold rounded-xl shadow-md hover:bg-rose-600 transition text-sm md:text-base">Selesaikan</button>
+                    </div>
+                </div>
+                <div class="h-12 md:h-0"></div>
+            </div>
+
+            <div id="navArea" class="fixed md:static inset-y-0 right-0 w-[85%] max-w-[320px] md:w-80 bg-white md:bg-transparent md:border-l md:border-slate-200 shrink-0 flex flex-col h-full z-50 transform translate-x-full md:translate-x-0 transition-transform duration-300 shadow-2xl md:shadow-none">
+                <div class="p-4 bg-white border-b border-slate-100 flex justify-between items-center shrink-0">
+                    <div class="flex-grow">
+                        <h3 class="font-heading font-extrabold text-slate-800 text-base">Navigasi Soal</h3>
+                        <div class="flex flex-wrap gap-2 mt-2 text-[10px] font-medium text-slate-500">
+                            <div class="flex items-center"><div class="w-2.5 h-2.5 bg-emerald-500 rounded-sm mr-1"></div> Dijawab</div>
+                            <div class="flex items-center"><div class="w-2.5 h-2.5 bg-amber-400 rounded-sm mr-1"></div> Ragu</div>
+                            <div class="flex items-center"><div class="w-2.5 h-2.5 bg-white border border-slate-300 rounded-sm mr-1"></div> Belum</div>
+                        </div>
+                    </div>
+                    <button id="btnCloseNav" class="md:hidden p-1.5 text-slate-400 hover:bg-slate-100 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                </div>
+                <div class="p-4 overflow-y-auto nav-scroll flex-grow bg-white"><div id="navGrid" class="grid grid-cols-5 gap-2"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Halaman Hasil / Result -->
+    <div id="resultPage" class="hidden flex-grow flex-col bg-slate-50 p-4 md:p-8 overflow-y-auto">
+        <div class="max-w-6xl mx-auto w-full space-y-6">
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 text-center">
+                <h1 class="text-3xl font-heading font-black text-slate-800 mb-2">Ujian Selesai!</h1>
+                <p class="text-slate-500 mb-6 font-medium">Ringkasan hasil <span id="resultModeLabel" class="font-bold"></span>.</p>
+                <div class="inline-block bg-white p-6 rounded-3xl border-2 border-emerald-100 shadow-xl">
+                    <p class="text-sm text-slate-500 font-bold mb-1 uppercase tracking-widest">Skor Akhir</p>
+                    <p id="finalScore" class="text-6xl font-black text-emerald-500">0</p>
+                </div>
+            </div>
+
+            <!-- Riwayat Siswa -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-5 border-b border-slate-100"><h2 class="font-heading font-extrabold text-lg text-slate-800">Riwayat Try Out Anda</h2></div>
+                <div class="p-0 overflow-x-auto">
+                    <table class="w-full text-sm text-left"><thead class="bg-slate-50 text-slate-600 font-semibold border-b"><tr><th class="p-4">Tanggal</th><th class="p-4">Paket/Mode</th><th class="p-4">Skor</th></tr></thead><tbody id="riwayatTableBody" class="divide-y divide-slate-100"></tbody></table>
+                </div>
+            </div>
+
+            <!-- Analisis Detail -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mt-6">
+                <div class="p-5 border-b border-slate-100 flex justify-between items-center">
+                    <h2 class="font-heading font-extrabold text-lg text-slate-800">Detail Jawaban Anda</h2>
+                </div>
+                <div class="overflow-x-auto"><table class="w-full text-sm text-left"><thead class="bg-slate-50 border-b"><tr id="analysisHeadRow"></tr></thead><tbody id="analysisTableBody"></tbody></table></div>
+            </div>
+
+            <div class="text-center pb-12 pt-6 flex flex-col md:flex-row justify-center gap-4">
+                <button onclick="showPembahasan()" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/30">Lihat Pembahasan</button>
+                <button onclick="location.reload()" class="px-8 py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 transition shadow-lg shadow-slate-800/30">Tutup & Keluar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Halaman Pembahasan -->
+    <div id="pembahasanPage" class="hidden flex-grow flex-col bg-slate-50 p-4 md:p-8 overflow-y-auto">
+        <div class="max-w-4xl mx-auto w-full space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border p-6 flex justify-between items-center sticky top-4 z-20">
+                <h2 class="text-xl font-heading font-extrabold">Pembahasan Soal</h2>
+                <button onclick="closePembahasan()" class="px-4 py-2 bg-slate-100 font-bold rounded-xl hover:bg-slate-200">Kembali ke Hasil</button>
+            </div>
+            <div id="pembahasanContainer" class="space-y-6"></div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+<script src="tka.js"></script>
+</body>
+</html>

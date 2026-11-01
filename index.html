@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#087e8b" />
+    <meta
+      name="description"
+      content="Huma Belajar: rumah untuk materi Bahasa Indonesia, latihan literasi, permainan, dan kamus tiga bahasa."
+    />
+    <title>Huma Belajar — Rumah untuk tumbuh bersama</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="modules/games/games.css" />
+    <link rel="stylesheet" href="modules/dictionary/dictionary.css" />
+    <script defer src="config.js"></script>
+    <script defer src="modules/shared/menu-api.js"></script>
+    <script defer src="demo-data.js"></script>
+    <script defer src="modules/games/data.js"></script>
+    <script defer src="modules/games/core.js"></script>
+    <script defer src="modules/games/games.js"></script>
+    <script defer src="modules/dictionary/corpus.js"></script>
+    <script defer src="modules/dictionary/core.js"></script>
+    <script defer src="modules/dictionary/demo.js"></script>
+    <script defer src="modules/dictionary/dictionary.js"></script>
+    <link rel="stylesheet" href="modules/student-works/works.css" />
+    <script defer src="modules/student-works/core.js"></script>
+    <script defer src="modules/student-works/works.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Langsung ke isi</a>
+    <aside class="sidebar" id="sidebar">
+      <button
+        id="sidebar-toggle"
+        class="sidebar-toggle"
+        type="button"
+        aria-label="Kecilkan sidebar"
+        aria-expanded="true"
+        aria-controls="nav"
+        title="Kecilkan sidebar"
+      >
+        ‹
+      </button>
+      <a class="brand" href="#beranda" aria-label="Huma Belajar — Beranda"
+        ><img src="assets/logo.svg" width="42" height="42" alt="" /><span
+          >huma<span class="brand-light">belajar</span
+          ><small>RUMAH UNTUK TUMBUH</small></span
+        ></a
+      >
+      <div class="nav-caption">RUANG BELAJARMU</div>
+      <nav id="nav" aria-label="Navigasi utama"></nav>
+      <div class="sidebar-note">
+        <span class="note-icon">✦</span
+        ><strong>Sedikit setiap hari,<br />hebat di kemudian hari.</strong>
+        <p>Perjalanan belajarmu dimulai dari satu rasa ingin tahu.</p>
+        <span>Selamat bertumbuh! ↗</span>
+      </div>
+      <div class="sidebar-footer">
+        Dibuat untuk belajar bersama.<br /><b id="school-name"
+          >Bahasa Indonesia · SMA / MA</b
+        >
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span id="breadcrumb">Ruang belajar / <b>Beranda</b></span>
+        <div class="top-actions">
+          <span class="connection" id="connection">Menyiapkan…</span
+          ><button id="auth" class="button small">
+            Masuk akun <span>↗</span>
+          </button>
+        </div>
+      </header>
+      <div id="notice" class="notice" hidden></div>
+      <main id="main" tabindex="-1"></main>
+      <section
+        id="snake-panel"
+        class="snake-panel"
+        aria-label="Petualangan Kata"
+        tabindex="-1"
+        hidden
+      >
+        <div class="snake-top">
+          <a href="#game" class="text-link">← Kembali ke Zona Game</a
+          ><span>Ular tangga · Majas & peribahasa</span>
+        </div>
+        <div id="snake-mount"></div>
+      </section>
+      <section
+        id="tka-panel"
+        class="tka-panel"
+        aria-label="Aplikasi TKA"
+        tabindex="-1"
+        hidden
+      >
+        <p class="tka-note">
+          TKA terhubung ke Apps Script milik guru, terpisah dari mode contoh
+          materi. Pilih kelas dan nama pada formulir TKA. Saat berpindah menu,
+          jawaban tetap ada dan waktu ujian tetap berjalan.
+        </p>
+        <div id="tka-mount"></div>
+      </section>
+      <footer class="page-footer">
+        <span
+          >Huma Belajar <span class="dot">•</span> Belajar dekat, mimpi
+          jauh.</span
+        ><span>Bahasa menyatukan kita.</span>
+      </footer>
+    </div>
+    <dialog id="modal"><div id="modal-content"></div></dialog>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
