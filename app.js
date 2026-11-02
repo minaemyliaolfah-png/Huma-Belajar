@@ -57,6 +57,8 @@ const state = {
   game: null,
 };
 const icons = {
+  video:
+    '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4Z"/>',
   home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/>',
   book: '<path d="M12 5c-3-2-7-2-10-1v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-3-1-7-1-10 1Zm0 0v15"/>',
   test: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6m-6 4h6m-6 4h3"/>',
@@ -96,26 +98,71 @@ function safeURL(value) {
     return "";
   }
 }
+function driveFileId(value) {
+  const safe = safeURL(value);
+  if (!safe) return "";
+  const url = new URL(safe);
+  if (url.hostname !== "drive.google.com") return "";
+  const id =
+    url.pathname.match(/\/file\/d\/([\w-]+)/)?.[1] ||
+    url.searchParams.get("id") ||
+    "";
+  return /^[\w-]+$/.test(id) ? id : "";
+}
+function materialImageURL(value) {
+  const id = driveFileId(value);
+  return id
+    ? "https://drive.google.com/thumbnail?id=" + id + "&sz=w1600"
+    : safeURL(value);
+}
 function embedURL(value) {
   const url = safeURL(value);
   if (!url) return "";
   const u = new URL(url);
   let id = "";
   if (
-    ["youtube.com", "www.youtube.com", "m.youtube.com"].includes(u.hostname)
+    [
+      "youtube.com",
+      "www.youtube.com",
+      "m.youtube.com",
+      "youtube-nocookie.com",
+      "www.youtube-nocookie.com",
+    ].includes(u.hostname)
   ) {
     id =
       u.searchParams.get("v") ||
-      u.pathname.match(/^\/(?:embed|shorts)\/([^/]+)/)?.[1] ||
+      u.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/)?.[1] ||
       "";
   }
   if (u.hostname === "youtu.be") id = u.pathname.slice(1);
   if (/^[\w-]{11}$/.test(id))
     return "https://www.youtube-nocookie.com/embed/" + id;
-  if (u.hostname === "drive.google.com") {
-    const match = u.pathname.match(/\/file\/d\/([\w-]+)/);
-    if (match)
-      return "https://drive.google.com/file/d/" + match[1] + "/preview";
+  const driveId = driveFileId(url);
+  if (driveId) return "https://drive.google.com/file/d/" + driveId + "/preview";
+  if (u.hostname === "docs.google.com" && u.pathname.startsWith("/forms/")) {
+    if (u.pathname.endsWith("/viewform"))
+      u.searchParams.set("embedded", "true");
+    return u.href;
+  }
+  if (
+    u.hostname === "docs.google.com" &&
+    !u.pathname.includes("/d/e/") &&
+    !/\/pub(?:html)?$/.test(u.pathname)
+  ) {
+    const document = u.pathname.match(
+      /^\/(document|presentation|spreadsheets)\/d\/([\w-]+)(?:\/|$)/,
+    );
+    if (document) {
+      if (u.searchParams.get("rtpof") === "true")
+        return "https://drive.google.com/file/d/" + document[2] + "/preview";
+      return (
+        "https://docs.google.com/" +
+        document[1] +
+        "/d/" +
+        document[2] +
+        (document[1] === "presentation" ? "/embed" : "/preview")
+      );
+    }
   }
   return url;
 }
@@ -208,7 +255,20 @@ function route() {
   try {
     id = decodeURIComponent(parts[1] || "");
   } catch {}
-  return { page: parts[0] || "beranda", id };
+  return {
+    page: parts[0] || "beranda",
+    id,
+    section: [
+      "video",
+      "materi",
+      "mpi",
+      "rangkuman",
+      "unduh",
+      "latihan",
+    ].includes(parts[2])
+      ? parts[2]
+      : "materi",
+  };
 }
 let sidebarCollapsed = store.get("huma-sidebar-collapsed", false) === true;
 function syncSidebar() {
@@ -370,17 +430,122 @@ function chapter(id) {
   return (
     `<a href="#materi" class="text-link">← Semua materi</a><br><br>` +
     heading(esc(b.kelas), esc(b.nama), esc(b.deskripsi)) +
-    `<div class="lesson-layout"><section><div class="section-head"><h2>Langkah belajarmu</h2><span class="tag">${list.length} subbab</span></div><div class="lesson-list">${list.map((s, i) => `<a class="lesson-row" href="#belajar/${encodeURIComponent(s.id_subbab)}"><span class="step">${state.data.progress.includes(s.id_subbab) ? "✓" : String(i + 1).padStart(2, "0")}</span><div><strong>${esc(s.judul)}</strong><small>${state.data.progress.includes(s.id_subbab) ? "Sudah dipelajari" : "Baca, tonton, dan pahami"}</small></div><span>→</span></a>`).join("") || empty("Subbab belum tersedia", "Guru akan menambahkan materi di bab ini.")}</div></section><aside class="side-card"><div class="eyebrow">TEMAN BELAJARMU</div><h3>Pelan-pelan, yang penting paham.</h3><p style="text-align:left;margin-top:12px">Baca materi, catat hal penting, dan tandai selesai setelah kamu memahaminya.</p>${safeURL(b.pdf_bse) ? `<button class="button light" data-action="book" data-id="${attr(id)}">Buka buku BSE ↗</button>` : '<p style="margin-top:16px">Buku BSE belum ditambahkan.</p>'}</aside></div>`
+    `<div class="lesson-layout"><section><div class="section-head"><h2>Langkah belajarmu</h2><span class="tag">${list.length} subbab</span></div><div class="lesson-list">${list.map((s, i) => `<a class="lesson-row" href="#belajar/${encodeURIComponent(s.id_subbab)}"><span class="step">${state.data.progress.includes(s.id_subbab) ? "✓" : String(i + 1).padStart(2, "0")}</span><div><strong>${esc(s.judul)}</strong><small>${state.data.progress.includes(s.id_subbab) ? "Sudah dipelajari" : "Baca, tonton, dan pahami"}</small></div><span>→</span></a>`).join("") || empty("Subbab belum tersedia", "Guru akan menambahkan materi di bab ini.")}</div></section><aside class="side-card"><div class="eyebrow">TEMAN BELAJARMU</div><h3>Pelan-pelan, yang penting paham.</h3><p style="text-align:left;margin-top:12px">Baca materi, catat hal penting, dan tandai selesai setelah kamu memahaminya.</p>${safeURL(b.pdf_bse) ? bookPreview(b) : '<p style="margin-top:16px">Buku BSE belum ditambahkan.</p>'}</aside></div>`
   );
 }
 const mediaTypes = [
   ["link_youtube", "Video pembelajaran"],
-  ["link_pdf", "PDF materi"],
+  ["link_pdf", "Berkas unduh materi (PDF / dokumen)"],
   ["link_mpi", "Media interaktif"],
   ["link_web", "Bacaan pendukung"],
-  ["link_gambar", "Rangkuman visual"],
-  ["link_soal", "Latihan soal"],
+  ["link_gambar", "Rangkuman gambar"],
+  ["link_soal", "Latihan soal (Google Forms / web)"],
 ];
+function bookPreview(chapter) {
+  const url = safeURL(chapter?.pdf_bse);
+  if (!url) return "";
+  const id = driveFileId(url);
+  const download = id
+    ? "https://drive.google.com/uc?export=download&id=" + id
+    : url;
+  const cover = id
+    ? `<span class="book-placeholder" aria-hidden="true">${icon("book")}<b>BUKU PENDAMPING</b></span><img class="book-thumbnail" src="https://drive.google.com/thumbnail?id=${attr(id)}&amp;sz=w480" alt="Sampul buku ${attr(chapter.nama)}" loading="lazy">`
+    : `<iframe class="book-mini-view" src="${attr(embedURL(url))}" title="Pratinjau kecil buku ${attr(chapter.nama)}" loading="lazy" tabindex="-1" aria-hidden="true" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+  return `<div class="book-card"><div class="eyebrow">BUKU PENDAMPING</div><a class="book-cover" href="${attr(url)}" target="_blank" rel="noopener noreferrer" aria-label="Buka buku ${attr(chapter.nama)}">${cover}<span class="book-cover-label">Lihat buku ↗</span></a><h3>${esc(chapter.nama)}</h3><p class="book-description">Baca sebagai pendamping materi pada bab ini.</p><div class="book-actions"><a class="button small light" href="${attr(url)}" target="_blank" rel="noopener noreferrer">Buka buku ↗</a><a class="text-link" href="${attr(download)}" target="_blank" rel="noopener noreferrer" download>Unduh ↓</a></div></div>`;
+}
+function inlineLessonMedia(item, key, label) {
+  const url = safeURL(item[key]);
+  if (!url) return "";
+  const video = key === "link_youtube",
+    image = key === "link_gambar",
+    pdf = key === "link_pdf";
+  const title = label + " — " + item.judul;
+  const media = image
+    ? `<a class="lesson-image-link" href="${attr(url)}" target="_blank" rel="noopener noreferrer"><img class="lesson-image" src="${attr(materialImageURL(url))}" alt="${attr(title)}" loading="lazy"><span class="lesson-image-fallback" hidden>Gambar belum dapat ditampilkan. Buka gambar asli ↗</span></a>`
+    : `<iframe class="lesson-embed ${video ? "lesson-video" : pdf ? "lesson-pdf" : "lesson-interactive"}" src="${attr(embedURL(url))}" title="${attr(title)}" ${video ? "" : 'loading="lazy"'} sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation allow-downloads" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  return `<section class="lesson-media" aria-labelledby="media-${key}"><header class="lesson-media-head"><div class="lesson-media-label"><span class="lesson-media-icon">${icon(video ? "video" : image ? "pen" : "book")}</span><h2 id="media-${key}">${label}</h2></div><a class="text-link" href="${attr(url)}" target="_blank" rel="noopener noreferrer" aria-label="Buka ${attr(title)} di tab baru">Buka di tab baru ↗</a></header>${media}${!video && !image ? '<p class="lesson-embed-help">Jika pratinjau tidak tersedia, gunakan Buka di tab baru untuk mengakses materi.</p>' : ""}</section>`;
+}
+function materialDownloadURL(value) {
+  const url = safeURL(value);
+  if (!url) return "";
+  const drive = driveFileId(url);
+  if (drive) return "https://drive.google.com/uc?export=download&id=" + drive;
+  const u = new URL(url),
+    doc =
+      u.hostname === "docs.google.com" &&
+      u.pathname.match(/^\/document\/d\/([\w-]+)(?:\/|$)/);
+  if (doc && doc[1] !== "e")
+    return u.searchParams.get("rtpof") === "true"
+      ? "https://drive.google.com/uc?export=download&id=" + doc[1]
+      : "https://docs.google.com/document/d/" + doc[1] + "/export?format=pdf";
+  return url;
+}
+const lessonSections = [
+  ["video", "Video", "video"],
+  ["materi", "Materi", "book"],
+  ["mpi", "MPI", "game"],
+  ["rangkuman", "Rangkuman", "pen"],
+  ["unduh", "Unduh Materi", "story"],
+  ["latihan", "Latihan Soal", "test"],
+];
+function lessonSectionContent(s, section) {
+  if (section === "video")
+    return safeURL(s.link_youtube)
+      ? inlineLessonMedia(s, "link_youtube", "Video pembelajaran")
+      : empty(
+          "Video segera hadir",
+          "Guru belum menambahkan video untuk subbab ini.",
+        );
+  if (section === "mpi")
+    return safeURL(s.link_mpi)
+      ? inlineLessonMedia(s, "link_mpi", "Media pembelajaran interaktif")
+      : empty(
+          "Media interaktif segera hadir",
+          "Guru belum menambahkan MPI untuk subbab ini.",
+        );
+  if (section === "rangkuman")
+    return safeURL(s.link_gambar)
+      ? inlineLessonMedia(s, "link_gambar", "Rangkuman visual")
+      : empty(
+          "Rangkuman segera hadir",
+          "Guru belum menambahkan rangkuman untuk subbab ini.",
+        );
+  if (section === "unduh")
+    return safeURL(s.link_pdf)
+      ? '<div class="lesson-download-bar"><div><strong>Berkas materi subbab</strong><p>Baca pratinjau atau simpan berkas untuk belajar kembali.</p></div><a class="button small" href="' +
+          attr(materialDownloadURL(s.link_pdf)) +
+          '" target="_blank" rel="noopener noreferrer" download>Unduh materi ↓</a></div>' +
+          inlineLessonMedia(s, "link_pdf", "Pratinjau berkas materi")
+      : empty(
+          "Berkas belum tersedia",
+          "Guru belum menambahkan berkas unduhan untuk subbab ini.",
+        );
+  if (section === "latihan")
+    return window.HumaLessonPractice
+      ? window.HumaLessonPractice.html(s, state.user?.id || "guest")
+      : empty(
+          "Latihan sedang disiapkan",
+          "Guru belum menambahkan soal untuk subbab ini.",
+        );
+  const notes = window.HumaLessonMaterial
+    ? window.HumaLessonMaterial.html(s)
+    : s.isi
+      ? '<section class="paper lesson-notes"><div class="prose">' +
+        esc(s.isi) +
+        "</div></section>"
+      : "";
+  const reading = safeURL(s.link_web)
+    ? inlineLessonMedia(s, "link_web", "Bacaan pendukung")
+    : "";
+  return (
+    notes + reading ||
+    empty(
+      "Bacaan materi sedang disiapkan",
+      "Guru belum menambahkan bacaan untuk subbab ini. Video, MPI, dan berkas unduhan tersedia pada tab masing-masing.",
+    )
+  );
+}
+
 function lesson(id) {
   const s = state.data.subbab.find((s) => s.id_subbab === id);
   if (!s)
@@ -389,26 +554,92 @@ function lesson(id) {
       "Kembali ke daftar untuk memilih materi.",
       '<a class="button" href="#materi">Daftar materi</a>',
     );
-  const b = state.data.bab.find((b) => b.id_bab === s.id_bab);
-  const links = mediaTypes.filter(([key]) => safeURL(s[key]));
-  const done = state.data.progress.includes(id);
+  const b = state.data.bab.find((b) => b.id_bab === s.id_bab),
+    section = route().section,
+    done = state.data.progress.includes(id);
+  const navigation =
+    '<nav class="lesson-tabs" aria-label="Bagian subbab">' +
+    lessonSections
+      .map(
+        ([key, label, glyph]) =>
+          '<a id="section-' +
+          key +
+          '" href="#belajar/' +
+          encodeURIComponent(id) +
+          "/" +
+          key +
+          '" class="lesson-tab ' +
+          (section === key ? "active" : "") +
+          '" ' +
+          (section === key ? 'aria-current="page"' : "") +
+          ">" +
+          icon(glyph) +
+          "<span>" +
+          label +
+          "</span></a>",
+      )
+      .join("") +
+    "</nav>";
+  const side =
+    '<aside class="lesson-aside"><section class="side-card"><div class="eyebrow">PERJALANAN BELAJARMU</div><h3>Dalam bab ini</h3><div class="lesson-list">' +
+    subsFor(s.id_bab)
+      .map(
+        (item) =>
+          '<a class="resource" href="#belajar/' +
+          encodeURIComponent(item.id_subbab) +
+          '" ' +
+          (item.id_subbab === id ? 'aria-current="page"' : "") +
+          ">" +
+          esc(item.judul) +
+          " " +
+          (state.data.progress.includes(item.id_subbab) ? "✓" : "→") +
+          "</a>",
+      )
+      .join("") +
+    "</div></section>" +
+    (safeURL(b?.pdf_bse)
+      ? '<section class="side-card">' + bookPreview(b) + "</section>"
+      : "") +
+    "</aside>";
+  const completion =
+    '<section class="lesson-completion"><div><strong>Selesai memahami materi?</strong><p>Tandai langkah belajarmu setelah membaca dan berlatih.</p></div><button class="button ' +
+    (done ? "light" : "") +
+    '" data-action="complete" data-id="' +
+    attr(id) +
+    '" ' +
+    (done ? "disabled" : "") +
+    ">" +
+    (done
+      ? "✓ Sudah selesai dipelajari"
+      : state.user
+        ? "Tandai selesai ✓"
+        : "Masuk untuk menyimpan progres") +
+    "</button></section>";
   return (
-    `<a href="#bab/${encodeURIComponent(s.id_bab)}" class="text-link">← ${esc(b?.nama || "Daftar subbab")}</a><br><br>` +
+    '<a href="#bab/' +
+    encodeURIComponent(s.id_bab) +
+    '" class="text-link">← ' +
+    esc(b?.nama || "Daftar subbab") +
+    "</a><br><br>" +
     heading(
       esc(b?.kelas || "MATERI"),
       esc(s.judul),
-      "Ruang untuk memahami, mencoba, dan bertumbuh.",
+      "Pahami materi, lihat rangkuman, lalu uji pemahamanmu.",
     ) +
-    `<div class="lesson-layout"><article class="paper">${s.isi ? `<div class="eyebrow">${demo ? "CONTOH MATERI" : "CATATAN MATERI"}</div><div class="prose">${esc(s.isi)}</div>` : links.length ? "<h2>Siap belajar?</h2><p>Pilih media di bawah untuk membuka materi dari guru.</p>" : empty("Materi sedang disiapkan", "Belum ada isi atau media pada subbab ini.")}<div class="resources">${links.map(([key, label]) => `<button class="resource" data-action="media" data-id="${attr(id)}" data-kind="${key}"><span>${label}</span><span>Buka ↗</span></button>`).join("")}</div>${s.isi || links.length ? `<div class="modal-actions"><button class="button ${done ? "light" : ""}" data-action="complete" data-id="${attr(id)}" ${done ? "disabled" : ""}>${done ? "✓ Sudah selesai dipelajari" : state.user ? "Tandai selesai ✓" : "Masuk untuk menyimpan progres"}</button></div>` : ""}</article><aside><section class="side-card"><h3>Dalam bab ini</h3><div class="lesson-list">${subsFor(
-      s.id_bab,
-    )
-      .map(
-        (item) =>
-          `<a class="resource" href="#belajar/${encodeURIComponent(item.id_subbab)}" ${item.id_subbab === id ? 'aria-current="page"' : ""}>${esc(item.judul)} ${state.data.progress.includes(item.id_subbab) ? "✓" : "→"}</a>`,
-      )
-      .join("")}</div></section></aside></div>`
+    navigation +
+    '<div class="lesson-layout lesson-study-layout"><article class="lesson-content" aria-label="' +
+    lessonSections.find((t) => t[0] === section)[1] +
+    '" aria-labelledby="section-' +
+    section +
+    '">' +
+    lessonSectionContent(s, section) +
+    completion +
+    "</article>" +
+    side +
+    "</div>"
   );
 }
+
 function catalog(type) {
   const isGame = type === "game";
   const list = state.data[type].filter((x) =>
@@ -522,8 +753,12 @@ const forms = {
     fields: [
       ["id_bab", "Bab induk", "chapter", true],
       ["judul", "Judul subbab", "text", true],
-      ["isi", "Catatan / isi materi", "textarea"],
-      ...mediaTypes.map(([k, l]) => [k, l, "url"]),
+      ["isi", "Isi materi teks biasa (opsional)", "textarea"],
+      ["materi_json", "Materi terstruktur (Materi_JSON)", "textarea"],
+      ...mediaTypes
+        .filter(([k]) => k !== "link_soal")
+        .map(([k, l]) => [k, l, "url"]),
+      ["soal_json", "Bank latihan subbab (Soal_JSON)", "textarea"],
     ],
   },
   TKA: {
@@ -724,6 +959,17 @@ function render() {
         '<a href="#beranda" class="button">Beranda</a>',
       ))
   )();
+  if (r.page === "belajar" && r.section === "latihan") {
+    const lessonItem = state.data.subbab.find(
+      (item) => item.id_subbab === r.id,
+    );
+    if (lessonItem)
+      window.HumaLessonPractice?.mount(
+        $("#main"),
+        lessonItem,
+        state.user?.id || "guest",
+      );
+  }
   document.title =
     ($("#main h1")?.textContent || "Ruang Belajar") + " — Huma Belajar";
 }
@@ -1130,4 +1376,19 @@ window.addEventListener("hashchange", () => {
     preventScroll: true,
   });
 });
+document.addEventListener(
+  "error",
+  (event) => {
+    const image = event.target;
+    if (image?.classList?.contains("book-thumbnail")) image.hidden = true;
+    if (image?.classList?.contains("lesson-image")) {
+      image.hidden = true;
+      const fallback = image.parentElement.querySelector(
+        ".lesson-image-fallback",
+      );
+      if (fallback) fallback.hidden = false;
+    }
+  },
+  true,
+);
 load();
