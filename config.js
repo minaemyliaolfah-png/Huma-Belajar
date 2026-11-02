@@ -9,4 +9,12 @@ window.HUMA_CONFIG = Object.freeze({
   // Otomatis: assets/bab/<ID_Bab>.jpg, sesuai ID_Bab di Spreadsheet.
   // Untuk nama/format lain, isi pemetaan, misalnya "B1": "assets/bab/surat-resmi.png".
   chapterThumbnails: {},
+  // Sampul kelas XII yang sudah disiapkan. Pemetaan ID di atas tetap diutamakan.
+  chapterArtwork: [
+    { kelas: "XII", topik: ["surat resmi", "mengomunikasikan informasi penting"], src: "assets/bab/bab-1.png" },
+    { kelas: "XII", topik: ["prosedur", "produktivitas"], src: "assets/bab/bab-2.png" },
+    { kelas: "XII", topik: ["novel", "sekolah aman dan nyaman"], src: "assets/bab/bab-3.png" },
+    { kelas: "XII", topik: ["eksplanasi", "kecerdasan artifisial"], src: "assets/bab/bab-4.png" },
+    { kelas: "XII", topik: ["esai", "kearifan lokal"], src: "assets/bab/bab-5.png" },
+  ],
 });

@@ -407,7 +407,13 @@ function courseCard(b, index) {
 }
 function chapterThumbnail(chapter) {
   if (!chapter?.id_bab) return "";
+  const title = String(chapter.nama || "").toLowerCase().replace(/\s+/g, " ");
+  const artwork = (window.HUMA_CONFIG.chapterArtwork || []).find((item) =>
+    normalizeClass(item.kelas) === normalizeClass(chapter.kelas) &&
+    item.topik.some((keyword) => title.includes(keyword.toLowerCase()))
+  );
   const value = window.HUMA_CONFIG.chapterThumbnails?.[chapter.id_bab] ||
+    artwork?.src ||
     "assets/bab/" + encodeURIComponent(chapter.id_bab) + ".jpg";
   if (typeof value !== "string") return "";
   if (value.startsWith("assets/") && !/[\\?#]/.test(value)) {
