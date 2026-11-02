@@ -48,7 +48,7 @@ const state = {
   },
   user: session?.user || null,
   token: session?.token || "",
-  kelas: store.get("huma-class", "Kelas X"),
+  kelas: store.get("huma-class", ""),
   query: "",
   adminType: "Bab",
   loading: true,
@@ -344,14 +344,30 @@ function shell() {
     "Beranda";
   $("#breadcrumb").innerHTML = `Ruang belajar / <b>${title}</b>`;
 }
+function normalizeClass(value) {
+  const text = String(value || "").trim().replace(/\s+/g, " ");
+  const match = /^(?:kelas\s*)?(XII|XI|X|12|11|10)$/i.exec(text);
+  if (match) return "Kelas " + ({ 10: "X", 11: "XI", 12: "XII" }[match[1]] || match[1].toUpperCase());
+  return /^semua\s+kelas$/i.test(text) ? "Semua Kelas" : text;
+}
+function availableClasses() {
+  const classes = [...new Set(state.data.bab.map((b) => normalizeClass(b.kelas)))]
+    .filter((v) => v && v !== "Semua Kelas");
+  if (!classes.length && state.data.bab.some((b) => normalizeClass(b.kelas) === "Semua Kelas"))
+    classes.push(state.user?.role === "Siswa" && normalizeClass(state.user.kelas) || "Semua Kelas");
+  return classes.sort((a, b) => a.localeCompare(b, "id", { numeric: true }));
+}
+function syncClassSelection() {
+  const classes = availableClasses();
+  const selected = normalizeClass(state.kelas);
+  state.kelas = classes.includes(selected) ? selected :
+    classes.includes(normalizeClass(state.user?.kelas)) ? normalizeClass(state.user.kelas) : classes[0] || "";
+  return classes;
+}
 function classSelect() {
-  return `<select class="class-select" id="class-select" aria-label="Pilih kelas">${[
-    "Kelas X",
-    "Kelas XI",
-    "Kelas XII",
-    ...state.data.bab.map((b) => b.kelas),
-  ]
-    .filter((v, i, a) => a.indexOf(v) === i && v !== "Semua Kelas")
+  const classes = syncClassSelection();
+  if (!classes.length) return '<select class="class-select" id="class-select" aria-label="Pilih kelas" disabled><option>Belum ada kelas</option></select>';
+  return `<select class="class-select" id="class-select" aria-label="Pilih kelas">${classes
     .map(
       (k) =>
         `<option ${state.kelas === k ? "selected" : ""}>${esc(k)}</option>`,
@@ -359,8 +375,9 @@ function classSelect() {
     .join("")}</select>`;
 }
 function classBabs() {
+  syncClassSelection();
   return state.data.bab.filter(
-    (b) => b.kelas === state.kelas || b.kelas === "Semua Kelas",
+    (b) => normalizeClass(b.kelas) === state.kelas || normalizeClass(b.kelas) === "Semua Kelas",
   );
 }
 function subsFor(id) {
@@ -1003,7 +1020,7 @@ function editModal(type, id) {
     (id ? "Edit " : "Tambah ") + f.label,
     `<form id="edit-form" data-kind="${type}" data-id="${attr(id || "")}">${f.fields
       .map(([k, label, input, required]) => {
-        const val = item[k] || "";
+        const val = input === "class" ? normalizeClass(item[k]) : item[k] || "";
         const options =
           input === "class"
             ? [
