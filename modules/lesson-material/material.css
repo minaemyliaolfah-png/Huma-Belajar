@@ -1,0 +1,160 @@
+.lm-article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  min-width: 0;
+}
+.lm-heading {
+  padding: 30px 34px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(125deg, #f2f9f5, #fff);
+}
+.lm-heading .eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.6px;
+}
+.lm-heading h2 {
+  font-size: clamp(22px, 2.3vw, 30px);
+  line-height: 1.45;
+  letter-spacing: -0.6px;
+  margin: 12px 0;
+}
+.lm-heading p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+.lm-body {
+  padding: 30px 34px;
+  font-size: 14px;
+  line-height: 2;
+  color: #405b63;
+  overflow-wrap: anywhere;
+}
+.lm-body p {
+  white-space: pre-wrap;
+  margin: 0 0 18px;
+}
+.lm-body ul {
+  padding-left: 21px;
+  margin: 12px 0 20px;
+}
+.lm-body li {
+  padding-left: 5px;
+  margin: 7px 0;
+  white-space: pre-wrap;
+}
+.lm-body h3 {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.lm-goals {
+  border: 1px solid #d4e6dd;
+  background: #f1f8f3;
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 28px;
+}
+.lm-goals h3 {
+  font-size: 13px;
+  color: #397158;
+}
+.lm-goals ul {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.lm-intro {
+  font-size: 15px;
+  color: #4c6c72;
+  margin-bottom: 30px;
+}
+.lm-section {
+  padding: 8px 0 24px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.lm-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+  margin-bottom: 18px;
+}
+.lm-section-head > span {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--teal);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.lm-section-head h3 {
+  margin: 0;
+}
+.lm-example {
+  border-left: 3px solid #e2b567;
+  background: #fcf6e9;
+  padding: 18px 22px;
+  border-radius: 0 9px 9px 0;
+  margin: 20px 0;
+}
+.lm-example > strong {
+  font-size: 9px;
+  color: #a0783d;
+  letter-spacing: 1.5px;
+}
+.lm-example p {
+  font-size: 13px;
+  margin: 8px 0 0;
+}
+.lm-summary {
+  border: 1px solid #cfe4dd;
+  border-radius: 12px;
+  padding: 22px;
+  background: #f0f7f4;
+  margin-top: 24px;
+}
+.lm-summary h3 {
+  font-size: 16px;
+}
+.lm-summary ul {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+.lesson-tabs {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {
+  .lesson-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .lesson-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lm-heading {
+    padding: 22px;
+  }
+  .lm-body {
+    padding: 22px;
+    font-size: 13px;
+  }
+  .lm-body h3 {
+    font-size: 16px;
+  }
+  .lm-goals,
+  .lm-summary {
+    padding: 17px;
+  }
+  .lm-section-head {
+    gap: 9px;
+  }
+  .lm-intro {
+    font-size: 14px;
+  }
+  .lm-example {
+    padding: 15px;
+  }
+}
