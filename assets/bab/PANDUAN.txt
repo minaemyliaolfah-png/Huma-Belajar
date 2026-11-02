@@ -1,0 +1,19 @@
+THUMBNAIL BAB
+
+Masukkan gambar JPG di folder ini. Nama berkas mengikuti ID_Bab dari sheet Bab.
+Contoh: jika ID_Bab = B1, nama gambar B1.jpg. Jika ID_Bab = B2, nama gambar B2.jpg.
+Gunakan ID yang benar-benar ada di Spreadsheet Anda; jangan mengganti ID database.
+Huruf besar/kecil nama berkas harus sama. Gambar disarankan 1280 x 720 piksel (16:9).
+Satu gambar dipakai untuk satu bab dan tampil di kartu bab pada Beranda dan Materi Belajar.
+
+Unggah seluruh folder assets/bab bersama gambar ke GitHub, lalu muat ulang aplikasi.
+Jika gambar belum ada atau gagal dimuat, kartu tetap menampilkan ilustrasi bawaan.
+
+Jika ingin PNG/WebP atau nama bebas, isi chapterThumbnails pada config.js. Contoh:
+chapterThumbnails: {
+  "B1": "assets/bab/surat-resmi.png",
+  "B2": "assets/bab/prosedur.webp"
+},
+Kunci B1/B2 harus diganti dengan ID_Bab sebenarnya. Nama file tidak mengikuti judul atau urutan
+hasil pencarian, sehingga sampul tidak tertukar saat daftar bab berubah.
+Tidak perlu menambah kolom Spreadsheet atau mengganti Apps Script untuk thumbnail bab.

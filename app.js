@@ -259,7 +259,6 @@ function route() {
     page: parts[0] || "beranda",
     id,
     section: [
-      "video",
       "materi",
       "mpi",
       "rangkuman",
@@ -403,7 +402,21 @@ function empty(title, desc, action = "") {
 }
 function courseCard(b, index) {
   const s = summary([b]);
-  return `<article class="course"><a class="course-art ${["", "peach", "lilac"][index % 3]}" href="#bab/${encodeURIComponent(b.id_bab)}" aria-label="Buka ${attr(b.nama)}"><span class="tag">${esc(b.kelas)}</span>${icon(["leaf", "pen", "story"][index % 3])}<span class="number">${String(index + 1).padStart(2, "0")}</span></a><div class="course-body"><div class="eyebrow">BAHASA INDONESIA · BAB ${String(index + 1).padStart(2, "0")}</div><h3><a href="#bab/${encodeURIComponent(b.id_bab)}">${esc(b.nama)}</a></h3><p>${esc(b.deskripsi)}</p><div class="course-meta"><span>${s.total} subbab</span><span>${s.done}/${s.total} selesai</span></div><div class="track" role="progressbar" aria-label="Progres ${attr(b.nama)}" aria-valuenow="${s.pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${s.pct}%"></span></div><div class="course-bottom"><span>${s.pct === 100 && s.total ? "✓ Tuntas" : "Belajar sesuai ritmemu"}</span><a href="#bab/${encodeURIComponent(b.id_bab)}">${s.done ? "Lanjutkan" : "Mulai belajar"} ↗</a></div></div></article>`;
+  const cover = chapterThumbnail(b);
+  return `<article class="course"><a class="course-art chapter-art ${["", "peach", "lilac"][index % 3]}" href="#bab/${encodeURIComponent(b.id_bab)}" aria-label="Buka ${attr(b.nama)}"><span class="tag">${esc(normalizeClass(b.kelas))}</span>${icon(["leaf", "pen", "story"][index % 3])}${cover ? `<img class="chapter-thumbnail" src="${attr(cover)}" alt="" loading="lazy" decoding="async">` : ""}<span class="number">${String(index + 1).padStart(2, "0")}</span></a><div class="course-body"><div class="eyebrow">BAHASA INDONESIA · BAB ${String(index + 1).padStart(2, "0")}</div><h3><a href="#bab/${encodeURIComponent(b.id_bab)}">${esc(b.nama)}</a></h3><p>${esc(b.deskripsi)}</p><div class="course-meta"><span>${s.total} subbab</span><span>${s.done}/${s.total} selesai</span></div><div class="track" role="progressbar" aria-label="Progres ${attr(b.nama)}" aria-valuenow="${s.pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${s.pct}%"></span></div><div class="course-bottom"><span>${s.pct === 100 && s.total ? "✓ Tuntas" : "Belajar sesuai ritmemu"}</span><a href="#bab/${encodeURIComponent(b.id_bab)}">${s.done ? "Lanjutkan" : "Mulai belajar"} ↗</a></div></div></article>`;
+}
+function chapterThumbnail(chapter) {
+  if (!chapter?.id_bab) return "";
+  const value = window.HUMA_CONFIG.chapterThumbnails?.[chapter.id_bab] ||
+    "assets/bab/" + encodeURIComponent(chapter.id_bab) + ".jpg";
+  if (typeof value !== "string") return "";
+  if (value.startsWith("assets/") && !/[\\?#]/.test(value)) {
+    try {
+      if (!decodeURIComponent(value).split("/").some((part) => part === ".." || part === ".")) return value;
+    } catch {}
+    return "";
+  }
+  return safeURL(value);
 }
 function home() {
   const prog = summary(),
@@ -498,7 +511,6 @@ function materialDownloadURL(value) {
   return url;
 }
 const lessonSections = [
-  ["video", "Video", "video"],
   ["materi", "Materi", "book"],
   ["mpi", "MPI", "game"],
   ["rangkuman", "Rangkuman", "pen"],
@@ -506,13 +518,6 @@ const lessonSections = [
   ["latihan", "Latihan Soal", "test"],
 ];
 function lessonSectionContent(s, section) {
-  if (section === "video")
-    return safeURL(s.link_youtube)
-      ? inlineLessonMedia(s, "link_youtube", "Video pembelajaran")
-      : empty(
-          "Video segera hadir",
-          "Guru belum menambahkan video untuk subbab ini.",
-        );
   if (section === "mpi")
     return safeURL(s.link_mpi)
       ? inlineLessonMedia(s, "link_mpi", "Media pembelajaran interaktif")
@@ -554,11 +559,14 @@ function lessonSectionContent(s, section) {
   const reading = safeURL(s.link_web)
     ? inlineLessonMedia(s, "link_web", "Bacaan pendukung")
     : "";
+  const video = safeURL(s.link_youtube)
+    ? inlineLessonMedia(s, "link_youtube", "Video pembelajaran")
+    : "";
   return (
-    notes + reading ||
+    video + notes + reading ||
     empty(
       "Bacaan materi sedang disiapkan",
-      "Guru belum menambahkan bacaan untuk subbab ini. Video, MPI, dan berkas unduhan tersedia pada tab masing-masing.",
+      "Guru belum menambahkan video atau bacaan untuk subbab ini.",
     )
   );
 }
@@ -1397,7 +1405,7 @@ document.addEventListener(
   "error",
   (event) => {
     const image = event.target;
-    if (image?.classList?.contains("book-thumbnail")) image.hidden = true;
+    if (image?.classList?.contains("book-thumbnail") || image?.classList?.contains("chapter-thumbnail")) image.hidden = true;
     if (image?.classList?.contains("lesson-image")) {
       image.hidden = true;
       const fallback = image.parentElement.querySelector(

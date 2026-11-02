@@ -6,4 +6,7 @@ window.HUMA_CONFIG = Object.freeze({
   dictionaryApiUrl: "", // URL paket Apps Script menu Kamus. Kosong = ikut backend utama.
   worksApiUrl: "", // URL paket Apps Script Karya Siswa. Kosong = ikut backend utama.
   schoolName: "Ruang belajar Bahasa Indonesia",
+  // Otomatis: assets/bab/<ID_Bab>.jpg, sesuai ID_Bab di Spreadsheet.
+  // Untuk nama/format lain, isi pemetaan, misalnya "B1": "assets/bab/surat-resmi.png".
+  chapterThumbnails: {},
 });
