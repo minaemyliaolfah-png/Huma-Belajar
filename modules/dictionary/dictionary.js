@@ -23,12 +23,12 @@ window.HumaDictionary = (() => {
   let root,
     context,
     userKey = "",
-    tab = "words",
+    tab = "translate",
     query = "",
     letter = "",
     page = 1,
     verifiedOnly = false,
-    language = "dayak",
+    language = "auto",
     translationQuery = "",
     formTarget = null,
     message = "",
@@ -160,7 +160,7 @@ window.HumaDictionary = (() => {
   }
   function translate() {
     const matches = Core.lookup(entries(), translationQuery, language);
-    return `<section class="dk-translator"><div><span class="dk-overline">JEMBATAN TIGA BAHASA</span><h2>Temukan padanan katanya.</h2><p>Terjemahan kata atau ungkapan dicari dari entri kamus. Arti yang sama bisa memiliki lebih dari satu padanan.</p></div><form id="dk-translate-form"><label class="dk-field">Bahasa asal<select id="dk-language" name="language"><option value="dayak" ${language === "dayak" ? "selected" : ""}>Dayak Ngaju</option><option value="indo" ${language === "indo" ? "selected" : ""}>Indonesia</option><option value="inggris" ${language === "inggris" ? "selected" : ""}>Inggris</option></select></label><label class="dk-field">Kata atau ungkapan<input name="word" required maxlength="150" placeholder="Contoh: abas" value="${esc(translationQuery)}"></label><button type="submit" class="dk-button">Cari padanan →</button></form></section>${translationQuery ? `<div class="dk-results-meta">${matches.length} padanan tepat untuk “${esc(translationQuery)}”</div>${matches.length ? matches.map((e) => `<section class="dk-translate-result">${wordCard(e)}${!e.inggris ? `<div class="dk-machine">${english[e.id] ? `<span class="dk-badge">TERJEMAHAN MESIN · BELUM DITINJAU</span><p>${esc(english[e.id])}</p>${btn("propose-english", "Usulkan hasil Inggris untuk ditinjau", "ghost", `data-id="${e.id}"`)}` : `<p>Padanan Inggris belum tersedia. Kontributor dapat mengisinya untuk ditinjau kurator.</p>${btn("machine", "Bantu terjemahkan arti Indonesia ke Inggris", "ghost", `data-id="${e.id}" ${busy ? "disabled" : ""}`)}`}</div>` : ""}</section>`).join("") : `<div class="dk-empty"><h3>Belum ada padanan tepat.</h3><p>Fitur ini mencari kata/ungkapan dalam kamus, bukan menerjemahkan kalimat bebas. Coba bentuk dasar atau tambah entri melalui Kontribusi.</p>${btn("contribute", "Usulkan kosakata baru")}</div>`}` : '<p class="dk-help">Cari padanan kata Ngaju, Indonesia, dan Inggris. Padanan bantu yang tersedia dapat diajukan untuk ditinjau atau dikoreksi bersama kurator.</p>'}`;
+    return `<section class="dk-translator"><div><span class="dk-overline">JEMBATAN TIGA BAHASA</span><h2>Temukan padanan katanya.</h2><p>Terjemahan kata atau ungkapan dicari dari entri kamus. Arti yang sama bisa memiliki lebih dari satu padanan.</p></div><form id="dk-translate-form"><label class="dk-field">Bahasa asal<select id="dk-language" name="language"><option value="auto" ${language === "auto" ? "selected" : ""}>Otomatis · tiga bahasa</option><option value="dayak" ${language === "dayak" ? "selected" : ""}>Dayak Ngaju</option><option value="indo" ${language === "indo" ? "selected" : ""}>Indonesia</option><option value="inggris" ${language === "inggris" ? "selected" : ""}>Inggris</option></select></label><label class="dk-field">Kata atau ungkapan<input name="word" required maxlength="150" placeholder="Contoh: abas" value="${esc(translationQuery)}"></label><button type="submit" class="dk-button">Cari padanan →</button></form></section>${translationQuery ? `<div class="dk-results-meta">${matches.length} hasil untuk “${esc(translationQuery)}”</div>${matches.length ? matches.map((e) => `<section class="dk-translate-result">${wordCard(e)}${!e.inggris ? `<div class="dk-machine">${english[e.id] ? `<span class="dk-badge">TERJEMAHAN MESIN · BELUM DITINJAU</span><p>${esc(english[e.id])}</p>${btn("propose-english", "Usulkan hasil Inggris untuk ditinjau", "ghost", `data-id="${e.id}"`)}` : `<p>Padanan Inggris belum tersedia. Kontributor dapat mengisinya untuk ditinjau kurator.</p>${btn("machine", "Bantu terjemahkan arti Indonesia ke Inggris", "ghost", `data-id="${e.id}" ${busy ? "disabled" : ""}`)}`}</div>` : ""}</section>`).join("") : `<div class="dk-empty"><h3>Kata belum ditemukan.</h3><p>Fitur ini mencari kata/ungkapan dalam kamus, bukan menerjemahkan kalimat bebas. Coba bentuk dasar atau tambah entri melalui Kontribusi.</p>${btn("contribute", "Usulkan kosakata baru")}</div>`}` : '<p class="dk-help">Cari padanan kata Ngaju, Indonesia, dan Inggris. Padanan bantu yang tersedia dapat diajukan untuk ditinjau atau dikoreksi bersama kurator.</p>'}`;
   }
   function people() {
     const list = contributors();
@@ -223,14 +223,14 @@ window.HumaDictionary = (() => {
       ? local.proposals.filter((p) => p.status === "Menunggu").length
       : remote.stats.menunggu;
     const tabs = [
-      ["words", "Daftar kata"],
       ["translate", "Terjemahkan"],
+      ["words", "Daftar kata"],
       ["people", "Kontributor"],
       ["contribute", "Kontribusi +"],
       ["mine", "Usulan saya"],
       ...(curator() ? [["review", "Kurasi"]] : []),
     ];
-    if (tab === "review" && !curator()) tab = "words";
+    if (tab === "review" && !curator()) tab = "translate";
     root.innerHTML = `<div class="dk-app"><section class="dk-hero"><div><span class="dk-overline">WARISAN KATA, DIRAWAT BERSAMA</span><h1>Kamus Dayak Ngaju.<br>Jembatan tiga bahasa.</h1><p>Telusuri kata, temukan makna, dan bantu merawat bahasa kita.</p></div><div class="dk-hero-art" aria-hidden="true"><span>Ngaju</span><b>↔</b><span>Indonesia</span><b>↔</b><span>English</span></div></section><div class="dk-stats">${[
       [s.entries.toLocaleString("id-ID"), "Entri & subentri"],
       [s.words.toLocaleString("id-ID"), "Bentuk kata unik"],
@@ -263,7 +263,7 @@ window.HumaDictionary = (() => {
       try {
         await menuClient.logout();
         context.user = null;
-        tab = "words";
+        tab = "translate";
         userKey = "";
         mount(root, context);
       } catch (err) {
@@ -554,11 +554,12 @@ window.HumaDictionary = (() => {
     if (e.target.id === "dk-search") {
       const position = e.target.selectionStart;
       query = e.target.value;
+      letter = "";
       page = 1;
       render();
       const input = root.querySelector("#dk-search");
       input.focus();
-      input.setSelectionRange(position, position);
+      try { input.setSelectionRange(position, position); } catch {}
     }
     if (e.target.id === "dk-verified") {
       verifiedOnly = e.target.checked;

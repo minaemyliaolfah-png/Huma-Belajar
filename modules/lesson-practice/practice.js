@@ -23,7 +23,7 @@ window.HumaLessonPractice = (() => {
     return (h >>> 0).toString(36);
   }
   function state(item, user) {
-    const bank = C.parse(item.soal_json);
+    const bank = item.quiz_bank || C.parse(item.soal_json);
     if (!bank) return null;
     const key =
       "huma-subquiz:" +
@@ -64,7 +64,7 @@ window.HumaLessonPractice = (() => {
     const { bank, answers, checked } = s,
       answered = Object.keys(answers).length,
       result = checked ? C.grade(bank, answers) : null;
-    return `<header class="lq-heading"><div><span class="eyebrow">LATIHAN SUBBAB</span><h2>${esc(bank.judul || "Uji pemahamanmu")}</h2><p>${esc(bank.petunjuk || "Pilih satu jawaban paling tepat pada setiap soal, lalu periksa hasilnya.")}</p></div><span class="tag">${bank.soal.length} soal</span></header>${result ? `<section class="lq-result" role="status" tabindex="-1"><div><span>NILAI LATIHAN</span><strong>${result.score}</strong></div><p>${result.correct} dari ${result.total} jawaban benar.<br>Baca pembahasan untuk memahami jawabanmu.</p><button type="button" class="button small light" data-lq="reset">Coba lagi ↻</button></section>` : ""}<div class="lq-tracker"><span id="lq-count">${answered} dari ${bank.soal.length} soal terjawab</span><progress id="lq-progress" value="${answered}" max="${bank.soal.length}" aria-label="Jumlah soal terjawab"></progress></div>${bank.bacaan ? `<section class="lq-passage"><h3>Bacaan untuk menjawab soal</h3><p>${esc(bank.bacaan)}</p></section>` : ""}<form id="lq-form"><div class="lq-questions">${bank.soal
+    return `<header class="lq-heading"><div><span class="eyebrow">${bank.tipe === "bab" ? "LATIHAN AKHIR BAB" : "LATIHAN SUBBAB"}</span><h2>${esc(bank.judul || "Uji pemahamanmu")}</h2><p>${esc(bank.petunjuk || "Pilih satu jawaban paling tepat pada setiap soal, lalu periksa hasilnya.")}</p></div><span class="tag">${bank.soal.length} soal</span></header>${result ? `<section class="lq-result" role="status" tabindex="-1"><div><span>NILAI LATIHAN</span><strong>${result.score}</strong></div><p>${result.correct} dari ${result.total} jawaban benar.<br>Baca pembahasan untuk memahami jawabanmu.</p><button type="button" class="button small light" data-lq="reset">Coba lagi ↻</button></section>` : ""}<div class="lq-tracker"><span id="lq-count">${answered} dari ${bank.soal.length} soal terjawab</span><progress id="lq-progress" value="${answered}" max="${bank.soal.length}" aria-label="Jumlah soal terjawab"></progress></div>${bank.bacaan ? `<section class="lq-passage"><h3>Bacaan untuk menjawab soal</h3><p>${esc(bank.bacaan)}</p></section>` : ""}<form id="lq-form"><div class="lq-questions">${bank.soal
       .map(
         (q, i) =>
           `<fieldset class="lq-question"><legend>SOAL ${i + 1}</legend>${q.bacaan ? `<p class="lq-passage">${esc(q.bacaan)}</p>` : ""}<h3>${esc(q.pertanyaan)}</h3>${Object.entries(
@@ -95,7 +95,7 @@ window.HumaLessonPractice = (() => {
       return `<section class="paper"><h2>Latihan belum dapat ditampilkan</h2><p>Bank soal perlu diperiksa oleh guru.</p><p class="helper">${esc(e.message)}</p></section>`;
     }
   }
-  function mount(container, item, user = "guest") {
+  function mount(container, item, user = "guest", onReset = null) {
     const root = container.querySelector("#lesson-quiz");
     if (!root) return;
     let s;
@@ -133,6 +133,7 @@ window.HumaLessonPractice = (() => {
     });
     root.addEventListener("click", (e) => {
       if (!e.target.closest('[data-lq="reset"]')) return;
+      if (onReset) { onReset(); return; }
       s.answers = {};
       s.checked = false;
       persist(s);

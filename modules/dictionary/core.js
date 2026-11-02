@@ -44,17 +44,17 @@
         (!verified || e.status_verifikasi === "Terverifikasi"),
     );
   }
-  function lookup(entries, q, language = "dayak") {
+  function lookup(entries, q, language = "auto") {
     const term = normalize(q);
     if (!term) return [];
-    return entries.filter(
-      (e) =>
-        normalize(e[language]) === term ||
-        (language !== "dayak" &&
-          String(e[language] || "")
-            .split(/[;,]/)
-            .some((x) => normalize(x) === term)),
-    );
+    const fields=language==='auto'?['dayak','indo','inggris']:[language];
+    const score=e=>Math.min(...fields.map(field=>{
+      const value=normalize(e[field]);
+      if(value===term || value.split(/[;,/]/).some(v=>v.trim()===term))return 0;
+      if(value.includes(term))return 1;
+      return 2;
+    }));
+    return entries.map((e,i)=>({e,i,score:score(e)})).filter(x=>x.score<2).sort((a,b)=>a.score-b.score||a.i-b.i).map(x=>x.e);
   }
   function stats(entries) {
     return {

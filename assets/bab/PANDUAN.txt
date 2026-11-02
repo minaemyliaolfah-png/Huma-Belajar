@@ -1,5 +1,30 @@
 THUMBNAIL BAB
 
+LIMA GAMBAR SUDAH TERSEDIA
+bab-1.png: Surat Resmi, warna mint.
+bab-2.png: Teks Prosedur, warna peach.
+bab-3.png: Novel, warna lavender.
+bab-4.png: Teks Eksplanasi, warna biru.
+bab-5.png: Esai dan Kearifan Lokal, warna pasir.
+
+Gambar merupakan hasil imagegen berdasarkan preview yang disetujui, dalam format PNG landscape.
+Sumber resolusi tinggi dipertahankan (1672 x 941 piksel, mendekati 16:9).
+Brief gambar: judul navy tebal di kiri, ilustrasi dimensional sederhana di kanan, label bab,
+wordmark huma belajar, warna pastel konsisten, dengan objek surat, langkah prosedur, novel,
+diagram sebab-akibat, serta halaman esai dan anyaman sesuai topik masing-masing.
+
+config.js sudah memetakan kelima gambar ke nama/topik bab kelas XII melalui chapterArtwork.
+ID_Bab 1 sampai 5 yang digunakan pada Spreadsheet Anda juga sudah dipasangkan langsung
+melalui chapterThumbnails. File tetap bernama bab-1.png sampai bab-5.png, tidak perlu diganti.
+Pencarian topik membaca Nama_Bab DAN Deskripsi, sehingga nama singkat seperti Bab 1 tetap bekerja.
+Nama bab dapat memakai judul ringkas atau judul bab buku yang sesuai. Tidak bergantung pada
+urutan pencarian atau format ID_Bab. Jika nama bab berbeda, sesuaikan kata kunci topik di config.js,
+atau gunakan pemetaan ID_Bab pada chapterThumbnails. Pemetaan ID selalu diutamakan.
+Unggah app.js, config.js dan kelima PNG dalam assets/bab ke GitHub untuk mengaktifkannya.
+Untuk perbaikan pencocokan terbaru, unggah juga index.html agar browser memuat versi baru.
+
+MENAMBAHKAN ATAU MENGGANTI SAMPUL SENDIRI
+
 Masukkan gambar JPG di folder ini. Nama berkas mengikuti ID_Bab dari sheet Bab.
 Contoh: jika ID_Bab = B1, nama gambar B1.jpg. Jika ID_Bab = B2, nama gambar B2.jpg.
 Gunakan ID yang benar-benar ada di Spreadsheet Anda; jangan mengganti ID database.

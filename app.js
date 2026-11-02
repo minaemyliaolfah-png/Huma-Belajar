@@ -260,7 +260,6 @@ function route() {
     id,
     section: [
       "materi",
-      "mpi",
       "rangkuman",
       "unduh",
       "latihan",
@@ -466,7 +465,7 @@ function chapter(id) {
   return (
     `<a href="#materi" class="text-link">← Semua materi</a><br><br>` +
     heading(esc(b.kelas), esc(b.nama), esc(b.deskripsi)) +
-    `<div class="lesson-layout"><section><div class="section-head"><h2>Langkah belajarmu</h2><span class="tag">${list.length} subbab</span></div><div class="lesson-list">${list.map((s, i) => `<a class="lesson-row" href="#belajar/${encodeURIComponent(s.id_subbab)}"><span class="step">${state.data.progress.includes(s.id_subbab) ? "✓" : String(i + 1).padStart(2, "0")}</span><div><strong>${esc(s.judul)}</strong><small>${state.data.progress.includes(s.id_subbab) ? "Sudah dipelajari" : "Baca, tonton, dan pahami"}</small></div><span>→</span></a>`).join("") || empty("Subbab belum tersedia", "Guru akan menambahkan materi di bab ini.")}</div></section><aside class="side-card"><div class="eyebrow">TEMAN BELAJARMU</div><h3>Pelan-pelan, yang penting paham.</h3><p style="text-align:left;margin-top:12px">Baca materi, catat hal penting, dan tandai selesai setelah kamu memahaminya.</p>${safeURL(b.pdf_bse) ? bookPreview(b) : '<p style="margin-top:16px">Buku BSE belum ditambahkan.</p>'}</aside></div>`
+    `<div class="lesson-layout"><section><div class="section-head"><h2>Langkah belajarmu</h2><span class="tag">${list.length} subbab</span></div><div class="lesson-list">${list.map((s, i) => `<a class="lesson-row" href="#belajar/${encodeURIComponent(s.id_subbab)}"><span class="step">${state.data.progress.includes(s.id_subbab) ? "✓" : String(i + 1).padStart(2, "0")}</span><div><strong>${esc(s.judul)}</strong><small>${state.data.progress.includes(s.id_subbab) ? "Sudah dipelajari" : "Baca, tonton, dan pahami"}</small></div><span>→</span></a>`).join("") || empty("Subbab belum tersedia", "Guru akan menambahkan materi di bab ini.")}</div><section class="paper chapter-practice-intro"><h2>Latihan akhir bab</h2><p>20 soal acak dari subbab dalam bab ini, dengan pembagian semerata mungkin. Coba lagi untuk mendapatkan paket soal baru.</p><a class="button" href="#latihan-bab/${encodeURIComponent(b.id_bab)}">Mulai latihan bab →</a></section></section><aside class="side-card"><div class="eyebrow">TEMAN BELAJARMU</div><h3>Pelan-pelan, yang penting paham.</h3><p style="text-align:left;margin-top:12px">Baca materi, catat hal penting, dan tandai selesai setelah kamu memahaminya.</p>${safeURL(b.pdf_bse) ? bookPreview(b) : '<p style="margin-top:16px">Buku BSE belum ditambahkan.</p>'}</aside></div>`
   );
 }
 const mediaTypes = [
@@ -518,7 +517,6 @@ function materialDownloadURL(value) {
 }
 const lessonSections = [
   ["materi", "Materi", "book"],
-  ["mpi", "MPI", "game"],
   ["rangkuman", "Rangkuman", "pen"],
   ["unduh", "Unduh Materi", "story"],
   ["latihan", "Latihan Soal", "test"],
@@ -787,7 +785,7 @@ const forms = {
       ["isi", "Isi materi teks biasa (opsional)", "textarea"],
       ["materi_json", "Materi terstruktur (Materi_JSON)", "textarea"],
       ...mediaTypes
-        .filter(([k]) => k !== "link_soal")
+        .filter(([k]) => !["link_soal", "link_mpi"].includes(k))
         .map(([k, l]) => [k, l, "url"]),
       ["soal_json", "Bank latihan subbab (Soal_JSON)", "textarea"],
     ],
@@ -860,6 +858,8 @@ function render() {
   window.HumaDictionary?.setActive(false);
   window.HumaWorks?.setActive(false);
   const isTka = route().page === "tka";
+  document.body?.classList.toggle("tka-active", isTka);
+  if (!isTka && document.fullscreenElement?.id === "tka-panel") document.exitFullscreen?.().catch(() => {});
   const isSnake = route().page === "ular-tangga";
   $("#snake-panel").hidden = !isSnake;
   $("#tka-panel").hidden = !isTka;
@@ -889,6 +889,7 @@ function render() {
     if (!$("#tka-frame")) {
       const frame = document.createElement("iframe");
       frame.id = "tka-frame";
+      frame.allowFullscreen = true;
       frame.title = "Try Out TKA Bahasa Indonesia";
       frame.src = "modules/tka/index.html";
       $("#tka-mount").append(frame);
@@ -972,6 +973,10 @@ function render() {
     beranda: home,
     materi: materials,
     bab: () => chapter(r.id),
+    "latihan-bab": () => {
+      const b = state.data.bab.find(b => b.id_bab === r.id);
+      return b && window.HumaChapterPractice ? window.HumaChapterPractice.html(b, subsFor(r.id), state.user?.id || "guest") : empty("Bab tidak ditemukan", "Pilih bab dari Materi Belajar.");
+    },
     belajar: () => lesson(r.id),
     tka: () => catalog("tka"),
     game: () => catalog("game"),
@@ -990,6 +995,10 @@ function render() {
         '<a href="#beranda" class="button">Beranda</a>',
       ))
   )();
+  if (r.page === "latihan-bab") {
+    const b = state.data.bab.find(b => b.id_bab === r.id);
+    if (b) window.HumaChapterPractice?.mount($("#main"), b, subsFor(r.id), state.user?.id || "guest", render);
+  }
   if (r.page === "belajar" && r.section === "latihan") {
     const lessonItem = state.data.subbab.find(
       (item) => item.id_subbab === r.id,
@@ -1422,4 +1431,10 @@ document.addEventListener(
   },
   true,
 );
+document.querySelector("#tka-fullscreen")?.addEventListener("click", async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.querySelector("#tka-panel").requestFullscreen();
+  } catch { toast("TKA sudah memakai seluruh area layar aplikasi."); }
+});
 load();
