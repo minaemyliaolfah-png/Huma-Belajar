@@ -8,7 +8,13 @@ window.HUMA_CONFIG = Object.freeze({
   schoolName: "Ruang belajar Bahasa Indonesia",
   // Otomatis: assets/bab/<ID_Bab>.jpg, sesuai ID_Bab di Spreadsheet.
   // Untuk nama/format lain, isi pemetaan, misalnya "B1": "assets/bab/surat-resmi.png".
-  chapterThumbnails: {},
+  chapterThumbnails: {
+    "1": "assets/bab/bab-1.png",
+    "2": "assets/bab/bab-2.png",
+    "3": "assets/bab/bab-3.png",
+    "4": "assets/bab/bab-4.png",
+    "5": "assets/bab/bab-5.png",
+  },
   // Sampul kelas XII yang sudah disiapkan. Pemetaan ID di atas tetap diutamakan.
   chapterArtwork: [
     { kelas: "XII", topik: ["surat resmi", "mengomunikasikan informasi penting"], src: "assets/bab/bab-1.png" },

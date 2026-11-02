@@ -407,7 +407,7 @@ function courseCard(b, index) {
 }
 function chapterThumbnail(chapter) {
   if (!chapter?.id_bab) return "";
-  const title = String(chapter.nama || "").toLowerCase().replace(/\s+/g, " ");
+  const title = [chapter.nama, chapter.deskripsi].filter(Boolean).join(" ").toLowerCase().replace(/\s+/g, " ");
   const artwork = (window.HUMA_CONFIG.chapterArtwork || []).find((item) =>
     normalizeClass(item.kelas) === normalizeClass(chapter.kelas) &&
     item.topik.some((keyword) => title.includes(keyword.toLowerCase()))
