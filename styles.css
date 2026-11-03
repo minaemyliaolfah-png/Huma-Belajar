@@ -1653,29 +1653,6 @@ body.tka-active #tka-frame { width: 100%; height: 100%; min-height: 0; border: 0
     font-size: 10px;
   }
 }
-.snake-panel {
-  padding: 24px 32px 0;
-}
-.snake-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 16px;
-}
-.snake-top > span {
-  font-size: 11px;
-  color: #778688;
-}
-#snake-frame {
-  display: block;
-  width: 100%;
-  height: calc(100vh - 150px);
-  min-height: 700px;
-  border: 1px solid #dce5e1;
-  border-radius: 20px;
-  background: #f8fafc;
-}
 .dk-account {
   display: flex;
   justify-content: flex-end;
@@ -1686,20 +1663,6 @@ body.tka-active #tka-frame { width: 100%; height: 100%; min-height: 0; border: 0
 }
 .dk-account button {
   cursor: pointer;
-}
-@media (max-width: 700px) {
-  .snake-panel {
-    padding: 20px 16px 0;
-  }
-  .snake-top {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  #snake-frame {
-    height: calc(100dvh - 165px);
-    min-height: 650px;
-    border-radius: 14px;
-  }
 }
 /* Ruang belajar subbab: materi langsung terbaca dalam halaman. */
 .lesson-content {

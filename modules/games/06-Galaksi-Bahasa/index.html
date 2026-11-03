@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaksi Bahasa — Space Battle</title>
+    
+    
+    
+    
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #141726;
+            overflow-x: hidden;
+            user-select: none;
+        }
+        .neon-border-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+        .neon-border-pink {
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4), inset 0 0 10px rgba(255, 0, 127, 0.2);
+        }
+        /* Fallback simulated fullscreen layout */
+        body.simulated-fullscreen {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 99999 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background-color: #141726 !important;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    .fa-solid{font-style:normal;display:inline-block;line-height:1;text-align:center;font-family:system-ui,sans-serif}.fa-solid:before{content:"✧"}.fa-rocket:before{content:"✦"}.fa-crosshairs:before{content:"◎"}.fa-bullseye:before{content:"◎"}.fa-people-group:before{content:"♧"}.fa-user-friends:before{content:"⚔"}.fa-user-group:before{content:"⚔"}.fa-arrow-right:before{content:"↗"}.fa-sliders:before{content:"☷"}.fa-chevron-left:before{content:"‹"}.fa-volume-high:before{content:"♫"}.fa-volume-xmark:before{content:"♩"}.fa-expand:before{content:"⛶"}.fa-compress:before{content:"⊡"}.fa-stopwatch:before{content:"◷"}.fa-shield:before{content:"⬡"}.fa-triangle-exclamation:before{content:"!"}.fa-circle-check:before{content:"✓"}.fa-flag-checkered:before{content:"⚑"}.fa-arrows-rotate:before{content:"↻"}.fa-house:before{content:"⌂"}.fa-bolt:before{content:"ϟ"}.fa-star:before{content:"✧"}.fa-fire:before{content:"♨"}.fa-skull:before{content:"☠"}
+</style>
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Segoe UI,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.-bottom-10{bottom:-2.5rem}.-left-10{left:-2.5rem}.-left-16{left:-4rem}.-right-10{right:-2.5rem}.-top-10{top:-2.5rem}.-top-16{top:-4rem}.left-4{left:1rem}.right-0{right:0}.right-4{right:1rem}.top-0{top:0}.top-3{top:.75rem}.z-0{z-index:0}.z-10{z-index:10}.z-50{z-index:50}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:.25rem}.mr-1{margin-right:.25rem}.mr-2{margin-right:.5rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-2{height:.5rem}.h-3{height:.75rem}.h-36{height:9rem}.h-40{height:10rem}.h-6{height:1.5rem}.h-60{height:15rem}.h-64{height:16rem}.h-full{height:100%}.min-h-\[220px\]{min-height:220px}.min-h-\[50px\]{min-height:50px}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-3{width:.75rem}.w-36{width:9rem}.w-40{width:10rem}.w-6{width:1.5rem}.w-full{width:100%}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-lg{max-width:32rem}.flex-1{flex:1 1 0%}.flex-grow{flex-grow:1}.translate-x-1{--tw-translate-x:0.25rem}.translate-x-1,.translate-y-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-1{--tw-translate-y:0.25rem}@keyframes bounce{0%,to{transform:translateY(-25%);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,.2,1)}}.animate-bounce{animation:bounce 1s infinite}@keyframes ping{75%,to{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0,0,.2,1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}.cursor-not-allowed{cursor:not-allowed}.resize{resize:both}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.overflow-hidden{overflow:hidden}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-cyan-800{--tw-border-opacity:1;border-color:rgb(21 94 117/var(--tw-border-opacity,1))}.border-cyan-900{--tw-border-opacity:1;border-color:rgb(22 78 99/var(--tw-border-opacity,1))}.border-cyan-900\/50{border-color:rgba(22,78,99,.5)}.border-cyan-950{--tw-border-opacity:1;border-color:rgb(8 51 68/var(--tw-border-opacity,1))}.border-emerald-500{--tw-border-opacity:1;border-color:rgb(16 185 129/var(--tw-border-opacity,1))}.border-neoncyan\/50{border-color:rgba(155,217,208,.5)}.border-neonpink{--tw-border-opacity:1;border-color:rgb(239 178 148/var(--tw-border-opacity,1))}.border-neonpink\/50{border-color:hsla(20,74%,76%,.5)}.border-pink-800{--tw-border-opacity:1;border-color:rgb(157 23 77/var(--tw-border-opacity,1))}.border-pink-900{--tw-border-opacity:1;border-color:rgb(131 24 67/var(--tw-border-opacity,1))}.border-pink-900\/50{border-color:rgba(131,24,67,.5)}.border-pink-950{--tw-border-opacity:1;border-color:rgb(80 7 36/var(--tw-border-opacity,1))}.border-rose-500{--tw-border-opacity:1;border-color:rgb(244 63 94/var(--tw-border-opacity,1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.border-slate-900{--tw-border-opacity:1;border-color:rgb(15 23 42/var(--tw-border-opacity,1))}.border-violet-700{--tw-border-opacity:1;border-color:rgb(109 40 217/var(--tw-border-opacity,1))}.border-violet-800{--tw-border-opacity:1;border-color:rgb(91 33 182/var(--tw-border-opacity,1))}.border-violet-900\/50{border-color:rgba(76,29,149,.5)}.bg-black\/60{background-color:rgba(0,0,0,.6)}.bg-black\/80{background-color:rgba(0,0,0,.8)}.bg-black\/90{background-color:rgba(0,0,0,.9)}.bg-cyan-950{--tw-bg-opacity:1;background-color:rgb(8 51 68/var(--tw-bg-opacity,1))}.bg-cyan-950\/50{background-color:rgba(8,51,68,.5)}.bg-emerald-950{--tw-bg-opacity:1;background-color:rgb(2 44 34/var(--tw-bg-opacity,1))}.bg-emerald-950\/80{background-color:rgba(2,44,34,.8)}.bg-neoncyan{--tw-bg-opacity:1;background-color:rgb(155 217 208/var(--tw-bg-opacity,1))}.bg-neoncyan\/10{background-color:rgba(155,217,208,.1)}.bg-neoncyan\/20{background-color:rgba(155,217,208,.2)}.bg-neonpink{--tw-bg-opacity:1;background-color:rgb(239 178 148/var(--tw-bg-opacity,1))}.bg-neonpink\/10{background-color:hsla(20,74%,76%,.1)}.bg-neonpink\/20{background-color:hsla(20,74%,76%,.2)}.bg-pink-950{--tw-bg-opacity:1;background-color:rgb(80 7 36/var(--tw-bg-opacity,1))}.bg-pink-950\/10{background-color:rgba(80,7,36,.1)}.bg-pink-950\/50{background-color:rgba(80,7,36,.5)}.bg-rose-950{--tw-bg-opacity:1;background-color:rgb(76 5 25/var(--tw-bg-opacity,1))}.bg-rose-950\/80{background-color:rgba(76,5,25,.8)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\/90{background-color:rgba(15,23,42,.9)}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23/var(--tw-bg-opacity,1))}.bg-slate-950\/50{background-color:rgba(2,6,23,.5)}.bg-slate-950\/70{background-color:rgba(2,6,23,.7)}.bg-slate-950\/80{background-color:rgba(2,6,23,.8)}.bg-violet-600\/20{background-color:rgba(124,58,237,.2)}.bg-violet-950\/40{background-color:rgba(46,16,101,.4)}.bg-violet-950\/50{background-color:rgba(46,16,101,.5)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-\[radial-gradient\(ellipse_at_center\2c _var\(--tw-gradient-stops\)\)\]{background-image:radial-gradient(ellipse at center,var(--tw-gradient-stops))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-cyan-500{--tw-gradient-from:#06b6d4 var(--tw-gradient-from-position);--tw-gradient-to:rgba(6,182,212,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-indigo-950\/40{--tw-gradient-from:rgba(30,27,75,.4) var(--tw-gradient-from-position);--tw-gradient-to:rgba(30,27,75,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-neoncyan{--tw-gradient-from:#9bd9d0 var(--tw-gradient-from-position);--tw-gradient-to:rgba(155,217,208,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-neonpink{--tw-gradient-from:#efb294 var(--tw-gradient-from-position);--tw-gradient-to:hsla(20,74%,76%,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-violet-600{--tw-gradient-from:#7c3aed var(--tw-gradient-from-position);--tw-gradient-to:rgba(124,58,237,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-gray-950{--tw-gradient-to:rgba(3,7,18,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#030712 var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-violet-400{--tw-gradient-to:rgba(167,139,250,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#a78bfa var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-black{--tw-gradient-to:#000 var(--tw-gradient-to-position)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-indigo-600{--tw-gradient-to:#4f46e5 var(--tw-gradient-to-position)}.to-neonpink{--tw-gradient-to:#efb294 var(--tw-gradient-to-position)}.to-pink-500{--tw-gradient-to:#ec4899 var(--tw-gradient-to-position)}.to-violet-500{--tw-gradient-to:#8b5cf6 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:.5rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.font-orbitron{font-family:Trebuchet MS,sans-serif}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-7xl{font-size:4.5rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.tracking-widest{letter-spacing:.1em}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238/var(--tw-text-opacity,1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235/var(--tw-text-opacity,1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219/var(--tw-text-opacity,1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128/var(--tw-text-opacity,1))}.text-neoncyan{--tw-text-opacity:1;color:rgb(155 217 208/var(--tw-text-opacity,1))}.text-neonpink{--tw-text-opacity:1;color:rgb(239 178 148/var(--tw-text-opacity,1))}.text-neonviolet{--tw-text-opacity:1;color:rgb(182 167 231/var(--tw-text-opacity,1))}.text-pink-400{--tw-text-opacity:1;color:rgb(244 114 182/var(--tw-text-opacity,1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-rose-300{--tw-text-opacity:1;color:rgb(253 164 175/var(--tw-text-opacity,1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133/var(--tw-text-opacity,1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94/var(--tw-text-opacity,1))}.text-transparent{color:transparent}.text-violet-300{--tw-text-opacity:1;color:rgb(196 181 253/var(--tw-text-opacity,1))}.text-violet-400{--tw-text-opacity:1;color:rgb(167 139 250/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-10{opacity:.1}.opacity-40{opacity:.4}.opacity-80{opacity:.8}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-indigo-950{--tw-shadow-color:#1e1b4b;--tw-shadow:var(--tw-shadow-colored)}.blur-2xl{--tw-blur:blur(40px)}.blur-2xl,.blur-3xl{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-3xl{--tw-blur:blur(64px)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px)}.backdrop-blur-lg,.backdrop-blur-md{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-100{transition-duration:.1s}.duration-300{transition-duration:.3s}.ease-linear{transition-timing-function:linear}.hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01}.hover\:scale-\[1\.01\]:hover,.hover\:scale-\[1\.02\]:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-\[1\.02\]:hover{--tw-scale-x:1.02;--tw-scale-y:1.02}.hover\:border-neoncyan:hover{--tw-border-opacity:1;border-color:rgb(155 217 208/var(--tw-border-opacity,1))}.hover\:border-neonpink:hover{--tw-border-opacity:1;border-color:rgb(239 178 148/var(--tw-border-opacity,1))}.hover\:border-slate-500:hover{--tw-border-opacity:1;border-color:rgb(100 116 139/var(--tw-border-opacity,1))}.hover\:border-violet-400:hover{--tw-border-opacity:1;border-color:rgb(167 139 250/var(--tw-border-opacity,1))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.hover\:bg-slate-900:hover{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.hover\:from-violet-500:hover{--tw-gradient-from:#8b5cf6 var(--tw-gradient-from-position);--tw-gradient-to:rgba(139,92,246,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.hover\:to-indigo-500:hover{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.focus\:border-violet-500:focus{--tw-border-opacity:1;border-color:rgb(139 92 246/var(--tw-border-opacity,1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.group:hover .group-hover\:opacity-20{opacity:.2}@media (min-width:640px){.sm\:block{display:block}.sm\:flex-row{flex-direction:row}}@media (min-width:768px){.md\:h-80{height:20rem}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:p-8{padding:2rem}.md\:px-4{padding-left:1rem;padding-right:1rem}.md\:py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-xs{font-size:.75rem;line-height:1rem}}
+:root{--galaxy:#171a2b;--panel:#21263b;--edge:#3a4059;--lav:#bcafe5;--peach:#eeb99c;--soft:#a9b1c7}body{background:radial-gradient(ellipse at top left,#352c4c,#171a2b 65%)!important;color:#f6f0e3;font-family:'Segoe UI',system-ui,sans-serif}body>div.fixed:first-child{opacity:.22}header{background:#1b2032eb!important;border-color:#363d53!important;padding:18px 30px!important}.font-orbitron{font-family:'Trebuchet MS',sans-serif!important;letter-spacing:.2px}header h1{font-size:23px!important;letter-spacing:-.6px!important}header p{display:block!important;font-size:9px!important;margin-top:4px;color:#8994ae!important}header .bg-gradient-to-br{background:#b9ade7!important;color:#2a2944!important;border-radius:12px;box-shadow:none}header .bg-gradient-to-br i{color:#302d4a!important}#mainContainer{padding:28px 24px 32px!important;align-items:flex-start}#menuScreen{background:#202539!important;border-color:#3a4059!important;border-radius:25px!important;padding:30px!important;box-shadow:0 12px 60px #070d1f33}#menuScreen>.text-center>span{border-color:#695e82!important;color:#c1b2e6!important;background:#b7a2eb0c!important;font-size:9px;letter-spacing:1.5px;padding:8px 15px}#menuScreen h2{font-size:clamp(30px,4vw,42px);line-height:1.15;letter-spacing:-1px;margin-top:16px}#menuScreen>.text-center>p{font-size:12px;color:#9fa7bf;margin-top:12px}#menuScreen>.grid>button{border-radius:17px;background:#181e30!important;border-color:#3b4158!important;padding:21px;height:232px;box-shadow:0 5px 0 #141a2a}#menuScreen>.grid>button:hover{border-color:#a79ac8!important;background:#252a40!important;transform:translateY(-3px)}#menuScreen h3{font-size:16px;line-height:1.5;letter-spacing:-.2px}#menuScreen>.grid>button p{font-size:11px;color:#99a4bd;line-height:1.8;margin-top:8px}#menuScreen>.grid>button>span{font-size:9px;letter-spacing:.8px}#menuScreen .text-neonpink{color:#e8b297!important}#menuScreen .text-neoncyan{color:#9dd1c7!important}#menuScreen>.bg-slate-950\/50{background:#181f30!important;border-color:#353e53!important;border-radius:15px;padding:20px}#menuScreen h4{font-size:11px;letter-spacing:.8px}#menuScreen label{font-size:9px;letter-spacing:.6px}select{background:#242b40!important;border-color:#45506a!important;color:#c9d0e0!important;border-radius:10px!important;min-height:42px;font-size:12px!important}select:focus{outline:2px solid #b6a7e7;outline-offset:2px}.fleet-config{border:1px solid #42485f;background:#1a2133;border-radius:16px;padding:20px;margin:0 0 22px}.fleet-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}.fleet-heading span{font-size:8px;font-weight:800;letter-spacing:1.5px;color:#b7a6db}.fleet-heading h3{font-family:'Trebuchet MS';font-weight:800;color:#e5e1ef;margin-top:4px}.fleet-heading p{font-size:10px;color:#7f8ca7;max-width:140px;line-height:1.6;text-align:right}.fleet-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.fleet-grid h4{font:800 9px 'Segoe UI';color:#abb8c5;letter-spacing:1px;margin-bottom:9px}.fleet-grid h4 small{font-size:8px;letter-spacing:0;color:#77839b;font-weight:500}.pilot-dot{display:inline-block;width:6px;height:6px;background:#9bd9d0;border-radius:50%;margin-right:6px}.pilot-dot.second{background:#efb294}.craft-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.craft-choice{border:1px solid #3d485e;background:#202b3d;border-radius:11px;text-align:center;padding:7px 5px 10px;transition:transform .15s,border .15s;color:#acbace}.craft-choice:hover{border-color:#a9a2ce;transform:translateY(-2px)}.craft-choice.chosen{border-color:#b9b0de;background:#35374d;box-shadow:inset 0 0 0 1px #b9b0de66}.craft-choice svg{height:48px;width:65px;max-width:100%;margin:auto}.craft-choice b{display:block;font:800 11px 'Segoe UI';color:#d4dbdf}.craft-choice small{font-size:8px;color:#7e8fa5;display:block;margin-top:3px}.neon-border-cyan{box-shadow:0 0 0 1px #91bfb455,0 5px 20px #070d1733!important}.neon-border-pink{box-shadow:0 0 0 1px #d6a58c55,0 5px 20px #070d1733!important}#gameplayScreen{gap:17px}#gameplayScreen>div:first-child{border-radius:21px;background:#171c2c!important;border-color:#44465b!important;height:285px;box-shadow:0 5px 0 #101627}#p1Panel,#p2Panel{background:#232a3f!important;border-width:1px!important;border-color:#587a79!important;border-radius:18px!important;padding:18px!important;min-height:290px}#p2Panel{border-color:#8c6b6f!important}#p1Panel>div:first-child,#p2Panel>div:first-child{gap:8px;border-color:#3b455a!important;align-items:center}#p1Panel>div:first-child>div:first-child,#p2Panel>div:first-child>div:first-child{min-width:0}#p1Panel .font-orbitron,#p2Panel .font-orbitron{font-size:10px!important;letter-spacing:.4px}#p1QuestionText,#p2QuestionText{font:700 15px/1.75 'Segoe UI';color:#e2e4ed;min-height:78px;margin-bottom:16px}#p1OptionsGrid,#p2OptionsGrid{gap:9px}#p1OptionsGrid>button,#p2OptionsGrid>button{font:600 12px/1.55 'Segoe UI';background:#1a2236;border:1px solid #3b4863;border-radius:11px!important;min-height:62px;padding:12px!important;box-shadow:0 3px 0 #121b2d;color:#bbc8d9}#p1OptionsGrid>button:hover,#p2OptionsGrid>button:hover{border-color:#8e9cba}#p1OptionsGrid>button span:last-child,#p2OptionsGrid>button span:last-child{background:#26334b;border-color:#40516a;color:#8c9cba;border-radius:5px;flex-shrink:0}#p1OptionsGrid>button:disabled,#p2OptionsGrid>button:disabled{opacity:.9}#p1StatsContainer,#p2HpTextContainer{font-size:9px!important}#arenaTag{font-size:9px!important;background:#28293ecc!important;border-color:#514c67!important}#p2BossBlock>div:first-child{background:#b2879009;border-color:#715166;border-radius:12px}#p2BossBlock p{color:#a0a8bd;line-height:1.8;font-size:12px}#gameOverModal>div{background:#262b41!important;border:1px solid #756185!important;border-radius:25px}#gameOverModal h2{font-size:30px!important;letter-spacing:-1px}#gameOverModal .bg-slate-950\/70{background:#1e2539!important;border-color:#3b465f!important}footer{background:#1a2031!important;border-color:#303a50!important;color:#75819c!important;font-size:9px!important;padding:17px!important}button{touch-action:manipulation}button:focus-visible{outline:3px solid #c1b2e3;outline-offset:3px}.fa-solid{vertical-align:middle}button .fa-solid{min-width:10px}
+@media(max-width:767px){header{padding:14px!important}header h1{font-size:19px!important}header p{font-size:8px!important}#btnBackToMenu{padding:8px;font-size:10px}#btnSoundToggle,#btnFullscreenToggle{width:33px;height:33px;padding:7px}#mainContainer{padding:15px 10px 20px!important}#menuScreen{padding:22px 15px!important;border-radius:20px!important}#menuScreen>.text-center{margin-bottom:22px}#menuScreen h2{font-size:30px}#menuScreen>.text-center>span{font-size:7px;padding:7px 9px;letter-spacing:.7px}#menuScreen>.grid{gap:11px;margin-bottom:20px}#menuScreen>.grid>button{height:auto;min-height:171px;padding:18px}#menuScreen>.grid>button .mb-3{margin-bottom:8px}#menuScreen>.grid>button h3{font-size:15px}#menuScreen>.grid>button p{font-size:11px;line-height:1.7;margin-top:5px}.fleet-config{padding:15px;margin-bottom:17px}.fleet-grid{grid-template-columns:1fr;gap:17px}.fleet-heading{margin-bottom:14px}.fleet-heading h3{font-size:15px!important}.fleet-heading p{font-size:8px;max-width:105px}.craft-choice svg{height:43px}.fleet-grid h4{font-size:8px}.craft-choice small{font-size:8px}#menuScreen>.bg-slate-950\/50{padding:15px}#gameplayScreen{gap:12px}#gameplayScreen>div:first-child{height:235px;border-radius:15px}#gameplayScreen>div:first-child>div:first-child{top:10px;left:8px;right:8px;gap:4px;flex-wrap:wrap}#p1StatsContainer{padding:7px 8px;gap:5px}#p2HpTextContainer{font-size:8px!important}#p1StatsContainer .font-orbitron{font-size:8px!important}#arenaTag{padding:7px 8px;font-size:8px!important;order:3;margin:auto}#questionSplitContainer{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}#p1Panel,#p2Panel{padding:11px!important;border-radius:13px!important;min-width:0;min-height:360px}#p1Panel>div:first-child,#p2Panel>div:first-child{align-items:flex-start;flex-direction:column;gap:7px}#p1Panel .font-orbitron,#p2Panel .font-orbitron{font-size:8px!important;letter-spacing:0}#p1QuestionText,#p2QuestionText{font-size:12px;line-height:1.65;min-height:102px;margin-bottom:12px;overflow-wrap:anywhere}#p1OptionsGrid,#p2OptionsGrid{grid-template-columns:1fr!important;gap:7px}#p1OptionsGrid>button,#p2OptionsGrid>button{min-height:58px;font-size:10px;padding:9px!important;gap:5px}#p1OptionsGrid>button span:last-child,#p2OptionsGrid>button span:last-child{font-size:8px;padding:3px 5px}#p2BossBlock p{font-size:10px;padding:0 8px}#p2BossBlock .grid{grid-template-columns:1fr}#p2ChargeLabel{font-size:7px!important}#p2BossBlock .py-4{padding:12px 5px}#p2BossBlock h3{font-size:8px!important;line-height:1.7}#p2KeyGuide{font-size:8px}#gameOverModal>div{padding:22px 16px}#winnerText{font-size:17px}footer{font-size:8px!important}}
+@media(prefers-reduced-motion:reduce){.animate-pulse,.animate-bounce,.animate-ping,.craft-choice{animation:none!important;transition:none!important}}
+#p1OptionsGrid>button[class*="bg-emerald"],#p2OptionsGrid>button[class*="bg-emerald"]{background:#284d42!important;border-color:#77b59a!important;color:#c6eedb!important}#p1OptionsGrid>button[class*="bg-rose"],#p2OptionsGrid>button[class*="bg-rose"]{background:#593744!important;border-color:#d397a1!important;color:#f4c8ce!important}
+</style><style id="edu-arcade-layout">/* Kontrol suara bersama, tetap nyaman pada layar sentuh. */
+.edu-stage{width:100%;position:relative}.edu-controls{display:flex;gap:5px;align-items:center;flex-shrink:0;margin-left:8px;position:relative;z-index:48;font:700 10px 'Segoe UI',sans-serif;letter-spacing:0;text-transform:none}.edu-controls button,.edu-controls summary{border:1px solid #8290a24d;background:#8290a217;color:inherit;border-radius:8px;min-height:34px;min-width:34px;padding:7px 9px;cursor:pointer;white-space:nowrap;font:inherit;line-height:1.3}.edu-controls summary{list-style:none;text-align:center}.edu-controls summary::-webkit-details-marker{display:none}.edu-controls button:focus-visible,.edu-controls summary:focus-visible{outline:3px solid #d5ab73;outline-offset:2px}.edu-volume>div{position:absolute;right:34px;top:42px;background:#263449;border:1px solid #53627a;padding:17px;color:#e7e4dc;width:230px;border-radius:12px;box-shadow:0 10px 30px #0004;z-index:100;text-transform:none}.edu-volume label{display:block;font-size:12px;font-weight:700;color:#e2e7ee}.edu-volume output{float:right;color:#d7c7f2}.edu-volume input{display:block;width:100%;margin:15px 0 10px;padding:0;accent-color:#baa6db;min-height:24px}.edu-volume small{font-size:10px;color:#aebdce;line-height:1.5;display:block}.edu-fullscreen{font-size:17px!important}.edu-tts-controls{background:var(--paper,#fffcf5);border:1px solid var(--line,#e0d5d5);border-radius:15px;overflow:hidden}.edu-clue-pager{display:flex;justify-content:center;align-items:center;gap:20px;padding:10px;border-top:1px solid #e1d5d5}.edu-clue-pager button{min-width:40px;min-height:34px;border:1px solid #d8cad4;border-radius:8px;background:#f3e8e0;color:#7e627d;font-size:22px}.edu-clue-pager span{font-size:11px;color:#9a8798}.edu-stage #soundToggleBtn,.edu-stage #soundBtn,.edu-stage #btn-audio,.edu-stage #btn-fullscreen,.edu-stage #btnSoundToggle,.edu-stage #btnFullscreenToggle{display:none!important}.edu-stage [hidden]{display:none!important}
+@media(min-width:900px) and (min-height:480px){
+html{height:100%;overscroll-behavior:none}body{height:100dvh!important;min-height:0!important;max-height:100dvh!important;margin:0!important;padding:0!important;overflow:hidden!important;display:grid!important;place-items:center!important}.edu-stage{width:min(100vw,calc(100dvh * 16 / 9));height:min(100dvh,calc(100vw * 9 / 16));aspect-ratio:16/9;container-type:size;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}.edu-stage>header{position:relative!important;top:auto!important;flex-shrink:0;min-height:0;height:clamp(48px,7.5cqh,80px);padding:8px 20px!important;width:100%;max-width:none;gap:12px}.edu-stage header .brand{font-size:clamp(20px,2cqw,34px)}.edu-stage header .brand-icon{width:clamp(32px,3.6cqw,58px);height:clamp(32px,3.6cqw,58px);font-size:clamp(22px,2.6cqw,40px)}.edu-stage header .brand small{font-size:clamp(6px,.6cqw,11px)}.edu-stage header .ghost{font-size:clamp(10px,.9cqw,16px);padding:10px 13px;min-height:36px}.edu-controls{font-size:clamp(9px,.8cqw,16px)}.edu-controls button,.edu-controls summary{min-height:clamp(34px,5cqh,52px);min-width:clamp(32px,2.8cqw,50px)}.edu-volume>div{top:calc(100% + 8px)}.edu-stage>footer,.edu-stage main>footer{display:none!important}.edu-stage>main{width:100%;max-width:none;min-height:0;flex:1;margin:0;padding:12px 18px;display:flex;flex-direction:column;overflow:hidden}.edu-stage .intro{flex-shrink:0;margin:0 0 10px;min-height:0}.edu-stage .intro h1{font-size:clamp(25px,2.6cqw,43px);line-height:1.1;margin:5px 0}.edu-stage .intro h1 br{display:none}.edu-stage .intro p{font-size:clamp(10px,.9cqw,15px);margin:5px 0}.edu-stage .intro .orbit-label,.edu-stage .intro .garden,.edu-stage .intro .edition{display:none}.edu-stage.edu-playing .intro{display:none}.edu-stage .dialog{max-height:calc(100cqh - 35px);overflow:auto}.edu-stage .modal{padding:16px}.edu-stage #quizModal>div,.edu-stage #setupModal>div,.edu-stage #rulesModal>div{max-height:calc(100cqh - 35px);overflow:auto}.edu-stage .mini-card,.edu-stage .tip{display:none!important}
+/* BALON KATA */
+body[data-edu-game="roket-kata"] .edu-stage .arena{flex:1;min-height:0;grid-template-columns:minmax(0,1fr) clamp(245px,25cqw,420px);gap:14px;align-items:stretch}body[data-edu-game="roket-kata"] .edu-stage .play-card{min-height:0;display:grid;grid-template-columns:32% minmax(0,1fr);grid-template-rows:36px 62px 4px minmax(0,1fr) auto 24px;border-radius:17px}body[data-edu-game="roket-kata"] .panel-head{grid-column:1/-1;grid-row:1;padding:9px 17px;font-size:clamp(8px,.7cqw,12px)}body[data-edu-game="roket-kata"] .metrics{grid-column:1/-1;grid-row:2;padding:8px 18px}body[data-edu-game="roket-kata"] .metrics strong{font-size:clamp(19px,1.8cqw,33px)}body[data-edu-game="roket-kata"] .metrics .time strong{font-size:clamp(24px,2.5cqw,44px)}body[data-edu-game="roket-kata"] .timer-track{grid-column:1/-1;grid-row:3;margin:0 18px}body[data-edu-game="roket-kata"] .scene{grid-column:1;grid-row:4;height:auto;min-height:0;border-right:1px solid #53607c44}body[data-edu-game="roket-kata"] .flight-rig{width:min(100%,330px);top:18%;max-height:100%}body[data-edu-game="roket-kata"] .altitude{font-size:clamp(7px,.6cqw,11px);max-width:none;left:10px;right:10px;text-align:center;top:8px}body[data-edu-game="roket-kata"] .scene-caption{bottom:9px;padding:0 9px;font-size:clamp(9px,.75cqw,14px);line-height:1.5}body[data-edu-game="roket-kata"] .challenge{grid-column:2;grid-row:4;display:flex;flex-direction:column;justify-content:center;padding:12px 18px;min-height:0}body[data-edu-game="roket-kata"] .challenge p{font-size:clamp(13px,1.25cqw,23px);line-height:1.6;min-height:0;margin:12px auto;max-width:none}body[data-edu-game="roket-kata"] .category{align-self:center;font-size:clamp(8px,.7cqw,13px);padding:6px 10px}body[data-edu-game="roket-kata"] .word{margin:12px 0;max-width:none;gap:5px}body[data-edu-game="roket-kata"] .letter{width:clamp(24px,2.55cqw,48px);height:clamp(34px,5.6cqh,62px);font-size:clamp(20px,2.1cqw,35px)}body[data-edu-game="roket-kata"] .life-row small{font-size:clamp(10px,.85cqw,15px)}body[data-edu-game="roket-kata"] #lives{font-size:clamp(16px,1.5cqw,28px)}body[data-edu-game="roket-kata"] .feedback{min-height:35px;font-size:clamp(10px,.85cqw,16px);line-height:1.5;padding-top:10px}body[data-edu-game="roket-kata"] .keyboard{grid-column:1/-1;grid-row:5;padding:12px 15px 5px;gap:6px}body[data-edu-game="roket-kata"] .key{flex-basis:clamp(36px,4cqw,76px);height:clamp(34px,5.6cqh,60px);font-size:clamp(13px,1.1cqw,22px);width:auto}body[data-edu-game="roket-kata"] .bottom-note{grid-column:1/-1;grid-row:6;padding:5px 16px;font-size:clamp(8px,.7cqw,12px)}body[data-edu-game="roket-kata"] aside{height:100%;display:flex;flex-direction:column;min-height:0;gap:12px}body[data-edu-game="roket-kata"] .side-card{padding:18px;min-height:0;max-height:100%;overflow:auto}body[data-edu-game="roket-kata"] .leaderboard{flex:1}body[data-edu-game="roket-kata"] .rank-row{padding:clamp(8px,1.6cqh,18px) 0}body[data-edu-game="roket-kata"] .rank-info b{font-size:clamp(12px,1.1cqw,20px)}body[data-edu-game="roket-kata"] .rank-info small{font-size:clamp(9px,.8cqw,14px)}body[data-edu-game="roket-kata"] .rank-points{font-size:clamp(23px,2.3cqw,40px)}body[data-edu-game="roket-kata"] .rank-note{font-size:clamp(9px,.8cqw,14px)}body[data-edu-game="roket-kata"]:not(.playing) .arena{display:block}body[data-edu-game="roket-kata"]:not(.playing) .play-card{display:none}body[data-edu-game="roket-kata"]:not(.playing) aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:18px}body[data-edu-game="roket-kata"]:not(.playing) #newGame{display:none}
+/* PABRIK KATA */
+body[data-edu-game="pabrik-kata"] .layout{flex:1;min-height:0;grid-template-columns:minmax(0,1fr) clamp(245px,25cqw,420px);gap:14px;align-items:stretch}body[data-edu-game="pabrik-kata"] .game{display:grid;grid-template-columns:34% minmax(0,1fr);grid-template-rows:36px 64px 4px minmax(0,1fr) 28px;min-height:0}body[data-edu-game="pabrik-kata"] .game-head{grid-column:1/-1;grid-row:1;padding:10px 17px;font-size:clamp(8px,.7cqw,12px)}body[data-edu-game="pabrik-kata"] .stats{grid-column:1/-1;grid-row:2;padding:9px 18px}body[data-edu-game="pabrik-kata"] .stats strong{font-size:clamp(19px,1.9cqw,34px)}body[data-edu-game="pabrik-kata"] .stats .timer strong{font-size:clamp(25px,2.5cqw,44px)}body[data-edu-game="pabrik-kata"] .time-track{grid-column:1/-1;grid-row:3;margin:0 18px}body[data-edu-game="pabrik-kata"] .machine-scene{grid-column:1;grid-row:4;height:auto;min-height:0;align-self:stretch;padding-bottom:100px;display:flex;align-items:center;justify-content:center}body[data-edu-game="pabrik-kata"] .machine{width:100%;max-width:340px;height:auto;aspect-ratio:310/220}body[data-edu-game="pabrik-kata"] .power-row{grid-column:1;grid-row:4;align-self:end;display:flex;flex-direction:column;gap:20px;padding:20px 10px;z-index:2}body[data-edu-game="pabrik-kata"] .battery{font-size:clamp(10px,.8cqw,16px)}body[data-edu-game="pabrik-kata"] .combo{font-size:clamp(10px,.9cqw,17px)}body[data-edu-game="pabrik-kata"] .challenge{grid-column:2;grid-row:4;display:flex;flex-direction:column;justify-content:center;padding:12px 18px;border-top:0;border-left:1px solid #5c735b55;min-height:0}body[data-edu-game="pabrik-kata"] .clue{min-height:0;max-width:none;margin:10px auto 17px;font-size:clamp(13px,1.25cqw,23px);line-height:1.6}body[data-edu-game="pabrik-kata"] .slot,body[data-edu-game="pabrik-kata"] .tile{width:clamp(28px,3cqw,57px);height:clamp(36px,6.5cqh,70px);font-size:clamp(20px,2cqw,36px)}body[data-edu-game="pabrik-kata"] .tile-label{margin:13px 0 10px;font-size:clamp(8px,.7cqw,13px)}body[data-edu-game="pabrik-kata"] .controls{margin:16px 0 7px;gap:7px}body[data-edu-game="pabrik-kata"] .controls button{font-size:clamp(10px,.9cqw,17px);min-height:clamp(35px,5.7cqh,62px);padding:10px 12px}body[data-edu-game="pabrik-kata"] .submit{min-width:130px}body[data-edu-game="pabrik-kata"] .feedback{font-size:clamp(10px,.9cqw,16px);min-height:38px;padding:8px 4px}body[data-edu-game="pabrik-kata"] .hint-note{grid-column:1/-1;grid-row:5;font-size:clamp(8px,.7cqw,12px);padding:7px 16px}body[data-edu-game="pabrik-kata"] aside{height:100%;display:flex;flex-direction:column;min-height:0;gap:12px}body[data-edu-game="pabrik-kata"] .card{padding:18px;min-height:0;max-height:100%;overflow:auto}body[data-edu-game="pabrik-kata"] .card:has(#ranking){flex:1}body[data-edu-game="pabrik-kata"] .rank{padding:clamp(8px,1.6cqh,18px) 0}body[data-edu-game="pabrik-kata"] .rank-info b{font-size:clamp(12px,1.1cqw,20px)}body[data-edu-game="pabrik-kata"] .rank-info small{font-size:clamp(9px,.8cqw,14px)}body[data-edu-game="pabrik-kata"] .points{font-size:clamp(23px,2.3cqw,40px)}body[data-edu-game="pabrik-kata"] .rank-note{font-size:clamp(9px,.8cqw,14px)}body[data-edu-game="pabrik-kata"]:not(.playing) .layout{display:block}body[data-edu-game="pabrik-kata"]:not(.playing) .game{display:none}body[data-edu-game="pabrik-kata"]:not(.playing) aside{display:grid;grid-template-columns:1fr 1fr;gap:18px}body[data-edu-game="pabrik-kata"]:not(.playing) #newGame{display:none}
+/* TAMAN KATA */
+body[data-edu-game="taman-kata"] .intro{display:none}body[data-edu-game="taman-kata"] .toolbar{height:68px;flex-shrink:0;margin-bottom:12px;padding:8px 15px;border-radius:13px}body[data-edu-game="taman-kata"] .toolbar select{padding:8px 10px;font-size:clamp(10px,.9cqw,16px);margin-top:3px}body[data-edu-game="taman-kata"] .seed-note{display:none}body[data-edu-game="taman-kata"] .layout{flex:1;min-height:0;grid-template-columns:minmax(0,1fr) clamp(320px,33cqw,610px);gap:14px;align-items:stretch}body[data-edu-game="taman-kata"] .board-card{display:grid;grid-template-rows:42px 60px minmax(0,1fr) 45px;min-height:0;border-radius:16px}body[data-edu-game="taman-kata"] .board-top{padding:9px 17px}body[data-edu-game="taman-kata"] .selected-clue{padding:8px 14px;min-height:0}body[data-edu-game="taman-kata"] .selected-clue p{font-size:clamp(11px,1.05cqw,20px);line-height:1.5}body[data-edu-game="taman-kata"] .selected-clue small{font-size:clamp(7px,.65cqw,12px);margin-bottom:2px}body[data-edu-game="taman-kata"] .board-pad{min-height:0;container-type:size;padding:10px;display:flex;align-items:center;justify-content:center}body[data-edu-game="taman-kata"] .board{width:min(calc(100cqw - 20px),calc((100cqh - 20px) * var(--tts-cols) / var(--tts-rows)));height:auto;aspect-ratio:var(--tts-cols) / var(--tts-rows);max-width:none;grid-template-rows:repeat(var(--tts-rows),minmax(0,1fr));border-width:5px;gap:2px;flex-shrink:0}body[data-edu-game="taman-kata"] .cell{aspect-ratio:auto;font-size:clamp(12px,2.9cqh,27px);line-height:1}body[data-edu-game="taman-kata"] .cell .number{font-size:clamp(6px,1.2cqh,11px);top:2px;left:2px}body[data-edu-game="taman-kata"] .progress-wrap{padding:8px 15px;min-height:0}body[data-edu-game="taman-kata"] .progress-text{font-size:clamp(10px,.9cqw,17px)}body[data-edu-game="taman-kata"] .board-foot{display:none}body[data-edu-game="taman-kata"] .aside{height:100%;display:flex;flex-direction:column;gap:12px;min-height:0}body[data-edu-game="taman-kata"] .clue-card{display:flex;flex-direction:column;min-height:0;flex:1}body[data-edu-game="taman-kata"] .clue-head{padding:12px 15px;flex-shrink:0}body[data-edu-game="taman-kata"] .clue-head h2{font-size:clamp(19px,1.8cqw,34px);margin:4px 0}body[data-edu-game="taman-kata"] .tabs{padding:9px 12px 6px;flex-shrink:0}body[data-edu-game="taman-kata"] .tab{padding:8px;font-size:clamp(10px,.9cqw,17px)}body[data-edu-game="taman-kata"] .clues{min-height:0;max-height:none;flex:1;overflow:hidden;padding:0 10px 8px}body[data-edu-game="taman-kata"] .clue-button{font-size:clamp(11px,1cqw,19px);padding:7px 6px;line-height:1.45;gap:8px}body[data-edu-game="taman-kata"] .clue-button strong{font-size:clamp(15px,1.3cqw,24px)}body[data-edu-game="taman-kata"] .clue-button small{font-size:clamp(9px,.7cqw,14px)}body[data-edu-game="taman-kata"] .edu-clue-pager{padding:5px;flex-shrink:0}body[data-edu-game="taman-kata"] .edu-tts-controls{flex-shrink:0}body[data-edu-game="taman-kata"] .actions{padding:10px 10px 3px;gap:5px}body[data-edu-game="taman-kata"] .actions button{font-size:clamp(9px,.78cqw,15px);padding:8px 10px;min-height:34px}body[data-edu-game="taman-kata"] .feedback{min-height:34px;font-size:clamp(10px,.8cqw,15px);padding:5px 12px;line-height:1.5}body[data-edu-game="taman-kata"] .keyboard{padding:4px 10px 11px;gap:5px}body[data-edu-game="taman-kata"] .key{height:clamp(30px,4.8cqh,50px);flex-basis:clamp(28px,3cqw,54px);font-size:clamp(10px,.9cqw,17px)}body[data-edu-game="taman-kata"] .result-list{display:none}body[data-edu-game="taman-kata"] .keyboard-clue{display:none}
+/* ULAR TANGGA */
+body[data-edu-game="petualangan-kata"] .edu-stage>header{height:clamp(50px,7.5cqh,80px);position:relative!important}body[data-edu-game="petualangan-kata"] header>div{width:100%;max-width:none;margin:0;flex-wrap:nowrap;gap:10px}body[data-edu-game="petualangan-kata"] header h1{font-size:clamp(16px,1.6cqw,29px)}body[data-edu-game="petualangan-kata"] .edu-stage>main{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,34cqw,620px);gap:14px;align-items:stretch;padding:12px 18px}body[data-edu-game="petualangan-kata"] main>div:first-child{grid-column:auto;min-height:0;justify-content:center;height:100%;gap:7px}body[data-edu-game="petualangan-kata"] .board-wrapper{width:min(100%,calc(100cqh - 105px));max-width:none;height:auto;aspect-ratio:1;margin:0 auto;padding:7px;border-width:1px;border-radius:17px;box-shadow:0 5px 20px #0005,0 0 0 3px #d99e54}body[data-edu-game="petualangan-kata"] .board-svg-overlay,body[data-edu-game="petualangan-kata"] .pawns-layer{inset:7px;width:calc(100% - 14px);height:calc(100% - 14px)}body[data-edu-game="petualangan-kata"] .cell-num{font-size:clamp(9px,1cqw,18px)}body[data-edu-game="petualangan-kata"] main>div:first-child>div:last-child:not(.board-wrapper){margin:0;padding:5px 10px;gap:10px;font-size:clamp(8px,.7cqw,13px)}body[data-edu-game="petualangan-kata"] main>div:last-child{grid-column:auto;min-height:0;height:100%;display:grid;grid-template-rows:auto auto minmax(70px,1fr);gap:10px}body[data-edu-game="petualangan-kata"] main>div:last-child>div{min-height:0;padding:12px;border-radius:15px}body[data-edu-game="petualangan-kata"] main>div:last-child>div:first-child>div:first-child{padding-bottom:8px;margin-bottom:8px}body[data-edu-game="petualangan-kata"] #turnPlayerName{font-size:clamp(17px,1.6cqw,28px)}body[data-edu-game="petualangan-kata"] .scene-3d{transform:scale(.78);transform-origin:center;height:72px}body[data-edu-game="petualangan-kata"] #rollDiceBtn{font-size:clamp(14px,1.3cqw,24px);padding:11px;min-height:45px}body[data-edu-game="petualangan-kata"] #turnStatusBanner{font-size:clamp(10px,.85cqw,16px);padding:7px;line-height:1.5}body[data-edu-game="petualangan-kata"] #playersListContainer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}body[data-edu-game="petualangan-kata"] #playersListContainer>div{padding:7px;gap:5px}body[data-edu-game="petualangan-kata"] #playersListContainer>div>div:first-child{gap:5px}body[data-edu-game="petualangan-kata"] #playersListContainer .w-9{width:27px;height:29px}body[data-edu-game="petualangan-kata"] #playersListContainer .font-bold{font-size:clamp(10px,.9cqw,16px)}body[data-edu-game="petualangan-kata"] #playersListContainer .text-\[11px\],body[data-edu-game="petualangan-kata"] #playersListContainer .text-\[10px\]{font-size:clamp(8px,.65cqw,12px)}body[data-edu-game="petualangan-kata"] #playersListContainer .text-lg{font-size:clamp(16px,1.5cqw,28px)}body[data-edu-game="petualangan-kata"] #extraPlayerName{font-size:clamp(10px,.85cqw,16px);padding:8px}body[data-edu-game="petualangan-kata"] #addPlayerBtn{font-size:clamp(10px,.85cqw,16px);padding:8px;white-space:nowrap}body[data-edu-game="petualangan-kata"] #gameLogContainer{height:calc(100% - 28px);min-height:30px;font-size:clamp(9px,.75cqw,14px)}
+/* TARIK TAMBANG */
+body[data-edu-game="tarik-tambang"] #app{height:100%;width:100%;max-width:none;border:0;border-radius:0;box-shadow:none;min-height:0}body[data-edu-game="tarik-tambang"] #top-bar{height:clamp(50px,7.5cqh,80px);min-height:0;padding:8px 18px}body[data-edu-game="tarik-tambang"] .screen{top:clamp(50px,7.5cqh,80px);height:calc(100% - clamp(50px,7.5cqh,80px))}body[data-edu-game="tarik-tambang"] #screen-game{padding:12px 18px!important;gap:12px}body[data-edu-game="tarik-tambang"] #arena{height:clamp(140px,25cqh,290px);min-height:0}body[data-edu-game="tarik-tambang"] #questions-wrapper{min-height:0;gap:15px}body[data-edu-game="tarik-tambang"] .q-panel{min-height:0;padding:13px;gap:9px}body[data-edu-game="tarik-tambang"] .q-text{font-size:clamp(14px,1.35cqw,26px);min-height:60px;padding:12px;line-height:1.6}body[data-edu-game="tarik-tambang"] .option-btn{font-size:clamp(12px,1.12cqw,22px);min-height:clamp(44px,7cqh,86px);padding:10px 13px}body[data-edu-game="tarik-tambang"] .turn-ind{font-size:clamp(12px,1.2cqw,22px)}body[data-edu-game="tarik-tambang"] .score-box{font-size:clamp(13px,1.25cqw,25px);padding:9px 15px}body[data-edu-game="tarik-tambang"] .score-box span{font-size:clamp(22px,2.5cqw,44px)}body[data-edu-game="tarik-tambang"] #timer-box{font-size:clamp(27px,3cqw,50px)}body[data-edu-game="tarik-tambang"] .title{max-width:90%;font-size:clamp(30px,4cqw,70px)!important}body[data-edu-game="tarik-tambang"] #screen-menu .hero-art{height:clamp(70px,17cqh,180px)}body[data-edu-game="tarik-tambang"] #screen-name{padding-top:15px;justify-content:center}body[data-edu-game="tarik-tambang"] #screen-name .avatar-select-group{display:flex;flex-wrap:nowrap;width:auto;max-width:95%;gap:8px;margin:8px 0}body[data-edu-game="tarik-tambang"] #screen-name .avatar-option{width:clamp(55px,6cqw,100px);height:clamp(67px,11cqh,120px)}body[data-edu-game="tarik-tambang"] #screen-name .avatar-option svg{width:65%;height:70%}body[data-edu-game="tarik-tambang"] #screen-name .avatar-option span{font-size:clamp(8px,.8cqw,15px)}body[data-edu-game="tarik-tambang"] #virtual-keyboard{max-width:clamp(400px,42cqw,800px)}body[data-edu-game="tarik-tambang"] .vk-key{font-size:clamp(11px,1cqw,19px);padding:7px 12px}body[data-edu-game="tarik-tambang"] #screen-name .title{font-size:clamp(25px,2.6cqw,44px)!important}body[data-edu-game="tarik-tambang"] .subtitle{font-size:clamp(11px,1cqw,19px)}
+/* GALAKSI BAHASA */
+body[data-edu-game="galaksi-bahasa"] .edu-stage>header{height:56px!important;min-height:56px;padding:9px 20px!important}body[data-edu-game="galaksi-bahasa"] header h1{font-size:clamp(19px,1.9cqw,34px)!important}body[data-edu-game="galaksi-bahasa"] #mainContainer{padding:12px 18px!important;align-items:stretch;justify-content:center}body[data-edu-game="galaksi-bahasa"] #gameplayScreen:not(.hidden){width:100%;max-width:none;height:100%;min-height:0;display:grid;grid-template-rows:minmax(145px,40%) minmax(0,1fr);gap:12px}body[data-edu-game="galaksi-bahasa"] #gameplayScreen>div:first-child{height:auto!important;min-height:0;border-radius:16px}body[data-edu-game="galaksi-bahasa"] #questionSplitContainer{height:100%;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}body[data-edu-game="galaksi-bahasa"] #p1Panel,body[data-edu-game="galaksi-bahasa"] #p2Panel{min-height:0!important;padding:12px 15px!important;overflow:hidden}body[data-edu-game="galaksi-bahasa"] #p1Panel>div:first-child,body[data-edu-game="galaksi-bahasa"] #p2Panel>div:first-child{flex-shrink:0;padding-bottom:7px;margin-bottom:9px;gap:6px}body[data-edu-game="galaksi-bahasa"] #p1Panel .font-orbitron,body[data-edu-game="galaksi-bahasa"] #p2Panel .font-orbitron{font-size:clamp(9px,.85cqw,17px)!important}body[data-edu-game="galaksi-bahasa"] #p1Panel>div:nth-child(2),body[data-edu-game="galaksi-bahasa"] #p2TimerContainer{flex-shrink:0;margin-bottom:9px}body[data-edu-game="galaksi-bahasa"] #p1Panel>div:last-child,body[data-edu-game="galaksi-bahasa"] #p2StandardQuestionBlock{min-height:0;padding-top:0;padding-bottom:0}body[data-edu-game="galaksi-bahasa"] #p1QuestionText,body[data-edu-game="galaksi-bahasa"] #p2QuestionText{min-height:45px;margin-bottom:10px;font-size:clamp(13px,1.25cqw,24px);line-height:1.5}body[data-edu-game="galaksi-bahasa"] #p1OptionsGrid,body[data-edu-game="galaksi-bahasa"] #p2OptionsGrid{gap:8px}body[data-edu-game="galaksi-bahasa"] #p1OptionsGrid>button,body[data-edu-game="galaksi-bahasa"] #p2OptionsGrid>button{min-height:clamp(42px,7.6cqh,90px);font-size:clamp(11px,1.05cqw,21px);padding:9px 12px!important;line-height:1.45}body[data-edu-game="galaksi-bahasa"] #p1StatsContainer .font-orbitron,body[data-edu-game="galaksi-bahasa"] #p2HpTextContainer{font-size:clamp(9px,.9cqw,18px)!important}body[data-edu-game="galaksi-bahasa"] #arenaTag{font-size:clamp(9px,.8cqw,16px)!important}body[data-edu-game="galaksi-bahasa"] #p2BossBlock{min-height:0;padding:0}body[data-edu-game="galaksi-bahasa"] #p2BossBlock>div:first-child{padding:10px!important;gap:6px}body[data-edu-game="galaksi-bahasa"] #p2BossBlock>div:first-child>div{display:none}body[data-edu-game="galaksi-bahasa"] #p2BossBlock p{font-size:clamp(11px,1cqw,19px);line-height:1.5}body[data-edu-game="galaksi-bahasa"] #p2BossBlock .grid{margin-top:7px}body[data-edu-game="galaksi-bahasa"] #menuScreen:not(.hidden){width:100%;max-width:none;height:100%;overflow:auto;display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:auto minmax(220px,1fr) auto;gap:14px;padding:18px!important}body[data-edu-game="galaksi-bahasa"] #menuScreen>.text-center{grid-column:1/-1;margin:0}body[data-edu-game="galaksi-bahasa"] #menuScreen h2{font-size:clamp(25px,2.6cqw,46px);margin-top:8px}body[data-edu-game="galaksi-bahasa"] #menuScreen>.text-center p{font-size:clamp(10px,.85cqw,16px);margin-top:6px}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid{grid-column:1;grid-row:2;display:flex;flex-direction:column;gap:9px;margin:0;min-height:0}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid>button{height:auto;min-height:0;flex:1;padding:11px 15px;border-radius:12px}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid>button>div:not(.absolute)>div:first-child{display:none}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid>button h3{font-size:clamp(12px,1.15cqw,22px);margin:0;line-height:1.4}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid>button p{font-size:clamp(9px,.8cqw,16px);margin-top:4px;line-height:1.45}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid>button>span{font-size:clamp(8px,.7cqw,13px);margin-top:4px}body[data-edu-game="galaksi-bahasa"] .fleet-config{grid-column:2;grid-row:2;padding:12px 15px;margin:0;min-height:0;overflow:auto}body[data-edu-game="galaksi-bahasa"] .fleet-heading{margin-bottom:9px}body[data-edu-game="galaksi-bahasa"] .fleet-heading h3{font-size:clamp(13px,1.2cqw,22px)!important}body[data-edu-game="galaksi-bahasa"] .fleet-grid{grid-template-columns:1fr;gap:12px}body[data-edu-game="galaksi-bahasa"] .craft-choice{padding:4px 5px 6px}body[data-edu-game="galaksi-bahasa"] .craft-choice svg{height:clamp(32px,5cqh,64px)}body[data-edu-game="galaksi-bahasa"] .craft-choice b{font-size:clamp(10px,.85cqw,17px)}body[data-edu-game="galaksi-bahasa"] .craft-choice small{font-size:clamp(8px,.65cqw,13px)}body[data-edu-game="galaksi-bahasa"] #menuScreen>.bg-slate-950\/50{grid-column:1/-1;grid-row:3;padding:10px 15px}body[data-edu-game="galaksi-bahasa"] #menuScreen h4{margin-bottom:8px;font-size:clamp(9px,.8cqw,16px)}body[data-edu-game="galaksi-bahasa"] #menuScreen select{font-size:clamp(10px,.85cqw,16px)!important;min-height:34px;padding:7px}body[data-edu-game="galaksi-bahasa"] #menuScreen label{font-size:clamp(8px,.7cqw,13px);margin-bottom:5px}
+}
+@media(max-width:899px),(max-height:479px){.edu-stage{width:100%;min-height:100dvh;display:flex;flex-direction:column}.edu-controls{font-size:9px;gap:4px;margin-left:3px}.edu-controls button,.edu-controls summary{padding:7px;min-width:30px;min-height:32px}.edu-volume>div{right:0;width:210px}.edu-stage>header{flex-wrap:wrap;gap:8px}.edu-stage header .brand{font-size:21px}.edu-stage header .brand small{font-size:6px;letter-spacing:.8px}.edu-stage header .brand-icon{width:32px;height:32px;font-size:23px}.edu-stage header #rules,.edu-stage header #rulesBtn{font-size:10px;padding:8px 9px}.edu-stage header .header-actions{gap:4px}body[data-edu-game="taman-kata"] .edu-tts-controls .keyboard-clue{display:block}body[data-edu-game="taman-kata"] .edu-clue-pager{display:none}body[data-edu-game="tarik-tambang"] #top-bar{padding:8px;gap:4px}body[data-edu-game="tarik-tambang"] #status-icons{gap:3px!important}body[data-edu-game="tarik-tambang"] .edu-controls{font-size:8px}body[data-edu-game="galaksi-bahasa"] header>div:last-of-type:has(#btnSoundToggle){display:none}body[data-edu-game="galaksi-bahasa"] header{gap:6px}body[data-edu-game="galaksi-bahasa"] header h1{font-size:17px!important}body[data-edu-game="galaksi-bahasa"] header p{font-size:7px!important}}
+@media(min-width:900px) and (min-height:480px){body[data-edu-game="galaksi-bahasa"] #menuScreen>.text-center>span{padding:5px 10px;font-size:8px}body[data-edu-game="galaksi-bahasa"] #menuScreen>.text-center>p{margin-top:4px}body[data-edu-game="galaksi-bahasa"] #menuScreen h2{margin-top:5px;line-height:1.1}body[data-edu-game="galaksi-bahasa"] #menuScreen:not(.hidden){gap:10px;padding:14px!important;grid-template-rows:auto minmax(200px,1fr) auto}body[data-edu-game="galaksi-bahasa"] #menuScreen>.grid>button{padding:8px 12px}body[data-edu-game="galaksi-bahasa"] .fleet-heading{margin-bottom:6px}body[data-edu-game="galaksi-bahasa"] .fleet-config{padding:10px 12px}body[data-edu-game="galaksi-bahasa"] .fleet-grid{gap:9px}body[data-edu-game="galaksi-bahasa"] .fleet-grid h4{margin-bottom:5px}body[data-edu-game="galaksi-bahasa"] #menuScreen>.bg-slate-950\/50{padding:8px 12px}body[data-edu-game="galaksi-bahasa"] #menuScreen h4{margin-bottom:5px}body[data-edu-game="galaksi-bahasa"] #menuScreen label{margin-bottom:3px}}
+@media(max-width:899px),(max-height:479px){body[data-edu-game="taman-kata"] .board-card>.edu-tts-controls{border:0;border-top:1px solid #e0d5d5;border-radius:0}}
+@media(min-width:900px) and (min-height:480px){body[data-edu-game="galaksi-bahasa"] #menuScreen>div.absolute{display:none}}
+@media(max-width:899px),(max-height:479px){.edu-stage.edu-playing .intro{display:none}}
+@media(min-width:900px) and (min-height:480px){body[data-edu-game="tarik-tambang"] .vk-key{min-height:clamp(34px,5cqh,58px);min-width:clamp(28px,3cqw,60px)}}
+@media(max-width:899px),(max-height:479px){.edu-controls button,.edu-controls summary{min-height:36px}}
+</style></head>
+<body data-edu-game="galaksi-bahasa" class="text-white min-h-screen flex flex-col justify-between">
+
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/40 via-gray-950 to-black"></div>
+        <div id="stars" class="absolute inset-0"></div>
+    </div>
+
+    <script>
+        // Web Audio API Sound Effects Generator
+        const SoundFX = {
+            ctx: null,
+            isMuted: false,
+            init() {
+                if (!this.ctx && !this.isMuted) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            },
+            toggleMute() {
+                this.isMuted = !this.isMuted;
+                const icon = document.getElementById('soundIcon');
+                if (this.isMuted) {
+                    icon.className = 'fa-solid fa-volume-xmark text-rose-500';
+                    icon.parentElement.title = 'Aktifkan Suara';
+                } else {
+                    icon.className = 'fa-solid fa-volume-high text-neoncyan';
+                    icon.parentElement.title = 'Matikan Suara';
+                    this.init();
+                }
+            },
+            playLaser(isP1) {
+                if (this.isMuted) return;
+                this.init();
+                if (!this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(isP1 ? 600 : 350, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(80, this.ctx.currentTime + 0.35);
+                
+                gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.35);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.35);
+            },
+            playExplosion() {
+                if (this.isMuted) return;
+                this.init();
+                if (!this.ctx) return;
+                const bufferSize = this.ctx.sampleRate * 0.45;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+                
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(450, this.ctx.currentTime);
+                filter.frequency.linearRampToValueAtTime(30, this.ctx.currentTime + 0.45);
+                
+                const gain = this.ctx.createGain();
+                gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.45);
+                
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.ctx.destination);
+                noise.start();
+                noise.stop(this.ctx.currentTime + 0.45);
+            },
+            playCorrect() {
+                if (this.isMuted) return;
+                this.init();
+                if (!this.ctx) return;
+                const notes = [261.63, 329.63, 392.00, 523.25];
+                notes.forEach((freq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.06);
+                    
+                    gain.gain.setValueAtTime(0.08, this.ctx.currentTime + idx * 0.06);
+                    gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + idx * 0.06 + 0.15);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(this.ctx.currentTime + idx * 0.06);
+                    osc.stop(this.ctx.currentTime + idx * 0.06 + 0.18);
+                });
+            },
+            playWrong() {
+                if (this.isMuted) return;
+                this.init();
+                if (!this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(120, this.ctx.currentTime);
+                osc.frequency.setValueAtTime(80, this.ctx.currentTime + 0.1);
+                
+                gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.25);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.25);
+            }
+        };
+    </script>
+
+    <header class="relative z-10 w-full bg-slate-950/80 border-b border-slate-800 backdrop-blur-md py-4 px-6 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <button id="btnBackToMenu" class="hidden px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 transition rounded-lg text-xs font-bold flex items-center gap-2 border border-slate-700 animate-pulse" title="Kembali ke Menu Utama">
+                <i class="fa-solid fa-chevron-left text-violet-400"></i> Menu
+            </button>
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:block bg-gradient-to-br from-cyan-500 to-pink-500 p-2 rounded-lg shadow-lg">
+                    <i class="fa-solid fa-rocket text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-2xl font-black font-orbitron tracking-wider bg-gradient-to-r from-neoncyan via-violet-400 to-neonpink bg-clip-text text-transparent">GALAKSI BAHASA</h1>
+                    <p class="hidden xs:block text-[10px] md:text-xs text-gray-400">Arena Kuis Bahasa Indonesia</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button id="btnSoundToggle" onclick="SoundFX.toggleMute()" class="p-2.5 bg-slate-800 hover:bg-slate-700 transition rounded-lg text-sm border border-slate-700 flex items-center justify-center w-10 h-10" title="Matikan Suara">
+                <i id="soundIcon" class="fa-solid fa-volume-high text-neoncyan"></i>
+            </button>
+            <button id="btnFullscreenToggle" onclick="toggleFullscreen()" class="p-2.5 bg-slate-800 hover:bg-slate-700 transition rounded-lg text-sm border border-slate-700 flex items-center justify-center w-10 h-10" title="Mode Layar Penuh">
+                <i id="fullscreenIcon" class="fa-solid fa-expand text-neonpink"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="mainContainer" class="relative z-10 flex-grow flex items-center justify-center p-4">
+        
+        <!-- SELECTION MENU -->
+        <div id="menuScreen" class="w-full max-w-5xl bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur-lg shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-neoncyan/10 rounded-full filter blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-neonpink/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+            <div class="text-center mb-8">
+                <span class="px-3 py-1 bg-violet-950/50 border border-violet-800 text-violet-300 rounded-full text-xs font-semibold tracking-wider uppercase">101 SOAL · 3 MODE MISI · BAHASA INDONESIA</span>
+                <h2 class="text-3xl md:text-4xl font-black font-orbitron mt-2 tracking-wide text-white">Jelajahi galaksi bahasa.</h2>
+                <p class="text-gray-400 text-sm mt-1">Kosakata, sastra, dan majas menjadi bekal untuk menaklukkan setiap misi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <!-- Mode 1: Solo Raid (1 vs Komputer) -->
+                <button onclick="selectMode('single')" class="group relative bg-slate-950 hover:bg-slate-900 border border-pink-900/50 hover:border-neonpink p-5 rounded-xl text-left transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between h-60 shadow-md overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-crosshairs text-7xl text-neonpink"></i>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-pink-950/50 border border-pink-800 flex items-center justify-center text-neonpink text-lg mb-3">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-orbitron text-neonpink tracking-wide mb-1">Solo Raid (1 vs Komputer)</h3>
+                        <p class="text-gray-400 text-[11px] leading-relaxed">Terbang sendiri melawan Bos Galaksi. Jawab tepat untuk meluncurkan laser dan bertahan dari serangan plasma sebelum waktu habis.</p>
+                    </div>
+                    <span class="text-xs text-pink-400 font-bold tracking-wider mt-2 flex items-center gap-1">MULAI SOLO RAID <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+                <!-- Mode 2: Co-op Raid (2 vs Komputer) -->
+                <button onclick="selectMode('coop')" class="group relative bg-slate-950 hover:bg-slate-900 border border-violet-900/50 hover:border-violet-400 p-5 rounded-xl text-left transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between h-60 shadow-md overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-rocket text-7xl text-neonviolet"></i>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-400 text-lg mb-3">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-orbitron text-violet-400 tracking-wide mb-1">Co-op Raid (2 vs Komputer)</h3>
+                        <p class="text-gray-400 text-[11px] leading-relaxed">Dua pesawat bersekutu melawan Bos Besar! Jawab masing-masing panel navigasi menggunakan satu keyboard secara serempak.</p>
+                    </div>
+                    <span class="text-xs text-violet-400 font-bold tracking-wider mt-2 flex items-center gap-1">MULAI CO-OP RAID <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+
+                <!-- Mode 3: Split Duel (1v1) -->
+                <button onclick="selectMode('pvp')" class="group relative bg-slate-950 hover:bg-slate-900 border border-cyan-900/50 hover:border-neoncyan p-5 rounded-xl text-left transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between h-60 shadow-md overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-user-friends text-7xl text-neoncyan"></i>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-cyan-950/50 border border-cyan-800 flex items-center justify-center text-neoncyan text-lg mb-3">
+                            <i class="fa-solid fa-user-group"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-orbitron text-neoncyan tracking-wide mb-1">Split Duel (1 VS 1)</h3>
+                        <p class="text-gray-400 text-[11px] leading-relaxed">Satu Keyboard Berdua! Saling adu cepat menjawab soal mandiri untuk menembak jatuh tameng dan pesawat teman Anda.</p>
+                    </div>
+                    <span class="text-xs text-cyan-400 font-bold tracking-wider mt-2 flex items-center gap-1">MULAI DUEL 1V1 <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </button>
+            </div>
+
+            <section class="fleet-config"><div class="fleet-heading"><div><span>ARMADA PILIHANMU</span><h3>Pilih pesawat penjelajah</h3></div><p>Bentuk berbeda, kemampuan tetap sama.</p></div><div class="fleet-grid"><div><h4><span class="pilot-dot"></span> PEMAIN 1</h4><div id="craftChoices1" class="craft-choices"></div></div><div><h4><span class="pilot-dot second"></span> PEMAIN 2 <small>untuk Co-op & Duel</small></h4><div id="craftChoices2" class="craft-choices"></div></div></div></section><!-- Configuration Form -->
+            <div class="bg-slate-950/50 border border-slate-800 p-5 rounded-xl">
+                <h4 class="font-bold font-orbitron text-sm text-gray-300 tracking-wider mb-4 uppercase"><i class="fa-solid fa-sliders text-violet-400 mr-2"></i> Konfigurasi Pertempuran</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Pilih Materi Bahasa Indonesia</label>
+                        <select id="selectCategory" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-violet-500 text-gray-200">
+                            <option value="kosakata">Kosakata & Kaidah Bahasa</option>
+                            <option value="sastra">Sastra & Unsur Cerita</option>
+                            <option value="majas">Majas, Peribahasa & Ungkapan</option>
+                            <option value="mix">Campuran Semua Materi</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Tingkat Kesulitan Soal & Jeda Tembak Bos</label>
+                        <select id="selectDifficulty" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-violet-500 text-gray-200">
+                            <option value="easy" selected>Kadet (Mudah - Jawaban Kilat 1-2 Kata - Bos Nembak 10S)</option>
+                            <option value="medium">Mayor (Sedang - Relevan & Terapan - Bos Nembak 8S)</option>
+                            <option value="hard">Jenderal (Sulit / HOTS - Berkejaran Waktu - Bos Nembak 6S)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAMEPLAY SCREEN -->
+        <div id="gameplayScreen" class="hidden w-full max-w-6xl flex flex-col gap-4 relative">
+            
+            <!-- Canvas Space Arena -->
+            <div class="relative bg-slate-950/80 border border-slate-800 rounded-xl overflow-hidden shadow-2xl h-64 md:h-80">
+                <!-- Status Indicators Floating -->
+                <div class="absolute top-3 left-4 right-4 flex justify-between items-center pointer-events-none z-10">
+                    <!-- P1 Stats Panel -->
+                    <div id="p1StatsContainer" class="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-cyan-800 px-3 py-1.5 rounded-lg">
+                        <div class="w-3 h-3 rounded-full bg-neoncyan animate-ping absolute"></div>
+                        <div class="w-3 h-3 rounded-full bg-neoncyan relative"></div>
+                        <div class="text-[10px] md:text-xs font-bold font-orbitron text-neoncyan tracking-wider">
+                            PEMAIN 1: <span id="p1HpText">100%</span>
+                        </div>
+                    </div>
+                    <!-- VS Mid Shield Indicator / Mission Timer -->
+                    <div id="arenaTag" class="bg-black/80 border border-slate-700 px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-xs font-orbitron font-bold tracking-widest text-violet-400 flex items-center gap-2">
+                        <i class="fa-solid fa-stopwatch text-amber-400"></i> WAKTU MISI: <span id="missionTimeText" class="text-white">120S</span>
+                    </div>
+                    <!-- P2 / Boss Stats Panel -->
+                    <div class="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-pink-800 px-3 py-1.5 rounded-lg">
+                        <div id="p2HpTextContainer" class="text-[10px] md:text-xs font-bold font-orbitron text-neonpink tracking-wider">
+                            BOS BESAR: <span id="p2HpText">100%</span>
+                        </div>
+                        <div class="w-3 h-3 rounded-full bg-neonpink relative">
+                            <div class="w-3 h-3 rounded-full bg-neonpink animate-ping absolute"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canvas -->
+                <canvas id="spaceCanvas" class="w-full h-full block"></canvas>
+            </div>
+
+            <!-- SPLIT ANSWER CONTROLLER PANEL -->
+            <div id="questionSplitContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- PANEL PEMAIN 1 (BIRU) -->
+                <div id="p1Panel" class="bg-slate-900/90 border-2 border-cyan-900 rounded-xl p-4 flex flex-col justify-between min-h-[220px] transition-all duration-300">
+                    <div class="flex justify-between items-center border-b border-cyan-950 pb-2 mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-md bg-neoncyan/20 border border-neoncyan/50 text-neoncyan flex items-center justify-center text-xs font-bold">P1</span>
+                            <span class="font-orbitron font-bold text-xs tracking-wider text-neoncyan">NAVIGASI PEMAIN 1</span>
+                        </div>
+                        <div class="text-[10px] text-gray-400 font-semibold bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">
+                            Tombol: <span class="text-neoncyan font-bold">1, 2, 3, 4</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar Timer -->
+                    <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden mb-3 border border-slate-800">
+                        <div id="p1TimerBar" class="bg-gradient-to-r from-neoncyan to-indigo-500 h-full w-full transition-all duration-100 ease-linear"></div>
+                    </div>
+
+                    <!-- Question Block -->
+                    <div class="flex-grow flex flex-col justify-center text-center py-2">
+                        <div id="p1QuestionText" class="text-sm md:text-base font-bold text-white mb-4 min-h-[50px] flex items-center justify-center">
+                            Memulai mesin navigasi...
+                        </div>
+                        <!-- Options Grid -->
+                        <div id="p1OptionsGrid" class="grid grid-cols-2 gap-2 mb-1">
+                            <!-- Populated via Javascript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL PEMAIN 2 (MERAH / KONTROLER BOS BESAR) -->
+                <div id="p2Panel" class="bg-slate-900/90 border-2 border-pink-900 rounded-xl p-4 flex flex-col justify-between min-h-[220px] transition-all duration-300">
+                    <div class="flex justify-between items-center border-b border-pink-950 pb-2 mb-3">
+                        <div class="flex items-center gap-2">
+                            <span id="p2Icon" class="w-10 h-6 rounded-md bg-neonpink/20 border border-neonpink/50 text-neonpink flex items-center justify-center text-[9px] font-bold tracking-widest">BOSS</span>
+                            <span id="p2Title" class="font-orbitron font-bold text-xs tracking-wider text-neonpink">SISTEM DETEKSI MUSUH</span>
+                        </div>
+                        <div id="p2KeyGuide" class="text-[10px] text-gray-400 font-semibold bg-pink-950 px-2 py-0.5 rounded border border-pink-800">
+                            <!-- Diisi dinamis -->
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar / Diagnostics for Player 2 or Boss Analysis -->
+                    <div id="p2TimerContainer" class="w-full bg-slate-950 h-3 rounded-full overflow-hidden mb-3 border border-slate-800 relative">
+                        <div id="p2TimerBar" class="bg-gradient-to-r from-neonpink to-violet-500 h-full w-full transition-all duration-100 ease-linear"></div>
+                        <span id="p2ChargeLabel" class="absolute inset-0 flex items-center justify-center text-[9px] font-bold font-orbitron text-white uppercase tracking-widest pointer-events-none">PERSIAPAN MERIAM PLASMA</span>
+                    </div>
+
+                    <!-- Standard Question Block -->
+                    <div id="p2StandardQuestionBlock" class="hidden flex-grow flex flex-col justify-center text-center py-2">
+                        <div id="p2QuestionText" class="text-sm md:text-base font-bold text-white mb-4 min-h-[50px] flex items-center justify-center">
+                            Membuat sistem persenjataan...
+                        </div>
+                        <div id="p2OptionsGrid" class="grid grid-cols-2 gap-2 mb-1">
+                            <!-- Populated via Javascript -->
+                        </div>
+                    </div>
+
+                    <!-- Boss Raid Status Block (Hanya digunakan di mode Solo Raid dan Co-op Raid) -->
+                    <div id="p2BossBlock" class="flex-grow flex flex-col justify-between py-2 text-center">
+                        <div class="py-4 border border-dashed border-pink-900/50 rounded-lg bg-pink-950/10 flex flex-col items-center justify-center gap-2">
+                            <div class="w-12 h-12 rounded-full border-2 border-neonpink flex items-center justify-center text-neonpink animate-pulse text-lg">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h3 class="font-orbitron text-xs font-bold text-neonpink tracking-widest">SISTEM SCANNER REAKTOR BOS</h3>
+                            <p class="text-[11px] text-gray-400 px-4 leading-relaxed">Awas! Bos menembakkan meriam plasma otomatis berkala. Jawab soal secepatnya untuk meluncurkan laser balasan sebelum HP Anda habis!</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-3 text-left">
+                            <div class="bg-slate-950 p-2 rounded-lg border border-slate-800">
+                                <span class="text-[9px] text-gray-500 block uppercase font-bold tracking-wider">Deteksi Senjata</span>
+                                <span id="bossThreatLevel" class="text-[11px] font-bold text-rose-500 font-orbitron"><i class="fa-solid fa-circle-check mr-1 animate-pulse"></i> AKTIF & OTOMATIS</span>
+                            </div>
+                            <div class="bg-slate-950 p-2 rounded-lg border border-slate-800">
+                                <span class="text-[9px] text-gray-500 block uppercase font-bold tracking-wider">Tingkat Ancaman</span>
+                                <span class="text-[11px] font-bold text-rose-500 font-orbitron">BOS BESAR LV.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GAME OVER MODAL -->
+        <div id="gameOverModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+            <div class="w-full max-w-lg bg-slate-900 border-2 border-violet-800 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden shadow-2xl">
+                <div class="absolute -top-16 -left-16 w-36 h-36 bg-violet-600/20 rounded-full filter blur-2xl"></div>
+
+                <div class="mb-4">
+                    <span class="inline-block p-4 bg-violet-950/40 border border-violet-700 rounded-full text-violet-400 text-4xl mb-2">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </span>
+                    <h2 class="text-3xl font-black font-orbitron tracking-wider text-white">MISI SELESAI</h2>
+                    <p class="text-gray-400 text-xs mt-1">Sektor pertempuran berhasil dituntaskan.</p>
+                </div>
+
+                <div class="bg-slate-950/70 border border-slate-800 p-5 rounded-xl mb-6">
+                    <h3 id="winnerText" class="text-xl font-bold font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-neoncyan to-neonpink mb-4">Seseorang Menang!</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-left border-t border-slate-800 pt-4">
+                        <div>
+                            <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider">Akurasi P1</span>
+                            <span id="p1Accuracy" class="text-lg font-bold text-neoncyan font-orbitron">0%</span>
+                        </div>
+                        <div id="p2StatContainer">
+                            <span id="p2StatLabel" class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider">Akurasi P2</span>
+                            <span id="p2Accuracy" class="text-lg font-bold text-neonpink font-orbitron">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="restartGame()" class="flex-1 px-5 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition rounded-xl font-bold font-orbitron text-sm tracking-wider uppercase shadow-lg shadow-indigo-950">
+                        Main Lagi <i class="fa-solid fa-arrows-rotate ml-1"></i>
+                    </button>
+                    <button onclick="exitToMenu()" class="flex-1 px-5 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition rounded-xl font-bold font-orbitron text-sm tracking-wider uppercase text-gray-300">
+                        Menu Utama <i class="fa-solid fa-house ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="relative z-10 w-full bg-slate-950/80 border-t border-slate-900 backdrop-blur-md py-3 px-6 text-center text-xs text-gray-500">
+        <p>&copy; 2026 Galaksi Bahasa. Kosakata, sastra, dan majas dalam satu petualangan antariksa.</p>
+    </footer>
+
+    <script>
+        // Starfield background initialization
+        function makeStars() {
+            const starsContainer = document.getElementById('stars');
+            starsContainer.innerHTML = '';
+            for (let i = 0; i < 60; i++) {
+                const star = document.createElement('div');
+                star.className = 'absolute bg-white rounded-full';
+                star.style.width = Math.random() * 2.5 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                starsContainer.appendChild(star);
+            }
+        }
+        makeStars();
+
+        // BANK SOAL BAHASA INDONESIA: KOSAKATA, SASTRA, MAJAS DAN PERIBAHASA
+        // Easy mode answers are exactly 1-2 words for high-intensity rapid gameplay.
+        const QuestionBank = {
+  "kosakata": {
+    "easy": [
+      {
+        "q": "Persamaan makna kata disebut …",
+        "a": [
+          "Sinonim",
+          "Antonim",
+          "Paragraf",
+          "Kalimat"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Lawan kata disebut …",
+        "a": [
+          "Antonim",
+          "Sinonim",
+          "Diksi",
+          "Tema"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Lawan kata \"rajin\" adalah …",
+        "a": [
+          "Malas",
+          "Pandai",
+          "Cepat",
+          "Tekun"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Sinonim kata \"gembira\" adalah …",
+        "a": [
+          "Senang",
+          "Sedih",
+          "Marah",
+          "Takut"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Penulisan baku untuk tempat membeli obat adalah …",
+        "a": [
+          "Apotek",
+          "Apotik",
+          "Apotiek",
+          "Apoteq"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Penulisan baku untuk anjuran yang baik adalah …",
+        "a": [
+          "Nasihat",
+          "Nasehat",
+          "Nasihet",
+          "Nasehet"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kalimat tanya diakhiri tanda …",
+        "a": [
+          "Tanya (?)",
+          "Titik (.)",
+          "Koma (,)",
+          "Titik dua (:)"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Huruf pertama nama orang ditulis dengan huruf …",
+        "a": [
+          "Kapital",
+          "Kecil",
+          "Miring",
+          "Tebal"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata kerja dalam kalimat \"Rina membaca buku\" adalah …",
+        "a": [
+          "Membaca",
+          "Rina",
+          "Buku",
+          "Rina membaca"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata sifat pada kalimat \"Bunga itu indah\" adalah …",
+        "a": [
+          "Indah",
+          "Bunga",
+          "Itu",
+          "Bunga itu"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Buku yang memuat arti kata disebut …",
+        "a": [
+          "Kamus",
+          "Atlas",
+          "Album",
+          "Komik"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Orang yang memberi informasi dalam wawancara disebut …",
+        "a": [
+          "Narasumber",
+          "Pembaca",
+          "Pendengar",
+          "Penonton"
+        ],
+        "correct": 0
+      }
+    ],
+    "medium": [
+      {
+        "q": "Penulisan kata depan yang benar adalah …",
+        "a": [
+          "Di sekolah",
+          "Disekolah",
+          "Di-sekolah",
+          "DiSekolah"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Penulisan imbuhan yang benar adalah …",
+        "a": [
+          "Dibaca",
+          "Di baca",
+          "Di-baca",
+          "DiBaca"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata penghubung sebab dalam kalimat adalah …",
+        "a": [
+          "Karena",
+          "Tetapi",
+          "Dan",
+          "Atau"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kalimat yang berisi ajakan adalah …",
+        "a": [
+          "Mari menjaga kebersihan kelas!",
+          "Di mana bukumu?",
+          "Hujan turun sore ini.",
+          "Adik membaca cerita."
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata baku yang tepat adalah …",
+        "a": [
+          "Aktivitas",
+          "Aktifitas",
+          "Aktivitet",
+          "Aktipitas"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata baku yang tepat adalah …",
+        "a": [
+          "Risiko",
+          "Resiko",
+          "Ressiko",
+          "Riziko"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata penghubung yang menyatakan pilihan adalah …",
+        "a": [
+          "Atau",
+          "Dan",
+          "Karena",
+          "Sehingga"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata penghubung pertentangan adalah …",
+        "a": [
+          "Tetapi",
+          "Dan",
+          "Atau",
+          "Kemudian"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kata dasar dari \"bermain\" adalah …",
+        "a": [
+          "Main",
+          "Bermain",
+          "Beri",
+          "Permainan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Inti pokok sebuah paragraf disebut …",
+        "a": [
+          "Gagasan utama",
+          "Kalimat tanya",
+          "Tanda baca",
+          "Daftar isi"
+        ],
+        "correct": 0
+      }
+    ],
+    "hard": [
+      {
+        "q": "\"Rina membaca buku di perpustakaan.\" Subjek kalimat tersebut adalah …",
+        "a": [
+          "Rina",
+          "Membaca",
+          "Buku",
+          "Di perpustakaan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Adik menulis surat.\" Objek kalimat tersebut adalah …",
+        "a": [
+          "Surat",
+          "Adik",
+          "Menulis",
+          "Adik menulis"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kalimat yang paling efektif adalah …",
+        "a": [
+          "Para siswa mengikuti upacara.",
+          "Para siswa-siswa mengikuti upacara.",
+          "Semua para siswa mengikuti upacara.",
+          "Para siswa mengikuti upacara bersama-sama semuanya."
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Penulisan huruf kapital yang tepat adalah …",
+        "a": [
+          "Rani lahir di Bandung.",
+          "rani lahir di Bandung.",
+          "Rani lahir di bandung.",
+          "Rani Lahir Di Bandung."
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Penulisan kalimat langsung yang tepat adalah …",
+        "a": [
+          "Ibu berkata, \"Ayo belajar!\"",
+          "Ibu berkata \"Ayo belajar\"!",
+          "Ibu berkata: ayo belajar!",
+          "\"Ibu berkata, Ayo belajar!\""
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Pernyataan yang merupakan opini adalah …",
+        "a": [
+          "Menurut saya, novel itu sangat menarik.",
+          "Pantun itu terdiri atas empat baris.",
+          "Buku ini memiliki dua ratus halaman.",
+          "Perpustakaan dibuka pada pukul delapan."
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Tujuan utama teks persuasi adalah …",
+        "a": [
+          "Mengajak pembaca melakukan sesuatu",
+          "Mencatat semua dialog tokoh",
+          "Menjelaskan daftar pustaka",
+          "Menyusun urutan abjad"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Teks yang menggambarkan objek secara terperinci disebut …",
+        "a": [
+          "Deskripsi",
+          "Persuasi",
+          "Argumentasi",
+          "Negosiasi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Teks yang menceritakan kejadian secara berurutan disebut …",
+        "a": [
+          "Narasi",
+          "Deskripsi",
+          "Definisi",
+          "Daftar isi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Budi belajar tekun sehingga lulus ujian.\" Kata sehingga menunjukkan …",
+        "a": [
+          "Hubungan akibat",
+          "Hubungan pilihan",
+          "Hubungan pertentangan",
+          "Hubungan perbandingan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Meskipun hujan, mereka tetap berangkat.\" Hubungan makna kalimat tersebut …",
+        "a": [
+          "Konsesif atau pertentangan keadaan",
+          "Sebab dan akibat langsung",
+          "Pilihan antara dua tindakan",
+          "Urutan waktu kejadian"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "sastra": {
+    "easy": [
+      {
+        "q": "Tokoh dalam cerita adalah …",
+        "a": [
+          "Pelaku cerita",
+          "Tempat cerita",
+          "Pesan cerita",
+          "Judul cerita"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Tempat dan waktu cerita disebut …",
+        "a": [
+          "Latar",
+          "Tokoh",
+          "Amanat",
+          "Dialog"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Pesan dalam sebuah cerita disebut …",
+        "a": [
+          "Amanat",
+          "Latar",
+          "Alur",
+          "Sampiran"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Rangkaian peristiwa dalam cerita disebut …",
+        "a": [
+          "Alur",
+          "Bait",
+          "Rima",
+          "Diksi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Cerita dengan tokoh hewan yang bertingkah seperti manusia disebut …",
+        "a": [
+          "Fabel",
+          "Biografi",
+          "Berita",
+          "Laporan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Puisi lama dengan sampiran dan isi disebut …",
+        "a": [
+          "Pantun",
+          "Novel",
+          "Cerpen",
+          "Drama"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Pantun biasanya terdiri atas berapa baris dalam satu bait?",
+        "a": [
+          "Empat",
+          "Dua",
+          "Tiga",
+          "Lima"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Percakapan dua tokoh atau lebih disebut …",
+        "a": [
+          "Dialog",
+          "Monolog",
+          "Prolog",
+          "Epilog"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Gagasan utama sebuah cerita disebut …",
+        "a": [
+          "Tema",
+          "Rima",
+          "Baris",
+          "Dialog"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Sebutan lain untuk cerita pendek adalah …",
+        "a": [
+          "Cerpen",
+          "Novel",
+          "Syair",
+          "Gurindam"
+        ],
+        "correct": 0
+      }
+    ],
+    "medium": [
+      {
+        "q": "Rima pantun yang paling umum adalah …",
+        "a": [
+          "a-b-a-b",
+          "a-a-a-a",
+          "a-b-b-b",
+          "a-a-b-b"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Baris pertama dan kedua pantun disebut …",
+        "a": [
+          "Sampiran",
+          "Isi",
+          "Amanat",
+          "Penutup"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Puisi lama empat baris dengan seluruh baris berupa isi disebut …",
+        "a": [
+          "Syair",
+          "Pantun",
+          "Cerpen",
+          "Fabel"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Puisi lama dua baris yang biasanya berisi nasihat disebut …",
+        "a": [
+          "Gurindam",
+          "Syair",
+          "Novel",
+          "Dialog"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Pilihan kata yang digunakan pengarang disebut …",
+        "a": [
+          "Diksi",
+          "Rima",
+          "Alur",
+          "Latar"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Tokoh yang biasanya menentang tokoh utama disebut …",
+        "a": [
+          "Antagonis",
+          "Protagonis",
+          "Narator",
+          "Pengarang"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Cerita rakyat yang berkaitan dengan asal-usul tempat disebut …",
+        "a": [
+          "Legenda",
+          "Laporan",
+          "Biografi",
+          "Iklan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Ucapan panjang seorang tokoh tanpa percakapan dengan tokoh lain disebut …",
+        "a": [
+          "Monolog",
+          "Dialog",
+          "Epilog",
+          "Katalog"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kelompok beberapa baris dalam puisi disebut …",
+        "a": [
+          "Bait",
+          "Bab",
+          "Dialog",
+          "Judul"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Persamaan bunyi dalam puisi disebut …",
+        "a": [
+          "Rima",
+          "Tema",
+          "Tokoh",
+          "Alur"
+        ],
+        "correct": 0
+      }
+    ],
+    "hard": [
+      {
+        "q": "\"Aku\" sebagai tokoh yang menceritakan pengalamannya sendiri menunjukkan sudut pandang …",
+        "a": [
+          "Orang pertama",
+          "Orang kedua",
+          "Orang ketiga serbatahu",
+          "Orang ketiga pengamat"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Bagian cerita ketika konflik mencapai puncaknya disebut …",
+        "a": [
+          "Klimaks",
+          "Orientasi",
+          "Pengenalan",
+          "Penutup"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Di desa itu, setiap pagi terdengar kokok ayam.\" Kutipan ini menunjukkan …",
+        "a": [
+          "Latar tempat dan waktu",
+          "Watak antagonis",
+          "Sudut pandang kedua",
+          "Konflik batin tokoh"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Alur yang menceritakan kejadian dari awal hingga akhir secara berurutan disebut …",
+        "a": [
+          "Alur maju",
+          "Alur mundur",
+          "Alur campuran",
+          "Alur sorot balik"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Cerita dimulai dari masa kini lalu kembali ke masa kecil tokoh. Teknik ini disebut …",
+        "a": [
+          "Sorot balik",
+          "Dialog langsung",
+          "Monolog batin",
+          "Penokohan langsung"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Dita tetap menolong orang yang mengejeknya.\" Nilai yang tampak adalah …",
+        "a": [
+          "Kebaikan hati",
+          "Kesombongan",
+          "Kecurangan",
+          "Ketidakpedulian"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Amanat cerita sebaiknya ditentukan berdasarkan …",
+        "a": [
+          "Peristiwa dan tindakan tokoh",
+          "Jumlah halaman buku",
+          "Ukuran huruf judul",
+          "Warna sampul buku"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Ia menyimpan dompet temuan untuk dikembalikan.\" Watak tokoh tersebut …",
+        "a": [
+          "Jujur",
+          "Licik",
+          "Sombong",
+          "Pemarah"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Siti melihat Bima berlari menuju rumahnya.\" Kata ia/dia pada narasi umumnya menunjukkan sudut pandang …",
+        "a": [
+          "Orang ketiga",
+          "Orang pertama",
+          "Orang kedua",
+          "Tokoh aku"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Perbedaan utama prosa dan puisi terletak pada …",
+        "a": [
+          "Bentuk penyajian bahasanya",
+          "Jenis kertas yang dipakai",
+          "Tempat buku dijual",
+          "Usia semua pembacanya"
+        ],
+        "correct": 0
+      }
+    ]
+  },
+  "majas": {
+    "easy": [
+      {
+        "q": "Ungkapan \"buah tangan\" berarti …",
+        "a": [
+          "Oleh-oleh",
+          "Buah segar",
+          "Makanan pokok",
+          "Pekerjaan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Ungkapan \"kutu buku\" ditujukan kepada orang yang …",
+        "a": [
+          "Gemar membaca",
+          "Suka berenang",
+          "Rajin memasak",
+          "Pandai menari"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Sifat \"rendah hati\" berarti …",
+        "a": [
+          "Tidak sombong",
+          "Mudah marah",
+          "Tidak peduli",
+          "Selalu takut"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Ungkapan \"besar kepala\" berarti …",
+        "a": [
+          "Sombong",
+          "Ramah",
+          "Rajin",
+          "Sabar"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Ungkapan \"buah hati\" berarti …",
+        "a": [
+          "Anak",
+          "Hadiah",
+          "Pikiran",
+          "Kabar"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Ungkapan \"panjang tangan\" berarti …",
+        "a": [
+          "Suka mencuri",
+          "Suka membaca",
+          "Rajin bekerja",
+          "Mudah memaafkan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Ungkapan \"keras kepala\" berarti …",
+        "a": [
+          "Sulit dinasihati",
+          "Tidak sombong",
+          "Suka berbagi",
+          "Gemar belajar"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Buah bibir\" berarti …",
+        "a": [
+          "Bahan pembicaraan",
+          "Hasil kebun",
+          "Hadiah lomba",
+          "Nama makanan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Orang kepercayaan sering disebut …",
+        "a": [
+          "Tangan kanan",
+          "Panjang tangan",
+          "Besar kepala",
+          "Buah tangan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Naik darah\" berarti …",
+        "a": [
+          "Marah",
+          "Gembira",
+          "Lapar",
+          "Bingung"
+        ],
+        "correct": 0
+      }
+    ],
+    "medium": [
+      {
+        "q": "\"Angin berbisik di antara pepohonan\" menggunakan majas …",
+        "a": [
+          "Personifikasi",
+          "Hiperbola",
+          "Litotes",
+          "Ironi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Tangisnya membanjiri seluruh kota\" menggunakan majas …",
+        "a": [
+          "Hiperbola",
+          "Litotes",
+          "Ironi",
+          "Personifikasi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Dia adalah bintang kelas\" menggunakan majas …",
+        "a": [
+          "Metafora",
+          "Personifikasi",
+          "Litotes",
+          "Ironi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Wajahnya bersinar bagai bulan\" menggunakan majas …",
+        "a": [
+          "Simile",
+          "Ironi",
+          "Litotes",
+          "Metonimia"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Silakan mampir ke gubuk kami,\" kata pemilik rumah megah. Majasnya …",
+        "a": [
+          "Litotes",
+          "Hiperbola",
+          "Simile",
+          "Personifikasi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Rajin sekali, tugas satu pun belum kamu kerjakan!\" adalah majas …",
+        "a": [
+          "Ironi",
+          "Simile",
+          "Metafora",
+          "Litotes"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Besar pasak daripada tiang\" berarti …",
+        "a": [
+          "Pengeluaran melebihi pendapatan",
+          "Pendapatan selalu bertambah",
+          "Pekerjaan selesai tepat waktu",
+          "Bekerja tanpa bantuan"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Berat sama dipikul, ringan sama dijinjing\" mengajarkan …",
+        "a": [
+          "Menanggung suka duka bersama",
+          "Bersaing tanpa aturan",
+          "Mengandalkan orang lain",
+          "Menghindari tanggung jawab"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Bagai pinang dibelah dua\" menggambarkan dua hal yang …",
+        "a": [
+          "Sangat mirip",
+          "Saling bermusuhan",
+          "Sangat berjauhan",
+          "Tidak cocok"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Air beriak tanda tak dalam\" menyindir orang yang …",
+        "a": [
+          "Banyak bicara tetapi kurang berilmu",
+          "Rajin belajar dan rendah hati",
+          "Pendiam tetapi pandai",
+          "Tekun bekerja setiap hari"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Sedikit demi sedikit, lama-lama menjadi bukit\" mengajarkan …",
+        "a": [
+          "Ketekunan menghasilkan hal besar",
+          "Hasil harus selalu cepat",
+          "Lebih baik berhenti mencoba",
+          "Keberhasilan tidak perlu usaha"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Bagai air di daun talas\" menggambarkan orang yang …",
+        "a": [
+          "Tidak tetap pendirian",
+          "Sangat sabar",
+          "Suka menolong",
+          "Pandai berhemat"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Kambing hitam\" berarti …",
+        "a": [
+          "Pihak yang dipersalahkan",
+          "Pemimpin kelompok",
+          "Pekerja paling rajin",
+          "Orang yang dipercaya"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Banting tulang\" berarti …",
+        "a": [
+          "Bekerja sangat keras",
+          "Melakukan olahraga",
+          "Meninggalkan rumah",
+          "Menyimpan rahasia"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Gulung tikar\" dalam dunia usaha berarti …",
+        "a": [
+          "Bangkrut",
+          "Membuka cabang",
+          "Mendapat keuntungan",
+          "Menambah modal"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Kepala dingin\" berarti menghadapi masalah dengan …",
+        "a": [
+          "Tenang",
+          "Marah",
+          "Tergesa-gesa",
+          "Takut"
+        ],
+        "correct": 0
+      }
+    ],
+    "hard": [
+      {
+        "q": "\"Matahari tersenyum menyambut pagi.\" Mengapa disebut personifikasi?",
+        "a": [
+          "Matahari diberi perilaku manusia",
+          "Ada perbandingan memakai bagai",
+          "Keadaan dinyatakan berlebihan",
+          "Penutur merendahkan diri"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Suaranya menggelegar membelah langit.\" Ciri majas hiperbola pada kalimat itu adalah …",
+        "a": [
+          "Ungkapannya dilebih-lebihkan",
+          "Benda mati diberi perasaan",
+          "Ada sindiran berlawanan",
+          "Ada pengulangan bunyi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Dina meminta maaf dan menerima kritik dengan ikhlas. Ungkapan yang sesuai …",
+        "a": [
+          "Lapang dada",
+          "Besar kepala",
+          "Panjang tangan",
+          "Naik darah"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Kakak menjadi penopang utama biaya hidup keluarga. Ia disebut …",
+        "a": [
+          "Tulang punggung",
+          "Buah bibir",
+          "Kambing hitam",
+          "Kepala batu"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Sinta selalu membawa oleh-oleh ketika pulang. Ungkapan untuk oleh-oleh itu …",
+        "a": [
+          "Buah tangan",
+          "Buah hati",
+          "Buah bibir",
+          "Buah pikiran"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Raka suka menyalahkan temannya atas kesalahan sendiri. Temannya dijadikan …",
+        "a": [
+          "Kambing hitam",
+          "Tangan kanan",
+          "Bintang kelas",
+          "Buah hati"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Dua orang yang selalu berselisih digambarkan dengan peribahasa …",
+        "a": [
+          "Bagai anjing dengan kucing",
+          "Bagai pinang dibelah dua",
+          "Air tenang menghanyutkan",
+          "Seperti ilmu padi"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Peribahasa yang mengingatkan orang agar tidak melupakan asal-usulnya …",
+        "a": [
+          "Kacang lupa kulitnya",
+          "Besar pasak daripada tiang",
+          "Sedia payung sebelum hujan",
+          "Ada gula ada semut"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "Tindakan menabung untuk kebutuhan mendadak sesuai dengan peribahasa …",
+        "a": [
+          "Sedia payung sebelum hujan",
+          "Tong kosong nyaring bunyinya",
+          "Bagai air di daun talas",
+          "Kacang lupa kulitnya"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Sekali merengkuh dayung, dua tiga pulau terlampaui\" berarti …",
+        "a": [
+          "Satu tindakan mencapai beberapa tujuan",
+          "Bekerja harus dilakukan sendirian",
+          "Tujuan tidak memerlukan rencana",
+          "Semua pekerjaan harus ditunda"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Seperti ilmu padi, makin berisi makin merunduk\" mengajarkan …",
+        "a": [
+          "Makin berilmu makin rendah hati",
+          "Makin kaya makin sombong",
+          "Makin pandai makin banyak bicara",
+          "Makin dewasa makin keras kepala"
+        ],
+        "correct": 0
+      },
+      {
+        "q": "\"Air tenang menghanyutkan\" dapat menggambarkan orang yang …",
+        "a": [
+          "Pendiam tetapi berpengetahuan luas",
+          "Banyak bicara tanpa pengetahuan",
+          "Selalu ragu mengambil keputusan",
+          "Suka memamerkan kelebihan"
+        ],
+        "correct": 0
+      }
+    ]
+  }
+};
+
+        let gameState = {
+            mode: 'single', // 'single', 'coop', 'pvp'
+            category: 'kosakata',
+            difficulty: 'easy',
+            isPlaying: false,
+            missionDuration: 120,
+            missionTimeLeft: 120,
+            bossShootTimer: 10, // Boss auto shoot countdown in seconds
+            p1: {
+                hp: 100,
+                score: 0,
+                streak: 0,
+                correctCount: 0,
+                totalCount: 0,
+                activeQ: null,
+                timer: 100,
+                isWaiting: false,
+                lastAnswerTime: 0
+            },
+            p2: {
+                hp: 100, // Can be P2 Player or Boss HP
+                score: 0,
+                streak: 0,
+                correctCount: 0,
+                totalCount: 0,
+                activeQ: null,
+                timer: 100,
+                isWaiting: false,
+                lastAnswerTime: 0
+            }
+        };
+
+        // CANVAS GRAPHICS ENGINE
+        const canvas = document.getElementById('spaceCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationFrameId = null;
+
+        let gameObjects = {
+            particles: [],
+            lasers: [],
+            ships: {
+                p1: { x: 50, y: 100, targetY: 100, color: '#9bd9d0', glow: 'rgba(0, 240, 255, 0.8)' },
+                p2: { x: 500, y: 100, targetY: 100, color: '#efb294', glow: 'rgba(255, 0, 127, 0.8)' }
+            }
+        };
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            if (!container) return;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            
+            if (gameState.mode === 'coop') {
+                gameObjects.ships.p1.x = 60;
+                gameObjects.ships.p1.y = canvas.height * 0.3;
+                gameObjects.ships.p1.targetY = canvas.height * 0.3;
+
+                gameObjects.ships.p2.x = 100;
+                gameObjects.ships.p2.y = canvas.height * 0.7;
+                gameObjects.ships.p2.targetY = canvas.height * 0.7;
+            } else if (gameState.mode === 'pvp') {
+                gameObjects.ships.p1.x = 60;
+                gameObjects.ships.p1.y = canvas.height / 2;
+                gameObjects.ships.p1.targetY = canvas.height / 2;
+
+                gameObjects.ships.p2.x = canvas.width - 60;
+                gameObjects.ships.p2.y = canvas.height / 2;
+                gameObjects.ships.p2.targetY = canvas.height / 2;
+            } else {
+                gameObjects.ships.p1.x = 60;
+                gameObjects.ships.p1.y = canvas.height / 2;
+                gameObjects.ships.p1.targetY = canvas.height / 2;
+
+                gameObjects.ships.p2.x = canvas.width - 120;
+                gameObjects.ships.p2.y = canvas.height / 2;
+                gameObjects.ships.p2.targetY = canvas.height / 2;
+            }
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function spawnExplosion(x, y, color) {
+            for (let i = 0; i < 25; i++) {
+                gameObjects.particles.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: (Math.random() - 0.5) * 8,
+                    size: Math.random() * 5 + 1,
+                    alpha: 1,
+                    color: color,
+                    decay: Math.random() * 0.04 + 0.02
+                });
+            }
+        }
+
+        function fireLaser(fromP1) {
+            SoundFX.playLaser(fromP1);
+            
+            const source = fromP1 ? gameObjects.ships.p1 : gameObjects.ships.p2;
+            let targetX, targetY;
+
+            if (gameState.mode === 'single' || gameState.mode === 'coop') {
+                targetX = canvas.width - 120;
+                targetY = canvas.height / 2;
+            } else {
+                const dest = fromP1 ? gameObjects.ships.p2 : gameObjects.ships.p1;
+                targetX = dest.x;
+                targetY = dest.y;
+            }
+            
+            for(let i=0; i<6; i++) {
+                gameObjects.particles.push({
+                    x: source.x,
+                    y: source.y,
+                    vx: fromP1 ? -(Math.random()*2) : (Math.random()*2),
+                    vy: (Math.random() - 0.5) * 3,
+                    size: Math.random() * 3 + 1,
+                    alpha: 1,
+                    color: source.color,
+                    decay: 0.05
+                });
+            }
+
+            gameObjects.lasers.push({
+                x: source.x,
+                y: source.y,
+                targetX: targetX,
+                targetY: targetY,
+                vx: fromP1 ? 14 : -14,
+                vy: 0,
+                color: source.color,
+                glow: source.glow,
+                isP1: fromP1,
+                isBossLaser: false
+            });
+        }
+
+        // Firing Boss dual heavy plasma lasers automatically
+        function fireBossLasers() {
+            SoundFX.playLaser(false);
+            const bx = canvas.width - 120;
+            const by = canvas.height / 2;
+
+            // Pick a random player ship target in Coop mode, or default to P1 in single mode
+            let targetShip = gameObjects.ships.p1;
+            if (gameState.mode === 'coop') {
+                targetShip = Math.random() < 0.5 ? gameObjects.ships.p1 : gameObjects.ships.p2;
+            }
+
+            // Dual wings spark charges
+            for (let i = 0; i < 8; i++) {
+                gameObjects.particles.push({
+                    x: bx - 40,
+                    y: by - 22,
+                    vx: -3 - Math.random() * 3,
+                    vy: (Math.random() - 0.5) * 3,
+                    size: Math.random() * 4 + 1,
+                    alpha: 1,
+                    color: '#efb294',
+                    decay: 0.05
+                });
+                gameObjects.particles.push({
+                    x: bx - 40,
+                    y: by + 22,
+                    vx: -3 - Math.random() * 3,
+                    vy: (Math.random() - 0.5) * 3,
+                    size: Math.random() * 4 + 1,
+                    alpha: 1,
+                    color: '#efb294',
+                    decay: 0.05
+                });
+            }
+
+            // Laser 1 (Top wing)
+            gameObjects.lasers.push({
+                x: bx - 40,
+                y: by - 22,
+                targetX: targetShip.x,
+                targetY: targetShip.y,
+                vx: -11,
+                vy: 0,
+                color: '#efb294',
+                glow: 'rgba(255, 0, 127, 0.8)',
+                isP1: false,
+                isBossLaser: true,
+                targetShipRef: targetShip
+            });
+
+            // Laser 2 (Bottom wing)
+            gameObjects.lasers.push({
+                x: bx - 40,
+                y: by + 22,
+                targetX: targetShip.x,
+                targetY: targetShip.y,
+                vx: -11,
+                vy: 0,
+                color: '#efb294',
+                glow: 'rgba(255, 0, 127, 0.8)',
+                isP1: false,
+                isBossLaser: true,
+                targetShipRef: targetShip
+            });
+        }
+
+        function damagePlayer(playerNum) {
+            if (playerNum === 1) {
+                // P1 Team / Alliance gets hit
+                const penalty = gameState.difficulty === 'hard' ? 25 : (gameState.difficulty === 'medium' ? 20 : 15);
+                gameState.p1.hp = Math.max(0, gameState.p1.hp - penalty);
+                
+                const hpLabel = (gameState.mode === 'coop') ? "ALIANSI: " : "PEMAIN 1: ";
+                document.getElementById('p1HpText').innerText = gameState.p1.hp + '%';
+                
+                gameObjects.ships.p1.x -= 15;
+                setTimeout(() => gameObjects.ships.p1.x = 60, 200);
+
+                if (gameState.mode === 'coop') {
+                    gameObjects.ships.p2.x -= 15;
+                    setTimeout(() => gameObjects.ships.p2.x = 100, 200);
+                }
+            } else {
+                // Boss or P2 enemy gets hit
+                const damageDealt = gameState.difficulty === 'easy' ? 25 : (gameState.difficulty === 'medium' ? 20 : 15);
+                gameState.p2.hp = Math.max(0, gameState.p2.hp - damageDealt);
+                
+                const isRaid = (gameState.mode === 'single' || gameState.mode === 'coop');
+                const hpLabel = isRaid ? '% [HP BOS]' : '%';
+                document.getElementById('p2HpText').innerText = gameState.p2.hp + hpLabel;
+                
+                if (isRaid) {
+                    gameObjects.ships.p2.x += 15;
+                    setTimeout(() => gameObjects.ships.p2.x = canvas.width - 120, 200);
+                } else {
+                    gameObjects.ships.p2.x += 15;
+                    setTimeout(() => gameObjects.ships.p2.x = canvas.width - 60, 200);
+                }
+            }
+
+            canvas.classList.add('translate-x-1', 'translate-y-1');
+            setTimeout(() => canvas.classList.remove('translate-x-1', 'translate-y-1'), 100);
+
+            if (gameState.p1.hp <= 0 || gameState.p2.hp <= 0) {
+                endGame();
+            }
+        }
+
+        function loadNewQuestion(playerNum) {
+            const p = playerNum === 1 ? gameState.p1 : gameState.p2;
+            p.isWaiting = false;
+            p.timer = 100;
+
+            let qData;
+            const category = gameState.category === 'mix' ? 
+                ['kosakata', 'sastra', 'majas'][Math.floor(Math.random() * 3)] : 
+                gameState.category;
+
+            const diff = gameState.difficulty;
+            const pool = QuestionBank[category][diff];
+            const rawQ = pool[Math.floor(Math.random() * pool.length)];
+            
+            const optionsCopy = [...rawQ.a];
+            const correctText = optionsCopy[rawQ.correct];
+            optionsCopy.sort(() => Math.random() - 0.5);
+            
+            qData = {
+                q: rawQ.q,
+                a: optionsCopy,
+                correct: optionsCopy.indexOf(correctText)
+            };
+
+            p.activeQ = qData;
+
+            const qTextEl = document.getElementById(`p${playerNum}QuestionText`);
+            const optGridEl = document.getElementById(`p${playerNum}OptionsGrid`);
+            
+            qTextEl.innerText = qData.q;
+            optGridEl.innerHTML = '';
+
+            const hotkeys = playerNum === 1 ? ['1', '2', '3', '4'] : ['U', 'I', 'O', 'P'];
+
+            qData.a.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full py-2.5 px-3 bg-slate-950 border border-slate-800 hover:border-slate-500 rounded-lg text-xs font-semibold text-left transition-all hover:scale-[1.01] flex items-center justify-between gap-2`;
+                btn.onclick = () => submitAnswer(playerNum, idx);
+                btn.id = `p${playerNum}-opt-${idx}`;
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-[10px] text-gray-500 group-hover:text-white font-mono">${hotkeys[idx]}</span>
+                `;
+                optGridEl.appendChild(btn);
+            });
+
+            const rangeMin = 30;
+            const rangeMax = canvas.height - 30;
+            
+            if (gameState.mode === 'coop') {
+                if (playerNum === 1) {
+                    gameObjects.ships.p1.targetY = Math.random() * (canvas.height * 0.4 - rangeMin) + rangeMin;
+                } else {
+                    gameObjects.ships.p2.targetY = Math.random() * (canvas.height - (canvas.height * 0.6 + rangeMin)) + (canvas.height * 0.6);
+                }
+            } else {
+                const targetY = Math.random() * (rangeMax - rangeMin) + rangeMin;
+                if (playerNum === 1) {
+                    gameObjects.ships.p1.targetY = targetY;
+                } else {
+                    gameObjects.ships.p2.targetY = targetY;
+                }
+            }
+        }
+
+        function submitAnswer(playerNum, answerIdx) {
+            const p = playerNum === 1 ? gameState.p1 : gameState.p2;
+            if (p.isWaiting || !gameState.isPlaying) return;
+
+            p.isWaiting = true;
+            p.totalCount++;
+
+            const isCorrect = answerIdx === p.activeQ.correct;
+            
+            const optionsGrid = document.getElementById(`p${playerNum}OptionsGrid`);
+            const correctBtn = document.getElementById(`p${playerNum}-opt-${p.activeQ.correct}`);
+            const chosenBtn = document.getElementById(`p${playerNum}-opt-${answerIdx}`);
+
+            if (isCorrect) {
+                p.correctCount++;
+                p.streak++;
+                SoundFX.playCorrect();
+                fireLaser(playerNum === 1);
+                
+                if (chosenBtn) {
+                    chosenBtn.classList.remove('bg-slate-950', 'border-slate-800');
+                    chosenBtn.classList.add('bg-emerald-950/80', 'border-emerald-500', 'text-emerald-300');
+                }
+            } else {
+                p.streak = 0;
+                SoundFX.playWrong();
+                
+                if (chosenBtn) {
+                    chosenBtn.classList.remove('bg-slate-950', 'border-slate-800');
+                    chosenBtn.classList.add('bg-rose-950/80', 'border-rose-500', 'text-rose-300');
+                }
+                if (correctBtn) {
+                    correctBtn.classList.remove('bg-slate-950', 'border-slate-800');
+                    correctBtn.classList.add('bg-emerald-950/80', 'border-emerald-500', 'text-emerald-300');
+                }
+            }
+
+            Array.from(optionsGrid.children).forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-80', 'cursor-not-allowed');
+            });
+
+            // Fast transition of 0.8 seconds to load the next academic navigation question
+            setTimeout(() => {
+                if (gameState.isPlaying && p.isWaiting) {
+                    loadNewQuestion(playerNum);
+                }
+            }, 800);
+        }
+
+        // Get Boss auto-shoot time intervals based on user parameters
+        function getBossShootInterval() {
+            if (gameState.difficulty === 'easy') return 10;   // Level paling rendah: 10 Detik
+            if (gameState.difficulty === 'medium') return 8;  // Level mudah/sedang: 8 Detik
+            return 6;                                         // Level tinggi: 6 Detik
+        }
+
+        function updateAndRenderCanvas() {
+            if (!gameState.isPlaying) return;
+
+            ctx.fillStyle = 'rgba(3, 7, 18, 0.25)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = '#242b3e';
+            ctx.lineWidth = 1;
+            const gridSize = 40;
+            for (let i = 0; i < canvas.width; i += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < canvas.height; i += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+
+            const shipSpeed = 0.08;
+            gameObjects.ships.p1.y += (gameObjects.ships.p1.targetY - gameObjects.ships.p1.y) * shipSpeed;
+            gameObjects.ships.p2.y += (gameObjects.ships.p2.targetY - gameObjects.ships.p2.y) * shipSpeed;
+
+            // DRAW SHIP P1 (Biru Neon)
+            ctx.save();
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = gameObjects.ships.p1.color;
+            ctx.fillStyle = gameObjects.ships.p1.color;
+            drawPlayerCraft(gameObjects.ships.p1, craftSelection.p1, 1);
+
+            if (Math.random() < 0.4) {
+                gameObjects.particles.push({
+                    x: gameObjects.ships.p1.x - 15,
+                    y: gameObjects.ships.p1.y,
+                    vx: -3 - Math.random() * 2,
+                    vy: (Math.random() - 0.5) * 2,
+                    size: Math.random() * 4 + 1,
+                    alpha: 0.8,
+                    color: '#9bd9d0',
+                    decay: 0.04
+                });
+            }
+            ctx.restore();
+
+            // DRAW SHIP P2 / BOSS
+            ctx.save();
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = gameObjects.ships.p2.color;
+            ctx.fillStyle = gameObjects.ships.p2.color;
+
+            if (gameState.mode === 'single' || gameState.mode === 'coop') {
+                const bx = canvas.width - 120;
+                const by = canvas.height / 2;
+
+                ctx.fillStyle = '#efb294';
+                ctx.beginPath();
+                ctx.arc(bx + 15, by, 30, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#85556b';
+                ctx.beginPath();
+                ctx.moveTo(bx + 45, by - 55);
+                ctx.lineTo(bx - 30, by - 60);
+                ctx.lineTo(bx + 15, by - 15);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(bx + 45, by + 55);
+                ctx.lineTo(bx - 30, by + 60);
+                ctx.lineTo(bx + 15, by + 15);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.fillStyle = '#efb294';
+                ctx.fillRect(bx - 40, by - 26, 18, 8);
+                ctx.fillRect(bx - 40, by + 18, 18, 8);
+
+                ctx.strokeStyle = 'rgba(255, 0, 127, 0.45)';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.arc(bx + 15, by, 65, 0, Math.PI * 2);
+                ctx.stroke();
+
+                if (Math.random() < 0.6) {
+                    gameObjects.particles.push({
+                        x: bx + 40,
+                        y: by - 30,
+                        vx: 2 + Math.random() * 3,
+                        vy: (Math.random() - 0.5) * 2,
+                        size: Math.random() * 6 + 2,
+                        alpha: 0.9,
+                        color: '#efb294',
+                        decay: 0.03
+                    });
+                    gameObjects.particles.push({
+                        x: bx + 40,
+                        y: by + 30,
+                        vx: 2 + Math.random() * 3,
+                        vy: (Math.random() - 0.5) * 2,
+                        size: Math.random() * 6 + 2,
+                        alpha: 0.9,
+                        color: '#efb294',
+                        decay: 0.03
+                    });
+                }
+            } else {
+                drawPlayerCraft(gameObjects.ships.p2, craftSelection.p2, -1);
+
+                if (Math.random() < 0.4) {
+                    gameObjects.particles.push({
+                        x: gameObjects.ships.p2.x + 15,
+                        y: gameObjects.ships.p2.y,
+                        vx: 3 + Math.random() * 2,
+                        vy: (Math.random() - 0.5) * 2,
+                        size: Math.random() * 4 + 1,
+                        alpha: 0.8,
+                        color: '#efb294',
+                        decay: 0.04
+                    });
+                }
+            }
+
+            if (gameState.mode === 'coop') {
+                ctx.restore();
+                ctx.save();
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#efb294';
+                ctx.fillStyle = '#efb294';
+                
+                drawPlayerCraft(gameObjects.ships.p2, craftSelection.p2, 1);
+
+                if (Math.random() < 0.4) {
+                    gameObjects.particles.push({
+                        x: gameObjects.ships.p2.x - 15,
+                        y: gameObjects.ships.p2.y,
+                        vx: -3 - Math.random() * 2,
+                        vy: (Math.random() - 0.5) * 2,
+                        size: Math.random() * 4 + 1,
+                        alpha: 0.8,
+                        color: '#efb294',
+                        decay: 0.04
+                    });
+                }
+            }
+
+            ctx.restore();
+
+            // RENDER LASERS
+            for (let i = gameObjects.lasers.length - 1; i >= 0; i--) {
+                let laser = gameObjects.lasers[i];
+                laser.x += laser.vx;
+                
+                const dy = laser.targetY - laser.y;
+                laser.y += dy * 0.15;
+
+                ctx.save();
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = laser.glow;
+                ctx.strokeStyle = laser.color;
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(laser.x, laser.y);
+                ctx.lineTo(laser.x - laser.vx * 1.5, laser.y);
+                ctx.stroke();
+                ctx.restore();
+
+                let hit = false;
+                if (laser.isP1 && laser.x >= laser.targetX - 10) {
+                    hit = true;
+                    damagePlayer(2);
+                } else if (!laser.isP1) {
+                    if (gameState.mode === 'coop' && !laser.isBossLaser && laser.x >= laser.targetX - 10) {
+                        hit = true;
+                        damagePlayer(2);
+                    } else if (gameState.mode === 'pvp' && laser.x <= laser.targetX + 10) {
+                        hit = true;
+                        damagePlayer(1);
+                    } else if (laser.isBossLaser && laser.x <= laser.targetX + 15) {
+                        hit = true;
+                        damagePlayer(1); // Auto shoot hits alliance/P1 HP
+                    }
+                }
+
+                if (hit) {
+                    SoundFX.playExplosion();
+                    spawnExplosion(laser.x, laser.y, laser.color);
+                    gameObjects.lasers.splice(i, 1);
+                }
+            }
+
+            // RENDER PARTICLES
+            for (let i = gameObjects.particles.length - 1; i >= 0; i--) {
+                let p = gameObjects.particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= p.decay;
+
+                if (p.alpha <= 0) {
+                    gameObjects.particles.splice(i, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            animationFrameId = requestAnimationFrame(updateAndRenderCanvas);
+        }
+
+        let lastTime = 0;
+        function gameClock(time) {
+            if (!lastTime) lastTime = time;
+            const dt = time - lastTime;
+            lastTime = time;
+
+            if (gameState.isPlaying) {
+                // Main mission timer
+                if (gameState.mode === 'single' || gameState.mode === 'coop') {
+                    gameState.missionTimeLeft -= dt * 0.001;
+                    const sec = Math.max(0, Math.ceil(gameState.missionTimeLeft));
+                    document.getElementById('missionTimeText').innerText = `${sec}S`;
+                    
+                    if (gameState.missionTimeLeft <= 10) {
+                        document.getElementById('missionTimeText').className = "text-red-500 animate-pulse font-bold";
+                    } else {
+                        document.getElementById('missionTimeText').className = "text-white";
+                    }
+
+                    if (gameState.missionTimeLeft <= 0) {
+                        endGame();
+                        return;
+                    }
+
+                    // Boss weapon charge and fire system
+                    const T = getBossShootInterval();
+                    gameState.bossShootTimer -= dt * 0.001;
+                    const perc = Math.max(0, Math.min(100, (1 - (gameState.bossShootTimer / T)) * 100));
+                    document.getElementById('p2TimerBar').style.width = `${perc}%`;
+
+                    const chargeLabel = document.getElementById('p2ChargeLabel');
+                    if (gameState.bossShootTimer < 1.5) {
+                        chargeLabel.innerText = "PERINGATAN: BOS SIAP MENEMBAK!";
+                        chargeLabel.className = "absolute inset-0 flex items-center justify-center text-[9px] font-bold font-orbitron text-rose-500 uppercase tracking-widest pointer-events-none animate-pulse";
+                    } else {
+                        chargeLabel.innerText = `MERIAM BOS: CHARGING (${Math.ceil(gameState.bossShootTimer)}S)`;
+                        chargeLabel.className = "absolute inset-0 flex items-center justify-center text-[9px] font-bold font-orbitron text-white uppercase tracking-widest pointer-events-none";
+                    }
+
+                    if (gameState.bossShootTimer <= 0) {
+                        fireBossLasers();
+                        gameState.bossShootTimer = T;
+                    }
+                }
+
+                if (!gameState.p1.isWaiting) {
+                    gameState.p1.timer -= dt * 0.007;
+                    if (gameState.p1.timer <= 0) {
+                        submitAnswer(1, -1);
+                    }
+                    document.getElementById('p1TimerBar').style.width = `${gameState.p1.timer}%`;
+                }
+
+                if ((gameState.mode === 'pvp' || gameState.mode === 'coop') && !gameState.p2.isWaiting) {
+                    gameState.p2.timer -= dt * 0.007;
+                    if (gameState.p2.timer <= 0) {
+                        submitAnswer(2, -1);
+                    }
+                    document.getElementById('p2TimerBar').style.width = `${gameState.p2.timer}%`;
+                }
+
+                if (gameState.mode === 'pvp') {
+                    const progress = (Math.sin(time * 0.002) + 1) * 50;
+                    document.getElementById('p2TimerBar').style.width = `${progress}%`;
+                }
+            }
+
+            if (gameState.isPlaying) {
+                requestAnimationFrame(gameClock);
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (!gameState.isPlaying) return;
+
+            const key = e.key.toUpperCase();
+
+            if (["ARROWUP", "ARROWDOWN", "ARROWLEFT", "ARROWRIGHT", " "].indexOf(e.key) > -1) {
+                e.preventDefault();
+            }
+
+            if (['1', '2', '3', '4'].includes(key)) {
+                const idx = parseInt(key) - 1;
+                submitAnswer(1, idx);
+            }
+
+            if (gameState.mode === 'pvp' || gameState.mode === 'coop') {
+                if (key === 'U') submitAnswer(2, 0);
+                if (key === 'I') submitAnswer(2, 1);
+                if (key === 'O') submitAnswer(2, 2);
+                if (key === 'P') submitAnswer(2, 3);
+            }
+        });
+
+        function selectMode(mode) {
+            gameState.mode = mode;
+            gameState.category = document.getElementById('selectCategory').value;
+            gameState.difficulty = document.getElementById('selectDifficulty').value;
+            
+            const p1StatsContainer = document.getElementById('p1StatsContainer');
+            const p2Title = document.getElementById('p2Title');
+            const p2KeyGuide = document.getElementById('p2KeyGuide');
+            const p2Icon = document.getElementById('p2Icon');
+            const p2ChargeLabel = document.getElementById('p2ChargeLabel');
+            const p2StandardQuestionBlock = document.getElementById('p2StandardQuestionBlock');
+            const p2BossBlock = document.getElementById('p2BossBlock');
+            const p2TimerContainer = document.getElementById('p2TimerContainer');
+            const arenaTag = document.getElementById('arenaTag');
+            
+            if (gameState.difficulty === 'easy') {
+                gameState.missionDuration = 120;
+            } else if (gameState.difficulty === 'medium') {
+                gameState.missionDuration = 90;
+            } else {
+                gameState.missionDuration = 60;
+            }
+            gameState.missionTimeLeft = gameState.missionDuration;
+            gameState.bossShootTimer = getBossShootInterval();
+
+            if (mode === 'single') {
+                p1StatsContainer.innerHTML = `
+                    <div class="w-3 h-3 rounded-full bg-neoncyan animate-ping absolute"></div>
+                    <div class="w-3 h-3 rounded-full bg-neoncyan relative"></div>
+                    <div class="text-[10px] md:text-xs font-bold font-orbitron text-neoncyan tracking-wider">
+                        PEMAIN 1: <span id="p1HpText">100%</span>
+                    </div>
+                `;
+                p2Title.innerText = "REAKTOR ENERGI BOS";
+                p2Icon.innerText = "BOSS";
+                p2Icon.className = "w-10 h-6 rounded-md bg-neonpink/20 border border-neonpink/50 text-neonpink flex items-center justify-center text-[9px] font-bold tracking-widest";
+                p2KeyGuide.innerHTML = `<span class="text-rose-400 font-bold uppercase tracking-wider text-[9px]"><i class="fa-solid fa-triangle-exclamation mr-1 animate-pulse"></i> SENJATA AKTIF</span>`;
+                p2StandardQuestionBlock.classList.add('hidden');
+                p2TimerContainer.classList.remove('hidden');
+                p2BossBlock.classList.remove('hidden');
+                arenaTag.innerHTML = `<i class="fa-solid fa-stopwatch text-amber-400"></i> MISI SOLO: <span id="missionTimeText" class="text-white ml-1">${gameState.missionDuration}S</span>`;
+            } else if (mode === 'coop') {
+                p1StatsContainer.innerHTML = `
+                    <div class="w-3 h-3 rounded-full bg-neoncyan animate-ping absolute"></div>
+                    <div class="w-3 h-3 rounded-full bg-neoncyan relative"></div>
+                    <div class="text-[10px] md:text-xs font-bold font-orbitron text-neoncyan tracking-wider">
+                        ALIANSI TIM: <span id="p1HpText">100%</span>
+                    </div>
+                `;
+                p2Title.innerText = "NAVIGASI PEMAIN 2";
+                p2Icon.innerText = "P2";
+                p2Icon.className = "w-6 h-6 rounded-md bg-neonpink/20 border border-neonpink/50 text-neonpink flex items-center justify-center text-xs font-bold";
+                p2KeyGuide.innerHTML = `Tombol: <span class="text-neonpink font-bold">U, I, O, P</span>`;
+                p2StandardQuestionBlock.classList.remove('hidden');
+                p2TimerContainer.classList.remove('hidden');
+                p2BossBlock.classList.add('hidden');
+                arenaTag.innerHTML = `<i class="fa-solid fa-stopwatch text-amber-400"></i> CO-OP RAID: <span id="missionTimeText" class="text-white ml-1">${gameState.missionDuration}S</span>`;
+            } else {
+                p1StatsContainer.innerHTML = `
+                    <div class="w-3 h-3 rounded-full bg-neoncyan animate-ping absolute"></div>
+                    <div class="w-3 h-3 rounded-full bg-neoncyan relative"></div>
+                    <div class="text-[10px] md:text-xs font-bold font-orbitron text-neoncyan tracking-wider">
+                        PEMAIN 1: <span id="p1HpText">100%</span>
+                    </div>
+                `;
+                p2Title.innerText = "NAVIGASI PEMAIN 2";
+                p2Icon.innerText = "P2";
+                p2Icon.className = "w-6 h-6 rounded-md bg-neonpink/20 border border-neonpink/50 text-neonpink flex items-center justify-center text-xs font-bold";
+                p2KeyGuide.innerHTML = `Tombol: <span class="text-neonpink font-bold">U, I, O, P</span>`;
+                p2StandardQuestionBlock.classList.remove('hidden');
+                p2TimerContainer.classList.remove('hidden');
+                p2BossBlock.classList.add('hidden');
+                p2ChargeLabel.innerText = "ENERGI NAVIGASI PEMAIN 2"; arenaTag.innerHTML = `<i class="fa-solid fa-shield text-cyan-400"></i> ARENA DUEL`;
+            }
+
+            document.getElementById('menuScreen').classList.add('hidden');
+            document.getElementById('gameplayScreen').classList.remove('hidden');
+            document.getElementById('btnBackToMenu').classList.remove('hidden');
+
+            startBattle();
+        }
+
+        function startBattle() {
+            gameState.isPlaying = true;
+            
+            gameState.p1.hp = 100;
+            gameState.p1.score = 0;
+            gameState.p1.correctCount = 0;
+            gameState.p1.totalCount = 0;
+            gameState.p1.streak = 0;
+
+            gameState.p2.hp = 100;
+            gameState.p2.score = 0;
+            gameState.p2.correctCount = 0;
+            gameState.p2.totalCount = 0;
+            gameState.p2.streak = 0;
+
+            document.getElementById('p1HpText').innerText = '100%';
+            
+            const isRaid = (gameState.mode === 'single' || gameState.mode === 'coop');
+            if (isRaid) {
+                document.getElementById('p2HpTextContainer').innerHTML = `BOS BESAR: <span id="p2HpText">100% [HP BOS]</span>`;
+            } else {
+                document.getElementById('p2HpTextContainer').innerHTML = `PEMAIN 2: <span id="p2HpText">100%</span>`;
+            }
+
+            resizeCanvas();
+
+            gameObjects.lasers = [];
+            gameObjects.particles = [];
+
+            loadNewQuestion(1);
+            if (gameState.mode === 'pvp' || gameState.mode === 'coop') {
+                loadNewQuestion(2);
+            }
+
+            lastTime = 0;
+            requestAnimationFrame(gameClock);
+            updateAndRenderCanvas();
+        }
+
+        function endGame() {
+            gameState.isPlaying = false;
+            cancelAnimationFrame(animationFrameId);
+
+            const p1Acc = gameState.p1.totalCount > 0 ? Math.round((gameState.p1.correctCount / gameState.p1.totalCount) * 100) : 0;
+            const p2Acc = gameState.p2.totalCount > 0 ? Math.round((gameState.p2.correctCount / gameState.p2.totalCount) * 100) : 0;
+
+            document.getElementById('p1Accuracy').innerText = `${p1Acc}% (${gameState.p1.correctCount}/${gameState.p1.totalCount})`;
+            
+            const p2StatLabel = document.getElementById('p2StatLabel');
+            if (gameState.mode === 'single' || gameState.mode === 'coop') {
+                p2StatLabel.innerText = "STATUS REAKTOR";
+                if (gameState.p2.hp <= 0) {
+                    document.getElementById('p2Accuracy').innerText = "HANCUR LEBUR";
+                } else {
+                    document.getElementById('p2Accuracy').innerText = `${gameState.p2.hp}% HP TERSISA`;
+                }
+            } else {
+                p2StatLabel.innerText = "AKURASI P2";
+                document.getElementById('p2Accuracy').innerText = `${p2Acc}% (${gameState.p2.correctCount}/${gameState.p2.totalCount})`;
+            }
+
+            const winTextEl = document.getElementById('winnerText');
+            const isRaid = (gameState.mode === 'single' || gameState.mode === 'coop');
+
+            if (isRaid) {
+                if (gameState.p2.hp <= 0) {
+                    winTextEl.innerText = gameState.mode === 'coop' ? "ALIANSI BERHASIL! BOS BESAR DIHANCURKAN!" : "MISI SUKSES! REAKTOR BOS DIHANCURKAN!";
+                    winTextEl.className = "text-xl font-bold font-orbitron text-emerald-400 mb-4 animate-bounce";
+                } else {
+                    winTextEl.innerText = "ALIANSI HANCUR! PERSIPKAN STRATEGI JAWABAN LEBIH CEPAT!";
+                    winTextEl.className = "text-xl font-bold font-orbitron text-rose-500 mb-4 animate-pulse";
+                }
+            } else {
+                if (gameState.p1.hp <= 0 && gameState.p2.hp <= 0) {
+                    winTextEl.innerText = "KEDUA PESAWAT HANCUR BERSAMAAN!";
+                    winTextEl.className = "text-xl font-bold font-orbitron text-violet-400 mb-4";
+                } else if (gameState.p1.hp <= 0) {
+                    winTextEl.innerText = "PEMAIN 2 (PINK) MENANG MUTLAK!";
+                    winTextEl.className = "text-xl font-bold font-orbitron text-neonpink mb-4 animate-bounce";
+                } else {
+                    winTextEl.innerText = "PEMAIN 1 (BIRU) MENANG SANGAT GEMILANG!";
+                    winTextEl.className = "text-xl font-bold font-orbitron text-neoncyan mb-4 animate-bounce";
+                }
+            }
+
+            document.getElementById('gameOverModal').classList.remove('hidden');
+        }
+
+        function restartGame() {
+            document.getElementById('gameOverModal').classList.add('hidden');
+            startBattle();
+        }
+
+        function exitToMenu() {
+            gameState.isPlaying = false;
+            cancelAnimationFrame(animationFrameId);
+
+            document.getElementById('gameOverModal').classList.add('hidden');
+            document.getElementById('gameplayScreen').classList.add('hidden');
+            document.getElementById('btnBackToMenu').classList.add('hidden');
+            document.getElementById('menuScreen').classList.remove('hidden');
+        }
+
+        document.getElementById('btnBackToMenu').addEventListener('click', () => {
+            exitToMenu();
+        });
+
+        function toggleFullscreen() {
+            const icon = document.getElementById('fullscreenIcon');
+            const isSimulated = document.body.classList.contains('simulated-fullscreen');
+
+            if (!document.fullscreenElement && !isSimulated) {
+                try {
+                    const docEl = document.documentElement;
+                    const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullScreen;
+                    
+                    if (requestFullScreen) {
+                        requestFullScreen.call(docEl)
+                            .then(() => {
+                                icon.className = 'fa-solid fa-compress text-neonpink';
+                                setTimeout(resizeCanvas, 150);
+                            })
+                            .catch(() => {
+                                enableSimulatedFullscreen();
+                            });
+                    } else {
+                        enableSimulatedFullscreen();
+                    }
+                } catch (err) {
+                    enableSimulatedFullscreen();
+                }
+            } else {
+                try {
+                    if (document.fullscreenElement) {
+                        const cancelFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
+                        if (cancelFullScreen) {
+                            cancelFullScreen.call(document);
+                        }
+                    }
+                } catch (err) {
+                    // Ignore error
+                }
+                disableSimulatedFullscreen();
+            }
+
+            function enableSimulatedFullscreen() {
+                document.body.classList.add('simulated-fullscreen');
+                icon.className = 'fa-solid fa-compress text-neonpink';
+                setTimeout(resizeCanvas, 150);
+            }
+
+            function disableSimulatedFullscreen() {
+                document.body.classList.remove('simulated-fullscreen');
+                icon.className = 'fa-solid fa-expand text-neonpink';
+                setTimeout(resizeCanvas, 150);
+            }
+        }
+    </script>
+<script>
+const CRAFTS={garuda:{name:'Garuda',note:'Sayap lebar',path:'M30 0 -8-12 -25-26 -19-6 -27 0 -19 6 -25 26 -8 12Z'},pari:{name:'Pari',note:'Bentuk melengkung',path:'M29 0Q4-9-18-25Q-32-30-19-6Q-30 0-19 6Q-32 30-18 25Q4 9 29 0Z'},komet:{name:'Komet',note:'Mesin ganda',path:'M30 0Q23-10 0-10H-23V-6H-31V6H-23V10H0Q23 10 30 0Z'}};
+let craftSelection={p1:'garuda',p2:'pari'};
+function craftBadge(type,color){const ch=CRAFTS[type];return `<svg viewBox="-38 -34 80 68" role="img" aria-label="Pesawat ${ch.name}">${type==='komet'?`<rect x="-18" y="-23" width="29" height="9" rx="4" fill="${color}"/><rect x="-18" y="14" width="29" height="9" rx="4" fill="${color}"/>`:''}<path d="${ch.path}" fill="${color}" stroke="#eff4e5" stroke-width="1.3"/><ellipse cx="7" cy="0" rx="7" ry="4" fill="#334459"/><path d="M-18 0h12" stroke="#fff5c5" stroke-width="2"/></svg>`}
+function chooseCraft(player,type){if(!CRAFTS[type])return;craftSelection['p'+player]=type;renderCraftChoices()}
+function renderCraftChoices(){for(const p of [1,2]){const color=p===1?'#9bd9d0':'#efb294';document.getElementById('craftChoices'+p).innerHTML=Object.entries(CRAFTS).map(([key,ch])=>`<button type="button" class="craft-choice ${craftSelection['p'+p]===key?'chosen':''}" data-player="${p}" data-craft="${key}" aria-label="Pemain ${p}: pilih ${ch.name}" aria-pressed="${craftSelection['p'+p]===key}" onclick="chooseCraft(${p},'${key}')">${craftBadge(key,color)}<b>${ch.name}</b><small>${ch.note}</small></button>`).join('')}}
+function drawPlayerCraft(ship,type,direction=1){const ch=CRAFTS[type]||CRAFTS.garuda;ctx.save();ctx.translate(ship.x,ship.y);ctx.scale(direction,1);ctx.fillStyle=ship.color;ctx.strokeStyle='#e4ece7';ctx.lineWidth=1.4;ctx.shadowBlur=11;if(type==='komet'){for(const y of [-22,14]){ctx.beginPath();ctx.roundRect(-18,y,30,8,4);ctx.fill()}}ctx.beginPath();if(type==='pari'){ctx.moveTo(29,0);ctx.quadraticCurveTo(4,-9,-18,-25);ctx.quadraticCurveTo(-32,-30,-19,-6);ctx.quadraticCurveTo(-30,0,-19,6);ctx.quadraticCurveTo(-32,30,-18,25);ctx.quadraticCurveTo(4,9,29,0)}else if(type==='komet'){ctx.moveTo(30,0);ctx.quadraticCurveTo(23,-10,0,-10);ctx.lineTo(-23,-10);ctx.lineTo(-23,-6);ctx.lineTo(-31,-6);ctx.lineTo(-31,6);ctx.lineTo(-23,6);ctx.lineTo(-23,10);ctx.lineTo(0,10);ctx.quadraticCurveTo(23,10,30,0)}else{for(const [i,p]of [[30,0],[-8,-12],[-25,-26],[-19,-6],[-27,0],[-19,6],[-25,26],[-8,12]].entries())if(!i)ctx.moveTo(...p);else ctx.lineTo(...p)}ctx.closePath();ctx.fill();ctx.stroke();ctx.shadowBlur=0;ctx.fillStyle='#34455a';ctx.beginPath();ctx.ellipse(7,0,7,4,0,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff4c8';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-18,0);ctx.lineTo(-6,0);ctx.stroke();ctx.restore()}
+renderCraftChoices();
+
+</script><script id="edu-arcade-runtime">(function(){
+'use strict';
+if(document.getElementById('edu-stage'))return;
+const game=document.body.dataset.eduGame;
+const stage=document.createElement('div');stage.id='edu-stage';stage.className='edu-stage';
+const elements=[...document.body.children].filter(e=>!['SCRIPT','STYLE'].includes(e.tagName));document.body.insertBefore(stage,document.body.firstChild);elements.forEach(e=>stage.appendChild(e));
+let prefs={enabled:true,volume:.35};try{const p=JSON.parse(localStorage.getItem('bahasa-arcade-audio-v1'));if(p&&typeof p.enabled==='boolean'&&Number.isFinite(p.volume))prefs={enabled:p.enabled,volume:Math.max(0,Math.min(1,p.volume))}}catch{}
+let context=null,lastMajor=0,lastTap=0;const tones={correct:[[660,.08],[880,.08],[1046,.14]],win:[[523,.1],[659,.1],[784,.1],[1046,.25]],climb:[[440,.07],[587,.07],[784,.07],[1046,.14]],wrong:[[230,.1],[155,.17]],fall:[[370,.1],[260,.12],[140,.2]],jam:[[170,.08],[130,.08],[90,.18]],hint:[[620,.07],[820,.1]],skip:[[340,.06],[270,.08]],tap:[[540,.025]]};
+function warm(){try{context??=new(window.AudioContext||window.webkitAudioContext)();if(context.state==='suspended')context.resume()}catch{}}
+function sound(kind='tap'){if(typeof document!=='undefined'&&document.hidden)return;if(!prefs.enabled||!prefs.volume)return;if(!context||context.state!=='running')return;const now=context.currentTime;if(kind==='tap'){if(now-lastTap<.045||now-lastMajor<.08)return;lastTap=now}else lastMajor=now;try{if(kind==='pop'||kind==='explosion'){const len=context.sampleRate*(kind==='pop'?.075:.22),buffer=context.createBuffer(1,len,context.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<len;i++)data[i]=(Math.random()*2-1)*(1-i/len);const noise=context.createBufferSource(),g=context.createGain(),filter=context.createBiquadFilter();noise.buffer=buffer;filter.type='lowpass';filter.frequency.value=kind==='pop'?1700:600;g.gain.value=prefs.volume*.17;noise.connect(filter);filter.connect(g);g.connect(context.destination);noise.start();return}if(kind==='laser'){const o=context.createOscillator(),g=context.createGain();o.type='triangle';o.frequency.setValueAtTime(950,now);o.frequency.exponentialRampToValueAtTime(140,now+.14);g.gain.setValueAtTime(prefs.volume*.13,now);g.gain.exponentialRampToValueAtTime(.001,now+.16);o.connect(g);g.connect(context.destination);o.start(now);o.stop(now+.17);return}const seq=kind==='roll'?Array.from({length:6},()=>[300+Math.random()*500,.045]):tones[kind]||tones.tap;let t=now;for(const [freq,duration] of seq){const o=context.createOscillator(),g=context.createGain();o.type=kind==='wrong'||kind==='jam'?'triangle':'sine';o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(.001,t);g.gain.linearRampToValueAtTime(prefs.volume*(kind==='tap'?.09:.18),t+.008);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(context.destination);o.start(t);o.stop(t+duration+.01);t+=duration*.85}}catch{}}
+window.ArcadeAudio={play:sound,warm,get enabled(){return prefs.enabled},get volume(){return prefs.volume},setEnabled(v){prefs.enabled=!!v;save();renderAudio()},setVolume(v){prefs.volume=Math.max(0,Math.min(1,Number(v)||0));save();renderAudio()}};
+function save(){try{localStorage.setItem('bahasa-arcade-audio-v1',JSON.stringify(prefs))}catch{}}
+const controls=document.createElement('div');controls.className='edu-controls';controls.innerHTML='<button type="button" class="edu-sound" aria-label="Aktifkan atau matikan efek suara" aria-pressed="true">♫ Aktif</button><details class="edu-volume"><summary aria-label="Atur volume suara">☷</summary><div><label>Volume efek <output></output><input type="range" min="0" max="100" step="5" aria-label="Volume efek suara"></label><small>Pengaturan tersimpan di browser ini.</small></div></details><button type="button" class="edu-fullscreen" aria-label="Layar penuh">⛶</button>';
+const host=game==='petualangan-kata'?stage.querySelector('header>div'):game==='tarik-tambang'?document.getElementById('status-icons'):(stage.querySelector('header .header-actions')||stage.querySelector('header'));(host||stage).appendChild(controls);
+function renderAudio(){const btn=controls.querySelector('.edu-sound');btn.textContent=prefs.enabled&&prefs.volume?'♫ Aktif':'♫ Mati';btn.setAttribute('aria-pressed',String(prefs.enabled));controls.querySelector('input').value=Math.round(prefs.volume*100);controls.querySelector('output').textContent=Math.round(prefs.volume*100)+'%'}renderAudio();
+controls.querySelector('.edu-sound').onclick=()=>{warm();prefs.enabled=!prefs.enabled;save();renderAudio();if(prefs.enabled)sound('hint')};controls.querySelector('input').oninput=e=>{prefs.volume=Number(e.target.value)/100;save();renderAudio()};controls.querySelector('input').onchange=()=>sound('tap');controls.querySelector('.edu-fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch{controls.querySelector('.edu-fullscreen').title='Gunakan tombol layar penuh browser jika diperlukan.'}};
+document.addEventListener('pointerdown',()=>{if(prefs.enabled)warm()},{capture:true,passive:true});document.addEventListener('keydown',()=>{if(prefs.enabled)warm()},{capture:true});document.addEventListener('click',e=>{if(e.target.closest('button,.avatar-option')&&!e.target.closest('.edu-controls'))sound('tap')});
+function wrap(name,after){const original=window[name];if(typeof original!=='function')return;window[name]=function(...args){const result=original.apply(this,args);after?.(args);schedule();return result}}
+const nativeMap={correct:'correct',wrong:'wrong',win:'win',click:'tap',tick:'tap',roll:'roll',dice:'roll',ladder:'climb',snake:'fall',pop:'pop',fall:'fall'};
+if(game==='petualangan-kata'||game==='tarik-tambang')window.playSound=type=>sound(nativeMap[type]||'tap');
+if(game==='roket-kata')window.playTone=type=>sound(nativeMap[type]||'tap');
+if(game==='galaksi-bahasa'&&typeof SoundFX!=='undefined'){for(const key of Object.keys(SoundFX)){if(typeof SoundFX[key]==='function'&&key.startsWith('play'))SoundFX[key]=()=>sound(/laser/i.test(key)?'laser':/explosion/i.test(key)?'explosion':/correct/i.test(key)?'correct':/wrong/i.test(key)?'wrong':'win')}}
+if(game==='pabrik-kata'){const original=window.submit;window.submit=function(...args){const before={solved:players[turn]?.solved,batteries};const result=original.apply(this,args);if(players[turn]?.solved>before.solved)sound(streak>=3?'climb':'correct');else if(batteries<before.batteries)sound(batteries===0?'jam':'wrong');schedule();return result};wrap('help',()=>sound('hint'));wrap('skip',()=>sound('skip'));wrap('finish',()=>sound('win'));document.getElementById('submit').onclick=()=>window.submit();document.getElementById('hint').onclick=()=>window.help();document.getElementById('skip').onclick=()=>window.skip()}
+if(game==='taman-kata'){const original=window.enter;window.enter=function(...args){const before=solved().length;const result=original.apply(this,args);if(!done&&solved().length>before)sound('correct');schedule();return result};wrap('check',()=>sound(errors.size?'wrong':'correct'));wrap('hint',()=>sound('hint'));wrap('finish',()=>sound('win'));wrap('newPuzzle',()=>sound('climb'));document.getElementById('check').onclick=()=>window.check();document.getElementById('hint').onclick=()=>window.hint()}
+let timerSecond=null;setInterval(()=>{const el=game==='roket-kata'||game==='pabrik-kata'?document.getElementById('time'):game==='tarik-tambang'?document.getElementById('timer-box'):game==='galaksi-bahasa'?document.getElementById('missionTimeText'):null;if(!el||!active())return;const text=el.textContent.trim(),parts=text.split(':'),sec=parts.length===2?Number(parts[0])*60+Number(parts[1]):parseInt(text);if(sec>0&&sec<=10&&sec!==timerSecond)sound('tap');timerSecond=sec},200);
+function visible(el){return el&&!el.hidden&&!el.classList.contains('hidden')&&getComputedStyle(el).display!=='none'}
+function active(){if(game==='roket-kata'||game==='pabrik-kata')return document.body.classList.contains('playing');if(game==='tarik-tambang')return visible(document.getElementById('screen-game'));if(game==='galaksi-bahasa')return visible(document.getElementById('gameplayScreen'));return true}
+const media=matchMedia('(min-width: 900px) and (min-height: 480px)');let pending=false,ttsPage=0,lastClue='',previousDesktop=null;
+if(game==='taman-kata'){const box=document.createElement('div');box.className='edu-tts-controls';const card=stage.querySelector('.board-card');for(const selector of ['.actions','#feedback','#keyboardClue','#keyboard']){const el=card.querySelector(selector);if(el)box.appendChild(el)}stage.querySelector('.aside').insertBefore(box,stage.querySelector('.aside').children[1]||null);const pager=document.createElement('div');pager.className='edu-clue-pager';pager.innerHTML='<button type="button" aria-label="Petunjuk sebelumnya">‹</button><span></span><button type="button" aria-label="Petunjuk berikutnya">›</button>';pager.firstElementChild.setAttribute('aria-label','Petunjuk sebelumnya');stage.querySelector('.clue-card').appendChild(pager);pager.firstElementChild.onclick=()=>{ttsPage--;schedule()};pager.lastElementChild.onclick=()=>{ttsPage++;schedule()}}
+function ttsLayout(){const box=stage.querySelector('.edu-tts-controls'),card=stage.querySelector('.board-card'),aside=stage.querySelector('.aside');if(media.matches&&box.parentElement!==aside)aside.insertBefore(box,aside.children[1]||null);else if(!media.matches&&box.parentElement!==card)card.insertBefore(box,card.querySelector('.board-foot'));const board=document.getElementById('board'),cols=puzzle?.grid[0].length||10,rows=puzzle?.grid.length||10;board.style.setProperty('--tts-cols',cols);board.style.setProperty('--tts-rows',rows);const buttons=[...document.querySelectorAll('#clues .clue-button')],pager=stage.querySelector('.edu-clue-pager');if(!media.matches){buttons.forEach(b=>b.hidden=false);pager.hidden=true;return}const count=stage.clientHeight>=850?5:4,pages=Math.max(1,Math.ceil(buttons.length/count)),selected=buttons.findIndex(b=>b.classList.contains('active')),signature=buttons.map(b=>b.dataset.word).join(',')+':'+buttons[selected]?.dataset.word;if(signature!==lastClue){ttsPage=Math.max(0,Math.floor(selected/count));lastClue=signature}ttsPage=Math.max(0,Math.min(pages-1,ttsPage));buttons.forEach((b,i)=>b.hidden=i<ttsPage*count||i>=(ttsPage+1)*count);pager.hidden=pages<=1;const text=(ttsPage+1)+' / '+pages;if(pager.children[1].textContent!==text)pager.children[1].textContent=text;pager.firstElementChild.disabled=ttsPage===0;pager.lastElementChild.disabled=ttsPage===pages-1}
+function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;sync()})}
+function sync(){stage.classList.toggle('edu-playing',active());if(game==='taman-kata')ttsLayout();if(previousDesktop!==media.matches){previousDesktop=media.matches;window.dispatchEvent(new Event('resize'))}}
+const watched=new Set(['screen-game','gameplayScreen','setup','setupModal','menuScreen','modal']);new MutationObserver(list=>{if(list.some(r=>r.type==='childList'||r.target===document.body||watched.has(r.target.id)))schedule()}).observe(stage,{subtree:true,childList:true,attributes:true,attributeFilter:['class','hidden']});new MutationObserver(schedule).observe(document.body,{attributes:true,attributeFilter:['class']});media.addEventListener('change',schedule);new ResizeObserver(schedule).observe(stage);
+if(game==='galaksi-bahasa')new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.getElementById('spaceCanvas').parentElement);
+if(game==='petualangan-kata')wrap('renderPawnTokens');sync();
+})();
+</script></body>
+</html>

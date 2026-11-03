@@ -54,7 +54,6 @@ const state = {
   loading: true,
   error: "",
   quiz: null,
-  game: null,
 };
 const icons = {
   video:
@@ -256,8 +255,8 @@ function route() {
     id = decodeURIComponent(parts[1] || "");
   } catch {}
   return {
-    page: parts[0] || "beranda",
-    id,
+    page: ["ular-tangga", "bermain"].includes(parts[0]) ? "game" : parts[0] || "beranda",
+    id: parts[0] === "ular-tangga" ? "ular-tangga" : id,
     section: [
       "materi",
       "rangkuman",
@@ -742,27 +741,6 @@ function quiz() {
   const item = window.HUMA_QUESTIONS[q.index];
   return `<div class="practice"><a href="#tka" class="text-link">← Kembali ke latihan</a><br><br><article class="paper"><div class="section-head"><span class="tag">SOAL ${q.index + 1} DARI 5</span><span class="helper">Pemahaman bacaan</span></div><div class="track"><span style="width:${q.index * 20}%"></span></div><div class="question-text">${esc(item.text)}</div><h3>${esc(item.q)}</h3><div class="options">${item.options.map((o, i) => `<button data-action="answer" data-index="${i}" class="option ${q.selected === i ? "selected" : ""} ${q.checked && i === item.answer ? "correct" : ""} ${q.checked && q.selected === i && i !== item.answer ? "wrong" : ""}" ${q.checked ? "disabled" : ""}><span>${String.fromCharCode(65 + i)}</span>${esc(o)}</button>`).join("")}</div>${q.checked ? `<div class="feedback"><strong>${q.selected === item.answer ? "Tepat sekali!" : "Belum tepat, yuk pahami."}</strong><p>${esc(item.why)}</p></div>` : ""}<div class="quiz-footer"><span class="helper">Tidak dibatasi waktu. Utamakan pemahaman.</span><button class="button" data-action="${q.checked ? "next-question" : "check-answer"}" ${q.selected === null ? "disabled" : ""}>${q.checked ? (q.index === 4 ? "Lihat hasil" : "Soal berikutnya") : "Periksa jawaban"} →</button></div></article></div>`;
 }
-const words = [
-  ["aktivitas", "aktifitas", "Bentuk baku: aktivitas."],
-  ["risiko", "resiko", "Bentuk baku: risiko."],
-  ["praktik", "praktek", "Bentuk baku: praktik."],
-  ["izin", "ijin", "Bentuk baku: izin."],
-  ["nasihat", "nasehat", "Bentuk baku: nasihat."],
-];
-function game() {
-  const g = state.game;
-  if (!g)
-    return empty(
-      "Tantangan kata baku",
-      "Pilih bentuk kata yang baku.",
-      '<button data-action="start-game" class="button">Mulai bermain</button>',
-    );
-  if (g.index === 5)
-    return `<div class="practice paper"><div class="eyebrow">TANTANGAN SELESAI</div><h1>${g.score === 5 ? "Peka kata, hebat!" : "Satu permainan, pengetahuan baru."}</h1><div class="result-score">${g.score * 20}<small style="font-size:20px"> poin</small></div><p>${g.score} dari 5 kata kamu jawab dengan tepat. Hasil permainan ini hanya untuk latihan di perangkatmu.</p><div class="modal-actions"><a class="button light" href="#game">Zona game</a><button data-action="start-game" class="button">Main lagi ↻</button></div></div>`;
-  const pair = words[g.index],
-    options = g.order ? pair.slice(0, 2).reverse() : pair.slice(0, 2);
-  return `<div class="practice paper"><div class="section-head"><span class="tag">KATA ${g.index + 1} / 5</span><strong>${g.score * 20} poin</strong></div><h1>Mana kata yang baku?</h1><p>Pilih satu jawaban yang menurutmu tepat.</p><div class="word-options">${options.map((w) => `<button class="option ${g.answered ? (w === pair[0] ? "correct" : w === g.choice ? "wrong" : "") : ""}" data-action="word" data-word="${w}" ${g.answered ? "disabled" : ""}>${w}</button>`).join("")}</div>${g.answered ? `<div class="feedback">${g.choice === pair[0] ? "✓ Tepat! +20 poin." : "Belum tepat. Tidak apa-apa, sekarang kamu tahu."} ${pair[2]}</div><button data-action="next-word" class="button">${g.index === 4 ? "Lihat hasil" : "Kata berikutnya"} →</button>` : '<p class="helper">Tidak perlu terburu-buru. Pikirkan ejaannya.</p>'}</div>`;
-}
 const forms = {
   Bab: {
     label: "Bab",
@@ -798,16 +776,6 @@ const forms = {
       ["judul", "Judul paket", "text", true],
       ["deskripsi", "Deskripsi", "textarea"],
       ["link", "Tautan latihan", "url", true],
-    ],
-  },
-  Game: {
-    label: "Game",
-    key: "game",
-    id: "id",
-    fields: [
-      ["judul", "Judul game", "text", true],
-      ["deskripsi", "Deskripsi", "textarea"],
-      ["link", "Tautan game", "url", true],
     ],
   },
   Kamus: {
@@ -860,31 +828,9 @@ function render() {
   const isTka = route().page === "tka";
   document.body?.classList.toggle("tka-active", isTka);
   if (!isTka && document.fullscreenElement?.id === "tka-panel") document.exitFullscreen?.().catch(() => {});
-  const isSnake = route().page === "ular-tangga";
-  $("#snake-panel").hidden = !isSnake;
+  window.HumaGames?.setActive(route().page === "game");
   $("#tka-panel").hidden = !isTka;
-  $("#main").hidden = isTka || isSnake;
-  if (isSnake && !$("#snake-frame")) {
-    const frame = document.createElement("iframe");
-    frame.id = "snake-frame";
-    frame.title = "Ular Tangga Bahasa Indonesia — Petualangan Kata";
-    frame.src = "modules/games/petualangan-kata/index.html";
-    frame.addEventListener("load", () =>
-      frame.contentWindow.postMessage(
-        { type: "HUMA_VISIBILITY", visible: route().page === "ular-tangga" },
-        location.origin === "null" ? "*" : location.origin,
-      ),
-    );
-    $("#snake-mount").append(frame);
-  }
-  $("#snake-frame")?.contentWindow?.postMessage(
-    { type: "HUMA_VISIBILITY", visible: isSnake },
-    location.origin === "null" ? "*" : location.origin,
-  );
-  if (isSnake) {
-    document.title = "Petualangan Kata — Huma Belajar";
-    return;
-  }
+  $("#main").hidden = isTka;
   if (isTka) {
     if (!$("#tka-frame")) {
       const frame = document.createElement("iframe");
@@ -898,12 +844,7 @@ function render() {
     return;
   }
   if (route().page === "game") {
-    window.HumaGames.mount($("#main"), state.data.game, {
-      onOpenSnake() {
-        location.hash = "ular-tangga";
-      },
-    });
-    document.title = "Zona Game — Huma Belajar";
+    window.HumaGames.mount($("#main"), { id: route().id });
     return;
   }
   if (route().page === "karya") {
@@ -984,7 +925,6 @@ function render() {
     progres: progress,
     guru: admin,
     latihan: quiz,
-    bermain: game,
   };
   $("#main").innerHTML = (
     views[r.page] ||
@@ -1149,8 +1089,6 @@ document.addEventListener("click", async (e) => {
       .querySelector(
         route().page === "tka"
           ? "#tka-panel"
-          : route().page === "ular-tangga"
-            ? "#snake-panel"
             : "#main",
       )
       .focus();
@@ -1247,35 +1185,6 @@ document.addEventListener("click", async (e) => {
         q.selected = null;
         q.checked = false;
       }
-      render();
-      return;
-    }
-    if (action === "start-game") {
-      state.game = {
-        index: 0,
-        score: 0,
-        answered: false,
-        order: Math.random() > 0.5,
-      };
-      location.hash = "bermain";
-      render();
-      return;
-    }
-    if (action === "word") {
-      const g = state.game;
-      if (g.answered) return;
-      g.answered = true;
-      g.choice = el.dataset.word;
-      if (g.choice === words[g.index][0]) g.score++;
-      render();
-      return;
-    }
-    if (action === "next-word") {
-      const g = state.game;
-      if (!g.answered) return;
-      g.index++;
-      g.answered = false;
-      g.order = Math.random() > 0.5;
       render();
       return;
     }
@@ -1409,8 +1318,6 @@ window.addEventListener("hashchange", () => {
   $(
     route().page === "tka"
       ? "#tka-panel"
-      : route().page === "ular-tangga"
-        ? "#snake-panel"
         : "#main",
   ).focus({
     preventScroll: true,
