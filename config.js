@@ -1,11 +1,11 @@
 // Tempel URL deployment Web App Apps Script yang berakhiran /exec.
-// URL khusus menu kosong = memakai apiUrl; semua kosong = mode contoh.
-// Panduan: apps-script/MULAI-DI-SINI.md
+// Kamus/karya kosong = memakai apiUrl. Klasemen game memakai URL tersendiri.
+// Panduan klasemen: 04-APPSCRIPT-KLASEMEN-GAME/MULAI-DI-SINI.txt
 window.HUMA_CONFIG = Object.freeze({
   apiUrl: "https://script.google.com/macros/s/AKfycbwsKsP91-jUngvvqCiS7M4CadpWWn5REOUhipXFyz8fBUYOOUwQ_p_y2TH3WmIfD1Z0/exec",
   dictionaryApiUrl: "", // URL paket Apps Script menu Kamus. Kosong = ikut backend utama.
   worksApiUrl: "", // URL paket Apps Script Karya Siswa. Kosong = ikut backend utama.
-  gamesApiUrl: "", // URL /exec dari 04-APPSCRIPT-KLASEMEN-GAME. Wajib terpisah, tanpa fallback.
+  gamesApiUrl: "https://script.google.com/macros/s/AKfycbwi_rFYuZ2ohjrZBs0v13my6eOvot3h45Z4OcRfsrvHhMQrVPoFevjZM3HCJljUhZ8K/exec", // Database khusus klasemen game.
   schoolName: "Ruang belajar Bahasa Indonesia",
   // Otomatis: assets/bab/<ID_Bab>.jpg, sesuai ID_Bab di Spreadsheet.
   // Untuk nama/format lain, isi pemetaan, misalnya "B1": "assets/bab/surat-resmi.png".
