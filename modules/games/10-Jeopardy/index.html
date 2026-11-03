@@ -1,0 +1,2988 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080d34"><title>Jeopardy! — Arena Bahasa Indonesia</title><style>
+:root{--gold:#f3ce87;--ink:#f4f2ff;--muted:#8e9dc7;--mint:#89e6ca}*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:#030619;color:var(--ink);font:500 14px 'Segoe UI',system-ui,sans-serif;display:grid;place-items:center}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{opacity:.4;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #ffe5a3;outline-offset:4px}[hidden]{display:none!important}#stage{position:relative;isolation:isolate;width:min(100vw,calc(100dvh * 16 / 9));height:min(100dvh,calc(100vw * 9 / 16));aspect-ratio:16/9;container-type:size;overflow:hidden;display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% -10%,#614b9b55,transparent 65%),linear-gradient(#111741,#060d29)}.rig{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.rig:before{content:'';position:absolute;inset:-20%;background:repeating-conic-gradient(from 152deg at 50% 0,transparent 0deg 12deg,#9f8ef614 13deg 15deg,transparent 16deg 25deg);animation:beams 16s ease-in-out infinite alternate}.rig:after{content:'';position:absolute;inset:0;background:radial-gradient(#9aa9e21a .8px,transparent .8px);background-size:25px 25px;mask-image:linear-gradient(transparent 40%,#000)}header{height:8cqh;min-height:47px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 2.7cqw;background:#080e2c99;border-bottom:1px solid #7d82bc33;z-index:5;flex-shrink:0}.brand b{font:900 clamp(20px,2.1cqw,42px) Impact,'Arial Narrow',sans-serif;letter-spacing:1px}.brand small{display:block;font-size:clamp(6px,.5cqw,10px);letter-spacing:2px;color:#ac9fc6;margin-top:2px}.tools{display:flex;gap:7px;align-items:center}.tool,.quiet{border:1px solid #7385b13d;background:#35436d30;color:#b7c5e5;min-height:32px;border-radius:7px;padding:8px 11px;font-size:clamp(9px,.7cqw,14px);font-weight:700}.tool:hover,.quiet:hover{background:#5a619d44}.tool[aria-pressed=false]{opacity:.45}details{position:relative}summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}.volume-box{position:absolute;right:0;top:40px;background:#1c2854;border:1px solid #576e9e;border-radius:12px;padding:17px;width:210px;box-shadow:0 15px 55px #0008}.volume-box label{font-size:12px}.volume-box output{float:right}.volume-box input{width:100%;accent-color:var(--gold);margin-top:13px}.screen{flex:1;min-height:0}.footer{height:2.7cqh;line-height:2.7cqh;text-align:center;letter-spacing:1.2px;font-size:clamp(6px,.5cqw,10px);color:#647297;flex-shrink:0}.gold{background:linear-gradient(#ffe5a8,#e3b76d);color:#362b25;border:1px solid #ffe9b4;border-radius:7px;box-shadow:0 4px 0 #8e693b,0 8px 25px #d5a65420;padding:12px 20px;min-height:42px;font-size:clamp(11px,.9cqw,18px);font-weight:900}.gold:hover:not(:disabled){filter:brightness(1.09)}.text-btn{color:#a4b6d6;border:0;background:none;text-decoration:underline;font-size:clamp(9px,.7cqw,14px);padding:5px}.eyebrow{color:#b1a1d3;letter-spacing:2.3px;font-size:clamp(8px,.65cqw,13px);font-weight:800}#welcome{display:grid;grid-template-columns:1fr 1.08fr;gap:6cqw;align-items:center;padding:3cqh 6.5cqw}.intro-art{text-align:center}.hero-logo{font:900 clamp(52px,6.3cqw,125px)/1.1 Impact,'Arial Narrow',sans-serif;letter-spacing:-1px;transform:scaleY(1.3);text-shadow:0 5px 0 #3b3768,0 10px 30px #8a68d733;color:#f0e6ff;margin:4cqh 0 3cqh;position:relative}.hero-logo:after{content:'';position:absolute;bottom:-8px;left:15%;right:15%;height:3px;background:linear-gradient(90deg,transparent,#f0c782,transparent)}.intro-art>p{font:700 clamp(20px,2cqw,40px)/1.5 Georgia;color:#e1cbe6;margin:3cqh 0 2cqh}.intro-art>small{font-size:clamp(10px,.8cqw,16px);color:#8d9fc3;line-height:1.8}.mini-board{margin:3cqh auto 0;max-width:430px;display:grid;grid-template-columns:repeat(6,1fr);gap:4px;padding:6px;background:#050a22;border:1px solid #6672b255;transform:perspective(700px) rotateX(10deg) rotateY(-9deg);box-shadow:0 20px 40px #0004}.mini-board span{background:linear-gradient(#1f37ad,#142c91);display:grid;place-items:center;padding:10px 1px;color:#f2d08f;font:700 clamp(12px,1.2cqw,23px) Georgia;border:1px solid #7787e027}.mini-board span:nth-child(-n+6){background:#293d8f;font:800 clamp(5px,.4cqw,9px) 'Segoe UI';color:#b7c8ed;letter-spacing:.2px}.intro-stats{display:flex;justify-content:center;gap:28px;margin-top:24px}.intro-stats b{display:block;font:800 clamp(18px,1.9cqw,38px) Georgia;color:#f0ca88}.intro-stats small{font-size:clamp(7px,.55cqw,12px);letter-spacing:1px;color:#8094b8}.setup{padding:clamp(22px,2.5cqw,48px);border:1px solid #7a76a266;border-radius:17px;background:linear-gradient(140deg,#38365888,#17244599);box-shadow:0 20px 65px #0004}.setup h1{font:700 clamp(28px,2.8cqw,54px)/1.12 Georgia;margin:10px 0}.setup>p{font-size:clamp(10px,.8cqw,16px);color:#99a7c9;line-height:1.7;margin:10px 0 18px}.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.setup label{display:block;color:#afbada;font-size:clamp(9px,.68cqw,14px);font-weight:700;margin-bottom:7px}.setup select,.setup input{width:100%;background:#101a3c;border:1px solid #526794;color:#e1e7fa;border-radius:7px;padding:10px 12px;min-height:39px;font-size:clamp(11px,.86cqw,17px)}.team-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:17px 0}.team-input{position:relative}.team-input label{font-size:clamp(8px,.6cqw,12px);color:var(--team-color);margin-bottom:5px}.team-input input{font-size:clamp(10px,.76cqw,15px);padding:9px}.setup .gold{width:100%;margin-top:5px}.setup-links{display:flex;justify-content:center;gap:20px;margin-top:15px}.setup .repeat-note{font-size:clamp(8px,.65cqw,13px);color:#889fbc;line-height:1.6;text-align:center;margin-top:14px}.mode-note{font-size:clamp(9px,.7cqw,14px);line-height:1.6;color:#829bbd;margin:13px 0}#game{display:flex;flex-direction:column;padding:1.5cqh 2.7cqw 1cqh;gap:1.5cqh}.game-top{height:6.3cqh;min-height:35px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0}.round-label{font-size:clamp(10px,.9cqw,18px);font-weight:900;letter-spacing:1.8px;color:#d9d2f2}.round-label small{display:block;font-size:clamp(7px,.57cqw,12px);color:#8795b8;letter-spacing:1px;margin-top:4px}.progress-steps{display:flex;gap:7px;align-items:center}.progress-steps span{width:21px;height:4px;border-radius:6px;background:#38456b}.progress-steps .active{background:#e8c184;box-shadow:0 0 9px #e8c18444}.progress-steps b{font-size:clamp(8px,.62cqw,13px);color:#839abc;margin-right:8px}.game-top .quiet{font-size:clamp(8px,.65cqw,13px);padding:7px 10px}.board{flex:1;min-height:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:.8fr repeat(5,1fr);gap:6px;background:#02091e;padding:6px;border:1px solid #4f5c8b;box-shadow:0 15px 55px #0007,0 0 32px #2b46d11a;border-radius:3px}.category-head{background:linear-gradient(#19328b,#0d226f);border:1px solid #697cbe55;display:flex;align-items:center;justify-content:center;text-align:center;color:#e0e9ff;font-size:clamp(11px,1.13cqw,22px);font-weight:850;letter-spacing:1.6px;text-shadow:1px 3px 0 #0008;overflow-wrap:anywhere}.cell{background:linear-gradient(155deg,#1d36ba,#10258c);border:1px solid #586ddd55;box-shadow:inset 0 1px 0 #9eafff22;display:grid;place-items:center;color:#f6d59a;font:800 clamp(25px,3.15cqw,61px)/1 Georgia;text-shadow:2px 3px 1px #101039;min-height:0;transition:filter .2s,box-shadow .2s}.cell:hover:not(:disabled){filter:brightness(1.3);box-shadow:inset 0 0 0 2px #ffdc8c,0 0 20px #ecc07144;z-index:1}.cell.used{opacity:1;background:#0b1851;color:#233771;border-color:#2c3d7455;text-shadow:none;font-size:24px}.score-strip{height:14cqh;min-height:80px;display:grid;grid-template-columns:repeat(var(--teams,3),minmax(0,1fr));gap:11px;flex-shrink:0}.podium{border:1px solid #6577a45c;border-top:3px solid var(--team-color);border-radius:9px;background:linear-gradient(#26365c80,#111d3eaa);display:flex;align-items:center;gap:10px;padding:9px 14px;min-width:0;position:relative}.podium.control{border-color:#e5c17c;box-shadow:0 0 0 2px #edca8222,0 0 20px #cdae6a1b}.podium.control:after{content:'PILIH PAPAN';position:absolute;top:-7px;left:50%;transform:translateX(-50%);border-radius:12px;padding:2px 7px;background:#f3d297;color:#3b2b28;font-size:clamp(6px,.48cqw,10px);font-weight:900;white-space:nowrap}.podium.answering{border-color:#8be4d0;box-shadow:0 0 22px #7de6c722}.podium .avatar{width:clamp(32px,4.2cqw,80px);flex-shrink:0;aspect-ratio:1}.podium .avatar svg{display:block;width:100%;height:100%}.podium-info{min-width:0;flex:1}.podium-info small{font-size:clamp(7px,.52cqw,11px);color:var(--team-color);letter-spacing:1px;display:block}.podium-info b{display:block;font-size:clamp(10px,1cqw,20px);margin:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.podium-info strong{font:800 clamp(22px,2.5cqw,48px)/1.1 Georgia;color:#e0efff;display:block;white-space:nowrap}.podium-info strong.negative{color:#efa6b5}.score-strip.many .avatar{width:2.7cqw}.score-strip.many .podium{padding:9px;gap:7px}.score-strip.many .podium-info b{font-size:clamp(9px,.78cqw,16px)}.score-strip.many .podium-info strong{font-size:clamp(18px,2cqw,39px)}.status{height:3.5cqh;min-height:21px;text-align:center;color:#91a6cb;font-size:clamp(10px,.81cqw,16px);line-height:1.5;display:grid;place-items:center;flex-shrink:0}.clue-view{flex:1;min-height:0;border:1px solid #6b72aa66;background:radial-gradient(ellipse at 50% -40%,#394bba55,transparent 75%),linear-gradient(#172a7d,#102366);border-radius:10px;padding:2.3cqh 4cqw;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:inset 0 0 80px #10194277,0 15px 55px #0005;overflow:auto}.clue-view .tag{font-size:clamp(9px,.75cqw,15px);letter-spacing:2px;color:#a4b7ed;font-weight:850;text-align:center;margin-bottom:1.8cqh}.clue-view h2{font:700 clamp(22px,2.6cqw,50px)/1.45 Georgia;text-align:center;max-width:100%;margin:0;color:#f3f4ff;text-shadow:1px 3px 0 #020c3d66;overflow-wrap:anywhere}.clue-view h2.long{font-size:clamp(19px,2.1cqw,40px)}.clue-view h2.small{font-size:clamp(17px,1.8cqw,35px)}.clue-view p{font-size:clamp(11px,.95cqw,18px);line-height:1.7;color:#aebfe7;text-align:center;margin:14px 0 0}.clue-view .big-label{font:900 clamp(38px,5cqw,96px)/1.15 Impact,'Arial Narrow',sans-serif;letter-spacing:1px;color:#ffe0a2;text-shadow:0 4px 0 #705239;text-align:center;margin:0 0 12px}.clue-view .big-score{font:800 clamp(35px,4.5cqw,86px) Georgia;color:#ffe1a1}.clue-view .correct-answer{font:700 clamp(20px,2.1cqw,41px) Georgia;color:#ffe5ac;line-height:1.4;text-align:center;margin:10px 0}.clue-view .response{font-size:clamp(11px,1cqw,19px);color:#aec2e8}.clue-actions{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:2.5cqh;width:min(100%,850px);flex-wrap:wrap;flex-shrink:0}.clue-actions .quiet{min-height:42px}.timer{position:absolute;right:20px;top:17px;border:2px solid #758bc499;border-radius:50%;width:5.8cqh;height:5.8cqh;min-width:33px;min-height:33px;display:grid;place-items:center;font:800 clamp(17px,1.7cqw,33px) Georgia;color:#eed599;background:#0d205577}.timer.urgent{color:#ffb6bb;border-color:#f29ca9}.buzzers{display:grid;grid-template-columns:repeat(var(--teams,3),minmax(0,1fr));gap:9px;width:100%;margin-top:2.5cqh;flex-shrink:0}.buzz{min-width:0;border:1px solid var(--team-color);border-radius:8px;background:linear-gradient(#3e5ea480,#1d386caa);color:#e0eaff;padding:11px 8px;min-height:50px;font-size:clamp(11px,.9cqw,18px);font-weight:900;box-shadow:0 4px 0 #06143c}.buzz b{font-size:clamp(8px,.6cqw,12px);margin-right:6px;color:var(--team-color);background:#0d1e4866;padding:3px 6px;border-radius:4px}.buzz:active{transform:translateY(3px);box-shadow:none}.answer-form{display:flex;gap:10px;align-items:center;width:min(100%,780px);flex-wrap:wrap}.answer-form input{flex:1;min-width:0;width:100%;background:#091b4a;color:#f1f4ff;border:1px solid #7b91bd;border-radius:7px;padding:13px 15px;font-size:clamp(14px,1.2cqw,24px);min-height:45px}.answer-form input::placeholder{color:#6f8ab9}.wager-form{width:min(100%,440px);display:flex;gap:12px;align-items:center}.wager-form input{min-width:0;flex:1;background:#10245c;border:1px solid #9ea9cc;border-radius:8px;color:#ffe2a0;padding:11px 15px;font:800 clamp(22px,2.2cqw,42px) Georgia;width:100%;min-height:47px}.wager-error{font-size:11px;color:#ffbdc5;margin-top:9px;min-height:14px}.hint{font-size:clamp(9px,.7cqw,14px)!important;color:#8fa6d4!important;margin-top:12px!important}.judge-yes{background:#2c685b88;border:1px solid #8de5c4;color:#c1ffe6;border-radius:8px;font-weight:900;padding:13px 20px;min-height:45px}.judge-no{background:#78395288;border:1px solid #e4a1b8;color:#ffd2de;border-radius:8px;font-weight:900;padding:13px 20px;min-height:45px}.dd-mode{border-color:#c6a16c;background:radial-gradient(ellipse at 50% -10%,#784a6155,transparent 75%),linear-gradient(#222b67,#17214e)}.clue-view .avatar-large{width:clamp(60px,8cqw,150px);margin:0 auto 13px}.clue-view .avatar-large svg{width:100%;display:block}.small-list{font-size:clamp(10px,.8cqw,16px);display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:16px;color:#a2b6db}.modal{position:absolute;inset:0;z-index:20;display:grid;place-items:center;background:#030922e8;backdrop-filter:blur(9px);padding:23px}.dialog{background:radial-gradient(ellipse at 20% 0,#3b3b69,#17223e 75%);border:1px solid #827a9f;border-radius:17px;padding:clamp(25px,2.7cqw,50px);width:min(95%,640px);max-height:calc(100cqh - 46px);overflow:auto;box-shadow:0 20px 90px #0009}.dialog h2{font:700 clamp(26px,2.5cqw,48px)/1.2 Georgia;color:#ffe1a5;margin:10px 0 18px}.dialog p,.dialog li{font-size:clamp(12px,.97cqw,18px);color:#b4c1de;line-height:1.75}.dialog strong{color:#eff2ff}.dialog-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-top:22px}.dialog-actions button{font-size:13px}.notice{font-size:11px!important;color:#819abc!important;border-top:1px solid #69769d44;padding-top:13px}.winner-art{width:100px;margin:auto}.winner-name{font:800 clamp(26px,2.8cqw,54px) Georgia;text-align:center;color:#ffe0a1;margin:15px 0}.final-score{font:800 clamp(32px,3.6cqw,68px) Georgia;color:#9bead3;text-align:center}.record-row{display:flex;justify-content:space-between;gap:13px;padding:12px 0;border-bottom:1px solid #61769c44;font-size:13px;color:#c3cfe7}.record-row b{color:#edc989}.record-row small{display:block;font-size:10px;color:#8a9fc2;margin-top:4px}.confetti{position:absolute;inset:0;z-index:19;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-20px;width:7px;height:12px;animation:fall 3.5s linear infinite}.pulse{animation:pulse .8s infinite alternate}@keyframes fall{to{transform:translateY(110cqh) rotate(600deg)}}@keyframes pulse{to{filter:brightness(1.4)}}@keyframes beams{to{transform:rotate(9deg)}}
+@media(min-width:900px) and (max-height:650px){.setup{padding:16px 22px!important}.setup h1{font-size:25px!important;margin:6px 0!important}.setup>p{font-size:10px!important;margin:6px 0 10px!important}.setup-grid{gap:8px!important}.setup select,.setup input{min-height:32px!important;padding:7px 9px!important;font-size:10px!important}.setup label{font-size:8px!important;margin-bottom:4px!important}.team-inputs{margin:10px 0!important;gap:7px!important}.team-input label{font-size:7px!important}.mode-note{font-size:9px!important;line-height:1.45!important;margin:8px 0!important}.setup .gold{min-height:36px!important;padding:10px!important;font-size:10px!important}.setup-links{margin-top:8px!important}.setup-links .text-btn{font-size:8px!important;padding:2px!important}.setup .repeat-note{font-size:8px!important;margin-top:8px!important;line-height:1.4!important}.setup{padding:18px 24px}.setup h1{font-size:28px}.setup>p{margin:7px 0 12px}.setup-grid{gap:10px}.team-inputs{margin:12px 0}.mode-note{margin:9px 0}.setup-links{margin-top:10px}.setup .repeat-note{margin-top:9px}.intro-stats{margin-top:15px}.mini-board{margin-top:17px}.mini-board span{padding:7px 1px}.clue-view{padding:17px 40px}.clue-view p{margin-top:10px}.clue-actions{margin-top:15px}.buzzers{margin-top:15px}.clue-view .big-label{font-size:43px}}
+@media(max-width:899px),(max-height:479px){body{display:block;background:#0a1233}#stage{width:100%;height:auto;min-height:100dvh;aspect-ratio:auto;container-type:inline-size}header{min-height:65px;height:auto;padding:13px 15px;flex-wrap:wrap}.brand b{font-size:24px}.brand small{font-size:6px;letter-spacing:1.6px}.tools{gap:5px}.tool{min-height:30px;padding:7px;font-size:9px}#rulesBtn{font-size:0;min-width:28px}#rulesBtn:after{content:'ⓘ';font-size:11px}.footer{height:auto;line-height:1.8;padding:12px;font-size:6px}.screen{flex:none}#welcome{display:flex;flex-direction:column;gap:28px;padding:35px 21px 20px}.intro-art{width:100%;max-width:430px}.hero-logo{font-size:54px;margin:18px 0 26px}.intro-art>p{font-size:22px;margin:19px 0 12px}.intro-art>small{font-size:11px}.mini-board{margin-top:20px;max-width:330px;gap:3px;padding:5px}.mini-board span{font-size:14px;padding:8px 1px}.mini-board span:nth-child(-n+6){font-size:5px}.intro-stats{margin-top:21px;gap:26px}.intro-stats b{font-size:22px}.intro-stats small{font-size:7px}.setup{padding:25px 22px;width:100%;max-width:550px}.eyebrow{font-size:8px}.setup h1{font-size:30px}.setup>p{font-size:12px}.setup label{font-size:9px}.setup select,.setup input{min-height:41px;font-size:12px;padding:9px}.setup-grid{gap:13px}.team-inputs{gap:8px;grid-template-columns:repeat(2,minmax(0,1fr));margin:18px 0}.team-input label{font-size:9px}.team-input input{font-size:12px}.mode-note{font-size:11px}.gold{font-size:12px;min-height:44px}.text-btn{font-size:10px}.setup .repeat-note{font-size:10px}#game{padding:13px 10px 5px;gap:15px}.game-top{height:auto;min-height:45px;gap:6px}.round-label{font-size:11px;letter-spacing:.7px}.round-label small{font-size:7px;margin-top:4px}.progress-steps{gap:4px}.progress-steps span{width:12px}.progress-steps b{font-size:7px;margin-right:2px}.game-top .quiet{font-size:8px;padding:7px}.board{flex:none;height:410px;padding:4px;gap:4px;grid-template-rows:.8fr repeat(5,1fr)}.category-head{font-size:8px;letter-spacing:0;line-height:1.4;padding:2px;overflow-wrap:anywhere;word-break:normal}.cell{font-size:clamp(14px,4.3vw,26px)}.cell.used{font-size:19px}.score-strip{height:auto;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.podium{height:82px;padding:8px 10px;gap:8px}.podium .avatar,.score-strip.many .avatar{width:38px}.podium-info small{font-size:6px}.podium-info b,.score-strip.many .podium-info b{font-size:10px}.podium-info strong,.score-strip.many .podium-info strong{font-size:25px}.podium.control:after{font-size:5px;top:-6px}.score-strip.many .podium{padding:8px 10px;gap:8px}.status{height:auto;min-height:30px;font-size:11px;line-height:1.6;padding:2px 8px}.clue-view{flex:none;min-height:375px;padding:52px 21px 28px;overflow:visible}.clue-view .tag{font-size:9px;letter-spacing:1.4px;margin-bottom:20px}.clue-view h2{font-size:24px;line-height:1.5}.clue-view h2.long{font-size:20px}.clue-view h2.small{font-size:18px}.clue-view p{font-size:12px;line-height:1.75;margin-top:14px}.clue-view .big-label{font-size:43px;margin-bottom:13px}.clue-view .big-score{font-size:47px}.clue-view .correct-answer{font-size:24px;margin:12px 0}.clue-view .response{font-size:12px}.clue-actions{gap:10px;margin-top:23px}.clue-actions .quiet{font-size:11px;min-height:43px}.timer{height:35px;width:35px;font-size:18px;right:12px;top:12px}.buzzers{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:23px}.buzz{font-size:11px;min-height:48px;padding:10px 6px}.buzz b{font-size:8px;margin-right:5px}.answer-form{gap:9px}.answer-form input{font-size:15px;padding:12px;min-height:47px;flex-basis:100%}.answer-form .gold{width:100%}.wager-form{gap:9px;flex-wrap:wrap}.wager-form input{font-size:26px;min-height:48px}.wager-form .gold{padding:12px;min-height:47px}.hint{font-size:10px!important;margin-top:12px!important}.judge-no,.judge-yes{font-size:12px;padding:13px;min-height:46px}.clue-view .avatar-large{width:83px;margin-bottom:16px}.small-list{font-size:11px;gap:9px 18px;margin-top:18px}.modal{position:fixed;padding:17px}.dialog{padding:25px 23px;max-height:calc(100dvh - 34px);width:min(100%,600px)}.dialog h2{font-size:30px}.dialog p,.dialog li{font-size:13px}.dialog-actions{gap:10px}.dialog-actions button{flex:1;font-size:12px}.winner-art{width:85px}.winner-name{font-size:28px}.final-score{font-size:40px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head><body><main id="stage"><div class="rig" aria-hidden="true"></div><header><div class="brand"><b>JEOPARDY!</b><small>ARENA BAHASA INDONESIA</small></div><nav class="tools" aria-label="Pengaturan"><button class="tool" id="rulesBtn">ⓘ Aturan</button><button class="tool" id="musicBtn" aria-pressed="true" aria-label="Musik latar">♫</button><button class="tool" id="soundBtn" aria-pressed="true" aria-label="Efek suara">♪</button><details><summary class="tool" aria-label="Pengaturan volume">☷</summary><div class="volume-box"><label for="volume">Volume <output id="volumeText">40%</output></label><input id="volume" type="range" min="0" max="100" step="5" value="40"></div></details><button class="tool" id="fullscreenBtn" aria-label="Layar penuh">⛶</button><button class="tool" id="menuBtn" aria-label="Menu utama" hidden>⌂</button></nav></header>
+<section id="welcome" class="screen"><div class="intro-art"><div class="hero-logo">JEOPARDY!</div><p>Pilih kategorinya.<br>Pertaruhkan pengetahuanmu.</p><small>Enam kategori. Poin bertingkat.<br>Satu jawaban bisa mengubah seluruh permainan.</small><div class="mini-board" id="miniBoard" aria-hidden="true"></div><div class="intro-stats"><div><b id="bankCount">290</b><small>KARTU PETUNJUK</small></div><div><b>2–6</b><small>TIM BERMAIN</small></div><div><b>FINAL</b><small>TARUHAN POIN</small></div></div></div><div class="setup"><span class="eyebrow">KNOWLEDGE MEETS STRATEGY</span><h1>Siap ambil tantangan?</h1><p>Pilih soal, rebut giliran, dan kumpulkan poin. Waspadai Daily Double yang tersembunyi!</p><div class="setup-grid"><div><label for="teamCount">JUMLAH TIM</label><select id="teamCount"><option value="2">2 tim</option><option value="3" selected>3 tim</option><option value="4">4 tim</option><option value="5">5 tim</option><option value="6">6 tim</option></select></div><div><label for="roundCount">FORMAT PERTANDINGAN</label><select id="roundCount"><option value="1">1 papan + Final</option><option value="2" selected>2 papan + Final</option></select></div><div><label for="playMode">CARA MENJAWAB</label><select id="playMode"><option value="type">Ketik jawaban</option><option value="host">Dinilai guru / pemandu</option></select></div><div><label for="timeMode">BATAS JAWABAN</label><select id="timeMode"><option value="0">Tanpa timer</option><option value="15">15 detik</option><option value="20" selected>20 detik</option><option value="30">30 detik</option></select></div></div><div class="team-inputs" id="teamInputs"></div><div class="mode-note" id="modeNote"></div><button class="gold" id="startBtn">MULAI JEOPARDY! <span aria-hidden="true">→</span></button><div class="setup-links"><button class="text-btn" id="welcomeRules">Cara bermain</button><button class="text-btn" id="welcomeRecords">Klasemen</button></div><div class="repeat-note" id="repeatNote"></div></div></section>
+<section id="game" class="screen" hidden><div class="game-top"><div class="round-label" id="roundLabel"></div><div class="progress-steps" id="progressSteps"></div><button class="quiet" id="endBoardBtn">Akhiri papan</button></div><div class="board" id="board"></div><section class="clue-view" id="clueView" hidden></section><div class="score-strip" id="scores"></div><div class="status" id="status" role="status" aria-live="polite"></div></section><footer class="footer">ADAPTASI EDUKASI INDEPENDEN · SEMUA TARUHAN MENGGUNAKAN POIN VIRTUAL · SUSUNAN PETUNJUK ACAK</footer><div class="confetti" id="confetti" hidden aria-hidden="true"></div><div class="modal" id="modal" hidden><section class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"></section></div></main><script>
+const BANK=[
+  {
+    "id": "JR001",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “apotik”.",
+    "answer": "apotek",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “apotek”, bukan “apotik”."
+  },
+  {
+    "id": "JR002",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “ijin”.",
+    "answer": "izin",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “izin”, bukan “ijin”."
+  },
+  {
+    "id": "JR003",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “resiko”.",
+    "answer": "risiko",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “risiko”, bukan “resiko”."
+  },
+  {
+    "id": "JR004",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “aktifitas”.",
+    "answer": "aktivitas",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “aktivitas”, bukan “aktifitas”."
+  },
+  {
+    "id": "JR005",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “nasehat”.",
+    "answer": "nasihat",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “nasihat”, bukan “nasehat”."
+  },
+  {
+    "id": "JR006",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “antri”.",
+    "answer": "antre",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “antre”, bukan “antri”."
+  },
+  {
+    "id": "JR007",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “praktek”.",
+    "answer": "praktik",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “praktik”, bukan “praktek”."
+  },
+  {
+    "id": "JR008",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “obyek”.",
+    "answer": "objek",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “objek”, bukan “obyek”."
+  },
+  {
+    "id": "JR009",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “subyek”.",
+    "answer": "subjek",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “subjek”, bukan “subyek”."
+  },
+  {
+    "id": "JR010",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “kwalitas”.",
+    "answer": "kualitas",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “kualitas”, bukan “kwalitas”."
+  },
+  {
+    "id": "JR011",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “atlit”.",
+    "answer": "atlet",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “atlet”, bukan “atlit”."
+  },
+  {
+    "id": "JR012",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “jaman”.",
+    "answer": "zaman",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “zaman”, bukan “jaman”."
+  },
+  {
+    "id": "JR013",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “sistim”.",
+    "answer": "sistem",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “sistem”, bukan “sistim”."
+  },
+  {
+    "id": "JR014",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “analisa”.",
+    "answer": "analisis",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “analisis”, bukan “analisa”."
+  },
+  {
+    "id": "JR015",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “diagnosa”.",
+    "answer": "diagnosis",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “diagnosis”, bukan “diagnosa”."
+  },
+  {
+    "id": "JR016",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “hipotesa”.",
+    "answer": "hipotesis",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “hipotesis”, bukan “hipotesa”."
+  },
+  {
+    "id": "JR017",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “metoda”.",
+    "answer": "metode",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “metode”, bukan “metoda”."
+  },
+  {
+    "id": "JR018",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “tehnik”.",
+    "answer": "teknik",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “teknik”, bukan “tehnik”."
+  },
+  {
+    "id": "JR019",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “sekedar”.",
+    "answer": "sekadar",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “sekadar”, bukan “sekedar”."
+  },
+  {
+    "id": "JR020",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “silahkan”.",
+    "answer": "silakan",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “silakan”, bukan “silahkan”."
+  },
+  {
+    "id": "JR021",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “terlanjur”.",
+    "answer": "telanjur",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “telanjur”, bukan “terlanjur”."
+  },
+  {
+    "id": "JR022",
+    "category": "Ejaan",
+    "level": 1,
+    "clue": "Bentuk baku dari kata tidak baku “trampil”.",
+    "answer": "terampil",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “terampil”, bukan “trampil”."
+  },
+  {
+    "id": "JR023",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “nafas”.",
+    "answer": "napas",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “napas”, bukan “nafas”."
+  },
+  {
+    "id": "JR024",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “hapal”.",
+    "answer": "hafal",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “hafal”, bukan “hapal”."
+  },
+  {
+    "id": "JR025",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “ijasah”.",
+    "answer": "ijazah",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “ijazah”, bukan “ijasah”."
+  },
+  {
+    "id": "JR026",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “jadual”.",
+    "answer": "jadwal",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “jadwal”, bukan “jadual”."
+  },
+  {
+    "id": "JR027",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “kaedah”.",
+    "answer": "kaidah",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “kaidah”, bukan “kaedah”."
+  },
+  {
+    "id": "JR028",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “karir”.",
+    "answer": "karier",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “karier”, bukan “karir”."
+  },
+  {
+    "id": "JR029",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “konkrit”.",
+    "answer": "konkret",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “konkret”, bukan “konkrit”."
+  },
+  {
+    "id": "JR030",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “kreatifitas”.",
+    "answer": "kreativitas",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “kreativitas”, bukan “kreatifitas”."
+  },
+  {
+    "id": "JR031",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “kwitansi”.",
+    "answer": "kuitansi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “kuitansi”, bukan “kwitansi”."
+  },
+  {
+    "id": "JR032",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “lembab”.",
+    "answer": "lembap",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “lembap”, bukan “lembab”."
+  },
+  {
+    "id": "JR033",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “lobang”.",
+    "answer": "lubang",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “lubang”, bukan “lobang”."
+  },
+  {
+    "id": "JR034",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “mahluk”.",
+    "answer": "makhluk",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “makhluk”, bukan “mahluk”."
+  },
+  {
+    "id": "JR035",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “milyar”.",
+    "answer": "miliar",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “miliar”, bukan “milyar”."
+  },
+  {
+    "id": "JR036",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “nahkoda”.",
+    "answer": "nakhoda",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “nakhoda”, bukan “nahkoda”."
+  },
+  {
+    "id": "JR037",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “Nopember”.",
+    "answer": "November",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “November”, bukan “Nopember”."
+  },
+  {
+    "id": "JR038",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “faham”.",
+    "answer": "paham",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “paham”, bukan “faham”."
+  },
+  {
+    "id": "JR039",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “perduli”.",
+    "answer": "peduli",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “peduli”, bukan “perduli”."
+  },
+  {
+    "id": "JR040",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “fikir”.",
+    "answer": "pikir",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “pikir”, bukan “fikir”."
+  },
+  {
+    "id": "JR041",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “seksama”.",
+    "answer": "saksama",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “saksama”, bukan “seksama”."
+  },
+  {
+    "id": "JR042",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “saos”.",
+    "answer": "saus",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “saus”, bukan “saos”."
+  },
+  {
+    "id": "JR043",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “survey”.",
+    "answer": "survei",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “survei”, bukan “survey”."
+  },
+  {
+    "id": "JR044",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “teoritis”.",
+    "answer": "teoretis",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “teoretis”, bukan “teoritis”."
+  },
+  {
+    "id": "JR045",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “hutang”.",
+    "answer": "utang",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “utang”, bukan “hutang”."
+  },
+  {
+    "id": "JR046",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “vidio”.",
+    "answer": "video",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “video”, bukan “vidio”."
+  },
+  {
+    "id": "JR047",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “standard”.",
+    "answer": "standar",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “standar”, bukan “standard”."
+  },
+  {
+    "id": "JR048",
+    "category": "Ejaan",
+    "level": 2,
+    "clue": "Bentuk baku dari kata tidak baku “hirarki”.",
+    "answer": "hierarki",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “hierarki”, bukan “hirarki”."
+  },
+  {
+    "id": "JR049",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “hakekat”.",
+    "answer": "hakikat",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “hakikat”, bukan “hakekat”."
+  },
+  {
+    "id": "JR050",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “frekwensi”.",
+    "answer": "frekuensi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “frekuensi”, bukan “frekwensi”."
+  },
+  {
+    "id": "JR051",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “ekstrim”.",
+    "answer": "ekstrem",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “ekstrem”, bukan “ekstrim”."
+  },
+  {
+    "id": "JR052",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “coklat”.",
+    "answer": "cokelat",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “cokelat”, bukan “coklat”."
+  },
+  {
+    "id": "JR053",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “defenisi”.",
+    "answer": "definisi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “definisi”, bukan “defenisi”."
+  },
+  {
+    "id": "JR054",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “efektip”.",
+    "answer": "efektif",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “efektif”, bukan “efektip”."
+  },
+  {
+    "id": "JR055",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “efesien”.",
+    "answer": "efisien",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “efisien”, bukan “efesien”."
+  },
+  {
+    "id": "JR056",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “Pebruari”.",
+    "answer": "Februari",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “Februari”, bukan “Pebruari”."
+  },
+  {
+    "id": "JR057",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “pondasi”.",
+    "answer": "fondasi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “fondasi”, bukan “pondasi”."
+  },
+  {
+    "id": "JR058",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “frase”.",
+    "answer": "frasa",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “frasa”, bukan “frase”."
+  },
+  {
+    "id": "JR059",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “import”.",
+    "answer": "impor",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “impor”, bukan “import”."
+  },
+  {
+    "id": "JR060",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “eksport”.",
+    "answer": "ekspor",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “ekspor”, bukan “eksport”."
+  },
+  {
+    "id": "JR061",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “komplek”.",
+    "answer": "kompleks",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “kompleks”, bukan “komplek”."
+  },
+  {
+    "id": "JR062",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “kordinasi”.",
+    "answer": "koordinasi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “koordinasi”, bukan “kordinasi”."
+  },
+  {
+    "id": "JR063",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “musium”.",
+    "answer": "museum",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “museum”, bukan “musium”."
+  },
+  {
+    "id": "JR064",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “prosentase”.",
+    "answer": "persentase",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “persentase”, bukan “prosentase”."
+  },
+  {
+    "id": "JR065",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “propinsi”.",
+    "answer": "provinsi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “provinsi”, bukan “propinsi”."
+  },
+  {
+    "id": "JR066",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “psikhologi”.",
+    "answer": "psikologi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “psikologi”, bukan “psikhologi”."
+  },
+  {
+    "id": "JR067",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “respon”.",
+    "answer": "respons",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “respons”, bukan “respon”."
+  },
+  {
+    "id": "JR068",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “sintesa”.",
+    "answer": "sintesis",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “sintesis”, bukan “sintesa”."
+  },
+  {
+    "id": "JR069",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “telpon”.",
+    "answer": "telepon",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “telepon”, bukan “telpon”."
+  },
+  {
+    "id": "JR070",
+    "category": "Ejaan",
+    "level": 3,
+    "clue": "Bentuk baku dari kata tidak baku “tranportasi”.",
+    "answer": "transportasi",
+    "aliases": [],
+    "explanation": "Bentuk bakunya adalah “transportasi”, bukan “tranportasi”."
+  },
+  {
+    "id": "JR071",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “gembira”.",
+    "answer": "senang",
+    "aliases": [
+      "gembira",
+      "bahagia",
+      "girang",
+      "riang",
+      "sukacita"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “gembira” dapat bermakna “senang”."
+  },
+  {
+    "id": "JR072",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “indah”.",
+    "answer": "elok",
+    "aliases": [
+      "indah",
+      "cantik",
+      "molek",
+      "jelita",
+      "permai",
+      "menawan"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “indah” dapat bermakna “elok”."
+  },
+  {
+    "id": "JR073",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “pandai”.",
+    "answer": "pintar",
+    "aliases": [
+      "pandai",
+      "cerdas",
+      "cerdik",
+      "cakap"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “pandai” dapat bermakna “pintar”."
+  },
+  {
+    "id": "JR074",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “rajin”.",
+    "answer": "giat",
+    "aliases": [
+      "rajin",
+      "tekun"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “rajin” dapat bermakna “giat”."
+  },
+  {
+    "id": "JR075",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “hemat”.",
+    "answer": "irit",
+    "aliases": [
+      "hemat"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “hemat” dapat bermakna “irit”."
+  },
+  {
+    "id": "JR076",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “cepat”.",
+    "answer": "lekas",
+    "aliases": [
+      "cepat",
+      "segera"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “cepat” dapat bermakna “lekas”."
+  },
+  {
+    "id": "JR077",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “lambat”.",
+    "answer": "pelan",
+    "aliases": [
+      "lambat",
+      "perlahan"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “lambat” dapat bermakna “pelan”."
+  },
+  {
+    "id": "JR078",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “sunyi”.",
+    "answer": "sepi",
+    "aliases": [
+      "sunyi",
+      "hening",
+      "lengang"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “sunyi” dapat bermakna “sepi”."
+  },
+  {
+    "id": "JR079",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “ramai”.",
+    "answer": "riuh",
+    "aliases": [
+      "ramai",
+      "gaduh"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “ramai” dapat bermakna “riuh”."
+  },
+  {
+    "id": "JR080",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “besar”.",
+    "answer": "akbar",
+    "aliases": [
+      "besar",
+      "raya"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “besar” dapat bermakna “akbar”."
+  },
+  {
+    "id": "JR081",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “kecil”.",
+    "answer": "mungil",
+    "aliases": [
+      "kecil",
+      "mini"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “kecil” dapat bermakna “mungil”."
+  },
+  {
+    "id": "JR082",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “sulit”.",
+    "answer": "sukar",
+    "aliases": [
+      "sulit",
+      "susah"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “sulit” dapat bermakna “sukar”."
+  },
+  {
+    "id": "JR083",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “mudah”.",
+    "answer": "gampang",
+    "aliases": [
+      "mudah"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “mudah” dapat bermakna “gampang”."
+  },
+  {
+    "id": "JR084",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Sinonim atau persamaan makna dari kata “berani”.",
+    "answer": "tidak takut",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “berani” dapat bermakna “tidak takut”."
+  },
+  {
+    "id": "JR085",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “cermat”.",
+    "answer": "teliti",
+    "aliases": [
+      "cermat",
+      "saksama"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “cermat” dapat bermakna “teliti”."
+  },
+  {
+    "id": "JR086",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “jujur”.",
+    "answer": "lurus hati",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “jujur” dapat bermakna “lurus hati”."
+  },
+  {
+    "id": "JR087",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “marah”.",
+    "answer": "geram",
+    "aliases": [
+      "marah",
+      "murka",
+      "berang"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “marah” dapat bermakna “geram”."
+  },
+  {
+    "id": "JR088",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “sedih”.",
+    "answer": "duka",
+    "aliases": [
+      "sedih",
+      "pilu",
+      "susah hati"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “sedih” dapat bermakna “duka”."
+  },
+  {
+    "id": "JR089",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “bahagia”.",
+    "answer": "gembira",
+    "aliases": [
+      "bahagia",
+      "senang",
+      "riang"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “bahagia” dapat bermakna “gembira”."
+  },
+  {
+    "id": "JR090",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “harum”.",
+    "answer": "wangi",
+    "aliases": [
+      "harum",
+      "semerbak"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “harum” dapat bermakna “wangi”."
+  },
+  {
+    "id": "JR091",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “buruk”.",
+    "answer": "jelek",
+    "aliases": [
+      "buruk",
+      "tidak bagus"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “buruk” dapat bermakna “jelek”."
+  },
+  {
+    "id": "JR092",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “kuat”.",
+    "answer": "kukuh",
+    "aliases": [
+      "kuat",
+      "kokoh",
+      "teguh"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “kuat” dapat bermakna “kukuh”."
+  },
+  {
+    "id": "JR093",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “lelah”.",
+    "answer": "letih",
+    "aliases": [
+      "lelah",
+      "penat",
+      "capek"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “lelah” dapat bermakna “letih”."
+  },
+  {
+    "id": "JR094",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “sehat”.",
+    "answer": "bugar",
+    "aliases": [
+      "sehat",
+      "segar"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “sehat” dapat bermakna “bugar”."
+  },
+  {
+    "id": "JR095",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “tua”.",
+    "answer": "lanjut usia",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “tua” dapat bermakna “lanjut usia”."
+  },
+  {
+    "id": "JR096",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “muda”.",
+    "answer": "belia",
+    "aliases": [
+      "muda"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “muda” dapat bermakna “belia”."
+  },
+  {
+    "id": "JR097",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “tujuan”.",
+    "answer": "maksud",
+    "aliases": [
+      "tujuan",
+      "niat"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “tujuan” dapat bermakna “maksud”."
+  },
+  {
+    "id": "JR098",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Sinonim atau persamaan makna dari kata “kawan”.",
+    "answer": "sahabat",
+    "aliases": [
+      "kawan",
+      "teman"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “kawan” dapat bermakna “sahabat”."
+  },
+  {
+    "id": "JR099",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “musuh”.",
+    "answer": "lawan",
+    "aliases": [
+      "musuh",
+      "seteru"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “musuh” dapat bermakna “lawan”."
+  },
+  {
+    "id": "JR100",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “abadi”.",
+    "answer": "kekal",
+    "aliases": [
+      "abadi",
+      "langgeng"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “abadi” dapat bermakna “kekal”."
+  },
+  {
+    "id": "JR101",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “asli”.",
+    "answer": "murni",
+    "aliases": [
+      "asli"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “asli” dapat bermakna “murni”."
+  },
+  {
+    "id": "JR102",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “dusta”.",
+    "answer": "bohong",
+    "aliases": [
+      "dusta",
+      "tidak jujur"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “dusta” dapat bermakna “bohong”."
+  },
+  {
+    "id": "JR103",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “lazim”.",
+    "answer": "umum",
+    "aliases": [
+      "lazim",
+      "biasa"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “lazim” dapat bermakna “umum”."
+  },
+  {
+    "id": "JR104",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “langka”.",
+    "answer": "jarang",
+    "aliases": [
+      "langka"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “langka” dapat bermakna “jarang”."
+  },
+  {
+    "id": "JR105",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “potensi”.",
+    "answer": "kemampuan yang dapat dikembangkan",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “potensi” dapat bermakna “kemampuan yang dapat dikembangkan”."
+  },
+  {
+    "id": "JR106",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “relevan”.",
+    "answer": "berkaitan",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “relevan” dapat bermakna “berkaitan”."
+  },
+  {
+    "id": "JR107",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “inovasi”.",
+    "answer": "pembaruan",
+    "aliases": [
+      "inovasi"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “inovasi” dapat bermakna “pembaruan”."
+  },
+  {
+    "id": "JR108",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “efisien”.",
+    "answer": "berdaya guna",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “efisien” dapat bermakna “berdaya guna”."
+  },
+  {
+    "id": "JR109",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “mandiri”.",
+    "answer": "berdikari",
+    "aliases": [
+      "mandiri"
+    ],
+    "explanation": "Sinonim berarti persamaan makna. “mandiri” dapat bermakna “berdikari”."
+  },
+  {
+    "id": "JR110",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Sinonim atau persamaan makna dari kata “optimistis”.",
+    "answer": "penuh harapan",
+    "aliases": [],
+    "explanation": "Sinonim berarti persamaan makna. “optimistis” dapat bermakna “penuh harapan”."
+  },
+  {
+    "id": "JR111",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “besar”.",
+    "answer": "kecil",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “besar” berlawanan dengan “kecil”."
+  },
+  {
+    "id": "JR112",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “tinggi”.",
+    "answer": "rendah",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “tinggi” berlawanan dengan “rendah”."
+  },
+  {
+    "id": "JR113",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “panjang”.",
+    "answer": "pendek",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “panjang” berlawanan dengan “pendek”."
+  },
+  {
+    "id": "JR114",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “panas”.",
+    "answer": "dingin",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “panas” berlawanan dengan “dingin”."
+  },
+  {
+    "id": "JR115",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “terang”.",
+    "answer": "gelap",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “terang” berlawanan dengan “gelap”."
+  },
+  {
+    "id": "JR116",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “cepat”.",
+    "answer": "lambat",
+    "aliases": [
+      "pelan"
+    ],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “cepat” berlawanan dengan “lambat”."
+  },
+  {
+    "id": "JR117",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “kaya”.",
+    "answer": "miskin",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “kaya” berlawanan dengan “miskin”."
+  },
+  {
+    "id": "JR118",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “rajin”.",
+    "answer": "malas",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “rajin” berlawanan dengan “malas”."
+  },
+  {
+    "id": "JR119",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “ramai”.",
+    "answer": "sepi",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “ramai” berlawanan dengan “sepi”."
+  },
+  {
+    "id": "JR120",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “kuat”.",
+    "answer": "lemah",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “kuat” berlawanan dengan “lemah”."
+  },
+  {
+    "id": "JR121",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “mahal”.",
+    "answer": "murah",
+    "aliases": [
+      "rendah harganya"
+    ],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “mahal” berlawanan dengan “murah”."
+  },
+  {
+    "id": "JR122",
+    "category": "Kosakata",
+    "level": 1,
+    "clue": "Antonim atau lawan kata dari “tebal”.",
+    "answer": "tipis",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “tebal” berlawanan dengan “tipis”."
+  },
+  {
+    "id": "JR123",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “jauh”.",
+    "answer": "dekat",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “jauh” berlawanan dengan “dekat”."
+  },
+  {
+    "id": "JR124",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “bersih”.",
+    "answer": "kotor",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “bersih” berlawanan dengan “kotor”."
+  },
+  {
+    "id": "JR125",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “baru”.",
+    "answer": "lama",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “baru” berlawanan dengan “lama”."
+  },
+  {
+    "id": "JR126",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “naik”.",
+    "answer": "turun",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “naik” berlawanan dengan “turun”."
+  },
+  {
+    "id": "JR127",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “masuk”.",
+    "answer": "keluar",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “masuk” berlawanan dengan “keluar”."
+  },
+  {
+    "id": "JR128",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “datang”.",
+    "answer": "pergi",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “datang” berlawanan dengan “pergi”."
+  },
+  {
+    "id": "JR129",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “hidup”.",
+    "answer": "mati",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “hidup” berlawanan dengan “mati”."
+  },
+  {
+    "id": "JR130",
+    "category": "Kosakata",
+    "level": 2,
+    "clue": "Antonim atau lawan kata dari “awal”.",
+    "answer": "akhir",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “awal” berlawanan dengan “akhir”."
+  },
+  {
+    "id": "JR131",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “untung”.",
+    "answer": "rugi",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “untung” berlawanan dengan “rugi”."
+  },
+  {
+    "id": "JR132",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “positif”.",
+    "answer": "negatif",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “positif” berlawanan dengan “negatif”."
+  },
+  {
+    "id": "JR133",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “optimistis”.",
+    "answer": "pesimistis",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “optimistis” berlawanan dengan “pesimistis”."
+  },
+  {
+    "id": "JR134",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “konkret”.",
+    "answer": "abstrak",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “konkret” berlawanan dengan “abstrak”."
+  },
+  {
+    "id": "JR135",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “objektif”.",
+    "answer": "subjektif",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “objektif” berlawanan dengan “subjektif”."
+  },
+  {
+    "id": "JR136",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “statis”.",
+    "answer": "dinamis",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “statis” berlawanan dengan “dinamis”."
+  },
+  {
+    "id": "JR137",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “permanen”.",
+    "answer": "sementara",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “permanen” berlawanan dengan “sementara”."
+  },
+  {
+    "id": "JR138",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “universal”.",
+    "answer": "khusus",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “universal” berlawanan dengan “khusus”."
+  },
+  {
+    "id": "JR139",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “mayoritas”.",
+    "answer": "minoritas",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “mayoritas” berlawanan dengan “minoritas”."
+  },
+  {
+    "id": "JR140",
+    "category": "Kosakata",
+    "level": 3,
+    "clue": "Antonim atau lawan kata dari “modern”.",
+    "answer": "tradisional",
+    "aliases": [],
+    "explanation": "Antonim adalah hubungan makna yang berlawanan. “modern” berlawanan dengan “tradisional”."
+  },
+  {
+    "id": "JR141",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti oleh-oleh.",
+    "answer": "buah tangan",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “buah tangan” berarti oleh-oleh."
+  },
+  {
+    "id": "JR142",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti anak kesayangan.",
+    "answer": "buah hati",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “buah hati” berarti anak kesayangan."
+  },
+  {
+    "id": "JR143",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti orang yang gemar membaca.",
+    "answer": "kutu buku",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “kutu buku” berarti orang yang gemar membaca."
+  },
+  {
+    "id": "JR144",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti suka mencuri.",
+    "answer": "panjang tangan",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “panjang tangan” berarti suka mencuri."
+  },
+  {
+    "id": "JR145",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti orang kepercayaan.",
+    "answer": "tangan kanan",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “tangan kanan” berarti orang kepercayaan."
+  },
+  {
+    "id": "JR146",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti menyerah.",
+    "answer": "angkat tangan",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “angkat tangan” berarti menyerah."
+  },
+  {
+    "id": "JR147",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti sombong.",
+    "answer": "besar kepala",
+    "aliases": [
+      "besar kepala",
+      "tinggi hati"
+    ],
+    "explanation": "Dalam makna kias, “besar kepala” berarti sombong."
+  },
+  {
+    "id": "JR148",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti tenang.",
+    "answer": "kepala dingin",
+    "aliases": [
+      "kepala dingin"
+    ],
+    "explanation": "Dalam makna kias, “kepala dingin” berarti tenang."
+  },
+  {
+    "id": "JR149",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Ungkapan yang berarti sulit dinasihati.",
+    "answer": "keras kepala",
+    "aliases": [
+      "keras kepala",
+      "kepala batu"
+    ],
+    "explanation": "Dalam makna kias, “keras kepala” berarti sulit dinasihati."
+  },
+  {
+    "id": "JR150",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti tidak sombong.",
+    "answer": "rendah hati",
+    "aliases": [
+      "rendah hati"
+    ],
+    "explanation": "Dalam makna kias, “rendah hati” berarti tidak sombong."
+  },
+  {
+    "id": "JR152",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti kecewa atau sedih.",
+    "answer": "kecil hati",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “kecil hati” berarti kecewa atau sedih."
+  },
+  {
+    "id": "JR153",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti sabar dan menerima dengan ikhlas.",
+    "answer": "lapang dada",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “lapang dada” berarti sabar dan menerima dengan ikhlas."
+  },
+  {
+    "id": "JR154",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti orang yang dipersalahkan.",
+    "answer": "kambing hitam",
+    "aliases": [
+      "kambing hitam"
+    ],
+    "explanation": "Dalam makna kias, “kambing hitam” berarti orang yang dipersalahkan."
+  },
+  {
+    "id": "JR155",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti bekerja keras.",
+    "answer": "banting tulang",
+    "aliases": [
+      "banting tulang"
+    ],
+    "explanation": "Dalam makna kias, “banting tulang” berarti bekerja keras."
+  },
+  {
+    "id": "JR156",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti bangkrut.",
+    "answer": "gulung tikar",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “gulung tikar” berarti bangkrut."
+  },
+  {
+    "id": "JR157",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti sedang terkenal.",
+    "answer": "naik daun",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “naik daun” berarti sedang terkenal."
+  },
+  {
+    "id": "JR158",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Ungkapan yang berarti murid yang menonjol prestasinya.",
+    "answer": "bintang kelas",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “bintang kelas” berarti murid yang menonjol prestasinya."
+  },
+  {
+    "id": "JR159",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti pengadilan.",
+    "answer": "meja hijau",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “meja hijau” berarti pengadilan."
+  },
+  {
+    "id": "JR160",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti tidak menemukan jalan keluar.",
+    "answer": "jalan buntu",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “jalan buntu” berarti tidak menemukan jalan keluar."
+  },
+  {
+    "id": "JR161",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti menghasut dua pihak agar bermusuhan.",
+    "answer": "adu domba",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “adu domba” berarti menghasut dua pihak agar bermusuhan."
+  },
+  {
+    "id": "JR162",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti tidak adil.",
+    "answer": "berat sebelah",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “berat sebelah” berarti tidak adil."
+  },
+  {
+    "id": "JR163",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti penopang utama.",
+    "answer": "tulang punggung",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “tulang punggung” berarti penopang utama."
+  },
+  {
+    "id": "JR164",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti menderita dalam batin.",
+    "answer": "makan hati",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “makan hati” berarti menderita dalam batin."
+  },
+  {
+    "id": "JR165",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti keturunan bangsawan.",
+    "answer": "darah biru",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “darah biru” berarti keturunan bangsawan."
+  },
+  {
+    "id": "JR166",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Ungkapan yang berarti berita yang belum jelas kebenarannya.",
+    "answer": "kabar angin",
+    "aliases": [],
+    "explanation": "Dalam makna kias, “kabar angin” berarti berita yang belum jelas kebenarannya."
+  },
+  {
+    "id": "JR167",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Peribahasa yang maknanya: orang yang tidak tetap pendiriannya.",
+    "answer": "Bagai air di daun talas",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: orang yang tidak tetap pendiriannya."
+  },
+  {
+    "id": "JR168",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Peribahasa yang maknanya: pengeluaran lebih besar daripada pendapatan.",
+    "answer": "Besar pasak daripada tiang",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: pengeluaran lebih besar daripada pendapatan."
+  },
+  {
+    "id": "JR169",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Peribahasa yang maknanya: ada maksud tersembunyi.",
+    "answer": "Ada udang di balik batu",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: ada maksud tersembunyi."
+  },
+  {
+    "id": "JR170",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Peribahasa yang maknanya: orang yang banyak bicara belum tentu banyak ilmunya.",
+    "answer": "Air beriak tanda tak dalam",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: orang yang banyak bicara belum tentu banyak ilmunya."
+  },
+  {
+    "id": "JR171",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Peribahasa yang maknanya: enggan bertanya dapat membuat kita kesulitan.",
+    "answer": "Malu bertanya sesat di jalan",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: enggan bertanya dapat membuat kita kesulitan."
+  },
+  {
+    "id": "JR172",
+    "category": "Ungkapan",
+    "level": 1,
+    "clue": "Peribahasa yang maknanya: usaha kecil yang terus dilakukan akan menghasilkan sesuatu yang besar.",
+    "answer": "Sedikit demi sedikit, lama-lama menjadi bukit",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: usaha kecil yang terus dilakukan akan menghasilkan sesuatu yang besar."
+  },
+  {
+    "id": "JR173",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: satu pekerjaan menghasilkan beberapa manfaat.",
+    "answer": "Sekali mendayung, dua tiga pulau terlampaui",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: satu pekerjaan menghasilkan beberapa manfaat."
+  },
+  {
+    "id": "JR174",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: suka dan duka ditanggung bersama.",
+    "answer": "Berat sama dipikul, ringan sama dijinjing",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: suka dan duka ditanggung bersama."
+  },
+  {
+    "id": "JR175",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: persatuan membuat kita kuat.",
+    "answer": "Bersatu kita teguh, bercerai kita runtuh",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: persatuan membuat kita kuat."
+  },
+  {
+    "id": "JR176",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: bersiap sebelum kesulitan datang.",
+    "answer": "Sedia payung sebelum hujan",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: bersiap sebelum kesulitan datang."
+  },
+  {
+    "id": "JR177",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: orang yang wawasannya sempit.",
+    "answer": "Seperti katak dalam tempurung",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: orang yang wawasannya sempit."
+  },
+  {
+    "id": "JR178",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: orang yang banyak bicara tetapi sedikit ilmunya.",
+    "answer": "Tong kosong nyaring bunyinya",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: orang yang banyak bicara tetapi sedikit ilmunya."
+  },
+  {
+    "id": "JR179",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: sesuatu sudah telanjur terjadi.",
+    "answer": "Nasi sudah menjadi bubur",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: sesuatu sudah telanjur terjadi."
+  },
+  {
+    "id": "JR180",
+    "category": "Ungkapan",
+    "level": 2,
+    "clue": "Peribahasa yang maknanya: dua orang yang sangat mirip.",
+    "answer": "Bagai pinang dibelah dua",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: dua orang yang sangat mirip."
+  },
+  {
+    "id": "JR181",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Peribahasa yang maknanya: tidak ada sesuatu yang sempurna.",
+    "answer": "Tak ada gading yang tak retak",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: tidak ada sesuatu yang sempurna."
+  },
+  {
+    "id": "JR182",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Peribahasa yang maknanya: orang pendiam dapat memiliki banyak pengetahuan.",
+    "answer": "Air tenang menghanyutkan",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: orang pendiam dapat memiliki banyak pengetahuan."
+  },
+  {
+    "id": "JR183",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Peribahasa yang maknanya: menghormati adat tempat kita berada.",
+    "answer": "Di mana bumi dipijak, di situ langit dijunjung",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: menghormati adat tempat kita berada."
+  },
+  {
+    "id": "JR184",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Peribahasa yang maknanya: bersusah dahulu untuk meraih kebahagiaan kemudian.",
+    "answer": "Berakit-rakit ke hulu, berenang-renang ke tepian",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: bersusah dahulu untuk meraih kebahagiaan kemudian."
+  },
+  {
+    "id": "JR185",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Peribahasa yang maknanya: kesalahan kecil dapat merusak keseluruhan kebaikan.",
+    "answer": "Karena nila setitik, rusak susu sebelanga",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: kesalahan kecil dapat merusak keseluruhan kebaikan."
+  },
+  {
+    "id": "JR186",
+    "category": "Ungkapan",
+    "level": 3,
+    "clue": "Peribahasa yang maknanya: pertengkaran merugikan kedua pihak.",
+    "answer": "Menang jadi arang, kalah jadi abu",
+    "aliases": [],
+    "explanation": "Peribahasa ini berarti: pertengkaran merugikan kedua pihak."
+  },
+  {
+    "id": "JR187",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas utama dalam ungkapan berikut: “Angin berbisik di telingaku”.",
+    "answer": "personifikasi",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas personifikasi. Benda atau gejala alam diberi sifat manusia."
+  },
+  {
+    "id": "JR188",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas utama dalam ungkapan berikut: “Daun-daun menari ditiup angin”.",
+    "answer": "personifikasi",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas personifikasi. Benda atau gejala alam diberi sifat manusia."
+  },
+  {
+    "id": "JR189",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas utama dalam ungkapan berikut: “Matahari tersenyum menyambut pagi”.",
+    "answer": "personifikasi",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas personifikasi. Benda atau gejala alam diberi sifat manusia."
+  },
+  {
+    "id": "JR190",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas utama dalam ungkapan berikut: “Hujan mengetuk jendela rumahku”.",
+    "answer": "personifikasi",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas personifikasi. Benda atau gejala alam diberi sifat manusia."
+  },
+  {
+    "id": "JR191",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas utama dalam ungkapan berikut: “Jam dinding terus bernyanyi”.",
+    "answer": "personifikasi",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas personifikasi. Benda atau gejala alam diberi sifat manusia."
+  },
+  {
+    "id": "JR192",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Aku menunggumu selama seribu tahun”.",
+    "answer": "hiperbola",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas hiperbola. Ungkapannya melebih-lebihkan kenyataan."
+  },
+  {
+    "id": "JR193",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Air matanya mengalir sederas sungai”.",
+    "answer": "hiperbola",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas hiperbola. Ungkapannya melebih-lebihkan kenyataan."
+  },
+  {
+    "id": "JR194",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Tasnya beratnya seribu ton”.",
+    "answer": "hiperbola",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas hiperbola. Ungkapannya melebih-lebihkan kenyataan."
+  },
+  {
+    "id": "JR195",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Suaranya menggelegar membelah langit”.",
+    "answer": "hiperbola",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas hiperbola. Ungkapannya melebih-lebihkan kenyataan."
+  },
+  {
+    "id": "JR196",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Pekerjaan itu menumpuk setinggi gunung”.",
+    "answer": "hiperbola",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas hiperbola. Ungkapannya melebih-lebihkan kenyataan."
+  },
+  {
+    "id": "JR197",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Dia adalah bintang kelas”.",
+    "answer": "metafora",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas metafora. Ada perbandingan kias tanpa kata pembanding seperti atau bagai."
+  },
+  {
+    "id": "JR198",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Buku adalah jendela dunia”.",
+    "answer": "metafora",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas metafora. Ada perbandingan kias tanpa kata pembanding seperti atau bagai."
+  },
+  {
+    "id": "JR199",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Perpustakaan adalah gudang ilmu”.",
+    "answer": "metafora",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas metafora. Ada perbandingan kias tanpa kata pembanding seperti atau bagai."
+  },
+  {
+    "id": "JR200",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas utama dalam ungkapan berikut: “Pemuda adalah tulang punggung bangsa”.",
+    "answer": "metafora",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas metafora. Ada perbandingan kias tanpa kata pembanding seperti atau bagai."
+  },
+  {
+    "id": "JR201",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas utama dalam ungkapan berikut: “Wajahnya bersinar bagai bulan”.",
+    "answer": "simile",
+    "aliases": [
+      "perumpamaan",
+      "asosiasi"
+    ],
+    "explanation": "Kalimat itu menggunakan majas simile. Perbandingannya memakai kata pembanding, seperti atau bagai."
+  },
+  {
+    "id": "JR202",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas utama dalam ungkapan berikut: “Hatinya keras seperti batu”.",
+    "answer": "simile",
+    "aliases": [
+      "perumpamaan",
+      "asosiasi"
+    ],
+    "explanation": "Kalimat itu menggunakan majas simile. Perbandingannya memakai kata pembanding, seperti atau bagai."
+  },
+  {
+    "id": "JR203",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas utama dalam ungkapan berikut: “Kedua sahabat itu seperti pinang dibelah dua”.",
+    "answer": "simile",
+    "aliases": [
+      "perumpamaan",
+      "asosiasi"
+    ],
+    "explanation": "Kalimat itu menggunakan majas simile. Perbandingannya memakai kata pembanding, seperti atau bagai."
+  },
+  {
+    "id": "JR204",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas utama dalam ungkapan berikut: “Pemilik rumah mewah menyebut rumahnya “gubuk sederhana””.",
+    "answer": "litotes",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas litotes. Ungkapannya merendahkan sesuatu sebagai bentuk kesantunan."
+  },
+  {
+    "id": "JR205",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas utama dalam ungkapan berikut: “Pemberi hadiah bernilai tinggi menyebut pemberiannya “hadiah tak seberapa””.",
+    "answer": "litotes",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas litotes. Ungkapannya merendahkan sesuatu sebagai bentuk kesantunan."
+  },
+  {
+    "id": "JR206",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas utama dalam ungkapan berikut: “Aku ingin damai, aku ingin tenteram, aku ingin bahagia”.",
+    "answer": "repetisi",
+    "aliases": [],
+    "explanation": "Kalimat itu menggunakan majas repetisi. Terdapat pengulangan kata atau frasa."
+  },
+  {
+    "id": "JMA001",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas yang memberi benda atau gejala alam sifat manusia.",
+    "answer": "Personifikasi",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Personifikasi."
+  },
+  {
+    "id": "JMA002",
+    "category": "Majas",
+    "level": 1,
+    "clue": "Majas yang melebih-lebihkan sesuatu untuk penegasan.",
+    "answer": "Hiperbola",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Hiperbola."
+  },
+  {
+    "id": "JMA003",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Perbandingan kias langsung, misalnya “buku adalah jendela dunia”.",
+    "answer": "Metafora",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Metafora."
+  },
+  {
+    "id": "JMA004",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Perbandingan yang menggunakan kata bagai, seperti, atau laksana.",
+    "answer": "Simile",
+    "aliases": [
+      "Perumpamaan",
+      "Asosiasi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Simile."
+  },
+  {
+    "id": "JMA005",
+    "category": "Majas",
+    "level": 2,
+    "clue": "Majas untuk merendahkan sesuatu demi kesantunan.",
+    "answer": "Litotes",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Litotes."
+  },
+  {
+    "id": "JMA006",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas yang memakai pengulangan kata atau frasa untuk penegasan.",
+    "answer": "Repetisi",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Repetisi."
+  },
+  {
+    "id": "JMA007",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas sindiran melalui perkataan yang berlawanan dengan keadaan sebenarnya.",
+    "answer": "Ironi",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Ironi."
+  },
+  {
+    "id": "JMA008",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas yang menyebut suatu barang dengan nama merek atau nama yang berkaitan erat.",
+    "answer": "Metonimia",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Metonimia."
+  },
+  {
+    "id": "JMA009",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Jenis sinekdoke yang memakai sebagian untuk menyatakan keseluruhan.",
+    "answer": "Sinekdoke pars pro toto",
+    "aliases": [
+      "Pars pro toto"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Sinekdoke pars pro toto."
+  },
+  {
+    "id": "JMA010",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Jenis sinekdoke yang memakai keseluruhan untuk menyatakan sebagian.",
+    "answer": "Sinekdoke totum pro parte",
+    "aliases": [
+      "Totum pro parte"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Sinekdoke totum pro parte."
+  },
+  {
+    "id": "JMA011",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas berupa pertentangan yang seolah tidak masuk akal, tetapi dapat mengandung kebenaran.",
+    "answer": "Paradoks",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Paradoks."
+  },
+  {
+    "id": "JMA012",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas yang mengurutkan gagasan dari yang kurang penting menuju yang lebih penting.",
+    "answer": "Klimaks",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Klimaks."
+  },
+  {
+    "id": "JMA013",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Majas yang mengurutkan gagasan dari yang lebih penting menuju yang kurang penting.",
+    "answer": "Antiklimaks",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Antiklimaks."
+  },
+  {
+    "id": "JMA014",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Pengulangan kata atau frasa di awal baris atau kalimat yang berurutan.",
+    "answer": "Anafora",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Anafora."
+  },
+  {
+    "id": "JMA015",
+    "category": "Majas",
+    "level": 3,
+    "clue": "Pengulangan kata atau frasa di akhir baris atau kalimat yang berurutan.",
+    "answer": "Epifora",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Epifora."
+  },
+  {
+    "id": "JSA001",
+    "category": "Sastra",
+    "level": 1,
+    "clue": "Singkatan untuk karya prosa yang disebut cerita pendek.",
+    "answer": "Cerpen",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Cerpen."
+  },
+  {
+    "id": "JSA002",
+    "category": "Sastra",
+    "level": 1,
+    "clue": "Gagasan dasar yang mendasari sebuah cerita.",
+    "answer": "Tema",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Tema."
+  },
+  {
+    "id": "JSA003",
+    "category": "Sastra",
+    "level": 1,
+    "clue": "Pelaku yang mengalami peristiwa dalam sebuah cerita.",
+    "answer": "Tokoh",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Tokoh."
+  },
+  {
+    "id": "JSA004",
+    "category": "Sastra",
+    "level": 1,
+    "clue": "Pesan yang dapat diambil dari sebuah cerita.",
+    "answer": "Amanat",
+    "aliases": [
+      "Pesan moral",
+      "Pesan"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Amanat."
+  },
+  {
+    "id": "JSA005",
+    "category": "Sastra",
+    "level": 1,
+    "clue": "Cerita yang binatang-binatangnya menjadi tokoh dan bertingkah seperti manusia.",
+    "answer": "Fabel",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Fabel."
+  },
+  {
+    "id": "JSA006",
+    "category": "Sastra",
+    "level": 1,
+    "clue": "Unsur cerita yang menunjukkan tempat, waktu, dan suasana.",
+    "answer": "Latar",
+    "aliases": [
+      "Setting"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Latar."
+  },
+  {
+    "id": "JSA007",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Rangkaian peristiwa yang membentuk jalan cerita.",
+    "answer": "Alur",
+    "aliases": [
+      "Plot"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Alur."
+  },
+  {
+    "id": "JSA008",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Percakapan antara dua tokoh atau lebih dalam drama.",
+    "answer": "Dialog",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Dialog."
+  },
+  {
+    "id": "JSA009",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Tuturan seorang tokoh sendiri, misalnya mengungkapkan isi pikirannya.",
+    "answer": "Monolog",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Monolog."
+  },
+  {
+    "id": "JSA010",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Bagian pengantar sebelum kisah drama dimulai.",
+    "answer": "Prolog",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Prolog."
+  },
+  {
+    "id": "JSA011",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Bagian penutup sebuah drama.",
+    "answer": "Epilog",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Epilog."
+  },
+  {
+    "id": "JSA012",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Dua baris awal dalam pantun.",
+    "answer": "Sampiran",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Sampiran."
+  },
+  {
+    "id": "JSA013",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Dua baris terakhir dalam pantun.",
+    "answer": "Isi",
+    "aliases": [
+      "Isi pantun"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Isi."
+  },
+  {
+    "id": "JSA014",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Banyak baris yang umum dalam satu bait pantun.",
+    "answer": "Empat",
+    "aliases": [
+      "4",
+      "Empat baris",
+      "4 baris"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Empat."
+  },
+  {
+    "id": "JSA015",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Pola rima pantun yang paling umum.",
+    "answer": "A-B-A-B",
+    "aliases": [
+      "abab",
+      "ab ab"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah A-B-A-B."
+  },
+  {
+    "id": "JSA016",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Pola rima syair yang paling umum.",
+    "answer": "A-A-A-A",
+    "aliases": [
+      "aaaa",
+      "aa aa"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah A-A-A-A."
+  },
+  {
+    "id": "JSA017",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Puisi lama yang umumnya terdiri atas dua baris setiap bait dan berisi nasihat.",
+    "answer": "Gurindam",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Gurindam."
+  },
+  {
+    "id": "JSA018",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Puncak konflik dalam sebuah cerita.",
+    "answer": "Klimaks",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Klimaks."
+  },
+  {
+    "id": "JSA019",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Pilihan kata dalam karya sastra.",
+    "answer": "Diksi",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Diksi."
+  },
+  {
+    "id": "JSA020",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Pengulangan bunyi dalam puisi.",
+    "answer": "Rima",
+    "aliases": [
+      "Persajakan"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Rima."
+  },
+  {
+    "id": "JSA021",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Gambaran yang membangkitkan kesan indra dalam puisi.",
+    "answer": "Citraan",
+    "aliases": [
+      "Imaji"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Citraan."
+  },
+  {
+    "id": "JSA022",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Tata wajah atau pengaturan bentuk tulisan dalam puisi.",
+    "answer": "Tipografi",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Tipografi."
+  },
+  {
+    "id": "JSA023",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Sudut pandang yang lazim ditandai kata aku atau saya.",
+    "answer": "Orang pertama",
+    "aliases": [
+      "Sudut pandang orang pertama",
+      "Akuan"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Orang pertama."
+  },
+  {
+    "id": "JSA024",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Unsur yang menggambarkan watak atau karakter tokoh.",
+    "answer": "Penokohan",
+    "aliases": [
+      "Perwatakan",
+      "Karakterisasi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Penokohan."
+  },
+  {
+    "id": "JSA025",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Tokoh yang menjadi lawan atau penentang tokoh utama dalam konflik.",
+    "answer": "Antagonis",
+    "aliases": [
+      "Tokoh antagonis"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Antagonis."
+  },
+  {
+    "id": "JSA026",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Tokoh utama yang menjadi pusat cerita; sering diperhadapkan dengan antagonis.",
+    "answer": "Protagonis",
+    "aliases": [
+      "Tokoh protagonis"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Protagonis."
+  },
+  {
+    "id": "JSA027",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Alur yang bergerak kembali menceritakan peristiwa pada masa sebelumnya.",
+    "answer": "Alur mundur",
+    "aliases": [
+      "Sorot balik",
+      "Flashback",
+      "Kilas balik"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Alur mundur."
+  },
+  {
+    "id": "JSA028",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Alur yang menceritakan kejadian secara berurutan menuju masa berikutnya.",
+    "answer": "Alur maju",
+    "aliases": [
+      "Progresif"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Alur maju."
+  },
+  {
+    "id": "JSA029",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Orang yang menulis karya puisi.",
+    "answer": "Penyair",
+    "aliases": [
+      "Pujangga"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Penyair."
+  },
+  {
+    "id": "JSA030",
+    "category": "Sastra",
+    "level": 2,
+    "clue": "Orang yang mengarahkan pementasan drama.",
+    "answer": "Sutradara",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Sutradara."
+  },
+  {
+    "id": "JSA031",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Cerita rakyat yang berhubungan dengan asal-usul suatu tempat.",
+    "answer": "Legenda",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Legenda."
+  },
+  {
+    "id": "JSA032",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Karya prosa fiksi panjang yang umumnya lebih kompleks daripada cerpen.",
+    "answer": "Novel",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Novel."
+  },
+  {
+    "id": "JSA033",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Penulis puisi terkenal berjudul “Aku”, yang memuat larik tentang binatang jalang.",
+    "answer": "Chairil Anwar",
+    "aliases": [
+      "Chairil"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Chairil Anwar."
+  },
+  {
+    "id": "JSA034",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Penyair yang menulis puisi “Hujan Bulan Juni”.",
+    "answer": "Sapardi Djoko Damono",
+    "aliases": [
+      "Sapardi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Sapardi Djoko Damono."
+  },
+  {
+    "id": "JSA035",
+    "category": "Sastra",
+    "level": 3,
+    "clue": "Pengarang novel “Laskar Pelangi”.",
+    "answer": "Andrea Hirata",
+    "aliases": [
+      "Andrea"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Andrea Hirata."
+  },
+  {
+    "id": "JKA001",
+    "category": "Kaidah",
+    "level": 1,
+    "clue": "Tanda baca yang mengakhiri pertanyaan langsung.",
+    "answer": "Tanda tanya",
+    "aliases": [
+      "Tanya",
+      "?"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Tanda tanya."
+  },
+  {
+    "id": "JKA002",
+    "category": "Kaidah",
+    "level": 1,
+    "clue": "Tanda baca yang dapat mengakhiri kalimat perintah atau seruan.",
+    "answer": "Tanda seru",
+    "aliases": [
+      "Seru",
+      "!"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Tanda seru."
+  },
+  {
+    "id": "JKA003",
+    "category": "Kaidah",
+    "level": 1,
+    "clue": "Kata tanya untuk menanyakan orang.",
+    "answer": "Siapa",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Siapa."
+  },
+  {
+    "id": "JKA004",
+    "category": "Kaidah",
+    "level": 1,
+    "clue": "Kata tanya untuk menanyakan waktu.",
+    "answer": "Kapan",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Kapan."
+  },
+  {
+    "id": "JKA005",
+    "category": "Kaidah",
+    "level": 1,
+    "clue": "Kata tanya untuk menanyakan tempat.",
+    "answer": "Di mana",
+    "aliases": [
+      "Dimana"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Di mana."
+  },
+  {
+    "id": "JKA006",
+    "category": "Kaidah",
+    "level": 1,
+    "clue": "Kata tanya untuk menanyakan alasan atau sebab.",
+    "answer": "Mengapa",
+    "aliases": [
+      "Kenapa"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Mengapa."
+  },
+  {
+    "id": "JKA007",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Kata tanya untuk menanyakan cara atau keadaan.",
+    "answer": "Bagaimana",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Bagaimana."
+  },
+  {
+    "id": "JKA008",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Kata tanya untuk menanyakan jumlah.",
+    "answer": "Berapa",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Berapa."
+  },
+  {
+    "id": "JKA009",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Konjungsi yang menyatakan penambahan unsur setara, misalnya Rani … Siti.",
+    "answer": "Dan",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Dan."
+  },
+  {
+    "id": "JKA010",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Konjungsi yang menyatakan pilihan antara dua hal.",
+    "answer": "Atau",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Atau."
+  },
+  {
+    "id": "JKA011",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Konjungsi yang dapat menyatakan pertentangan antarklausa.",
+    "answer": "Tetapi",
+    "aliases": [
+      "Tapi",
+      "Sedangkan"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Tetapi."
+  },
+  {
+    "id": "JKA012",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Konjungsi yang menunjukkan sebab, misalnya kami berteduh … hujan.",
+    "answer": "Karena",
+    "aliases": [
+      "Sebab"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Karena."
+  },
+  {
+    "id": "JKA013",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Konjungsi syarat, misalnya … hujan turun, kami belajar di rumah.",
+    "answer": "Jika",
+    "aliases": [
+      "Apabila",
+      "Kalau",
+      "Bila"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Jika."
+  },
+  {
+    "id": "JKA014",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Jenis teks yang berisi tahapan melakukan atau membuat sesuatu.",
+    "answer": "Prosedur",
+    "aliases": [
+      "Teks prosedur"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Prosedur."
+  },
+  {
+    "id": "JKA015",
+    "category": "Kaidah",
+    "level": 2,
+    "clue": "Jenis teks yang menggambarkan objek atau tempat secara rinci.",
+    "answer": "Deskripsi",
+    "aliases": [
+      "Teks deskripsi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Deskripsi."
+  },
+  {
+    "id": "JKA016",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Jenis teks yang bertujuan mengajak atau membujuk pembaca.",
+    "answer": "Persuasi",
+    "aliases": [
+      "Persuasif",
+      "Teks persuasi",
+      "Teks persuasif"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Persuasi."
+  },
+  {
+    "id": "JKA017",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Jenis teks yang menjelaskan bagaimana dan mengapa sebuah fenomena terjadi.",
+    "answer": "Eksplanasi",
+    "aliases": [
+      "Teks eksplanasi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Eksplanasi."
+  },
+  {
+    "id": "JKA018",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Sebutan untuk kata benda.",
+    "answer": "Nomina",
+    "aliases": [
+      "Kata benda"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Nomina."
+  },
+  {
+    "id": "JKA019",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Sebutan untuk kata kerja.",
+    "answer": "Verba",
+    "aliases": [
+      "Kata kerja"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Verba."
+  },
+  {
+    "id": "JKA020",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Sebutan untuk kata sifat.",
+    "answer": "Adjektiva",
+    "aliases": [
+      "Kata sifat"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Adjektiva."
+  },
+  {
+    "id": "JKA021",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Sebutan untuk kata bilangan.",
+    "answer": "Numeralia",
+    "aliases": [
+      "Kata bilangan"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Numeralia."
+  },
+  {
+    "id": "JKA022",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Sebutan untuk kata ganti.",
+    "answer": "Pronomina",
+    "aliases": [
+      "Kata ganti"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Pronomina."
+  },
+  {
+    "id": "JKA023",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Unsur subjek dalam kalimat “Rani membaca buku”.",
+    "answer": "Rani",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Rani."
+  },
+  {
+    "id": "JKA024",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Unsur predikat dalam kalimat “Rani membaca buku”.",
+    "answer": "Membaca",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Membaca."
+  },
+  {
+    "id": "JKA025",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Unsur objek dalam kalimat “Rani membaca buku”.",
+    "answer": "Buku",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Buku."
+  },
+  {
+    "id": "JKA026",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Pernyataan yang kebenarannya dapat diperiksa atau dibuktikan.",
+    "answer": "Fakta",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Fakta."
+  },
+  {
+    "id": "JKA027",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Pernyataan berupa pendapat atau penilaian pribadi.",
+    "answer": "Opini",
+    "aliases": [
+      "Pendapat"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Opini."
+  },
+  {
+    "id": "JKA028",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Istilah untuk persamaan atau kemiripan makna antarkata.",
+    "answer": "Sinonim",
+    "aliases": [
+      "Sinonimi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Sinonim."
+  },
+  {
+    "id": "JKA029",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Istilah untuk hubungan pertentangan makna antarkata.",
+    "answer": "Antonim",
+    "aliases": [
+      "Antonimi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Antonim."
+  },
+  {
+    "id": "JKA030",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Hubungan dua kata yang sama bentuk dan bunyinya, tetapi berbeda makna, seperti bisa (mampu) dan bisa (racun).",
+    "answer": "Homonim",
+    "aliases": [
+      "Homonimi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Homonim."
+  },
+  {
+    "id": "JKA031",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Bagian surat resmi yang memuat identitas instansi di bagian paling atas.",
+    "answer": "Kop surat",
+    "aliases": [
+      "Kepala surat",
+      "Kop"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Kop surat."
+  },
+  {
+    "id": "JKA032",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Bagian buku yang memuat daftar istilah beserta penjelasannya.",
+    "answer": "Glosarium",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Glosarium."
+  },
+  {
+    "id": "JKA033",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Bagian buku yang berisi daftar kata penting dan nomor halaman tempat kata itu dibahas.",
+    "answer": "Indeks",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Indeks."
+  },
+  {
+    "id": "JKA034",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Daftar sumber rujukan yang digunakan dalam penulisan karya.",
+    "answer": "Daftar pustaka",
+    "aliases": [
+      "Bibliografi"
+    ],
+    "explanation": "Jawaban yang dimaksud adalah Daftar pustaka."
+  },
+  {
+    "id": "JKA035",
+    "category": "Kaidah",
+    "level": 3,
+    "clue": "Unsur kalimat yang dapat menerangkan tempat, waktu, atau cara.",
+    "answer": "Keterangan",
+    "aliases": [],
+    "explanation": "Jawaban yang dimaksud adalah Keterangan."
+  }
+];
+if(typeof module!=="undefined")module.exports=BANK;
+
+'use strict';
+const CATEGORIES=['Ejaan','Kosakata','Majas','Ungkapan','Sastra','Kaidah'];
+function shuffle(a,rng=Math.random){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function normalize(s){return String(s).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ')}
+function matches(q,text){if(typeof text!=='string'||!text.trim())return false;const raw=text.trim(),n=normalize(raw),clean=n.replace(/^(apa(?:kah)?(?: itu| yang dimaksud(?: dengan)?)?|siapa(?:kah)?(?: itu)?|manakah) /,'');const forms=[n,clean,clean.replace(/^(majas|teks) /,'')].filter(Boolean);return[q.answer,...q.aliases].some(a=>String(a).toLowerCase()===raw.toLowerCase()||forms.includes(normalize(a)))}
+function plan(bank,count,history={},rng=Math.random){const used=new Set,choose=(category,level)=>{let p=bank.filter(q=>!used.has(q.id)&&(!category||q.category===category)&&q.level===level);if(!p.length)p=bank.filter(q=>!used.has(q.id)&&(!category||q.category===category));if(!p.length)throw Error('Bank soal tidak mencukupi');p=shuffle(p,rng);p.sort((a,b)=>(Number(history[a.id]?.count)||0)-(Number(history[b.id]?.count)||0)||(Number(history[a.id]?.last)||0)-(Number(history[b.id]?.last)||0));const q=p[0];used.add(q.id);return q};const boards=[];for(let r=0;r<count;r++){const cells=[];for(let c=0;c<6;c++)for(let row=0;row<5;row++)cells.push({id:r+'-'+c+'-'+row,category:CATEGORIES[c],row,col:c,value:(row+1)*200*(r+1),question:choose(CATEGORIES[c],r===0?(row<2?1:row<4?2:3):(row<2?2:3)),daily:false,used:false});for(const cell of shuffle(cells.filter(c=>c.row>=1),rng).slice(0,r+1))cell.daily=true;boards.push(cells)}return {boards,final:choose(null,3)}}
+class JeopardyGame{
+constructor(bank,rng=Math.random){this.bank=bank;this.rng=rng;this.phase='setup'}
+start(names,options={},history={}){if(names.length<2||names.length>6)throw Error('Gunakan 2–6 tim');this.teams=names.map((n,id)=>({id,name:String(n).trim().slice(0,24)||'Tim '+(id+1),score:0}));this.total=options.rounds===1?1:2;this.mode=options.mode==='host'?'host':'type';this.seconds=[0,15,20,30].includes(options.seconds)?options.seconds:20;const p=plan(this.bank,this.total,history,this.rng);this.boards=p.boards;this.finalQuestion=p.final;this.round=0;this.control=0;this.phase='board';this.current=null;this.log=[];this.result=null;this.feedback=''}
+get board(){return this.boards[this.round]}
+get remaining(){return this.board.filter(c=>!c.used).length}
+get question(){return this.current?.question}
+get eligible(){return this.teams.filter(t=>!this.attempts?.has(t.id))}
+get actor(){return this.phase.startsWith('final')?this.teams[this.finalIds?.[this.finalIndex]]:this.teams[this.answerer]}
+get dailyMax(){return Math.max((this.round+1)*1000,this.teams[this.control].score)}
+get clueValue(){return this.current.daily?this.wager:this.current.value}
+pick(id){if(this.phase!=='board')return false;const c=this.board.find(c=>c.id===id&&!c.used);if(!c)return false;c.used=true;this.current=c;this.attempts=new Set;this.answerer=null;this.wager=null;this.result=null;this.feedback='';this.phase=c.daily?'dailyWager':'reading';return true}
+setDailyWager(value){if(this.phase!=='dailyWager'||!Number.isInteger(value)||value<5||value>this.dailyMax)return false;this.wager=value;this.answerer=this.control;this.phase='answer';return true}
+openBuzz(){if(this.phase!=='reading')return false;this.phase='buzz';return true}
+buzz(id){if(this.phase!=='buzz'||!this.eligible.some(t=>t.id===id))return false;this.answerer=id;this.phase='answer';return true}
+answer(text){if(this.phase!=='answer')return null;return this.judge(matches(this.question,text),text)}
+judge(correct,response=''){if(this.phase!=='answer'||typeof correct!=='boolean')return null;const team=this.teams[this.answerer],delta=correct?this.clueValue:-this.clueValue;team.score+=delta;this.attempts.add(team.id);this.log.push({id:this.question.id,team:team.id,correct,delta});this.feedback=team.name+(correct?' +':' ')+delta+' poin';if(correct)this.control=team.id;if(correct||this.current.daily||this.eligible.length===0)this.completeClue({correct,team:team.id,delta,response});else this.phase='buzz';return {correct,team:team.id,delta,closed:this.phase==='result'}}
+noBuzz(){if(this.phase!=='buzz')return false;this.completeClue({correct:false,team:null,delta:0,response:''});return true}
+completeClue(result){this.result=result;this.phase='result'}
+next(){if(this.phase!=='result')return false;this.current=null;if(this.remaining){this.phase='board'}else this.finishBoard();return true}
+finishBoard(){if(!['board','result'].includes(this.phase))return false;this.current=null;if(this.round+1<this.total)this.phase='intermission';else this.prepareFinal();return true}
+nextBoard(){if(this.phase!=='intermission')return false;this.round++;this.control=[...this.teams].sort((a,b)=>a.score-b.score||a.id-b.id)[0].id;this.phase='board';return true}
+prepareFinal(){this.finalIds=this.teams.filter(t=>t.score>0).sort((a,b)=>a.score-b.score||a.id-b.id).map(t=>t.id);this.finalIndex=0;this.finalWagers={};this.finalAnswers={};this.finalGrades={};this.finalResults=[];this.phase=this.finalIds.length?'finalIntro':'finished';this.noFinal=!this.finalIds.length}
+startFinal(){if(this.phase!=='finalIntro')return false;this.phase='finalWager';return true}
+setFinalWager(value){if(this.phase!=='finalWager'||!Number.isInteger(value)||value<0||value>this.actor.score)return false;this.finalWagers[this.actor.id]=value;this.finalIndex++;if(this.finalIndex===this.finalIds.length){this.finalIndex=0;this.phase=this.mode==='type'?'finalHandoff':'finalShared'}return true}
+beginFinalTurn(){if(this.phase!=='finalHandoff')return false;this.phase='finalAnswer';return true}
+answerFinal(text){if(this.phase!=='finalAnswer')return false;this.finalAnswers[this.actor.id]=typeof text==='string'?text:'';this.finalGrades[this.actor.id]=matches(this.finalQuestion,text);this.finalIndex++;if(this.finalIndex>=this.finalIds.length){this.finalIndex=0;this.phase='finalRevealReady'}else this.phase='finalHandoff';return true}
+lockFinal(){if(this.phase!=='finalShared')return false;this.finalIndex=0;this.phase='finalJudge';return true}
+judgeFinal(correct){if(this.phase!=='finalJudge'||typeof correct!=='boolean')return false;this.finalGrades[this.actor.id]=correct;this.finalIndex++;if(this.finalIndex>=this.finalIds.length){this.finalIndex=0;this.phase='finalRevealReady'}return true}
+revealNext(){if(!['finalRevealReady','finalReveal'].includes(this.phase))return false;if(this.finalIndex>=this.finalIds.length){this.phase='finished';return true}const team=this.actor,correct=this.finalGrades[team.id],wager=this.finalWagers[team.id],delta=wager===0?0:correct?wager:-wager;team.score+=delta;this.finalResults.push({team:team.id,correct,wager,delta,response:this.finalAnswers[team.id]||'',score:team.score});this.finalIndex++;this.phase='finalReveal';return true}
+get winners(){const max=Math.max(...this.teams.map(t=>t.score));return this.teams.filter(t=>t.score===max)}
+}
+if(typeof module!=='undefined')module.exports={JeopardyGame,CATEGORIES,plan,matches,normalize};
+
+'use strict';
+const TVAudio={ctx:null,master:null,bus:null,enabled:true,music:true,volume:.4,beat:null,step:0,
+load(){try{const p=JSON.parse(localStorage.getItem('jeopardy-audio'));if(p){this.enabled=p.enabled!==false;this.music=p.music!==false;if(Number.isFinite(p.volume))this.volume=Math.max(0,Math.min(1,p.volume))}}catch{}},
+warm(){try{if(!this.ctx){this.ctx=new(window.AudioContext||window.webkitAudioContext)();this.master=this.ctx.createGain();this.bus=this.ctx.createGain();this.bus.gain.value=0;this.bus.connect(this.master);this.master.connect(this.ctx.destination);this.master.gain.value=this.enabled?this.volume:0}if(this.ctx.state==='suspended')this.ctx.resume().catch(()=>{})}catch{}},
+apply(){if(this.ctx){this.master.gain.setTargetAtTime(this.enabled?this.volume:0,this.ctx.currentTime,.05);this.bus.gain.setTargetAtTime((this.music && this.beat) ? .065 : 0,this.ctx.currentTime,.2)}try{localStorage.setItem('jeopardy-audio',JSON.stringify({enabled:this.enabled,music:this.music,volume:this.volume}))}catch{}},
+note(f,d=.15,t='sine',v=.2,delay=0,bus=null){if(!this.ctx||this.ctx.state!=='running')return;const now=this.ctx.currentTime+delay,o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type=t;o.frequency.setValueAtTime(f,now);g.gain.setValueAtTime(.001,now);g.gain.linearRampToValueAtTime(v,now+.012);g.gain.exponentialRampToValueAtTime(.001,now+d);o.connect(g);g.connect(bus||this.master);o.start(now);o.stop(now+d+.02)},
+fx(kind){this.warm();if(!this.enabled||!this.ctx)return;if(kind==='strike'){this.note(110,.58,'sawtooth',.17);this.note(116,.58,'square',.08);return}if(kind==='buzz'){this.note(196,.12,'triangle',.2);this.note(392,.3,'triangle',.25,.08);return}const seq={reveal:[[659,.12],[988,.32]],win:[[523,.12],[659,.12],[784,.12],[1047,.5],[784,.12],[1047,.7]],round:[[392,.12],[523,.12],[659,.12],[784,.45]],steal:[[261,.12],[311,.12],[392,.12],[523,.5]],start:[[392,.1],[523,.1],[659,.1],[784,.25],[1047,.5]],tap:[[620,.06]],tick:[[220,.04]],duplicate:[[392,.1],[330,.15]]}[kind]||[[600,.06]];let delay=0;for(const [f,d]of seq){this.note(f,d,'sine',.23,delay);delay+=d*.85}},
+start(){this.warm();if(!this.ctx||this.beat)return;this.step=0;this.bus.gain.setTargetAtTime(this.music ? .065 : 0,this.ctx.currentTime,.5);const loop=()=>{if(!this.music||!this.enabled||document.hidden)return;const roots=[130.81,174.61,146.83,196],r=roots[Math.floor(this.step/8)%4],interval=[0,7,12,7,4,7,12,7][this.step%8];this.note(r*Math.pow(2,interval/12),.28,'sine',.35,0,this.bus);if(this.step%4===0)this.note(r/2,.6,'triangle',.3,0,this.bus);this.step++};loop();this.beat=setInterval(loop,350)},
+stop(){clearInterval(this.beat);this.beat=null;if(this.ctx)this.bus.gain.setTargetAtTime(0,this.ctx.currentTime,.25)}
+};TVAudio.load();
+
+
+const mascotNames=['Burung hantu','Rubah','Harimau','Panda'];
+function mascot(type,id='m'){const palettes=[['#7b6bdb','#b7a4ff'],['#d7713c','#ffbf76'],['#d99b35','#ffd78b'],['#d9e6ef','#ffffff']],p=palettes[type];let art='';if(type===0)art=`<path d="M24 40 23 17 45 29Q60 23 75 29L97 17 96 42" fill="${p[0]}"/><ellipse cx="60" cy="65" rx="39" ry="37" fill="url(#${id}fur)"/><path d="M25 48Q42 32 60 50Q80 31 96 48Q98 76 77 83Q67 82 60 72Q49 88 34 79Q22 71 25 48" fill="#eadff9"/><ellipse cx="42" cy="59" rx="10" ry="13" fill="#24304d"/><ellipse cx="78" cy="59" rx="10" ry="13" fill="#24304d"/><circle cx="45" cy="55" r="3.5" fill="#fff"/><circle cx="81" cy="55" r="3.5" fill="#fff"/><path d="m53 71 7 11 7-11" fill="#ffca66"/><path d="m39 92 12 4m10-4 12 4" stroke="#d7c8fb" stroke-width="4" stroke-linecap="round"/>`;
+if(type===1)art=`<path d="m24 48-3-33 29 19h20l29-19-3 33" fill="${p[0]}"/><path d="m28 35-2-13 16 13m36 0 16-13-2 16" fill="#ffd1b4"/><path d="M22 43Q60 18 98 43L91 77 60 102 29 77Z" fill="url(#${id}fur)"/><path d="m26 61 25 11 9 22 9-22 25-11-7 20-27 19-27-19Z" fill="#fff1d9"/><path d="M37 58q7-6 13 0m20 0q7-6 13 0" stroke="#3a3041" stroke-width="5" stroke-linecap="round" fill="none"/><path d="m53 77 7 8 7-8q-7-6-14 0" fill="#3a3041"/><path d="M52 91q8 5 16 0" stroke="#8b5146" stroke-width="2.5" fill="none"/>`;
+if(type===2)art=`<circle cx="28" cy="35" r="16" fill="${p[0]}"/><circle cx="92" cy="35" r="16" fill="${p[0]}"/><circle cx="28" cy="35" r="9" fill="#613d3d"/><circle cx="92" cy="35" r="9" fill="#613d3d"/><ellipse cx="60" cy="62" rx="39" ry="39" fill="url(#${id}fur)"/><path d="m47 26 5 19 8-8 8 8 5-19M23 51l18 5-17 8m73-13-18 5 17 8M27 76l15-5m51 5-15-5" fill="#68413b" stroke="#68413b" stroke-width="3" stroke-linejoin="round"/><ellipse cx="44" cy="59" rx="5" ry="7" fill="#352c38"/><ellipse cx="76" cy="59" rx="5" ry="7" fill="#352c38"/><path d="M37 79q0-19 23-8 23-11 23 8-4 19-23 16-19 3-23-16" fill="#fff1cf"/><path d="m53 74 7 7 7-7q-7-6-14 0" fill="#55373d"/><path d="m60 81 0 6m-11-1q11 12 22 0" stroke="#55373d" stroke-width="2.5" fill="none"/>`;
+if(type===3)art=`<circle cx="29" cy="32" r="16" fill="#29374a"/><circle cx="91" cy="32" r="16" fill="#29374a"/><ellipse cx="60" cy="62" rx="40" ry="39" fill="url(#${id}fur)"/><ellipse cx="42" cy="60" rx="14" ry="18" fill="#344054" transform="rotate(25 42 60)"/><ellipse cx="78" cy="60" rx="14" ry="18" fill="#344054" transform="rotate(-25 78 60)"/><ellipse cx="44" cy="59" rx="5" ry="7" fill="#111b30"/><ellipse cx="76" cy="59" rx="5" ry="7" fill="#111b30"/><circle cx="46" cy="57" r="2.5" fill="#fff"/><circle cx="78" cy="57" r="2.5" fill="#fff"/><path d="m54 78 6 5 6-5q-6-7-12 0" fill="#29374a"/><path d="m60 83 0 5m-9-2q9 10 18 0" fill="none" stroke="#29374a" stroke-width="2.5"/><ellipse cx="30" cy="78" rx="6" ry="4" fill="#f6abb188"/><ellipse cx="90" cy="78" rx="6" ry="4" fill="#f6abb188"/>`;
+return `<svg viewBox="0 0 120 120" role="img" aria-label="${mascotNames[type]}"><defs><linearGradient id="${id}fur" x2=".3" y2="1"><stop stop-color="${p[1]}"/><stop offset="1" stop-color="${p[0]}"/></linearGradient></defs><circle cx="60" cy="60" r="56" fill="#162448" stroke="#8a9fc077" stroke-width="2"/><path d="M30 110q3-22 30-22t30 22" fill="#4e69a8"/>${art}<path d="m47 101 13 9 13-9-13 3Z" fill="#ffda8a"/></svg>`}
+
+'use strict';
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),fmt=n=>Number(n).toLocaleString('id-ID'),colors=['#8fc8ff','#f2bc8e','#b9a8f2','#8cddbf','#eea7cb','#e1d389'];
+const game=new JeopardyGame(BANK);let names=['Tim Cendekia','Tim Pujangga','Tim Aksara','Tim Sastrawan','Tim Lentera','Tim Pena'],modal=false,lastFocus=null,timeLeft=0,since=0,running=false,clockLength=0,lastSec=-1,seen=new Set,recorded=false;
+function read(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch{return false}}
+const saved=read('jeopardy-settings',null);if(saved?.names?.length>=2){names=Array.from({length:6},(_,i)=>String(saved.names[i]||names[i]).slice(0,24));$('teamCount').value=Math.min(6,saved.count||3)}
+function captureNames(){$('teamInputs').querySelectorAll('input').forEach((input,i)=>names[i]=input.value.trim().slice(0,24)||'Tim '+(i+1))}
+function setupTeams(){const count=+$('teamCount').value;$('teamInputs').innerHTML=Array.from({length:count},(_,i)=>`<div class="team-input" style="--team-color:${colors[i]}"><label for="teamName${i}">TIM ${i+1}</label><input id="teamName${i}" type="text" value="${esc(names[i])}" maxlength="24"></div>`).join('')}
+function modeNote(){$('modeNote').textContent=$('playMode').value==='host'?'Tim menjawab lisan. Guru menilai benar/keliru, cocok untuk jawaban dengan banyak padanan.':'Jawaban dinilai otomatis dari kata kunci dan padanan yang tersedia. “Apa itu …?” dan jawaban singkat diterima.'}
+function repeatNote(){const h=read('jeopardy-history',{items:{}}),n=Object.keys(h.items||{}).filter(id=>BANK.some(q=>q.id===id)).length;$('repeatNote').textContent=`${BANK.length} petunjuk · ${n} pernah tampil. Petunjuk yang jarang dimainkan diprioritaskan.`;$('bankCount').textContent=BANK.length}
+$('teamCount').onchange=()=>{captureNames();setupTeams()};$('playMode').onchange=modeNote;setupTeams();modeNote();repeatNote();$('miniBoard').innerHTML=CATEGORIES.map(c=>`<span>${c.toUpperCase()}</span>`).join('')+Array.from({length:18},(_,i)=>`<span>${(Math.floor(i/6)+1)*200}</span>`).join('');
+function duration(){if(!game.seconds)return 0;if(game.phase==='buzz')return 8;if(game.phase==='answer')return game.seconds;if(['finalShared','finalAnswer'].includes(game.phase))return 30;return 0}
+function pauseTime(){if(running){timeLeft=Math.max(0,timeLeft-(performance.now()-since));running=false}}
+function remaining(){return Math.max(0,timeLeft-(running?performance.now()-since:0))}
+function resumeTime(reset=false){if(reset){clockLength=duration();timeLeft=clockLength*1000;lastSec=-1}running=!!duration()&&!modal&&!document.hidden;if(running)since=performance.now();timerUI()}
+function timerUI(){const e=$('clueTimer');if(!e)return;e.hidden=!duration();const sec=Math.ceil(remaining()/1000);e.textContent=sec;e.classList.toggle('urgent',sec<=5)}
+function closeDialog(){if(!modal)return;modal=false;$('modal').hidden=true;resumeTime();if(lastFocus?.isConnected)lastFocus.focus()}
+function dialog(title,body,actions=[{label:'Kembali',gold:true,run:closeDialog}]){pauseTime();lastFocus=document.activeElement;modal=true;$('dialog').innerHTML=`<h2 id="dialogTitle">${title}</h2>${body}<div class="dialog-actions">${actions.map((a,i)=>`<button class="${a.gold?'gold':'quiet'}" data-dialog="${i}">${a.label}</button>`).join('')}</div>`;$('modal').hidden=false;actions.forEach((a,i)=>$('dialog').querySelector(`[data-dialog="${i}"]`).onclick=a.run);$('dialog').querySelector('button:not(:disabled)')?.focus()}
+function rules(){dialog('Cara bermain Jeopardy!',`<p><strong>Pilih kategori dan nilai.</strong> Tim yang menguasai papan memilih petunjuk. Pemandu membaca petunjuk lalu menekan Buka rebutan. Tim tercepat menekan tombolnya atau angka 1–6 mendapat giliran menjawab.</p><p><strong>Benar menambah, keliru mengurangi.</strong> Jawaban benar menambah nilai petunjuk dan memberi hak memilih berikutnya. Jawaban keliru atau waktu jawab habis mengurangi nilai, lalu lawan boleh merebut. Tim yang sudah mencoba tidak boleh menjawab lagi pada petunjuk yang sama. Jika tidak ada yang menjawab, kunci dibuka tanpa perubahan poin.</p><p><strong>Daily Double:</strong> satu pada papan pertama, dua pada papan kedua. Hanya tim yang menemukannya menjawab. Taruhan dikunci sebelum petunjuk tampil: minimum 5 poin, maksimum skor tim atau nilai tertinggi papan, mana yang lebih besar.</p><p><strong>Final:</strong> hanya tim berskor positif yang ikut. Kategori dibuka terlebih dahulu. Setiap tim mengunci taruhan 0 hingga seluruh skornya sebelum melihat petunjuk. Taruhan dan jawaban sebelumnya disembunyikan dari tim berikutnya.</p><p>Mode ketik memakai satu perangkat bergiliran, dengan waktu final 30 detik per tim. Pada mode guru, semua tim menulis jawaban final bersamaan di kertas selama 30 detik, lalu pemandu menilai setelah jawaban terkunci. Tanpa timer, semua tahap dikunci manual.</p><p>Jawablah dengan gaya “Apa itu …?” atau “Siapakah …?”. Jawaban singkat juga diterima dalam adaptasi kelas ini. Padanan yang belum dikenali dapat dinilai melalui mode guru yang dipilih sebelum bermain.</p><p class="notice">Dua papan berisi masing-masing 30 petunjuk: 200–1.000 dan 400–2.000 poin. Papan boleh diakhiri lebih cepat. Tim dengan skor tertinggi menang; skor sama menjadi juara bersama. Jika tidak ada skor positif, Final dilewati. Semua nilai adalah poin virtual. Riwayat soal dan klasemen tersimpan lokal pada browser ini.</p>`)}
+function records(){const rows=read('jeopardy-records',[]);dialog('Klasemen lokal',`<p>Hasil pada perangkat ini. Skor dipengaruhi jumlah papan dan berapa petunjuk yang dimainkan.</p>${rows.length?rows.map((r,i)=>`<div class="record-row"><div><b>${i+1}. ${esc(r.names.join(', '))}</b><small>${r.rounds} papan · ${r.played} petunjuk dicoba · ${r.mode==='host'?'Dinilai pemandu':'Jawaban ketik'}</small></div><b>${fmt(r.score)}</b></div>`).join(''):'<p>Belum ada pertandingan tersimpan.</p>'}`)}
+function markSeen(q){if(!q||seen.has(q.id))return;seen.add(q.id);const h=read('jeopardy-history',{counter:0,items:{}});h.items=h.items||{};h.counter=(Number(h.counter)||0)+1;h.items[q.id]={count:(Number(h.items[q.id]?.count)||0)+1,last:h.counter};save('jeopardy-history',h)}
+function start(){window.HumaGameBridge?.start();captureNames();const count=+$('teamCount').value,h=read('jeopardy-history',{items:{}});game.start(names.slice(0,count),{rounds:+$('roundCount').value,mode:$('playMode').value,seconds:+$('timeMode').value},h.items||{});save('jeopardy-settings',{names,count});seen=new Set;recorded=false;$('welcome').hidden=true;$('game').hidden=false;$('menuBtn').hidden=false;$('confetti').hidden=true;TVAudio.start();TVAudio.fx('start');render();resumeTime(true)}
+function action(label,id,cls='gold'){return `<button class="${cls}" id="${id}">${label}</button>`}
+function clueText(q){return `<h2 class="${q.clue.length>160?'small':q.clue.length>105?'long':''}" id="clueText">${esc(q.clue)}</h2>`}
+function answerForm(final=false){return `<form class="answer-form" id="answerForm"><input type="text" id="answerInput" aria-label="Jawaban ${esc(game.actor.name)}" placeholder="Apa itu …?" maxlength="220" autocomplete="off" autocorrect="off" spellcheck="false"><button class="gold" id="submitBtn">KUNCI JAWABAN</button></form>`}
+function wagerForm(max,min=0){return `<form class="wager-form" id="wagerForm"><input id="wagerInput" aria-label="Taruhan poin" type="number" min="${min}" max="${max}" step="1" value="${min}" required><button class="gold" id="wagerBtn">KUNCI TARUHAN</button></form><div class="wager-error" id="wagerError" role="alert"></div>`}
+function renderScores(){const phase=game.phase,actor=game.actor;const currentActor=phase==='answer'?game.answerer:phase.startsWith('final')?actor?.id:null;$('scores').style.setProperty('--teams',game.teams.length);$('scores').classList.toggle('many',game.teams.length>4);$('scores').innerHTML=game.teams.map(t=>`<div class="podium ${phase==='board'&&game.control===t.id?'control':''} ${currentActor===t.id?'answering':''}" style="--team-color:${colors[t.id]}"><div class="avatar">${mascot(t.id%4,'scoreAvatar'+t.id)}</div><div class="podium-info"><small>TIM ${t.id+1}</small><b title="${esc(t.name)}">${esc(t.name)}</b><strong class="${t.score<0?'negative':''}" id="score${t.id}">${fmt(t.score)}</strong></div></div>`).join('')}
+function renderBoard(){let html=CATEGORIES.map(c=>`<div class="category-head">${c.toUpperCase()}</div>`).join('');for(let row=0;row<5;row++)for(let col=0;col<6;col++){const c=game.board.find(c=>c.row===row&&c.col===col);html+=`<button class="cell ${c.used?'used':''}" data-cell="${c.id}" ${c.used?'disabled':''} aria-label="${c.category}, ${c.value} poin${c.used?', sudah dimainkan':''}">${c.used?'—':fmt(c.value)}</button>`}$('board').innerHTML=html;$('board').querySelectorAll('[data-cell]').forEach(b=>b.onclick=()=>pick(b.dataset.cell))}
+function render(){const p=game.phase,final=p.startsWith('final');$('roundLabel').innerHTML=final?'FINAL JEOPARDY!<small>STRATEGI TERAKHIR MENUJU JUARA</small>':`${game.round===0?'JEOPARDY!':'DOUBLE JEOPARDY!'}<small>${30-game.remaining}/30 KOTAK TERBUKA · ${game.total} PAPAN</small>`;$('progressSteps').innerHTML=Array.from({length:game.total+1},(_,i)=>`<span class="${final?i===game.total?'active':'':i===game.round?'active':''}" aria-hidden="true"></span>`).join('');$('endBoardBtn').hidden=p!=='board';$('board').hidden=p!=='board';$('clueView').hidden=p==='board';$('status').textContent='';$('clueView').classList.toggle('dd-mode',p==='dailyWager'||(game.current?.daily&&['answer','result'].includes(p)));renderScores();if(p==='board'){renderBoard();$('status').textContent=`${game.teams[game.control].name} memilih kategori dan nilai. Petunjuk besar berarti tantangan lebih tinggi.`;return}
+let html='<div class="timer" id="clueTimer" hidden aria-label="Sisa detik"></div>',bind=()=>{};const tag=s=>`<div class="tag">${s}</div>`,actions=s=>`<div class="clue-actions">${s}</div>`;
+if(['reading','buzz','answer'].includes(p)){html+=tag(`${esc(game.question.category).toUpperCase()} · ${fmt(game.clueValue||game.current.value)} POIN`)+clueText(game.question);if(p==='reading'){html+=`<p>Baca petunjuknya. Tombol rebutan belum dibuka.</p>`+actions(action('BUKA REBUTAN','openBuzzBtn'));bind=()=>$('openBuzzBtn').onclick=openBuzz;$('status').textContent='Jawaban belum dapat dikunci sebelum rebutan dimulai.'}else if(p==='buzz'){html+=`<p>Rebut giliran menjawab!</p><div class="buzzers" style="--teams:${game.teams.length}">${game.teams.map(t=>`<button class="buzz" id="buzz${t.id}" data-buzz="${t.id}" style="--team-color:${colors[t.id]}" ${game.attempts.has(t.id)?'disabled':''}><b>${t.id+1}</b>${esc(t.name)}</button>`).join('')}</div>`+actions(action('Tidak ada yang menjawab','noBuzzBtn','quiet'));bind=()=>{$('clueView').querySelectorAll('[data-buzz]').forEach(b=>b.onclick=()=>buzz(+b.dataset.buzz));$('noBuzzBtn').onclick=noBuzz};$('status').textContent=game.feedback||'Klik tombol tim atau tekan angka 1–'+game.teams.length+'.'}else{html+=`<p><strong>${esc(game.actor.name)}</strong>${game.current.daily?' · Daily Double':' mendapat giliran'}.</p>`+actions(game.mode==='type'?answerForm():action('BENAR · +'+fmt(game.clueValue),'judgeYes','judge-yes')+action('KELIRU · −'+fmt(game.clueValue),'judgeNo','judge-no'))+actions(action('Tidak tahu / lewati','skipBtn','quiet')+(game.mode==='host'?action('Lihat kunci pemandu','hostKeyBtn','text-btn'):''))+`<p class="hint">Jawab dalam bentuk “Apa itu …?” atau “Siapakah …?”. Jawaban singkat juga diterima.</p>`;bind=()=>{if(game.mode==='type')$('answerForm').onsubmit=e=>{e.preventDefault();if($('answerInput').value.trim())answer($('answerInput').value)};else{$('judgeYes').onclick=()=>judge(true);$('judgeNo').onclick=()=>judge(false);$('hostKeyBtn').onclick=hostKey}$('skipBtn').onclick=()=>judge(false)};$('status').textContent=game.current.daily?'Hanya tim penemu yang menjawab. Nilai taruhan dipertaruhkan.':'Benar menambah poin; keliru mengurangi poin dan membuka kesempatan lawan.'}}
+else if(p==='dailyWager'){html+=tag('KEJUTAN DI BALIK PAPAN')+`<div class="big-label pulse">DAILY DOUBLE!</div><p><strong>${esc(game.teams[game.control].name)}</strong>, hanya timmu yang boleh menjawab.</p><p>Kategori: <strong>${esc(game.question.category)}</strong><br>Taruhan 5–${fmt(game.dailyMax)} poin. Kunci sebelum petunjuk dibuka.</p>`+actions(wagerForm(game.dailyMax,5));bind=()=>$('wagerForm').onsubmit=e=>{e.preventDefault();dailyWager()};$('status').textContent='Maksimum taruhan adalah skor tim atau nilai tertinggi papan, mana yang lebih besar.'}
+else if(p==='result'){const r=game.result;html+=tag(r.team===null?'TIDAK ADA JAWABAN':`${esc(game.teams[r.team].name)} · ${r.correct?'JAWABAN TEPAT':'BELUM TEPAT'}`)+`<div class="correct-answer">${esc(game.question.answer)}</div><p>${esc(game.question.explanation)}</p>${r.team===null?'':`<p class="big-score">${r.delta>0?'+':''}${fmt(r.delta)}</p>`}`+actions(action('KEMBALI KE PAPAN','nextBtn'));bind=()=>$('nextBtn').onclick=next;$('status').textContent=r.correct?`${game.teams[game.control].name} mendapat hak memilih berikutnya.`:'Petunjuk selesai. Kunci baru ditampilkan setelah kesempatan menjawab berakhir.'}
+else if(p==='intermission'){html+=tag('PAPAN PERTAMA SELESAI')+`<div class="big-label">DOUBLE JEOPARDY!</div><p>Nilai petunjuk menjadi dua kali lipat.<br>Ada <strong>dua Daily Double</strong> tersembunyi di papan berikutnya.</p><p>Tim berskor terendah memilih lebih dulu.</p>`+actions(action('BUKA PAPAN KEDUA','nextBoardBtn'));bind=()=>$('nextBoardBtn').onclick=nextBoard}
+else if(p==='finalIntro'){html+=tag('KATEGORI FINAL')+`<div class="big-label">${esc(game.finalQuestion.category.toUpperCase())}</div><p>Taruhan dikunci sebelum petunjuk tampil.<br>Hanya tim dengan skor positif yang mengikuti Final.</p><div class="small-list">${game.finalIds.map(id=>`<span>${esc(game.teams[id].name)} · ${fmt(game.teams[id].score)}</span>`).join('')}</div>`+actions(action('MULAI TARUHAN FINAL','startFinalBtn'));bind=()=>$('startFinalBtn').onclick=startFinal;$('status').textContent='Tim yang tidak memenuhi syarat tetap tercantum di papan skor, tanpa mengikuti taruhan.'}
+else if(p==='finalWager'){html+=tag(`TARUHAN RAHASIA · ${game.finalIndex+1}/${game.finalIds.length}`)+`<div class="avatar-large">${mascot(game.actor.id%4,'wagerAvatar')}</div><h2>${esc(game.actor.name)}</h2><p>Kategori: <strong>${esc(game.finalQuestion.category)}</strong><br>Masukkan 0–${fmt(game.actor.score)} poin. Tim lain jangan melihat layar.</p>`+actions(wagerForm(game.actor.score));bind=()=>$('wagerForm').onsubmit=e=>{e.preventDefault();finalWager()};$('status').textContent='Taruhan tim sebelumnya disembunyikan. Petunjuk belum dibuka.'}
+else if(p==='finalHandoff'){html+=tag('JAWABAN FINAL RAHASIA')+`<div class="avatar-large">${mascot(game.actor.id%4,'finalAvatar')}</div><h2>${esc(game.actor.name)}</h2><p>Serahkan perangkat kepada tim ini.<br>Tim lain menunggu tanpa melihat layar.</p>`+actions(action('MULAI JAWABAN FINAL','beginFinalBtn'));bind=()=>$('beginFinalBtn').onclick=beginFinal;$('status').textContent=`${game.finalIndex+1} dari ${game.finalIds.length} tim · jawaban dan taruhan sebelumnya dirahasiakan`}
+else if(p==='finalAnswer'||p==='finalShared'){html+=tag(`FINAL · ${esc(game.finalQuestion.category).toUpperCase()}`)+clueText(game.finalQuestion);if(p==='finalAnswer'){html+=`<p>Jawaban akhir <strong>${esc(game.actor.name)}</strong></p>`+actions(answerForm(true))+actions(action('Kosongkan jawaban / lewati','skipFinalBtn','quiet'));bind=()=>{$('answerForm').onsubmit=e=>{e.preventDefault();if($('answerInput').value.trim())answerFinal($('answerInput').value)};$('skipFinalBtn').onclick=()=>answerFinal('')};$('status').textContent='Pilihan dikunci sebelum perangkat berpindah. Kunci belum dibuka.'}else{html+=`<p>Semua tim peserta Final menulis jawaban di kertas.<br>Setelah dikunci, jawaban tidak boleh diubah.</p>`+actions(action('KUNCI SEMUA JAWABAN','lockFinalBtn'));bind=()=>$('lockFinalBtn').onclick=lockFinal;$('status').textContent='Pemandu memastikan semua jawaban sudah dikunci sebelum pembahasan.'}}
+else if(p==='finalJudge'){html+=tag('SEMUA JAWABAN SUDAH TERKUNCI')+`<div class="correct-answer">${esc(game.finalQuestion.answer)}</div><p>${esc(game.finalQuestion.explanation)}</p><p>Nilai jawaban tertulis <strong>${esc(game.actor.name)}</strong>.</p>`+actions(action('BENAR','finalYes','judge-yes')+action('KELIRU','finalNo','judge-no'));bind=()=>{$('finalYes').onclick=()=>judgeFinal(true);$('finalNo').onclick=()=>judgeFinal(false)};$('status').textContent='Skor dan taruhan akan dibuka setelah seluruh penilaian selesai.'}
+else if(p==='finalRevealReady'){html+=tag('SEMUA JAWABAN FINAL SUDAH TERKUNCI')+`<div class="big-label">SAATNYA PEMBUKTIAN.</div><p>Jawaban, taruhan, dan perubahan skor dibuka satu per satu.</p>`+actions(action('BUKA HASIL FINAL','revealFinalBtn'));bind=()=>$('revealFinalBtn').onclick=revealFinal}
+else if(p==='finalReveal'){const r=game.finalResults.at(-1),t=game.teams[r.team];html+=tag(`${esc(t.name)} · ${r.correct?'TEPAT':'BELUM TEPAT'}`)+`<div class="correct-answer">${esc(game.finalQuestion.answer)}</div>${game.mode==='type'?`<p class="response">Jawaban tim: ${r.response?esc(r.response):'(tidak menjawab)'}</p>`:''}<p>Taruhan ${fmt(r.wager)} poin</p><div class="big-score">${r.delta>0?'+':''}${fmt(r.delta)}</div><p>Total sekarang <strong>${fmt(r.score)}</strong> poin</p>`+actions(action(game.finalIndex>=game.finalIds.length?'LIHAT JUARA':'BUKA TIM BERIKUTNYA','revealFinalBtn'));bind=()=>$('revealFinalBtn').onclick=revealFinal}
+$('clueView').innerHTML=html;bind();timerUI()}
+function pick(id){if(modal||!game.pick(id))return;TVAudio.fx(game.current.daily?'win':'tap');if(!game.current.daily)markSeen(game.question);pauseTime();render();resumeTime(true)}
+function openBuzz(){if(modal||!game.openBuzz())return;TVAudio.fx('buzz');render();resumeTime(true)}
+function buzz(id){if(modal||!game.buzz(id))return;pauseTime();TVAudio.fx('buzz');render();resumeTime(true);if(game.mode==='type'&&innerWidth>=900)$('answerInput')?.focus()}
+function answer(text){if(modal)return;const r=game.answer(text);if(!r)return;pauseTime();TVAudio.fx(r.correct?'reveal':'strike');render();resumeTime(true)}
+function judge(correct){if(modal)return;const r=game.judge(correct);if(!r)return;pauseTime();TVAudio.fx(correct?'reveal':'strike');render();resumeTime(true)}
+function noBuzz(){if(modal||!game.noBuzz())return;pauseTime();TVAudio.fx('duplicate');render();resumeTime(true)}
+function dailyWager(){const value=Number($('wagerInput').value);if(!game.setDailyWager(value)){$('wagerError').textContent='Ketik bilangan bulat dalam batas taruhan.';return}markSeen(game.question);TVAudio.fx('buzz');render();resumeTime(true)}
+function next(){if(modal||!game.next())return;pauseTime();if(game.phase==='finished'){finish();return}TVAudio.fx('tap');render();resumeTime(true)}
+function endBoard(){if(modal||game.phase!=='board')return;dialog('Akhiri papan lebih cepat?',`<p>${game.remaining} petunjuk tersisa tidak akan dimainkan dan tidak menambah poin. Petunjuk yang belum tampil tidak dicatat sebagai pernah dimainkan.</p>`,[{label:'Lanjut papan',run:closeDialog},{label:'Akhiri papan',gold:true,run:()=>{closeDialog();game.finishBoard();pauseTime();if(game.phase==='finished')finish();else render()}}])}
+function nextBoard(){if(modal||!game.nextBoard())return;TVAudio.fx('start');render();resumeTime(true)}
+function startFinal(){if(modal||!game.startFinal())return;TVAudio.fx('start');render();resumeTime(true)}
+function finalWager(){const n=Number($('wagerInput').value);if(!game.setFinalWager(n)){$('wagerError').textContent='Taruhan harus bilangan bulat dari 0 hingga skor tim.';return}if(game.phase==='finalShared')markSeen(game.finalQuestion);TVAudio.fx('tap');render();resumeTime(true)}
+function beginFinal(){if(modal||!game.beginFinalTurn())return;markSeen(game.finalQuestion);TVAudio.fx('tap');render();resumeTime(true);if(innerWidth>=900)$('answerInput')?.focus()}
+function answerFinal(text){if(modal||!game.answerFinal(text))return;pauseTime();TVAudio.fx('tap');render();resumeTime(true)}
+function lockFinal(){if(modal||!game.lockFinal())return;pauseTime();TVAudio.fx('buzz');render();resumeTime(true)}
+function judgeFinal(correct){if(modal||!game.judgeFinal(correct))return;TVAudio.fx('tap');render();resumeTime(true)}
+function revealFinal(){if(modal||!game.revealNext())return;if(game.phase==='finished'){finish();return}TVAudio.fx(game.finalResults.at(-1).correct?'round':'strike');render();resumeTime(true)}
+function hostKey(){if(modal||game.mode!=='host'||game.phase!=='answer')return;dialog('Kunci untuk pemandu',`<p><strong>${esc(game.question.answer)}</strong></p><p>${esc(game.question.explanation)}</p><p class="notice">Panel ini menampilkan jawaban. Gunakan saat pemain tidak melihat layar. Setelah ditutup, pemandu tetap menentukan benar/keliru.</p>`)}
+function finish(){window.HumaGameBridge?.finish(game.teams.map(t=>{const log=[...game.log,...(game.finalResults||[])].filter(x=>x.team===t.id);return {name:t.name,score:t.score,correct:log.filter(x=>x.correct).length,total:log.length,result:game.winners.some(w=>w.id===t.id)?'Menang':'Selesai'}}), {mode:game.mode+' · '+game.total+' papan'});pauseTime();TVAudio.stop();const winners=game.winners,score=winners[0].score,valid=game.log.length>0||game.finalResults?.length>0;if(valid)TVAudio.fx('win');if(valid&&!recorded){const rows=read('jeopardy-records',[]);rows.push({names:winners.map(t=>t.name),score,rounds:game.total,played:seen.size,mode:game.mode});rows.sort((a,b)=>b.score-a.score);save('jeopardy-records',rows.slice(0,10));recorded=true}if(valid){$('confetti').hidden=false;$('confetti').innerHTML=Array.from({length:48},(_,i)=>`<i style="left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;background:${['#f3ce87','#9db8ff','#a89adb'][i%3]}"></i>`).join('')}dialog(valid?(winners.length>1?'Juara bersama!':'Juara Jeopardy!'):'Sesi selesai',`${valid?`<div class="winner-art">${mascot(winners[0].id%4,'winnerAvatar')}</div><div class="winner-name">${esc(winners.map(t=>t.name).join(' & '))}</div><div class="final-score">${fmt(score)} POIN</div>`:'<p>Belum ada petunjuk yang dijawab. Mulai lagi untuk mengumpulkan poin.</p>'}${game.noFinal?'<p>Final dilewati karena tidak ada tim berskor positif.</p>':''}${[...game.teams].sort((a,b)=>b.score-a.score).map((t,i)=>`<div class="record-row"><span>${i+1}. ${esc(t.name)}</span><b>${fmt(t.score)}</b></div>`).join('')}<p class="notice">Semua poin virtual. Pertandingan berikutnya memprioritaskan petunjuk yang jarang dimainkan.</p>`,[{label:'Menu utama',run:()=>{closeDialog();menu()}},{label:'Main lagi',gold:true,run:()=>{closeDialog();start()}}])}
+function menu(){pauseTime();game.phase='setup';TVAudio.stop();$('game').hidden=true;$('welcome').hidden=false;$('menuBtn').hidden=true;$('confetti').hidden=true;repeatNote()}
+function askMenu(){if(modal)return;dialog('Kembali ke menu?',`<p>Pertandingan berjalan akan diakhiri tanpa masuk klasemen. Riwayat petunjuk yang sudah tampil tetap disimpan.</p>`,[{label:'Lanjut bermain',run:closeDialog},{label:'Ke menu',gold:true,run:()=>{closeDialog();menu()}}])}
+function audioUI(){$('musicBtn').setAttribute('aria-pressed',TVAudio.music);$('soundBtn').setAttribute('aria-pressed',TVAudio.enabled);$('volume').value=TVAudio.volume*100;$('volumeText').textContent=Math.round(TVAudio.volume*100)+'%'}
+$('startBtn').onclick=start;$('rulesBtn').onclick=rules;$('welcomeRules').onclick=rules;$('welcomeRecords').onclick=records;$('menuBtn').onclick=askMenu;$('endBoardBtn').onclick=endBoard;$('musicBtn').onclick=()=>{TVAudio.warm();TVAudio.music=!TVAudio.music;TVAudio.apply();audioUI()};$('soundBtn').onclick=()=>{TVAudio.warm();TVAudio.enabled=!TVAudio.enabled;TVAudio.apply();audioUI()};$('volume').oninput=()=>{TVAudio.warm();TVAudio.volume=+$('volume').value/100;TVAudio.apply();audioUI()};$('fullscreenBtn').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen?.();else document.documentElement.requestFullscreen?.().catch(()=>{})};audioUI();document.addEventListener('pointerdown',()=>TVAudio.warm(),{once:true});document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseTime();else resumeTime()});
+document.addEventListener('keydown',e=>{if(modal){if(e.key==='Escape'&&game.phase!=='finished'){e.preventDefault();closeDialog()}if(e.key==='Tab'){const b=[...$('dialog').querySelectorAll('button:not(:disabled)')],first=b[0],last=b.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}return}if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.repeat||e.ctrlKey||e.altKey||e.metaKey)return;if(game.phase==='buzz'&&/^[1-6]$/.test(e.key)){e.preventDefault();buzz(+e.key-1)}});
+setInterval(()=>{if(!running||modal||!duration())return;timerUI();const sec=Math.ceil(remaining()/1000);if(sec<=5&&sec!==lastSec){lastSec=sec;TVAudio.fx('tick')}if(remaining()<=0){if(game.phase==='buzz')noBuzz();else if(game.phase==='answer')judge(false);else if(game.phase==='finalAnswer')answerFinal('');else if(game.phase==='finalShared')lockFinal()}},100);
+
+</script><script src="../score-bridge.js?v=20261103-scores" data-game="jeopardy"></script></body></html>

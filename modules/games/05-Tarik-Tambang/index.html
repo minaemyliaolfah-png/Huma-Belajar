@@ -1530,7 +1530,7 @@ function renderCharacterOptions(){document.getElementById('avatar-selector').inn
             return shuffleArray([...pool]);
         }
 
-        function startGame() {
+        function startGame() {window.HumaGameBridge?.start();
             playSound('click');
             gameState.pool = buildPool();
             gameState.scoreLeft = 0;
@@ -1699,7 +1699,7 @@ function renderCharacterOptions(){document.getElementById('avatar-selector').inn
             document.getElementById('rope-marker').style.left = `${gameState.ropePos}%`;
         }
 
-        function endGame(reason) {
+        function endGame(reason) {window.HumaGameBridge?.finish([{name:gameState.p1Name,score:gameState.scoreLeft,result:gameState.ropePos<50?'Menang':gameState.ropePos===50?'Seri':'Kalah'}, ...(gameState.mode==='2p'?[{name:gameState.p2Name,score:gameState.scoreRight,result:gameState.ropePos>50?'Menang':gameState.ropePos===50?'Seri':'Kalah'}]:[])], {mode:gameState.mode+' · '+gameState.level+' · '+gameState.timeTotal+' detik',duration:gameState.timeTotal-gameState.timeLeft});
             gameState.isPlaying = false;
             clearInterval(gameState.timerInterval);
             clearInterval(gameState.aiInterval);
@@ -1883,5 +1883,5 @@ const watched=new Set(['screen-game','gameplayScreen','setup','setupModal','menu
 if(game==='galaksi-bahasa')new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.getElementById('spaceCanvas').parentElement);
 if(game==='petualangan-kata')wrap('renderPawnTokens');sync();
 })();
-</script></body>
+</script><script src="../score-bridge.js?v=20261103-scores" data-game="tarik-tambang"></script></body>
 </html>

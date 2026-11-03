@@ -2720,7 +2720,7 @@ body[data-edu-game="galaksi-bahasa"] .edu-stage>header{height:56px!important;min
             }
         }
 
-        function applySetupAndStart() {
+        function applySetupAndStart() {window.HumaGameBridge?.start();
             playSound('click');
             const actualCount = (setupPlayerCount === 1) ? 2 : setupPlayerCount;
             players = [];
@@ -2769,7 +2769,7 @@ body[data-edu-game="galaksi-bahasa"] .edu-stage>header{height:56px!important;min
             }
         }
 
-        function restartSameGame() {
+        function restartSameGame() {window.HumaGameBridge?.start();
             closeWinnerModal();
             stopConfetti();
             players.forEach(p => {
@@ -2927,7 +2927,7 @@ body[data-edu-game="galaksi-bahasa"] .edu-stage>header{height:56px!important;min
            ========================================================================= */
         let confettiAnimId = null;
 
-        function triggerVictory(winner) {
+        function triggerVictory(winner) {window.HumaGameBridge?.finish(players.filter(p=>!p.isBot).map(p=>({name:p.name,score:p.pos,correct:p.correctCount,total:p.totalAnswered,result:p.id===winner.id?'Menang':'Selesai'})), {mode:selectedTopic+' · '+players.length+' pemain'});
             playSound('win');
             startConfetti();
 
@@ -3074,5 +3074,5 @@ const watched=new Set(['screen-game','gameplayScreen','setup','setupModal','menu
 if(game==='galaksi-bahasa')new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.getElementById('spaceCanvas').parentElement);
 if(game==='petualangan-kata')wrap('renderPawnTokens');sync();
 })();
-</script></body>
+</script><script src="../score-bridge.js?v=20261103-scores" data-game="ular-tangga"></script></body>
 </html>

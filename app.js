@@ -844,7 +844,7 @@ function render() {
     return;
   }
   if (route().page === "game") {
-    window.HumaGames.mount($("#main"), { id: route().id });
+    window.HumaGames.mount($("#main"), { id: route().id, user: state.user });
     return;
   }
   if (route().page === "karya") {

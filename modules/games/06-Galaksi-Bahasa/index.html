@@ -2285,7 +2285,7 @@ body[data-edu-game="galaksi-bahasa"] .edu-stage>header{height:56px!important;min
             startBattle();
         }
 
-        function startBattle() {
+        function startBattle() {window.HumaGameBridge?.start();
             gameState.isPlaying = true;
             
             gameState.p1.hp = 100;
@@ -2324,7 +2324,7 @@ body[data-edu-game="galaksi-bahasa"] .edu-stage>header{height:56px!important;min
             updateAndRenderCanvas();
         }
 
-        function endGame() {
+        function endGame() {window.HumaGameBridge?.finish([{score:gameState.p1.score,correct:gameState.p1.correctCount,total:gameState.p1.totalCount}, ...(gameState.mode!=='single'?[{slot:2,score:gameState.p2.score,correct:gameState.p2.correctCount,total:gameState.p2.totalCount}]:[])], {mode:gameState.mode+' · '+gameState.difficulty});
             gameState.isPlaying = false;
             cancelAnimationFrame(animationFrameId);
 
@@ -2488,5 +2488,5 @@ const watched=new Set(['screen-game','gameplayScreen','setup','setupModal','menu
 if(game==='galaksi-bahasa')new ResizeObserver(()=>window.dispatchEvent(new Event('resize'))).observe(document.getElementById('spaceCanvas').parentElement);
 if(game==='petualangan-kata')wrap('renderPawnTokens');sync();
 })();
-</script></body>
+</script><script src="../score-bridge.js?v=20261103-scores" data-game="galaksi-bahasa"></script></body>
 </html>

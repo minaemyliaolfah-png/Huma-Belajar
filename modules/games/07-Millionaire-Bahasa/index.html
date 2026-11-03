@@ -1,0 +1,1834 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070a22"><title>Who Wants to Be a Millionaire? — Bahasa Indonesia</title><style>
+:root{--navy:#080d2d;--ink:#f2f0ff;--dim:#9297b8;--gold:#e7b96b;--silver:#9badd0;--blue:#273d8b;--line:#3a4b83}*{box-sizing:border-box}body{margin:0;background:#03050f;color:var(--ink);font:500 14px 'Segoe UI',system-ui,sans-serif;min-height:100dvh;display:grid;place-items:center}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #f0c479;outline-offset:4px}[hidden]{display:none!important}#stage{position:relative;isolation:isolate;background:radial-gradient(ellipse at 45% 5%,#29236c88,transparent 53%),linear-gradient(#080c2e,#020615);width:min(100vw,calc(100dvh * 16 / 9));height:min(100dvh,calc(100vw * 9 / 16));aspect-ratio:16/9;container-type:size;display:flex;flex-direction:column;overflow:hidden}.light-grid{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.light-grid:before{content:'';position:absolute;inset:-20%;background:repeating-conic-gradient(from 150deg at 50% 0%,transparent 0deg 10deg,#728bff12 11deg 12deg,transparent 13deg 21deg);animation:rig 16s ease-in-out infinite alternate}.light-grid:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 30%,#040721b3 95%)}header{height:clamp(48px,7.3cqh,85px);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:0 2.2cqw;border-bottom:1px solid #5365a12e;background:#080b24aa;gap:12px;z-index:5}.brand{display:flex;align-items:center;gap:10px}.brand-orb{width:clamp(30px,3cqw,53px);height:clamp(30px,3cqw,53px);border-radius:50%;border:1px solid #c7b0f0;background:radial-gradient(circle,#7360bb,#1b245a 72%);display:grid;place-items:center;color:#edd2f4;font:700 clamp(22px,2.3cqw,43px) Georgia;box-shadow:0 0 14px #9c79f126}.brand b{display:block;font-size:clamp(10px,.95cqw,18px);letter-spacing:1.8px;font-weight:800}.brand small{display:block;font-size:clamp(7px,.55cqw,11px);letter-spacing:2.3px;color:#ac9ac6;margin-top:4px}.header-actions{display:flex;align-items:center;gap:7px}.icon-btn{border:1px solid #6572a34d;border-radius:7px;background:#29335925;color:#b5b8d0;min-height:32px;min-width:32px;padding:8px 10px;font-size:clamp(9px,.72cqw,14px);font-weight:700}.icon-btn:hover{background:#4a4a7e44;border-color:#7d7eac}.icon-btn[aria-pressed=false]{opacity:.6}.volume{position:relative}.volume summary{list-style:none;cursor:pointer}.volume summary::-webkit-details-marker{display:none}.volume-box{position:absolute;right:0;top:calc(100% + 8px);width:220px;background:#151d40;border:1px solid #52628a;border-radius:12px;padding:17px;box-shadow:0 15px 50px #0008;z-index:20}.volume-box label{color:#c6bfd9;font-size:12px;display:block}.volume-box input{display:block;width:100%;margin:13px 0 5px;accent-color:#d3ae6d}.volume-box output{float:right}.small-print{font-size:8px;letter-spacing:1.1px;color:#545d84;text-align:center;height:22px;line-height:22px;flex-shrink:0}.screen{flex:1;min-height:0;width:100%}#welcome{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:3cqw;padding:2.5cqh 7cqw}.welcome-logo{text-align:center;position:relative}.welcome-logo .emblem{width:min(100%,48cqh);margin:0 auto;filter:drop-shadow(0 0 35px #6857e05c)}.eyebrow{color:#a49bc1;font-size:clamp(8px,.68cqw,13px);font-weight:800;letter-spacing:2px}.welcome-logo p{font:700 clamp(16px,1.6cqw,30px)/1.4 Georgia;color:#d7c2ed;margin:5px 0 3px}.welcome-logo small{color:#8583a6;font-size:clamp(9px,.75cqw,14px)}.welcome-panel{max-width:470px;width:100%;border:1px solid #5f5d8c66;border-radius:15px;background:linear-gradient(145deg,#20264f88,#0c1435c9);padding:clamp(22px,2.5cqw,45px);box-shadow:0 20px 70px #0003}.welcome-panel h1{font:700 clamp(28px,3cqw,55px)/1.08 Georgia;letter-spacing:-1px;margin:12px 0}.welcome-panel h1 span{color:var(--gold)}.welcome-panel>p{font-size:clamp(11px,.9cqw,17px);line-height:1.8;color:#9a9cbb;margin:10px 0 19px}.welcome-panel label{font-size:clamp(9px,.72cqw,14px);color:#aaa6bf;display:block;margin:13px 0 7px;font-weight:700}.welcome-panel input,.welcome-panel select{width:100%;border:1px solid #4a507f;background:#0c1436;color:#d9d7e8;padding:12px 13px;border-radius:7px;font-size:clamp(11px,.9cqw,17px);min-height:40px}.gold-btn{background:linear-gradient(#f5d792,#d3a253);border:1px solid #f1ce85;color:#3c2c17;border-radius:7px;padding:13px 19px;min-height:42px;font-size:clamp(11px,.95cqw,18px);font-weight:900;box-shadow:0 4px 0 #87602f,0 0 20px #e2ac4d18}.gold-btn:hover:not(:disabled){background:linear-gradient(#ffe3a4,#e7b865)}.gold-btn:disabled{opacity:.4}.welcome-panel .gold-btn{width:100%;margin:23px 0 12px;display:flex;justify-content:space-between}.panel-notes{display:flex;gap:10px;justify-content:space-between;font-size:clamp(8px,.64cqw,12px);color:#817f9f;padding-top:9px;border-top:1px solid #9b8ea822}.panel-notes b{display:block;color:#c0b6cd;margin-top:3px;font-size:clamp(10px,.8cqw,15px)}.welcome-bottom{display:flex;align-items:center;gap:10px;margin-top:13px;color:#797c9e;font-size:clamp(8px,.64cqw,12px)}.welcome-bottom button{background:none;border:0;color:#a59dbe;font-size:inherit;text-decoration:underline;padding:0}#gameScreen{display:grid;grid-template-columns:minmax(0,1fr) clamp(245px,25cqw,450px);gap:1.6cqw;padding:1.6cqh 2.2cqw 0}.game-left{min-height:0;display:flex;flex-direction:column;position:relative}.game-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-shrink:0;height:clamp(46px,7.5cqh,85px);padding:0 7px}.player-info small{display:block;color:#7e87b4;letter-spacing:1.2px;font-size:clamp(7px,.57cqw,12px);font-weight:800;margin-bottom:4px}.player-info b{font:700 clamp(14px,1.3cqw,25px) Georgia;color:#d6cce7;max-width:22cqw;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lifelines{display:flex;align-items:center;gap:clamp(6px,.8cqw,15px)}.life{width:clamp(57px,6cqw,110px);height:clamp(35px,4.6cqh,58px);border:1.5px solid #a4adcf;border-radius:50%;background:radial-gradient(ellipse at 50% 10%,#3d3978,#0d1741 80%);color:#e9e6fd;position:relative;display:grid;place-items:center;font-size:clamp(17px,1.75cqw,32px);font-weight:800;box-shadow:inset 0 0 8px #6b75bd44,0 0 11px #6b5adc22}.life svg{height:62%;width:60%;fill:none;stroke:#e2def2;stroke-width:2}.life:hover:not(:disabled){background:#3f3c79}.life.used{opacity:.42}.life.used:before,.life.used:after{content:'';height:2px;width:85%;position:absolute;background:#bf535e;transform:rotate(26deg);box-shadow:0 0 6px #bc4054}.life.used:after{transform:rotate(-26deg)}.life:disabled:not(.used){opacity:.5}.studio-scene{min-height:125px;flex:1;position:relative;overflow:hidden;border-bottom:1px solid #2c347148;margin-bottom:12px;display:grid;place-items:center}.studio-scene .emblem{height:clamp(120px,26cqh,340px);width:auto;max-width:43%;position:relative;z-index:3;margin-top:-30px;filter:drop-shadow(0 0 15px #8d65f259)}.beam{position:absolute;bottom:0;width:110%;height:140%;left:0;opacity:.28;transform-origin:50% 100%;background:linear-gradient(75deg,transparent 41%,#9192e32c 48%,#b5bafa44 50%,transparent 55%);animation:beamMove 8s ease-in-out infinite alternate}.beam.b2{transform:scaleX(-1);animation-delay:-3s;opacity:.23}.beam.b3{width:70%;left:20%;animation-delay:-5s;opacity:.22}.studio-floor{position:absolute;bottom:6%;left:5%;width:90%;height:29%;border-radius:50%;border:2px solid #5859b47c;background:repeating-radial-gradient(ellipse,#1f225488 0 8px,#54428a30 9px 11px,#14173c88 12px 30px);transform:perspective(450px) rotateX(45deg);box-shadow:0 0 30px #6c3bdf2b,inset 0 0 40px #6f5bc126}.chair-svg{position:absolute;bottom:8%;width:22%;max-height:48%;height:auto;opacity:.8}.chair-left{left:12%;transform:scaleX(-1)}.chair-right{right:12%}.playing-prize{position:absolute;bottom:2%;z-index:4;text-align:center;border:1px solid #7a67913b;background:linear-gradient(90deg,transparent,#080e31e6,transparent);min-width:58%;padding:7px 20px}.playing-prize small{font-size:clamp(7px,.58cqw,11px);letter-spacing:2px;color:#8e82ac;font-weight:800}.playing-prize strong{display:block;color:var(--gold);font:700 clamp(20px,2.7cqw,49px) Georgia;letter-spacing:.3px;margin-top:3px}.timer-disc{position:absolute;top:12px;right:7px;width:clamp(43px,4.5cqw,78px);height:clamp(43px,4.5cqw,78px);border-radius:50%;border:2px solid #8472bc;display:grid;place-items:center;color:#d6c6f5;font:700 clamp(16px,1.5cqw,28px) Georgia;background:#11163b99;z-index:4}.timer-disc.danger{border-color:#d5836c;color:#f5b494;animation:breathe 1s infinite}.host-caption{color:#8583aa;text-align:center;font-size:clamp(10px,.82cqw,16px);min-height:27px;line-height:1.5;padding:1px 12px 7px;flex-shrink:0}.question-meta{display:flex;justify-content:space-between;align-items:center;margin:0 13px 7px;font-size:clamp(7px,.62cqw,12px);letter-spacing:1.2px;color:#8f8bb0;font-weight:800}.mobile-ladder-btn{display:none}.qa{position:relative;flex-shrink:0;z-index:4}.question-card{position:relative;min-height:clamp(72px,13cqh,155px);display:grid;place-items:center;padding:16px 6%;text-align:center;margin:0 0 12px}.frame{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:-1}.frame path{fill:url(#questionFill);stroke:#94a6d4;stroke-width:1.5;vector-effect:non-scaling-stroke}.question-card:before{content:'';position:absolute;left:-10vw;right:-10vw;top:50%;height:1px;background:linear-gradient(90deg,transparent,#7992d2,transparent);z-index:-2}.question-text{font:600 clamp(14px,1.4cqw,26px)/1.6 'Segoe UI';color:#eeedf9;margin:0;max-width:100%}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}.answer{position:relative;min-height:clamp(49px,8cqh,95px);display:flex;align-items:center;gap:10px;padding:12px 7%;background:none;border:0;color:#edecf8;text-align:left;font-size:clamp(12px,1.1cqw,21px);line-height:1.45;font-weight:600;z-index:1}.answer .frame path{fill:url(#answerFill);stroke:#8e9fcf;stroke-width:1.4}.answer .key{color:#e7b765;font:700 1.15em Georgia;flex-shrink:0}.answer .diamond{position:absolute;width:5px;height:5px;transform:rotate(45deg);background:#95b5e6;left:3.8%}.answer:hover:not(:disabled) .frame path{fill:#2b3781;stroke:#d3c7ed}.answer.selected .frame path,.answer.locked .frame path{fill:url(#goldFill);stroke:#ffe6af}.answer.selected,.answer.locked{color:#302137}.answer.selected .key,.answer.locked .key{color:#443254}.answer.selected .diamond,.answer.locked .diamond{background:#574168}.answer.correct .frame path{fill:url(#greenFill);stroke:#a6f1ca}.answer.correct{color:#fff7df}.answer.correct .key{color:#eaffb4}.answer.wrong .frame path{fill:#8d304e;stroke:#ef8e9e}.answer.wrong{color:#ffdfdc}.answer.eliminated{opacity:.3}.answer.eliminated .answer-text{color:transparent}.answer.locked{animation:lockPulse .8s ease-in-out infinite}.answer.correct{animation:correctGlow .7s ease-in-out 3}.answer:disabled:not(.eliminated){cursor:default}.game-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:clamp(9px,1.7cqh,22px) 7px 0;min-height:clamp(44px,7cqh,80px)}.walk-btn{border:0;background:none;color:#9291af;font-size:clamp(9px,.8cqw,15px);padding:10px 4px;text-decoration:underline;text-underline-offset:4px}.lock-btn{min-width:38%;padding:10px 17px;font-size:clamp(11px,.95cqw,19px);min-height:38px;display:flex;justify-content:center;gap:9px;align-items:center}.lock-btn.secondary{background:#1b2854;color:#c7c8e8;border-color:#566599;box-shadow:0 3px 0 #101938}.prize-rail{border-left:1px solid #6f6d9c5c;padding:8px 0 0 1.6cqw;min-height:0;display:flex;flex-direction:column;background:linear-gradient(90deg,#0a103000, #1a16416b)}.rail-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 12px;border-bottom:1px solid #55527f4d;flex-shrink:0}.rail-head h2{font-size:clamp(8px,.72cqw,14px);color:#a7a0c2;letter-spacing:1.8px;margin:0}.rail-head span{font-size:clamp(7px,.55cqw,10px);color:#806b98;letter-spacing:1px}.ladder{list-style:none;padding:8px 0;margin:0;flex:1;min-height:0;display:grid;grid-template-rows:repeat(15,minmax(0,1fr));gap:2px}.rung{display:flex;align-items:center;padding:2px 12px;gap:10px;color:#d99c58;border-radius:4px;position:relative;font-weight:700;font-size:clamp(12px,1.16cqw,23px);min-height:0;white-space:nowrap}.rung .num{font:700 .8em 'Segoe UI';width:23px;text-align:right;color:#9582aa;flex-shrink:0}.rung .rung-diamond{height:5px;width:5px;background:#706f9e;transform:rotate(45deg);flex-shrink:0}.rung.safe{color:#f2ecfc}.rung.safe .num{color:#d1c9e8}.rung.passed .rung-diamond{background:#58c69b;box-shadow:0 0 6px #58c69b55}.rung.active{background:linear-gradient(90deg,#f4d391,#dba454);color:#211c35;box-shadow:0 0 13px #e0af6538}.rung.active .num{color:#5e4463}.rung.active .rung-diamond{background:#4c3d69}.rung.active:before{content:'›';position:absolute;left:-8px;top:50%;transform:translateY(-50%);color:#f9db9e;font-size:22px}.guarantee{border-top:1px solid #55527f4d;padding:10px 9px;display:flex;justify-content:space-between;gap:8px;flex-shrink:0}.guarantee small{font-size:clamp(7px,.56cqw,11px);letter-spacing:1px;color:#8280a0;display:block;margin-bottom:3px}.guarantee strong{font:700 clamp(11px,1.1cqw,21px) Georgia;color:#cbc0e3}.record-btn{align-self:flex-end;background:none;border:0;color:#8a82a6;font-size:clamp(8px,.62cqw,12px);padding:4px 8px;text-decoration:underline;flex-shrink:0}.modal{position:absolute;inset:0;z-index:15;background:#03051ce3;backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px}.dialog{width:min(94%,500px);max-height:calc(100cqh - 40px);overflow:auto;border:1px solid #7c6d9e;background:radial-gradient(ellipse at 50% 0,#363064,#101a3c 70%);border-radius:15px;padding:clamp(23px,2.5cqw,42px);box-shadow:0 10px 90px #0009}.dialog .eyebrow{font-size:9px}.dialog h2{font:700 clamp(25px,2.5cqw,41px)/1.2 Georgia;margin:13px 0;color:#f3dbb2}.dialog p,.dialog li{font-size:clamp(12px,1cqw,17px);line-height:1.75;color:#b0acc9}.dialog ol{padding-left:20px}.dialog .gold-btn,.dialog>.icon-btn{width:100%;margin-top:13px}.dialog .icon-btn{font-size:12px}.final-choice{background:#f0c87c;color:#392743;padding:16px;border-radius:8px;font-weight:700;font-size:clamp(14px,1.2cqw,22px);line-height:1.5;margin:20px 0}.help-label{font-size:9px;letter-spacing:1.5px;color:#8e82ad;border:1px solid #695b86;padding:6px 9px;border-radius:30px;display:inline-block}.audience-chart{height:175px;display:flex;gap:16px;align-items:flex-end;justify-content:center;padding:15px 10px 25px;margin:15px 0 20px;border-bottom:1px solid #665c86}.aud-col{width:52px;height:100%;position:relative;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px}.aud-bar{background:linear-gradient(#bfaaec,#594193);width:100%;border:1px solid #b9a5e0;min-height:0;transform-origin:bottom;animation:barGrow .8s ease-out}.aud-col b{font-size:11px;color:#d1bfdc}.aud-col small{position:absolute;bottom:-22px;font:700 15px Georgia;color:#ddb87a}.advice{border-left:3px solid #bfa4df;padding:12px 15px;background:#48346044;border-radius:6px;margin:18px 0;font:600 16px/1.7 Georgia;color:#ddd1e8}.dialing{font-size:30px;letter-spacing:10px;color:#d1b4ed;animation:breathe 1.3s infinite}.friend-top{display:flex;justify-content:space-between;align-items:center;color:#bfb3d5;font-size:11px}.friend-clock{font:700 26px Georgia;color:#e1ba76}.explanation{background:#101a3c;border:1px solid #48466a;padding:14px;border-radius:8px;font-size:12px!important;line-height:1.7!important;color:#b8b6d1!important}.answer-recap{color:#bce1c6!important;font-weight:700}.prize-big{font:700 clamp(30px,4cqw,64px) Georgia;color:#f2cf80;margin:12px 0}.result-meta{display:flex;gap:12px;justify-content:space-between;border-top:1px solid #6e5d842e;border-bottom:1px solid #6e5d842e;padding:13px 0;margin:14px 0}.result-meta small{display:block;font-size:8px;color:#857e9b;letter-spacing:1px}.result-meta b{display:block;font-size:15px;color:#cdbedb;margin-top:4px}.rank-row{display:flex;align-items:center;gap:10px;border-bottom:1px solid #6e5d8433;padding:12px 0}.rank-row .place{font:700 19px Georgia;color:#9a85b3;width:22px}.rank-info{flex:1;min-width:0}.rank-info b{font-size:12px;color:#c7bdd9;overflow-wrap:anywhere}.rank-info small{display:block;font-size:9px;color:#8c809e;margin-top:3px}.rank-value{font:700 15px Georgia;color:#daba79}.notice{font-size:10px!important;color:#837c9f!important}.dialog .ladder{gap:4px}.dialog .rung{min-height:25px;font-size:14px}.confetti{position:absolute;inset:0;pointer-events:none;z-index:13;overflow:hidden}.confetti i{position:absolute;top:-20px;width:7px;height:13px;background:#e1b96a;animation:confetti 4s linear infinite}.answer-lock .studio-scene{filter:saturate(.7)}.answer-lock .light-grid:before{filter:hue-rotate(40deg);opacity:.8}.is-winner .light-grid:before{filter:hue-rotate(305deg);opacity:.8}.q-tier-expert .beam{opacity:.5}.q-tier-expert .question-card .frame path{stroke:#b4a0d7}.q-tier-expert .host-caption{color:#b3a1ca}@keyframes rig{to{transform:rotate(8deg)}}@keyframes beamMove{to{transform:rotate(13deg) scaleX(.8)}}@keyframes breathe{50%{opacity:.45}}@keyframes lockPulse{50%{filter:brightness(1.18)}}@keyframes correctGlow{50%{filter:brightness(1.2)}}@keyframes barGrow{from{transform:scaleY(0)}}@keyframes confetti{to{transform:translate(40px,110cqh) rotate(650deg)}}
+@media(max-width:899px),(max-height:479px){body{display:block;min-height:100dvh}#stage{width:100%;height:auto;min-height:100dvh;aspect-ratio:auto;container-type:normal;overflow:hidden}header{height:auto;min-height:59px;padding:12px;gap:8px;flex-wrap:wrap}.brand{gap:7px}.brand-orb{width:29px;height:29px;font-size:22px}.brand b{font-size:9px;letter-spacing:1px}.brand small{font-size:6px;letter-spacing:1.2px}.header-actions{gap:4px}.header-actions .icon-btn{font-size:9px;padding:7px;min-height:31px;min-width:29px}#rulesBtn{display:none}#musicBtn{font-size:0}.icon-btn#musicBtn:before{content:'♪';font-size:16px}#soundBtn{font-size:0}.icon-btn#soundBtn:before{content:'♫';font-size:15px}.welcome-logo .emblem{height:235px;width:235px;max-width:80%;margin-top:6px}.welcome-logo p{font-size:19px}.welcome-logo small{font-size:10px}#welcome{display:flex;flex-direction:column;padding:22px 18px 28px;gap:25px}.welcome-panel{padding:25px;width:100%;max-width:500px}.welcome-panel h1{font-size:35px}.welcome-panel>p{font-size:12px}.eyebrow{font-size:8px}.welcome-panel label{font-size:10px}.welcome-panel input,.welcome-panel select{font-size:13px;padding:12px}.welcome-panel .gold-btn{font-size:13px;padding:15px}.panel-notes{font-size:9px}.panel-notes b{font-size:11px}.welcome-bottom{font-size:10px}.small-print{font-size:7px;letter-spacing:.5px;height:auto;min-height:27px;line-height:1.6;padding:7px}.screen{flex:none}#gameScreen{display:block;padding:7px 11px 14px}.prize-rail{display:none}.game-toolbar{height:48px;padding:0 3px}.player-info small{font-size:7px;letter-spacing:.7px}.player-info b{font-size:14px;max-width:135px}.lifelines{gap:6px}.life{width:52px;height:33px;font-size:17px}.studio-scene{height:190px;flex:none;min-height:0;margin-bottom:9px}.studio-scene .emblem{height:142px;width:142px;max-width:50%;margin-top:-25px}.chair-svg{max-height:44%;width:25%;bottom:11%}.chair-left{left:3%}.chair-right{right:3%}.playing-prize{min-width:72%;bottom:0;padding:5px 12px}.playing-prize small{font-size:7px;letter-spacing:1.5px}.playing-prize strong{font-size:25px;margin-top:1px}.timer-disc{width:40px;height:40px;font-size:15px;top:7px}.host-caption{font-size:10px;padding:0 8px 8px;min-height:31px;line-height:1.6}.question-meta{font-size:7px;letter-spacing:.6px;margin:0 8px 7px;gap:7px}.mobile-ladder-btn{display:block;background:none;border:1px solid #574f7a;color:#ac98c5;font-size:8px;border-radius:20px;padding:5px 8px}.question-card{min-height:100px;margin-bottom:12px;padding:15px 7%}.question-text{font-size:14px;line-height:1.65}.answers{grid-template-columns:1fr;gap:8px}.answer{min-height:54px;font-size:13px;padding:12px 8%;gap:10px}.answer .diamond{left:4.6%;width:4px;height:4px}.game-actions{padding:16px 5px 4px;min-height:59px;gap:8px}.walk-btn{font-size:10px;text-align:left;line-height:1.6;padding:7px 0;max-width:45%}.lock-btn{font-size:11px;min-height:42px;min-width:49%;padding:11px 12px}.dialog{width:min(100%,480px);padding:24px;max-height:90dvh}.modal{position:fixed;padding:16px;inset:0}.dialog h2{font-size:29px}.dialog p,.dialog li{font-size:12px;line-height:1.8}.dialog .gold-btn{font-size:12px;padding:14px}.dialog .icon-btn{min-height:41px}.dialog .eyebrow{font-size:8px}.final-choice{font-size:15px;padding:14px}.prize-big{font-size:39px}.explanation{font-size:11px!important}.dialog .rung{font-size:13px;min-height:25px}.volume-box{right:0;top:38px;width:210px}.confetti i{animation-name:confettiPhone}@keyframes confettiPhone{to{transform:translate(40px,110dvh) rotate(650deg)}}}
+@media(min-width:900px) and (max-height:660px){.studio-scene .emblem{height:20cqh;margin-top:-22px}.studio-scene{min-height:100px}.question-card{min-height:11cqh;padding:12px 5%}.question-text{font-size:1.3cqw}.game-toolbar{height:6.5cqh}.host-caption{min-height:22px;padding-bottom:5px}.answer{min-height:7.8cqh;padding:9px 7%}.welcome-panel{padding:20px}.welcome-panel h1{font-size:30px}.welcome-panel>p{font-size:11px;margin-bottom:12px}.welcome-panel input,.welcome-panel select{padding:9px}.welcome-panel .gold-btn{margin-top:15px}.welcome-logo .emblem{height:42cqh;width:auto}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head><body><div id="stage"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="questionFill" x2="0" y2="1"><stop stop-color="#182765"/><stop offset=".5" stop-color="#080f3b"/><stop offset="1" stop-color="#142153"/></linearGradient><linearGradient id="answerFill" x2="0" y2="1"><stop stop-color="#182560"/><stop offset="1" stop-color="#0a123e"/></linearGradient><linearGradient id="goldFill" x2="0" y2="1"><stop stop-color="#f8d18b"/><stop offset="1" stop-color="#d9983f"/></linearGradient><linearGradient id="greenFill" x2="0" y2="1"><stop stop-color="#358b63"/><stop offset="1" stop-color="#15583d"/></linearGradient></defs></svg><div class="light-grid" aria-hidden="true"></div><header><div class="brand"><span class="brand-orb">?</span><div><b>WHO WANTS TO BE A MILLIONAIRE?</b><small>EDISI BAHASA INDONESIA</small></div></div><div class="header-actions"><button class="icon-btn" id="rulesBtn">ⓘ Aturan</button><button class="icon-btn" id="musicBtn" aria-label="Aktifkan atau matikan musik latar" aria-pressed="true">♪ Musik</button><button class="icon-btn" id="soundBtn" aria-label="Aktifkan atau matikan suara" aria-pressed="true">♫ Suara</button><details class="volume"><summary class="icon-btn" aria-label="Pengaturan volume">☷</summary><div class="volume-box"><label>Volume <output id="volumeText">40%</output><input id="volume" type="range" min="0" max="100" step="5" value="40" aria-label="Volume suara"></label></div></details><button class="icon-btn" id="fullscreenBtn" aria-label="Layar penuh">⛶</button></div></header><section id="welcome" class="screen"><div class="welcome-logo"><div class="emblem" id="welcomeEmblem"></div><p>Lima belas langkah menuju satu miliar.</p><small>Kosakata · Sastra · Majas · Peribahasa</small></div><div class="welcome-panel"><div class="eyebrow">THE HOT SEAT IS YOURS</div><h1>Berani menjadi<br><span>miliarder bahasa?</span></h1><p>Satu kursi panas. Empat pilihan. Tiga bantuan.<br>Seberapa jauh pengetahuanmu akan membawamu?</p><label for="nameInput">NAMA PESERTA / KELOMPOK</label><input id="nameInput" maxlength="24" value="Peserta 1" autocomplete="off"><label for="timeMode">FORMAT PERMAINAN</label><select id="timeMode"><option value="0">Klasik — tanpa batas waktu</option><option value="60">Tantangan — 60 detik per soal</option><option value="45">Tantangan — 45 detik per soal</option></select><button id="startBtn" class="gold-btn">MASUK KE KURSI PANAS <span>›</span></button><div class="panel-notes"><div>PERTANYAAN<b>15 tingkat</b></div><div>TITIK AMAN<b>Soal 5 & 10</b></div><div>HADIAH VIRTUAL<b>Rp1 miliar</b></div></div><div class="welcome-bottom"><button id="welcomeRules">Cara bermain</button><span>·</span><button id="welcomeRecords">Rekor peserta</button></div></div></section><section id="gameScreen" class="screen" hidden><div class="game-left"><div class="game-toolbar"><div class="player-info"><small>PESERTA DI KURSI PANAS</small><b id="contestantName">Peserta 1</b></div><div class="lifelines"><button class="life" id="lifeFifty" aria-label="Bantuan 50:50, hilangkan dua jawaban salah">50:50</button><button class="life" id="lifePhone" aria-label="Bantuan telepon teman"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M10 3q-7 3-4 11t13 11q8 1 9-7l-7-3-4 4q-6-3-8-9l5-3z"/><path d="M26 3q8 1 8 9m-8-4q4 0 4 4"/></svg></button><button class="life" id="lifeAudience" aria-label="Bantuan tanya penonton"><svg viewBox="0 0 42 28" aria-hidden="true"><circle cx="21" cy="7" r="4"/><circle cx="9" cy="10" r="3"/><circle cx="33" cy="10" r="3"/><path d="M14 25v-9q7-7 14 0v9M3 24v-7q6-5 11 0m14 0q5-5 11 0v7"/></svg></button></div></div><div class="studio-scene"><div class="beam" aria-hidden="true"></div><div class="beam b2" aria-hidden="true"></div><div class="beam b3" aria-hidden="true"></div><div class="studio-floor" aria-hidden="true"></div><div class="emblem" id="gameEmblem"></div><svg class="chair-svg chair-left" viewBox="0 0 130 170" aria-hidden="true"><path d="M41 150h45M64 149V95M38 90h51" stroke="#7e82aa" stroke-width="4" fill="none"/><path d="M36 66q25-15 52 0l-2 29H38z" fill="#1c1c39" stroke="#5b5982" stroke-width="3"/><path d="M45 42q20-14 36 1l12 39-26 9-25-8z" fill="#18172c" stroke="#34375f" stroke-width="2"/><circle cx="63" cy="27" r="15" fill="#13192e" stroke="#353a64" stroke-width="2"/><path d="M52 92l-10 32 23 24m13-57 14 30 11 29" stroke="#161b32" stroke-width="11" fill="none" stroke-linecap="round"/></svg><svg class="chair-svg chair-right" viewBox="0 0 130 170" aria-hidden="true"><path d="M41 150h45M64 149V95M38 90h51" stroke="#7e82aa" stroke-width="4" fill="none"/><path d="M36 66q25-15 52 0l-2 29H38z" fill="#1c1c39" stroke="#5b5982" stroke-width="3"/><path d="M45 42q20-14 36 1l12 39-26 9-25-8z" fill="#1a183b" stroke="#53507c" stroke-width="2"/><circle cx="63" cy="27" r="15" fill="#151b34" stroke="#47466c" stroke-width="2"/><path d="M52 92l-10 32 23 24m13-57 14 30 11 29" stroke="#1a203d" stroke-width="11" fill="none" stroke-linecap="round"/></svg><div id="timerDisc" class="timer-disc" hidden aria-label="Sisa waktu">60</div><div class="playing-prize"><small id="playingLabel">PERTANYAAN SENILAI</small><strong id="playingPrize">Rp50.000</strong></div></div><div class="host-caption" id="hostCaption" aria-live="polite">Selamat datang di kursi panas.</div><div class="qa"><div class="question-meta"><span id="questionMeta">PERTANYAAN 1 / 15</span><span id="questionCategory">KOSAKATA</span><button class="mobile-ladder-btn" id="mobileLadder">Tangga hadiah ↗</button></div><div class="question-card"><svg class="frame" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true"><path d="M38 1H762L799 50 762 99H38L1 50Z"/></svg><p class="question-text" id="questionText">Pertanyaan akan muncul di sini.</p></div><div id="answers" class="answers"></div><div class="game-actions"><button class="walk-btn" id="walkBtn">Berhenti & bawa hadiah</button><button class="gold-btn lock-btn" id="lockBtn" disabled>JAWABAN AKHIR <span>›</span></button></div></div></div><aside class="prize-rail"><div class="rail-head"><h2>TANGGA HADIAH</h2><span>15 TINGKAT</span></div><ol class="ladder" id="ladder"></ol><div class="guarantee"><div><small>SUDAH DIRAIH</small><strong id="wonPrize">Rp0</strong></div><div><small>JAMINAN AMAN</small><strong id="safePrize">Rp0</strong></div></div><button id="recordsBtn" class="record-btn">♜ Rekor peserta</button></aside></section><footer class="small-print">ADAPTASI EDUKASI INDEPENDEN · HADIAH VIRTUAL · 125 SOAL BAHASA INDONESIA</footer><div class="confetti" id="confetti" hidden></div><div class="modal" id="modal" hidden><div class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"></div></div></div><script>
+const BANK=[
+  {
+    "id": "BI001",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Persamaan makna kata disebut …",
+    "options": [
+      "Sinonim",
+      "Antonim",
+      "Paragraf",
+      "Kalimat"
+    ],
+    "correct": 0,
+    "explanation": "Sinonim menghubungkan kata yang memiliki makna sama atau hampir sama."
+  },
+  {
+    "id": "BI002",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Lawan kata disebut …",
+    "options": [
+      "Antonim",
+      "Sinonim",
+      "Diksi",
+      "Tema"
+    ],
+    "correct": 0,
+    "explanation": "Antonim adalah kata yang maknanya berlawanan; sinonim adalah kata yang maknanya sama atau hampir sama."
+  },
+  {
+    "id": "BI003",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Lawan kata \"rajin\" adalah …",
+    "options": [
+      "Malas",
+      "Pandai",
+      "Cepat",
+      "Tekun"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Malas”. Lawan kata \"rajin\" adalah"
+  },
+  {
+    "id": "BI004",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Sinonim kata \"gembira\" adalah …",
+    "options": [
+      "Senang",
+      "Sedih",
+      "Marah",
+      "Takut"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Senang”. Sinonim kata \"gembira\" adalah"
+  },
+  {
+    "id": "BI005",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Penulisan baku untuk tempat membeli obat adalah …",
+    "options": [
+      "Apotek",
+      "Apotik",
+      "Apotiek",
+      "Apoteq"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Apotek”. Penulisan baku untuk tempat membeli obat adalah"
+  },
+  {
+    "id": "BI006",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Penulisan baku untuk anjuran yang baik adalah …",
+    "options": [
+      "Nasihat",
+      "Nasehat",
+      "Nasihet",
+      "Nasehet"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Nasihat”. Penulisan baku untuk anjuran yang baik adalah"
+  },
+  {
+    "id": "BI007",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Kalimat tanya diakhiri tanda …",
+    "options": [
+      "Tanya (?)",
+      "Titik (.)",
+      "Koma (,)",
+      "Titik dua (:)"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Tanya (?)”. Kalimat tanya diakhiri tanda"
+  },
+  {
+    "id": "BI008",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Huruf pertama nama orang ditulis dengan huruf …",
+    "options": [
+      "Kapital",
+      "Kecil",
+      "Miring",
+      "Tebal"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Kapital”. Huruf pertama nama orang ditulis dengan huruf"
+  },
+  {
+    "id": "BI009",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Kata kerja dalam kalimat \"Rina membaca buku\" adalah …",
+    "options": [
+      "Membaca",
+      "Rina",
+      "Buku",
+      "Rina membaca"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Membaca”. Kata kerja dalam kalimat \"Rina membaca buku\" adalah"
+  },
+  {
+    "id": "BI010",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Kata sifat pada kalimat \"Bunga itu indah\" adalah …",
+    "options": [
+      "Indah",
+      "Bunga",
+      "Itu",
+      "Bunga itu"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Indah”. Kata sifat pada kalimat \"Bunga itu indah\" adalah"
+  },
+  {
+    "id": "BI011",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Buku yang memuat arti kata disebut …",
+    "options": [
+      "Kamus",
+      "Atlas",
+      "Album",
+      "Komik"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Kamus”. Buku yang memuat arti kata disebut"
+  },
+  {
+    "id": "BI012",
+    "category": "Kosakata & Kaidah",
+    "level": "easy",
+    "q": "Orang yang memberi informasi dalam wawancara disebut …",
+    "options": [
+      "Narasumber",
+      "Pembaca",
+      "Pendengar",
+      "Penonton"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Narasumber”. Orang yang memberi informasi dalam wawancara disebut"
+  },
+  {
+    "id": "BI013",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Penulisan kata depan yang benar adalah …",
+    "options": [
+      "Di sekolah",
+      "Disekolah",
+      "Di-sekolah",
+      "DiSekolah"
+    ],
+    "correct": 0,
+    "explanation": "Di sebagai kata depan penunjuk tempat ditulis terpisah: di sekolah. Di- sebagai imbuhan ditulis serangkai: dibaca."
+  },
+  {
+    "id": "BI014",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Penulisan imbuhan yang benar adalah …",
+    "options": [
+      "Dibaca",
+      "Di baca",
+      "Di-baca",
+      "DiBaca"
+    ],
+    "correct": 0,
+    "explanation": "Di- pada kata kerja pasif merupakan imbuhan, sehingga ditulis serangkai dengan kata dasarnya: dibaca."
+  },
+  {
+    "id": "BI015",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kata penghubung sebab dalam kalimat adalah …",
+    "options": [
+      "Karena",
+      "Tetapi",
+      "Dan",
+      "Atau"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Karena”. Kata penghubung sebab dalam kalimat adalah"
+  },
+  {
+    "id": "BI016",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kalimat yang berisi ajakan adalah …",
+    "options": [
+      "Mari menjaga kebersihan kelas!",
+      "Di mana bukumu?",
+      "Hujan turun sore ini.",
+      "Adik membaca cerita."
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Mari menjaga kebersihan kelas!”. Kalimat yang berisi ajakan adalah"
+  },
+  {
+    "id": "BI017",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kata baku yang tepat adalah …",
+    "options": [
+      "Aktivitas",
+      "Aktifitas",
+      "Aktivitet",
+      "Aktipitas"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Aktivitas”. Kata baku yang tepat adalah"
+  },
+  {
+    "id": "BI018",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kata baku yang tepat adalah …",
+    "options": [
+      "Risiko",
+      "Resiko",
+      "Ressiko",
+      "Riziko"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Risiko”. Kata baku yang tepat adalah"
+  },
+  {
+    "id": "BI019",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kata penghubung yang menyatakan pilihan adalah …",
+    "options": [
+      "Atau",
+      "Dan",
+      "Karena",
+      "Sehingga"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Atau”. Kata penghubung yang menyatakan pilihan adalah"
+  },
+  {
+    "id": "BI020",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kata penghubung pertentangan adalah …",
+    "options": [
+      "Tetapi",
+      "Dan",
+      "Atau",
+      "Kemudian"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Tetapi”. Kata penghubung pertentangan adalah"
+  },
+  {
+    "id": "BI021",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Kata dasar dari \"bermain\" adalah …",
+    "options": [
+      "Main",
+      "Bermain",
+      "Beri",
+      "Permainan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Main”. Kata dasar dari \"bermain\" adalah"
+  },
+  {
+    "id": "BI022",
+    "category": "Kosakata & Kaidah",
+    "level": "medium",
+    "q": "Inti pokok sebuah paragraf disebut …",
+    "options": [
+      "Gagasan utama",
+      "Kalimat tanya",
+      "Tanda baca",
+      "Daftar isi"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Gagasan utama”. Inti pokok sebuah paragraf disebut"
+  },
+  {
+    "id": "BI023",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "\"Rina membaca buku di perpustakaan.\" Subjek kalimat tersebut adalah …",
+    "options": [
+      "Rina",
+      "Membaca",
+      "Buku",
+      "Di perpustakaan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Rina”. \"Rina membaca buku di perpustakaan.\" Subjek kalimat tersebut adalah"
+  },
+  {
+    "id": "BI024",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "\"Adik menulis surat.\" Objek kalimat tersebut adalah …",
+    "options": [
+      "Surat",
+      "Adik",
+      "Menulis",
+      "Adik menulis"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Surat”. \"Adik menulis surat.\" Objek kalimat tersebut adalah"
+  },
+  {
+    "id": "BI025",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Kalimat yang paling efektif adalah …",
+    "options": [
+      "Para siswa mengikuti upacara.",
+      "Para siswa-siswa mengikuti upacara.",
+      "Semua para siswa mengikuti upacara.",
+      "Para siswa mengikuti upacara bersama-sama semuanya."
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Para siswa mengikuti upacara.”. Kalimat yang paling efektif adalah"
+  },
+  {
+    "id": "BI026",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Penulisan huruf kapital yang tepat adalah …",
+    "options": [
+      "Rani lahir di Bandung.",
+      "rani lahir di Bandung.",
+      "Rani lahir di bandung.",
+      "Rani Lahir Di Bandung."
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Rani lahir di Bandung.”. Penulisan huruf kapital yang tepat adalah"
+  },
+  {
+    "id": "BI027",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Penulisan kalimat langsung yang tepat adalah …",
+    "options": [
+      "Ibu berkata, \"Ayo belajar!\"",
+      "Ibu berkata \"Ayo belajar\"!",
+      "Ibu berkata: ayo belajar!",
+      "\"Ibu berkata, Ayo belajar!\""
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Ibu berkata, \"Ayo belajar!\"”. Penulisan kalimat langsung yang tepat adalah"
+  },
+  {
+    "id": "BI028",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Pernyataan yang merupakan opini adalah …",
+    "options": [
+      "Menurut saya, novel itu sangat menarik.",
+      "Pantun itu terdiri atas empat baris.",
+      "Buku ini memiliki dua ratus halaman.",
+      "Perpustakaan dibuka pada pukul delapan."
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Menurut saya, novel itu sangat menarik.”. Pernyataan yang merupakan opini adalah"
+  },
+  {
+    "id": "BI029",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Tujuan utama teks persuasi adalah …",
+    "options": [
+      "Mengajak pembaca melakukan sesuatu",
+      "Mencatat semua dialog tokoh",
+      "Menjelaskan daftar pustaka",
+      "Menyusun urutan abjad"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Mengajak pembaca melakukan sesuatu”. Tujuan utama teks persuasi adalah"
+  },
+  {
+    "id": "BI030",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Teks yang menggambarkan objek secara terperinci disebut …",
+    "options": [
+      "Deskripsi",
+      "Persuasi",
+      "Argumentasi",
+      "Negosiasi"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Deskripsi”. Teks yang menggambarkan objek secara terperinci disebut"
+  },
+  {
+    "id": "BI031",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "Teks yang menceritakan kejadian secara berurutan disebut …",
+    "options": [
+      "Narasi",
+      "Deskripsi",
+      "Definisi",
+      "Daftar isi"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Narasi”. Teks yang menceritakan kejadian secara berurutan disebut"
+  },
+  {
+    "id": "BI032",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "\"Budi belajar tekun sehingga lulus ujian.\" Kata sehingga menunjukkan …",
+    "options": [
+      "Hubungan akibat",
+      "Hubungan pilihan",
+      "Hubungan pertentangan",
+      "Hubungan perbandingan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Hubungan akibat”. \"Budi belajar tekun sehingga lulus ujian.\" Kata sehingga menunjukkan"
+  },
+  {
+    "id": "BI033",
+    "category": "Kosakata & Kaidah",
+    "level": "hard",
+    "q": "\"Meskipun hujan, mereka tetap berangkat.\" Hubungan makna kalimat tersebut …",
+    "options": [
+      "Konsesif atau pertentangan keadaan",
+      "Sebab dan akibat langsung",
+      "Pilihan antara dua tindakan",
+      "Urutan waktu kejadian"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Konsesif atau pertentangan keadaan”. \"Meskipun hujan, mereka tetap berangkat.\" Hubungan makna kalimat tersebut"
+  },
+  {
+    "id": "BI034",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Tokoh dalam cerita adalah …",
+    "options": [
+      "Pelaku cerita",
+      "Tempat cerita",
+      "Pesan cerita",
+      "Judul cerita"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Pelaku cerita”. Tokoh dalam cerita adalah"
+  },
+  {
+    "id": "BI035",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Tempat dan waktu cerita disebut …",
+    "options": [
+      "Latar",
+      "Tokoh",
+      "Amanat",
+      "Dialog"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Latar”. Tempat dan waktu cerita disebut"
+  },
+  {
+    "id": "BI036",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Pesan dalam sebuah cerita disebut …",
+    "options": [
+      "Amanat",
+      "Latar",
+      "Alur",
+      "Sampiran"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Amanat”. Pesan dalam sebuah cerita disebut"
+  },
+  {
+    "id": "BI037",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Rangkaian peristiwa dalam cerita disebut …",
+    "options": [
+      "Alur",
+      "Bait",
+      "Rima",
+      "Diksi"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Alur”. Rangkaian peristiwa dalam cerita disebut"
+  },
+  {
+    "id": "BI038",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Cerita dengan tokoh hewan yang bertingkah seperti manusia disebut …",
+    "options": [
+      "Fabel",
+      "Biografi",
+      "Berita",
+      "Laporan"
+    ],
+    "correct": 0,
+    "explanation": "Fabel menampilkan hewan sebagai tokoh yang berperilaku seperti manusia dan biasanya membawa pesan moral."
+  },
+  {
+    "id": "BI039",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Puisi lama dengan sampiran dan isi disebut …",
+    "options": [
+      "Pantun",
+      "Novel",
+      "Cerpen",
+      "Drama"
+    ],
+    "correct": 0,
+    "explanation": "Pantun umumnya terdiri atas empat baris: dua baris sampiran dan dua baris isi, dengan rima a-b-a-b."
+  },
+  {
+    "id": "BI040",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Pantun biasanya terdiri atas berapa baris dalam satu bait?",
+    "options": [
+      "Empat",
+      "Dua",
+      "Tiga",
+      "Lima"
+    ],
+    "correct": 0,
+    "explanation": "Pantun umumnya terdiri atas empat baris: dua baris sampiran dan dua baris isi, dengan rima a-b-a-b."
+  },
+  {
+    "id": "BI041",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Percakapan dua tokoh atau lebih disebut …",
+    "options": [
+      "Dialog",
+      "Monolog",
+      "Prolog",
+      "Epilog"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Dialog”. Percakapan dua tokoh atau lebih disebut"
+  },
+  {
+    "id": "BI042",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Gagasan utama sebuah cerita disebut …",
+    "options": [
+      "Tema",
+      "Rima",
+      "Baris",
+      "Dialog"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Tema”. Gagasan utama sebuah cerita disebut"
+  },
+  {
+    "id": "BI043",
+    "category": "Sastra",
+    "level": "easy",
+    "q": "Sebutan lain untuk cerita pendek adalah …",
+    "options": [
+      "Cerpen",
+      "Novel",
+      "Syair",
+      "Gurindam"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Cerpen”. Sebutan lain untuk cerita pendek adalah"
+  },
+  {
+    "id": "BI044",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Rima pantun yang paling umum adalah …",
+    "options": [
+      "a-b-a-b",
+      "a-a-a-a",
+      "a-b-b-b",
+      "a-a-b-b"
+    ],
+    "correct": 0,
+    "explanation": "Pantun umumnya terdiri atas empat baris: dua baris sampiran dan dua baris isi, dengan rima a-b-a-b."
+  },
+  {
+    "id": "BI045",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Baris pertama dan kedua pantun disebut …",
+    "options": [
+      "Sampiran",
+      "Isi",
+      "Amanat",
+      "Penutup"
+    ],
+    "correct": 0,
+    "explanation": "Pantun umumnya terdiri atas empat baris: dua baris sampiran dan dua baris isi, dengan rima a-b-a-b."
+  },
+  {
+    "id": "BI046",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Puisi lama empat baris dengan seluruh baris berupa isi disebut …",
+    "options": [
+      "Syair",
+      "Pantun",
+      "Cerpen",
+      "Fabel"
+    ],
+    "correct": 0,
+    "explanation": "Syair terdiri atas empat baris per bait. Semua baris merupakan isi dan biasanya berima a-a-a-a."
+  },
+  {
+    "id": "BI047",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Puisi lama dua baris yang biasanya berisi nasihat disebut …",
+    "options": [
+      "Gurindam",
+      "Syair",
+      "Novel",
+      "Dialog"
+    ],
+    "correct": 0,
+    "explanation": "Gurindam adalah puisi lama dua baris yang saling berhubungan dan biasanya berisi nasihat."
+  },
+  {
+    "id": "BI048",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Pilihan kata yang digunakan pengarang disebut …",
+    "options": [
+      "Diksi",
+      "Rima",
+      "Alur",
+      "Latar"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Diksi”. Pilihan kata yang digunakan pengarang disebut"
+  },
+  {
+    "id": "BI049",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Tokoh yang biasanya menentang tokoh utama disebut …",
+    "options": [
+      "Antagonis",
+      "Protagonis",
+      "Narator",
+      "Pengarang"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Antagonis”. Tokoh yang biasanya menentang tokoh utama disebut"
+  },
+  {
+    "id": "BI050",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Cerita rakyat yang berkaitan dengan asal-usul tempat disebut …",
+    "options": [
+      "Legenda",
+      "Laporan",
+      "Biografi",
+      "Iklan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Legenda”. Cerita rakyat yang berkaitan dengan asal-usul tempat disebut"
+  },
+  {
+    "id": "BI051",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Ucapan panjang seorang tokoh tanpa percakapan dengan tokoh lain disebut …",
+    "options": [
+      "Monolog",
+      "Dialog",
+      "Epilog",
+      "Katalog"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Monolog”. Ucapan panjang seorang tokoh tanpa percakapan dengan tokoh lain disebut"
+  },
+  {
+    "id": "BI052",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Kelompok beberapa baris dalam puisi disebut …",
+    "options": [
+      "Bait",
+      "Bab",
+      "Dialog",
+      "Judul"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Bait”. Kelompok beberapa baris dalam puisi disebut"
+  },
+  {
+    "id": "BI053",
+    "category": "Sastra",
+    "level": "medium",
+    "q": "Persamaan bunyi dalam puisi disebut …",
+    "options": [
+      "Rima",
+      "Tema",
+      "Tokoh",
+      "Alur"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Rima”. Persamaan bunyi dalam puisi disebut"
+  },
+  {
+    "id": "BI054",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "\"Aku\" sebagai tokoh yang menceritakan pengalamannya sendiri menunjukkan sudut pandang …",
+    "options": [
+      "Orang pertama",
+      "Orang kedua",
+      "Orang ketiga serbatahu",
+      "Orang ketiga pengamat"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Orang pertama”. \"Aku\" sebagai tokoh yang menceritakan pengalamannya sendiri menunjukkan sudut pandang"
+  },
+  {
+    "id": "BI055",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "Bagian cerita ketika konflik mencapai puncaknya disebut …",
+    "options": [
+      "Klimaks",
+      "Orientasi",
+      "Pengenalan",
+      "Penutup"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Klimaks”. Bagian cerita ketika konflik mencapai puncaknya disebut"
+  },
+  {
+    "id": "BI056",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "\"Di desa itu, setiap pagi terdengar kokok ayam.\" Kutipan ini menunjukkan …",
+    "options": [
+      "Latar tempat dan waktu",
+      "Watak antagonis",
+      "Sudut pandang kedua",
+      "Konflik batin tokoh"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Latar tempat dan waktu”. \"Di desa itu, setiap pagi terdengar kokok ayam.\" Kutipan ini menunjukkan"
+  },
+  {
+    "id": "BI057",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "Alur yang menceritakan kejadian dari awal hingga akhir secara berurutan disebut …",
+    "options": [
+      "Alur maju",
+      "Alur mundur",
+      "Alur campuran",
+      "Alur sorot balik"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Alur maju”. Alur yang menceritakan kejadian dari awal hingga akhir secara berurutan disebut"
+  },
+  {
+    "id": "BI058",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "Cerita dimulai dari masa kini lalu kembali ke masa kecil tokoh. Teknik ini disebut …",
+    "options": [
+      "Sorot balik",
+      "Dialog langsung",
+      "Monolog batin",
+      "Penokohan langsung"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Sorot balik”. Cerita dimulai dari masa kini lalu kembali ke masa kecil tokoh. Teknik ini disebut"
+  },
+  {
+    "id": "BI059",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "\"Dita tetap menolong orang yang mengejeknya.\" Nilai yang tampak adalah …",
+    "options": [
+      "Kebaikan hati",
+      "Kesombongan",
+      "Kecurangan",
+      "Ketidakpedulian"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Kebaikan hati”. \"Dita tetap menolong orang yang mengejeknya.\" Nilai yang tampak adalah"
+  },
+  {
+    "id": "BI060",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "Amanat cerita sebaiknya ditentukan berdasarkan …",
+    "options": [
+      "Peristiwa dan tindakan tokoh",
+      "Jumlah halaman buku",
+      "Ukuran huruf judul",
+      "Warna sampul buku"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Peristiwa dan tindakan tokoh”. Amanat cerita sebaiknya ditentukan berdasarkan"
+  },
+  {
+    "id": "BI061",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "\"Ia menyimpan dompet temuan untuk dikembalikan.\" Watak tokoh tersebut …",
+    "options": [
+      "Jujur",
+      "Licik",
+      "Sombong",
+      "Pemarah"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Jujur”. \"Ia menyimpan dompet temuan untuk dikembalikan.\" Watak tokoh tersebut"
+  },
+  {
+    "id": "BI062",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "\"Siti melihat Bima berlari menuju rumahnya.\" Kata ia/dia pada narasi umumnya menunjukkan sudut pandang …",
+    "options": [
+      "Orang ketiga",
+      "Orang pertama",
+      "Orang kedua",
+      "Tokoh aku"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Orang ketiga”. \"Siti melihat Bima berlari menuju rumahnya.\" Kata ia/dia pada narasi umumnya menunjukkan sudut pandang"
+  },
+  {
+    "id": "BI063",
+    "category": "Sastra",
+    "level": "hard",
+    "q": "Perbedaan utama prosa dan puisi terletak pada …",
+    "options": [
+      "Bentuk penyajian bahasanya",
+      "Jenis kertas yang dipakai",
+      "Tempat buku dijual",
+      "Usia semua pembacanya"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Bentuk penyajian bahasanya”. Perbedaan utama prosa dan puisi terletak pada"
+  },
+  {
+    "id": "BI064",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Ungkapan \"buah tangan\" berarti …",
+    "options": [
+      "Oleh-oleh",
+      "Buah segar",
+      "Makanan pokok",
+      "Pekerjaan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Oleh-oleh”. Ungkapan \"buah tangan\" berarti"
+  },
+  {
+    "id": "BI065",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Ungkapan \"kutu buku\" ditujukan kepada orang yang …",
+    "options": [
+      "Gemar membaca",
+      "Suka berenang",
+      "Rajin memasak",
+      "Pandai menari"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Gemar membaca”. Ungkapan \"kutu buku\" ditujukan kepada orang yang"
+  },
+  {
+    "id": "BI066",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Sifat \"rendah hati\" berarti …",
+    "options": [
+      "Tidak sombong",
+      "Mudah marah",
+      "Tidak peduli",
+      "Selalu takut"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Tidak sombong”. Sifat \"rendah hati\" berarti"
+  },
+  {
+    "id": "BI067",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Ungkapan \"besar kepala\" berarti …",
+    "options": [
+      "Sombong",
+      "Ramah",
+      "Rajin",
+      "Sabar"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Sombong”. Ungkapan \"besar kepala\" berarti"
+  },
+  {
+    "id": "BI068",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Ungkapan \"buah hati\" berarti …",
+    "options": [
+      "Anak",
+      "Hadiah",
+      "Pikiran",
+      "Kabar"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Anak”. Ungkapan \"buah hati\" berarti"
+  },
+  {
+    "id": "BI069",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Ungkapan \"panjang tangan\" berarti …",
+    "options": [
+      "Suka mencuri",
+      "Suka membaca",
+      "Rajin bekerja",
+      "Mudah memaafkan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Suka mencuri”. Ungkapan \"panjang tangan\" berarti"
+  },
+  {
+    "id": "BI070",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Ungkapan \"keras kepala\" berarti …",
+    "options": [
+      "Sulit dinasihati",
+      "Tidak sombong",
+      "Suka berbagi",
+      "Gemar belajar"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Sulit dinasihati”. Ungkapan \"keras kepala\" berarti"
+  },
+  {
+    "id": "BI071",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "\"Buah bibir\" berarti …",
+    "options": [
+      "Bahan pembicaraan",
+      "Hasil kebun",
+      "Hadiah lomba",
+      "Nama makanan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Bahan pembicaraan”. \"Buah bibir\" berarti"
+  },
+  {
+    "id": "BI072",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "Orang kepercayaan sering disebut …",
+    "options": [
+      "Tangan kanan",
+      "Panjang tangan",
+      "Besar kepala",
+      "Buah tangan"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Tangan kanan”. Orang kepercayaan sering disebut"
+  },
+  {
+    "id": "BI073",
+    "category": "Majas & Peribahasa",
+    "level": "easy",
+    "q": "\"Naik darah\" berarti …",
+    "options": [
+      "Marah",
+      "Gembira",
+      "Lapar",
+      "Bingung"
+    ],
+    "correct": 0,
+    "explanation": "Jawaban yang tepat adalah “Marah”. \"Naik darah\" berarti"
+  },
+  {
+    "id": "BI074",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Angin berbisik di antara pepohonan\" menggunakan majas …",
+    "options": [
+      "Personifikasi",
+      "Hiperbola",
+      "Litotes",
+      "Ironi"
+    ],
+    "correct": 0,
+    "explanation": "Personifikasi memberi sifat atau perilaku manusia kepada benda, alam, atau hal yang bukan manusia."
+  },
+  {
+    "id": "BI075",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Tangisnya membanjiri seluruh kota\" menggunakan majas …",
+    "options": [
+      "Hiperbola",
+      "Litotes",
+      "Ironi",
+      "Personifikasi"
+    ],
+    "correct": 0,
+    "explanation": "Hiperbola memakai ungkapan yang dilebih-lebihkan untuk menegaskan kesan tertentu."
+  },
+  {
+    "id": "BI076",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Dia adalah bintang kelas\" menggunakan majas …",
+    "options": [
+      "Metafora",
+      "Personifikasi",
+      "Litotes",
+      "Ironi"
+    ],
+    "correct": 0,
+    "explanation": "Metafora membandingkan secara langsung, tanpa kata pembanding seperti bagai atau laksana."
+  },
+  {
+    "id": "BI077",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Wajahnya bersinar bagai bulan\" menggunakan majas …",
+    "options": [
+      "Simile",
+      "Ironi",
+      "Litotes",
+      "Metonimia"
+    ],
+    "correct": 0,
+    "explanation": "Simile menyatakan perbandingan dengan kata seperti, bagai, laksana, atau seumpama."
+  },
+  {
+    "id": "BI078",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Silakan mampir ke gubuk kami,\" kata pemilik rumah megah. Majasnya …",
+    "options": [
+      "Litotes",
+      "Hiperbola",
+      "Simile",
+      "Personifikasi"
+    ],
+    "correct": 0,
+    "explanation": "Litotes mengecilkan kenyataan atau merendahkan diri, misalnya menyebut rumah megah sebagai gubuk."
+  },
+  {
+    "id": "BI079",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Rajin sekali, tugas satu pun belum kamu kerjakan!\" adalah majas …",
+    "options": [
+      "Ironi",
+      "Simile",
+      "Metafora",
+      "Litotes"
+    ],
+    "correct": 0,
+    "explanation": "Ironi menyindir dengan menyatakan sesuatu yang berlawanan dengan kenyataan."
+  },
+  {
+    "id": "BI080",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Besar pasak daripada tiang\" berarti …",
+    "options": [
+      "Pengeluaran melebihi pendapatan",
+      "Pendapatan selalu bertambah",
+      "Pekerjaan selesai tepat waktu",
+      "Bekerja tanpa bantuan"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: pengeluaran melebihi pendapatan."
+  },
+  {
+    "id": "BI081",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Berat sama dipikul, ringan sama dijinjing\" mengajarkan …",
+    "options": [
+      "Menanggung suka duka bersama",
+      "Bersaing tanpa aturan",
+      "Mengandalkan orang lain",
+      "Menghindari tanggung jawab"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: menanggung suka duka bersama."
+  },
+  {
+    "id": "BI082",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Bagai pinang dibelah dua\" menggambarkan dua hal yang …",
+    "options": [
+      "Sangat mirip",
+      "Saling bermusuhan",
+      "Sangat berjauhan",
+      "Tidak cocok"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: sangat mirip."
+  },
+  {
+    "id": "BI083",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Air beriak tanda tak dalam\" menyindir orang yang …",
+    "options": [
+      "Banyak bicara tetapi kurang berilmu",
+      "Rajin belajar dan rendah hati",
+      "Pendiam tetapi pandai",
+      "Tekun bekerja setiap hari"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: banyak bicara tetapi kurang berilmu."
+  },
+  {
+    "id": "BI084",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Sedikit demi sedikit, lama-lama menjadi bukit\" mengajarkan …",
+    "options": [
+      "Ketekunan menghasilkan hal besar",
+      "Hasil harus selalu cepat",
+      "Lebih baik berhenti mencoba",
+      "Keberhasilan tidak perlu usaha"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: ketekunan menghasilkan hal besar."
+  },
+  {
+    "id": "BI085",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Bagai air di daun talas\" menggambarkan orang yang …",
+    "options": [
+      "Tidak tetap pendirian",
+      "Sangat sabar",
+      "Suka menolong",
+      "Pandai berhemat"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: tidak tetap pendirian."
+  },
+  {
+    "id": "BI086",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Kambing hitam\" berarti …",
+    "options": [
+      "Pihak yang dipersalahkan",
+      "Pemimpin kelompok",
+      "Pekerja paling rajin",
+      "Orang yang dipercaya"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: pihak yang dipersalahkan."
+  },
+  {
+    "id": "BI087",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Banting tulang\" berarti …",
+    "options": [
+      "Bekerja sangat keras",
+      "Melakukan olahraga",
+      "Meninggalkan rumah",
+      "Menyimpan rahasia"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: bekerja sangat keras."
+  },
+  {
+    "id": "BI088",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Gulung tikar\" dalam dunia usaha berarti …",
+    "options": [
+      "Bangkrut",
+      "Membuka cabang",
+      "Mendapat keuntungan",
+      "Menambah modal"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: bangkrut."
+  },
+  {
+    "id": "BI089",
+    "category": "Majas & Peribahasa",
+    "level": "medium",
+    "q": "\"Kepala dingin\" berarti menghadapi masalah dengan …",
+    "options": [
+      "Tenang",
+      "Marah",
+      "Tergesa-gesa",
+      "Takut"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: tenang."
+  },
+  {
+    "id": "BI090",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "\"Matahari tersenyum menyambut pagi.\" Mengapa disebut personifikasi?",
+    "options": [
+      "Matahari diberi perilaku manusia",
+      "Ada perbandingan memakai bagai",
+      "Keadaan dinyatakan berlebihan",
+      "Penutur merendahkan diri"
+    ],
+    "correct": 0,
+    "explanation": "Personifikasi memberi sifat atau perilaku manusia kepada benda, alam, atau hal yang bukan manusia."
+  },
+  {
+    "id": "BI091",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "\"Suaranya menggelegar membelah langit.\" Ciri majas hiperbola pada kalimat itu adalah …",
+    "options": [
+      "Ungkapannya dilebih-lebihkan",
+      "Benda mati diberi perasaan",
+      "Ada sindiran berlawanan",
+      "Ada pengulangan bunyi"
+    ],
+    "correct": 0,
+    "explanation": "Hiperbola memakai ungkapan yang dilebih-lebihkan untuk menegaskan kesan tertentu."
+  },
+  {
+    "id": "BI092",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Dina meminta maaf dan menerima kritik dengan ikhlas. Ungkapan yang sesuai …",
+    "options": [
+      "Lapang dada",
+      "Besar kepala",
+      "Panjang tangan",
+      "Naik darah"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: lapang dada."
+  },
+  {
+    "id": "BI093",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Kakak menjadi penopang utama biaya hidup keluarga. Ia disebut …",
+    "options": [
+      "Tulang punggung",
+      "Buah bibir",
+      "Kambing hitam",
+      "Kepala batu"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: tulang punggung."
+  },
+  {
+    "id": "BI094",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Sinta selalu membawa oleh-oleh ketika pulang. Ungkapan untuk oleh-oleh itu …",
+    "options": [
+      "Buah tangan",
+      "Buah hati",
+      "Buah bibir",
+      "Buah pikiran"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: buah tangan."
+  },
+  {
+    "id": "BI095",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Raka suka menyalahkan temannya atas kesalahan sendiri. Temannya dijadikan …",
+    "options": [
+      "Kambing hitam",
+      "Tangan kanan",
+      "Bintang kelas",
+      "Buah hati"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: kambing hitam."
+  },
+  {
+    "id": "BI096",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Dua orang yang selalu berselisih digambarkan dengan peribahasa …",
+    "options": [
+      "Bagai anjing dengan kucing",
+      "Bagai pinang dibelah dua",
+      "Air tenang menghanyutkan",
+      "Seperti ilmu padi"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: bagai anjing dengan kucing."
+  },
+  {
+    "id": "BI097",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Peribahasa yang mengingatkan orang agar tidak melupakan asal-usulnya …",
+    "options": [
+      "Kacang lupa kulitnya",
+      "Besar pasak daripada tiang",
+      "Sedia payung sebelum hujan",
+      "Ada gula ada semut"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: kacang lupa kulitnya."
+  },
+  {
+    "id": "BI098",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "Tindakan menabung untuk kebutuhan mendadak sesuai dengan peribahasa …",
+    "options": [
+      "Sedia payung sebelum hujan",
+      "Tong kosong nyaring bunyinya",
+      "Bagai air di daun talas",
+      "Kacang lupa kulitnya"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: sedia payung sebelum hujan."
+  },
+  {
+    "id": "BI099",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "\"Sekali merengkuh dayung, dua tiga pulau terlampaui\" berarti …",
+    "options": [
+      "Satu tindakan mencapai beberapa tujuan",
+      "Bekerja harus dilakukan sendirian",
+      "Tujuan tidak memerlukan rencana",
+      "Semua pekerjaan harus ditunda"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: satu tindakan mencapai beberapa tujuan."
+  },
+  {
+    "id": "BI100",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "\"Seperti ilmu padi, makin berisi makin merunduk\" mengajarkan …",
+    "options": [
+      "Makin berilmu makin rendah hati",
+      "Makin kaya makin sombong",
+      "Makin pandai makin banyak bicara",
+      "Makin dewasa makin keras kepala"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: makin berilmu makin rendah hati."
+  },
+  {
+    "id": "BI101",
+    "category": "Majas & Peribahasa",
+    "level": "hard",
+    "q": "\"Air tenang menghanyutkan\" dapat menggambarkan orang yang …",
+    "options": [
+      "Pendiam tetapi berpengetahuan luas",
+      "Banyak bicara tanpa pengetahuan",
+      "Selalu ragu mengambil keputusan",
+      "Suka memamerkan kelebihan"
+    ],
+    "correct": 0,
+    "explanation": "Dalam konteks ini, ungkapan atau peribahasa tersebut bermakna: pendiam tetapi berpengetahuan luas."
+  },
+  {
+    "id": "BI102",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Dalam kalimat “Bukan hanya pandai, melainkan juga rendah hati”, pasangan konjungsi tersebut termasuk …",
+    "options": [
+      "Konjungsi korelatif",
+      "Konjungsi temporal",
+      "Konjungsi kausal",
+      "Konjungsi syarat"
+    ],
+    "correct": 0,
+    "explanation": "Konjungsi korelatif terdiri atas pasangan penghubung, misalnya bukan hanya … melainkan juga … dan baik … maupun …."
+  },
+  {
+    "id": "BI103",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Kalimat yang mengandung hubungan syarat adalah …",
+    "options": [
+      "Jika hujan turun, kami belajar di rumah.",
+      "Karena hujan turun, kami belajar di rumah.",
+      "Meskipun hujan turun, kami tetap berangkat.",
+      "Kami belajar agar memahami materi."
+    ],
+    "correct": 0,
+    "explanation": "Jika menyatakan syarat. Karena menyatakan sebab, meskipun menyatakan konsesi, dan agar menyatakan tujuan."
+  },
+  {
+    "id": "BI104",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Perubahan makna kata “kepala” dalam “kepala sekolah” terjadi melalui …",
+    "options": [
+      "Perluasan secara metaforis",
+      "Penyempitan secara harfiah",
+      "Pengulangan bentuk kata",
+      "Perubahan ejaan semata"
+    ],
+    "correct": 0,
+    "explanation": "Kepala sebagai bagian tubuh digunakan secara metaforis untuk menyebut pemimpin, yaitu pihak yang mengatur suatu kesatuan."
+  },
+  {
+    "id": "BI105",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Kalimat bermajas paradoks adalah …",
+    "options": [
+      "Ia merasa kesepian di tengah keramaian.",
+      "Air sungai mengalir ke laut.",
+      "Rani membaca buku di taman.",
+      "Wajahnya bagai bulan purnama."
+    ],
+    "correct": 0,
+    "explanation": "Paradoks mempertemukan keadaan yang tampak bertentangan namun dapat terjadi bersamaan: merasa sepi di tengah keramaian."
+  },
+  {
+    "id": "BI106",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Semua menunggu, semua berharap, semua berdoa.” Pengulangan pada awal bagian kalimat ini disebut …",
+    "options": [
+      "Anafora",
+      "Epifora",
+      "Klimaks",
+      "Eufemisme"
+    ],
+    "correct": 0,
+    "explanation": "Anafora mengulang kata atau kelompok kata pada bagian awal beberapa klausa atau baris berturut-turut."
+  },
+  {
+    "id": "BI107",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Yang kucari adalah kedamaian, yang kuharapkan adalah kedamaian.” Pengulangan pada akhir klausa ini disebut …",
+    "options": [
+      "Epifora",
+      "Anafora",
+      "Antitesis",
+      "Metonimia"
+    ],
+    "correct": 0,
+    "explanation": "Epifora mengulang kata atau kelompok kata pada bagian akhir beberapa klausa atau baris berturut-turut."
+  },
+  {
+    "id": "BI108",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Indonesia meraih emas pada final itu.” Jika Indonesia mewakili para atletnya, majas tersebut ialah …",
+    "options": [
+      "Sinekdoke totem pro parte",
+      "Sinekdoke pars pro toto",
+      "Litotes",
+      "Personifikasi"
+    ],
+    "correct": 0,
+    "explanation": "Totem pro parte menyebut keseluruhan untuk mewakili sebagian. Indonesia pada kalimat itu mewakili atlet atau tim Indonesia."
+  },
+  {
+    "id": "BI109",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Sudah dua hari batang hidungnya tidak terlihat.” Majas yang menggunakan sebagian untuk menyatakan keseluruhan ialah …",
+    "options": [
+      "Sinekdoke pars pro toto",
+      "Sinekdoke totem pro parte",
+      "Eufemisme",
+      "Antiklimaks"
+    ],
+    "correct": 0,
+    "explanation": "Pars pro toto menyebut sebagian untuk mewakili keseluruhan. Batang hidung mewakili orang yang dimaksud."
+  },
+  {
+    "id": "BI110",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Hubungan makna kata “mawar” terhadap kata “bunga” adalah …",
+    "options": [
+      "Hiponim terhadap hipernim",
+      "Antonim terhadap sinonim",
+      "Homonim terhadap homofon",
+      "Polisemi terhadap homograf"
+    ],
+    "correct": 0,
+    "explanation": "Mawar adalah jenis yang lebih khusus dari bunga. Mawar merupakan hiponim, sedangkan bunga merupakan hipernimnya."
+  },
+  {
+    "id": "BI111",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Kata “bisa” pada “bisa ular” dan “ia bisa berenang” menunjukkan hubungan …",
+    "options": [
+      "Homonimi",
+      "Sinonimi",
+      "Antonimi",
+      "Hiponimi"
+    ],
+    "correct": 0,
+    "explanation": "Homonim mempunyai bentuk dan pelafalan sama tetapi maknanya berbeda dan tidak berhubungan: bisa berarti racun atau mampu."
+  },
+  {
+    "id": "BI112",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Kata “apel” sebagai buah dan “apel” sebagai upacara menunjukkan …",
+    "options": [
+      "Homografi",
+      "Sinonimi",
+      "Antonimi",
+      "Hiponimi"
+    ],
+    "correct": 0,
+    "explanation": "Homograf memiliki ejaan sama, tetapi pelafalan dan maknanya berbeda. Contohnya apel buah dan apel upacara."
+  },
+  {
+    "id": "BI113",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Dalam kalimat “Rani sudah belajar; oleh karena itu, ia siap ujian”, hubungan maknanya adalah …",
+    "options": [
+      "Akibat dari pernyataan sebelumnya",
+      "Pilihan di antara dua keadaan",
+      "Perbandingan dua sifat",
+      "Waktu yang berlangsung bersamaan"
+    ],
+    "correct": 0,
+    "explanation": "Oleh karena itu menghubungkan pernyataan akibat dengan sebab yang telah disebutkan sebelumnya."
+  },
+  {
+    "id": "BI114",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Ia disambut dengan tangan terbuka.” Makna frasa itu dalam konteks sambutan adalah …",
+    "options": [
+      "Diterima dengan senang hati",
+      "Diminta menyerahkan barang",
+      "Dilarang memasuki ruangan",
+      "Disuruh mengangkat tangan"
+    ],
+    "correct": 0,
+    "explanation": "Tangan terbuka merupakan ungkapan yang berarti menerima atau menyambut dengan ramah dan senang hati."
+  },
+  {
+    "id": "BI115",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Penulisan gabungan kata berimbuhan yang tepat adalah …",
+    "options": [
+      "Mempertanggungjawabkan",
+      "Mempertanggung jawabkan",
+      "Mempertanggung-jawabkan",
+      "Memper tanggungjawabkan"
+    ],
+    "correct": 0,
+    "explanation": "Gabungan kata yang mendapat awalan dan akhiran sekaligus ditulis serangkai, misalnya mempertanggungjawabkan."
+  },
+  {
+    "id": "BI116",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Penulisan bentuk terikat yang tepat adalah …",
+    "options": [
+      "Pascapanen",
+      "Pasca panen",
+      "Pasca-panen",
+      "PascaPanen"
+    ],
+    "correct": 0,
+    "explanation": "Bentuk terikat pasca- ditulis serangkai dengan kata yang mengikutinya, misalnya pascapanen dan pascasarjana."
+  },
+  {
+    "id": "BI117",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Kalimat yang menggunakan kata penghubung antarkalimat secara tepat ialah …",
+    "options": [
+      "Ia sudah berusaha. Namun, hasilnya belum memuaskan.",
+      "Ia sudah berusaha namun. Hasilnya belum memuaskan.",
+      "Namun ia sudah. Berusaha hasilnya belum memuaskan.",
+      "Ia sudah berusaha, Namun hasilnya belum memuaskan."
+    ],
+    "correct": 0,
+    "explanation": "Namun sebagai penghubung antarkalimat ditulis pada awal kalimat baru dan diikuti tanda koma."
+  },
+  {
+    "id": "BI118",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Dalam teks argumentasi, bukti berupa data digunakan untuk …",
+    "options": [
+      "Menguatkan alasan yang diajukan",
+      "Menggantikan semua simpulan",
+      "Menghapus sudut pandang penulis",
+      "Membuat semua opini menjadi fakta"
+    ],
+    "correct": 0,
+    "explanation": "Data dan fakta digunakan sebagai bukti pendukung alasan. Keberadaan data tidak otomatis mengubah semua opini menjadi fakta."
+  },
+  {
+    "id": "BI119",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Pernyataan yang merupakan fakta, bukan penilaian, adalah …",
+    "options": [
+      "Novel itu terdiri atas dua puluh bab.",
+      "Novel itu paling indah sepanjang masa.",
+      "Novel itu pasti disukai semua orang.",
+      "Tokoh novel itu sangat membosankan."
+    ],
+    "correct": 0,
+    "explanation": "Jumlah bab dapat diverifikasi langsung dari buku. Penilaian mengenai keindahan, kesukaan, atau kebosanan bersifat subjektif."
+  },
+  {
+    "id": "BI120",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Penokohan melalui ucapan dan tindakan tokoh disebut teknik …",
+    "options": [
+      "Dramatik",
+      "Analitik langsung",
+      "Definisi eksplisit",
+      "Ringkasan bibliografis"
+    ],
+    "correct": 0,
+    "explanation": "Teknik dramatik menampilkan watak secara tidak langsung melalui tindakan, dialog, pikiran, atau tanggapan tokoh lain."
+  },
+  {
+    "id": "BI121",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Jika narator mengetahui pikiran dan perasaan semua tokoh, sudut pandangnya adalah …",
+    "options": [
+      "Orang ketiga serbatahu",
+      "Orang pertama pelaku utama",
+      "Orang kedua",
+      "Orang ketiga pengamat terbatas"
+    ],
+    "correct": 0,
+    "explanation": "Narator orang ketiga serbatahu mempunyai akses luas terhadap pikiran, perasaan, dan peristiwa yang dialami para tokoh."
+  },
+  {
+    "id": "BI122",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Fungsi konflik dalam cerita adalah …",
+    "options": [
+      "Menggerakkan perkembangan alur",
+      "Menggantikan seluruh latar cerita",
+      "Menghapus hubungan antartokoh",
+      "Menentukan jumlah halaman buku"
+    ],
+    "correct": 0,
+    "explanation": "Konflik menimbulkan pertentangan atau masalah yang menggerakkan alur menuju puncak dan penyelesaian."
+  },
+  {
+    "id": "BI123",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Dari berbisik, berbicara, hingga berteriak, ia memanggil sahabatnya.” Urutan tersebut menggunakan majas …",
+    "options": [
+      "Klimaks",
+      "Antiklimaks",
+      "Litotes",
+      "Ironi"
+    ],
+    "correct": 0,
+    "explanation": "Majas klimaks menyusun gagasan dari tingkat yang lebih rendah menuju tingkat yang lebih tinggi."
+  },
+  {
+    "id": "BI124",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "“Pemimpin, pejabat, hingga rakyat biasa hadir di sana.” Urutan kedudukan menurun menunjukkan majas …",
+    "options": [
+      "Antiklimaks",
+      "Klimaks",
+      "Personifikasi",
+      "Hiperbola"
+    ],
+    "correct": 0,
+    "explanation": "Antiklimaks menyusun gagasan dari tingkat yang lebih tinggi menuju tingkat yang lebih rendah."
+  },
+  {
+    "id": "BI125",
+    "level": "expert",
+    "category": "Tantangan Utama",
+    "q": "Makna tersirat dalam bacaan sebaiknya disimpulkan berdasarkan …",
+    "options": [
+      "Petunjuk konteks dan bukti dalam teks",
+      "Judul tanpa membaca isi",
+      "Pendapat pembaca tanpa bukti",
+      "Jumlah kata pada paragraf terakhir"
+    ],
+    "correct": 0,
+    "explanation": "Makna tersirat tidak dinyatakan secara langsung. Simpulan harus didukung konteks dan petunjuk yang terdapat dalam teks."
+  }
+];
+'use strict';
+const PRIZES=[50000,100000,200000,500000,1000000,2000000,4000000,8000000,16000000,32000000,64000000,125000000,250000000,500000000,1000000000];
+function shuffle(items,rng=Math.random){const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function chooseDeck(bank,recent=[],rng=Math.random){const deck=[];for(const [level,count]of [['easy',5],['medium',5],['hard',2],['expert',3]]){const pool=bank.filter(q=>q.level===level),fresh=shuffle(pool.filter(q=>!recent.includes(q.id)),rng),old=shuffle(pool.filter(q=>recent.includes(q.id)),rng);if(pool.length<count)throw Error('Bank soal tidak mencukupi untuk '+level);for(const q of [...fresh,...old].slice(0,count)){const options=shuffle(q.options.map((text,i)=>({text,original:i})),rng);deck.push({...q,options:options.map(o=>o.text),correct:options.findIndex(o=>o.original===q.correct)})}}return deck}
+class MillionaireGame{
+constructor(bank,rng=Math.random){this.bank=bank;this.rng=rng;this.phase='intro'}
+start(name='Peserta',recent=[]){this.name=String(name).trim().slice(0,24)||'Peserta';this.deck=chooseDeck(this.bank,recent,this.rng);this.index=0;this.correctCount=0;this.won=0;this.guaranteed=0;this.payout=0;this.used={fifty:false,phone:false,audience:false};this.phase='asking';this.selected=null;this.removed=[];this.reason=null;return this.question}
+get question(){return this.deck?.[this.index]}
+get available(){return [0,1,2,3].filter(i=>!this.removed.includes(i))}
+pick(i){if(this.phase!=='asking'||!Number.isInteger(i)||!this.available.includes(i))return false;this.selected=i;return true}
+confirm(){if(this.phase!=='asking'||this.selected===null)return false;this.phase='confirm';return true}
+cancel(){if(this.phase!=='confirm')return false;this.phase='asking';return true}
+lock(){if(this.phase!=='confirm')return false;this.phase='revealing';return true}
+resolve(){if(this.phase!=='revealing')return null;const correct=this.selected===this.question.correct;if(correct){this.correctCount++;this.won=PRIZES[this.index];if([4,9,14].includes(this.index))this.guaranteed=this.won;if(this.index===14){this.phase='won';this.payout=this.won;this.reason='won'}else this.phase='correct'}else{this.phase='lost';this.payout=this.guaranteed;this.reason='wrong'}return {correct,prize:this.won,guaranteed:this.guaranteed}}
+next(){if(this.phase!=='correct')return false;this.index++;this.phase='asking';this.selected=null;this.removed=[];return true}
+walk(){if(this.phase!=='asking')return false;this.phase='walked';this.payout=this.won;this.reason='walked';return true}
+timeout(){if(this.phase!=='asking')return false;this.phase='lost';this.payout=this.guaranteed;this.reason='timeout';return true}
+fifty(){if(this.phase!=='asking'||this.used.fifty)return null;this.used.fifty=true;this.removed=shuffle(this.available.filter(i=>i!==this.question.correct),this.rng).slice(0,2);if(this.removed.includes(this.selected))this.selected=null;return this.removed}
+audience(){if(this.phase!=='asking'||this.used.audience)return null;this.used.audience=true;const q=this.question,active=this.available,accuracy={easy:.97,medium:.9,hard:.78,expert:.63}[q.level];const leader=this.rng()<accuracy?q.correct:shuffle(active.filter(i=>i!==q.correct),this.rng)[0];const boost={easy:7,medium:4,hard:2,expert:1.1}[q.level];const weights=[0,0,0,0];for(const i of active)weights[i]=.2+this.rng()*.7+(i===leader?boost:0);const total=weights.reduce((a,b)=>a+b,0),pct=weights.map(w=>Math.floor(w/total*100));pct[leader]+=100-pct.reduce((a,b)=>a+b,0);return pct}
+phone(){if(this.phase!=='asking'||this.used.phone)return null;this.used.phone=true;const accuracy={easy:.97,medium:.87,hard:.76,expert:.65}[this.question.level],choice=this.rng()<accuracy?this.question.correct:shuffle(this.available.filter(i=>i!==this.question.correct),this.rng)[0];return{choice,confidence:Math.round(65+this.rng()*25),sure:choice===this.question.correct}}
+}
+class QuestionClock{
+constructor(limit=0){this.limit=limit;this.left=limit*1000;this.paused=true;this.since=0}
+reset(limit,now){this.limit=limit;this.left=limit*1000;this.since=now;this.paused=false}
+remaining(now){return this.limit===0?Infinity:Math.max(0,this.left-(this.paused?0:now-this.since))}
+pause(now){if(!this.paused){this.left=this.remaining(now);this.paused=true}}
+resume(now){this.since=now;this.paused=false}
+}
+if(typeof module!=='undefined')module.exports={MillionaireGame,QuestionClock,PRIZES,chooseDeck};
+
+'use strict';
+const ShowAudio={ctx:null,master:null,musicBus:null,enabled:true,music:true,volume:.4,beat:null,voices:[],step:0,level:0,
+load(){try{const p=JSON.parse(localStorage.getItem('millionaire-audio-v1'));if(p){this.enabled=p.enabled!==false;this.music=p.music!==false;this.volume=Math.max(0,Math.min(1,(Number.isFinite(Number(p.volume))?Number(p.volume):.4)))}}catch{}},
+save(){try{localStorage.setItem('millionaire-audio-v1',JSON.stringify({enabled:this.enabled,music:this.music,volume:this.volume}))}catch{}},
+warm(){try{if(!this.ctx){this.ctx=new(window.AudioContext||window.webkitAudioContext)();this.master=this.ctx.createGain();this.master.gain.value=this.enabled?this.volume:0;this.master.connect(this.ctx.destination);this.musicBus=this.ctx.createGain();this.musicBus.gain.value=0;this.musicBus.connect(this.master)}if(this.ctx.state==='suspended')this.ctx.resume()}catch{}},
+apply(){if(this.master)this.master.gain.setTargetAtTime(this.enabled?this.volume:0,this.ctx.currentTime,.06);if(this.musicBus)this.musicBus.gain.setTargetAtTime(this.music&&this.beat?.11:0,this.ctx.currentTime,.2);this.save()},
+tone(freq,duration=.12,type='sine',gain=.22,delay=0,endFreq=null,bus=null){if(!this.ctx||this.ctx.state!=='running')return;const t=this.ctx.currentTime+delay,o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);if(endFreq)o.frequency.exponentialRampToValueAtTime(endFreq,t+duration);g.gain.setValueAtTime(.001,t);g.gain.linearRampToValueAtTime(gain,t+.015);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(bus||this.master);o.start(t);o.stop(t+duration+.03)},
+fx(kind){this.warm();if(!this.ctx||!this.enabled)return;const seq={tap:[[560,.045]],select:[[261.63,.1],[392,.16]],lock:[[146.83,.2],[220,.3],[293.66,.45]],correct:[[261.63,.13],[329.63,.13],[392,.13],[523.25,.6]],safe:[[261.63,.13],[392,.13],[523.25,.17],[659.25,.5]],wrong:[[196,.18],[164.81,.24],[130.81,.75]],win:[[261.63,.12],[329.63,.12],[392,.12],[523.25,.18],[659.25,.18],[783.99,.7]],fifty:[[700,.12],[350,.12],[700,.18]],phone:[[440,.18],[480,.18]],audience:[[260,.08],[320,.08],[280,.08],[350,.16]],tick:[[180,.05]]}[kind]||[[520,.04]];let delay=0;for(const [f,d]of seq){this.tone(f,d,kind==='wrong'?'triangle':'sine',kind==='tap'?.1:.23,delay);delay+=d*.82}},
+start(level=0){this.warm();this.level=level;if(this.beat)return;this.step=0;this.musicBus?.gain.setTargetAtTime(this.music?.11:0,this.ctx.currentTime,.8);const pulse=()=>{if(!this.ctx||document.hidden||!this.music||!this.enabled)return;const roots=[65.406,58.27,55],root=roots[this.level>=10?2:this.level>=5?1:0],pattern=[0,7,12,7,3,10,7,3],n=pattern[this.step%pattern.length];this.tone(root*Math.pow(2,n/12),.39,'sine',.4,0,null,this.musicBus);if(this.step%4===0)this.tone(root/2,.95,'triangle',.22,0,null,this.musicBus);this.step++};pulse();this.beat=setInterval(pulse,440)},
+intensify(level){this.level=level},
+stop(){clearInterval(this.beat);this.beat=null;if(this.musicBus&&this.ctx)this.musicBus.gain.setTargetAtTime(0,this.ctx.currentTime,.4)},
+suspense(){if(!this.ctx)return;this.musicBus.gain.setTargetAtTime(this.music?.19:0,this.ctx.currentTime,.2);for(let i=0;i<6;i++){this.tone(74+5*i,.12,'sine',.25,i*.27);this.tone(52,.08,'triangle',.1,i*.27+.12)}},
+restore(){if(this.musicBus&&this.ctx)this.musicBus.gain.setTargetAtTime(this.music&&this.beat?.11:0,this.ctx.currentTime,.3)}
+};ShowAudio.load();
+
+
+'use strict';
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),money=n=>'Rp'+n.toLocaleString('id-ID'),ABC=['A','B','C','D'];
+const game=new MillionaireGame(BANK),clock=new QuestionClock();let modal=false,dismiss=null,focusBefore=null,mode=0,started=0,recorded=false,phoneTimer,revealTimer;
+function read(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+function emblem(id){let rays='';for(let i=0;i<32;i++)rays+=`<path transform="rotate(${i*11.25} 200 200)" d="M200 43 C246 62 250 116 215 150 C185 182 159 165 159 145 C158 112 207 107 235 127" fill="none" stroke="${i%2?'#8c9acb':'#c1a0dc'}" stroke-width="2.8"/>`;return `<svg class="emblem" viewBox="0 0 400 400" role="img" aria-label="Who Wants to Be a Millionaire Bahasa Indonesia"><defs><radialGradient id="${id}"><stop stop-color="#353678"/><stop offset="1" stop-color="#080b28"/></radialGradient><path id="${id}top" d="M64 206 A136 136 0 0 1 336 206"/></defs><circle cx="200" cy="200" r="192" fill="url(#${id})" stroke="#9ba3d0" stroke-width="3"/>${rays}<circle cx="200" cy="200" r="113" fill="#11153b" stroke="#b0a4d9" stroke-width="2"/><text fill="#ded4f0" font-family="Georgia" font-size="16" letter-spacing="2"><textPath href="#${id}top" startOffset="50%" text-anchor="middle">WHO WANTS TO BE A</textPath></text><path d="M21 176H379L394 201 379 226H21L6 201Z" fill="#151b48" stroke="#b4a9db" stroke-width="2"/><text x="200" y="211" text-anchor="middle" font-family="Georgia" font-weight="bold" font-size="32" fill="#eee5f8">MILLIONAIRE?</text><text x="200" y="267" text-anchor="middle" fill="#d4c4e7" font-size="13" letter-spacing="2">BAHASA INDONESIA</text></svg>`}
+$('welcomeEmblem').innerHTML=emblem('logo1');$('gameEmblem').innerHTML=emblem('logo2');
+function close(){if(!modal)return;modal=false;$('modal').hidden=true;clearInterval(phoneTimer);const f=dismiss;dismiss=null;f?.();if(game.phase==='asking')clock.resume(performance.now());focusBefore?.focus()}
+function dialog(title,body,actions,callback=null){clock.pause(performance.now());focusBefore=document.activeElement;modal=true;dismiss=callback;$('dialog').innerHTML=`<h2 id="dialogTitle">${title}</h2>${body}<div class="dialog-actions">${actions.map((a,i)=>`<button class="${a.gold?'gold-btn':'icon-btn'}" data-action="${i}">${a.label}</button>`).join('')}</div>`;$('modal').hidden=false;actions.forEach((a,i)=>$('dialog').querySelector(`[data-action="${i}"]`).onclick=a.run);$('dialog').querySelector('button')?.focus()}
+function info(t,b){dialog(t,b,[{label:'Kembali',gold:true,run:close}])}
+function rules(){info('Cara bermain',`<p>Jawab 15 pertanyaan Bahasa Indonesia menuju hadiah virtual <strong>Rp1 miliar</strong>. Pilih A–D, lalu kunci melalui <strong>Jawaban akhir</strong>.</p><p>Soal 5 dan 10 mengamankan Rp1 juta dan Rp32 juta. Jika salah, Anda membawa hadiah titik aman terakhir. Anda dapat berhenti dengan hadiah yang telah diperoleh.</p><p>Bantuan 50:50, simulasi telepon teman, dan simulasi penonton masing-masing hanya sekali. Saran bantuan bisa keliru.</p><p>Mode klasik tanpa batas waktu. Mode tantangan memakai waktu per soal; waktu dijeda saat dialog terbuka. Gunakan A–D atau 1–4 untuk memilih.</p><p class="notice">Adaptasi edukasi independen. Semua hadiah merupakan nilai virtual.</p>`)}
+function records(){const rows=read('millionaire-records',[]);info('Klasemen lokal',`<p>Hasil pada perangkat ini.</p>${rows.length?rows.map((r,i)=>`<div class="rank-row"><b>${i+1}</b><div class="rank-info"><strong>${esc(r.name)}</strong><small>${r.correct}/15 benar · ${r.mode?'Tantangan '+r.mode+' dtk':'Klasik'}</small></div><strong class="rank-value">${money(r.prize)}</strong></div>`).join(''):'<p>Belum ada hasil permainan.</p>'}`)}
+function ladder(){return [...PRIZES].reverse().map((n,k)=>{const i=14-k;return `<li class="rung ${i===game.index?'active ':''}${[4,9,14].includes(i)?'safe ':''}${i<game.correctCount?'passed':''}"><span class="num">${i+1}</span><span class="rung-diamond"></span><b>${money(n)}</b>${i<game.correctCount?'<small>◆</small>':''}</li>`}).join('')}
+function render(){const q=game.question;$('contestantName').textContent=game.name;$('questionText').textContent=q.q;$('questionCategory').textContent=q.category;$('questionMeta').textContent=`PERTANYAAN ${game.index+1} DARI 15`;$('playingPrize').textContent=money(PRIZES[game.index]);$('wonPrize').textContent=money(game.won);$('safePrize').textContent=money(game.guaranteed);$('stage').classList.toggle('q-tier-expert',game.index>=10);$('ladder').innerHTML=ladder();
+$('answers').innerHTML=q.options.map((s,i)=>`<button class="answer${game.selected===i?' selected':''}${game.removed.includes(i)?' eliminated':''}" data-answer="${i}" ${game.phase!=='asking'||game.removed.includes(i)?'disabled':''}><svg class="frame" viewBox="0 0 560 70" preserveAspectRatio="none" aria-hidden="true"><path d="M25 1H535L559 35 535 69H25L1 35Z"/></svg><span class="diamond"></span><span class="key">${ABC[i]}:</span><span class="answer-text">${esc(s)}</span></button>`).join('');$('answers').querySelectorAll('button').forEach(b=>b.onclick=()=>pick(+b.dataset.answer));for(const [k,id]of [['fifty','lifeFifty'],['phone','lifePhone'],['audience','lifeAudience']]){$(id).classList.toggle('used',game.used[k]);$(id).disabled=game.used[k]||game.phase!=='asking'}$('walkBtn').disabled=game.phase!=='asking';$('lockBtn').disabled=game.phase!=='correct'&&(game.phase!=='asking'||game.selected===null);$('lockBtn').textContent=game.phase==='correct'?'PERTANYAAN BERIKUTNYA':'JAWABAN AKHIR';}
+function pick(i){if(modal||!game.pick(i))return;ShowAudio.fx('select');render();$('hostCaption').textContent=`Pilihan Anda ${ABC[i]}. Sudah yakin?`}
+function start(){window.HumaGameBridge?.start();clearTimeout(revealTimer);clearInterval(phoneTimer);$('confetti').hidden=true;$('stage').classList.remove('is-winner','answer-lock');mode=+$('timeMode').value;const recent=read('millionaire-recent',[]);game.start($('nameInput').value.trim()||'Peserta',recent);save('millionaire-name',game.name);save('millionaire-recent',[...game.deck.map(q=>q.id),...recent].slice(0,75));recorded=false;started=performance.now();$('welcome').hidden=true;$('gameScreen').hidden=false;clock.reset(mode,performance.now());ShowAudio.start(0);$('hostCaption').textContent='Selamat datang. Mari mulai pertanyaan pertama.';render()}
+function advance(){if(modal)return;if(game.phase==='correct'){game.next();clock.reset(mode,performance.now());ShowAudio.intensify(game.index);$('hostCaption').textContent='Pertanyaan berikutnya. Silakan pilih jawaban Anda.';render();return}if(!game.confirm())return;render();dialog('Jawaban akhir Anda?',`<p class="help-label">PERTANYAAN ${game.index+1} · ${money(PRIZES[game.index])}</p><div class="final-choice">${ABC[game.selected]}: ${esc(game.question.options[game.selected])}</div><p>Setelah dikunci, jawaban tidak dapat diubah.</p>`,[{label:'Pikirkan lagi',run:close},{label:'Ya, kunci jawaban',gold:true,run:lock}],()=>{game.cancel();render()})}
+function lock(){if(!game.lock())return;dismiss=null;close();clock.pause(performance.now());render();$('stage').classList.add('answer-lock');$('answers').children[game.selected].classList.add('locked');$('hostCaption').textContent='Jawaban telah dikunci… apakah benar?';ShowAudio.fx('lock');ShowAudio.suspense();revealTimer=setTimeout(reveal,game.index>=10?2800:game.index>=5?2100:1400)}
+function reveal(){const r=game.resolve();if(!r)return;$('stage').classList.remove('answer-lock');ShowAudio.restore();render();$('answers').children[game.question.correct].classList.add('correct');if(!r.correct)$('answers').children[game.selected].classList.add('wrong');if(r.correct){const safe=[4,9].includes(game.index);ShowAudio.fx(game.phase==='won'?'win':safe?'safe':'correct');$('hostCaption').textContent=(safe?'TITIK AMAN! ':'BENAR! ')+game.question.explanation;if(game.phase==='won'){ShowAudio.stop();$('stage').classList.add('is-winner');$('confetti').hidden=false;$('confetti').innerHTML=Array.from({length:48},()=>`<i style="left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;background:#e7b96b"></i>`).join('');revealTimer=setTimeout(finish,1200)}}else{ShowAudio.stop();ShowAudio.fx('wrong');$('hostCaption').textContent='Jawaban Anda belum tepat. '+game.question.explanation;revealTimer=setTimeout(finish,1400)}}
+function finish(){window.HumaGameBridge?.finish([{name:game.name,score:game.payout,correct:game.correctCount,total:15,result:game.phase}], {mode:mode?mode+' detik':'Klasik'});if(!recorded){const rows=read('millionaire-records',[]);rows.push({name:game.name,prize:game.payout,correct:game.correctCount,mode,duration:Math.round((performance.now()-started)/1000)});rows.sort((a,b)=>b.prize-a.prize||b.correct-a.correct||a.duration-b.duration);save('millionaire-records',rows.slice(0,8));recorded=true}render();dialog(game.phase==='won'?'ANDA JADI MILIARDER!':game.phase==='walked'?'Terima kasih sudah bermain':game.reason==='timeout'?'Waktu habis':'Jawaban belum tepat',`<p>${esc(game.name)}, hadiah virtual Anda:</p><div class="prize-big">${money(game.payout)}</div><p>${game.correctCount} dari 15 jawaban benar</p>${game.phase==='lost'?`<div class="explanation"><strong>Jawaban: ${ABC[game.question.correct]}. ${esc(game.question.options[game.question.correct])}</strong><p>${esc(game.question.explanation)}</p></div>`:''}<p class="notice">Main lagi untuk susunan soal yang berbeda.</p>`,[{label:'Menu utama',run:()=>{close();$('gameScreen').hidden=true;$('welcome').hidden=false;$('confetti').hidden=true}},{label:'Main lagi',gold:true,run:()=>{close();start()}}])}
+function walk(){if(modal||game.phase!=='asking')return;dialog('Berhenti dan bawa hadiah?',`<p>Permainan akan berakhir dengan hadiah virtual:</p><div class="prize-big">${money(game.won)}</div>`,[{label:'Lanjut bermain',run:close},{label:'Ambil hadiah',gold:true,run:()=>{game.walk();close();ShowAudio.stop();finish()}}])}
+function fifty(){if(modal||!game.fifty())return;ShowAudio.fx('fifty');render();$('hostCaption').textContent='Komputer, hilangkan dua jawaban yang salah.'}
+function audience(){if(modal)return;const pct=game.audience();if(!pct)return;ShowAudio.fx('audience');render();info('Tanya penonton',`<p class="help-label">SIMULASI PENONTON</p><div class="audience-chart">${pct.map((p,i)=>`<div class="aud-col"><strong>${p}%</strong><div class="aud-bar" style="height:${p*1.7+2}px"></div><b>${ABC[i]}</b></div>`).join('')}</div><p class="notice">Simulasi bantuan. Suara terbanyak tidak selalu benar.</p>`)}
+function phone(){if(modal)return;const a=game.phone();if(!a)return;ShowAudio.fx('phone');render();info('Telepon teman',`<p class="help-label">SIMULASI TELEPON TEMAN</p><div class="friend-top"><span>☎</span><div><strong>Bu Rani</strong><p>Teman belajar Bahasa Indonesia</p></div><b id="phoneClock">30</b></div><div class="advice" id="phoneAdvice">Menghubungkan panggilan…</div><p class="notice">Saran bisa keliru. Keputusan akhir tetap di tangan Anda.</p>`);let t=0;phoneTimer=setInterval(()=>{t++;if(t===2)$('phoneAdvice').innerHTML=`“Saya cenderung memilih <strong>${ABC[a.choice]}: ${esc(game.question.options[a.choice])}</strong>. Keyakinan saya sekitar ${a.confidence} persen. Pertimbangkan lagi, ya!”`;$('phoneClock').textContent=30-t;if(t>=30)close()},1000)}
+function audioUI(){$('soundBtn').textContent=ShowAudio.enabled?'SUARA ON':'SUARA OFF';$('musicBtn').textContent=ShowAudio.music?'MUSIK ON':'MUSIK OFF';$('soundBtn').setAttribute('aria-pressed',ShowAudio.enabled);$('musicBtn').setAttribute('aria-pressed',ShowAudio.music);$('volume').value=ShowAudio.volume*100;$('volumeText').textContent=Math.round(ShowAudio.volume*100)+'%'}
+$('startBtn').onclick=start;$('lockBtn').onclick=advance;$('walkBtn').onclick=walk;$('lifeFifty').onclick=fifty;$('lifePhone').onclick=phone;$('lifeAudience').onclick=audience;$('rulesBtn').onclick=rules;$('welcomeRules').onclick=rules;$('welcomeRecords').onclick=records;$('recordsBtn').onclick=records;$('mobileLadder').onclick=()=>info('Tangga hadiah',`<ol class="ladder">${ladder()}</ol>`);$('soundBtn').onclick=()=>{ShowAudio.warm();ShowAudio.enabled=!ShowAudio.enabled;ShowAudio.apply();audioUI()};$('musicBtn').onclick=()=>{ShowAudio.warm();ShowAudio.music=!ShowAudio.music;ShowAudio.apply();audioUI()};$('volume').oninput=()=>{ShowAudio.warm();ShowAudio.volume=+$('volume').value/100;ShowAudio.apply();audioUI()};$('fullscreenBtn').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen?.();else document.documentElement.requestFullscreen?.().catch(()=>{})};$('nameInput').value=read('millionaire-name','Peserta 1');audioUI();document.addEventListener('pointerdown',()=>ShowAudio.warm(),{once:true});
+document.addEventListener('keydown',e=>{if(modal){if(e.key==='Escape'&&!['lost','won','walked','revealing'].includes(game.phase)){e.preventDefault();close()}if(e.key==='Tab'){const b=[...$('dialog').querySelectorAll('button')],first=b[0],last=b.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}return}if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||$('gameScreen').hidden)return;const i='abcd'.indexOf(e.key.toLowerCase());if(i>=0&&e.key.length===1){e.preventDefault();pick(i)}else if(/^[1-4]$/.test(e.key)){e.preventDefault();pick(+e.key-1)}else if(e.key==='Enter'&&e.target.tagName!=='BUTTON'){e.preventDefault();advance()}});
+let lastSec=-1;setInterval(()=>{if($('gameScreen').hidden)return;$('timerDisc').hidden=!mode;if(!mode)return;const left=clock.remaining(performance.now()),sec=Math.ceil(left/1000);$('timerDisc').textContent=sec;$('timerDisc').classList.toggle('urgent',sec<=10);if(game.phase==='asking'&&!modal&&sec<=10&&sec!==lastSec){lastSec=sec;ShowAudio.fx('tick')}if(left<=0&&game.phase==='asking'&&!modal){game.timeout();clock.pause(performance.now());ShowAudio.stop();ShowAudio.fx('wrong');finish()}},100);
+
+</script><script src="../score-bridge.js?v=20261103-scores" data-game="millionaire-bahasa"></script></body></html>

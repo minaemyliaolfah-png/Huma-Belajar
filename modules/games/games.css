@@ -24,3 +24,19 @@ body.arcade-active{overflow:hidden}
 @media(max-width:1050px){.ag-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ag-hero-art{min-width:160px}.ag-hero-art span{width:60px;height:75px;font-size:32px}}
 @media(max-width:600px){.ag-hero{padding:26px 22px}.ag-hero-art{display:none}.ag-hero h1{font-size:32px}.ag-grid{gap:14px}.ag-art{height:120px}.ag-art>svg{width:58px;height:58px}.ag-card-body{padding:16px}.ag-card h3{font-size:18px}.ag-card p{font-size:12px}.ag-kicker{font-size:9px;letter-spacing:1px}.ag-card .button{gap:8px;padding:10px;font-size:11px}.ag-player-bar{padding:8px 10px;gap:7px}.ag-player-bar strong{font-size:11px}.ag-player-bar .button{font-size:10px;padding:9px}.ag-player-bar a{font-size:11px}}
 @media(max-width:360px){.ag-grid{grid-template-columns:1fr}}
+/* Identitas, klasemen online, dan status pengiriman. */
+.ag-art.amber{background:#fff0c9;color:#b78326}
+.ag-gallery-tools{display:flex;justify-content:flex-end;margin:22px 0 14px}
+.ag-profile{border:1px solid #dce7e4;border-radius:14px;background:#fff;padding:16px 20px;margin-bottom:14px}
+.ag-profile summary{cursor:pointer;font-size:13px;font-weight:700;color:#087e8b}
+.ag-profile form{margin-top:20px}.ag-profile-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ag-profile-fields label,.ag-rank-filter label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:700;min-width:0}
+.ag-profile-fields input,.ag-rank-filter input,.ag-rank-filter select{width:100%;box-sizing:border-box;padding:12px;border:1px solid #d9e3e2;border-radius:9px;font:inherit;background:#fff;color:#1b333b;min-width:0}
+.ag-profile-gate{margin-top:24px}.ag-profile-gate h1{font-size:30px}.ag-profile-gate p{color:#687c82;line-height:1.7}
+.ag-sync{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#637c82;background:#edf5f3;border-radius:10px;padding:12px 16px;margin:14px 0}
+.ag-sync button,.ag-player-sync button{white-space:nowrap;flex-shrink:0}
+.ag-player-sync{background:#eaf5f1;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 18px;font-size:11px;flex-shrink:0;color:#24594f;max-height:72px;overflow-y:auto}
+.ag-player-sync>span{line-height:1.4}.ag-player-bar .ag-online-rank{margin-left:auto}
+.ag-rank-filter{display:grid;grid-template-columns:1.3fr 1.4fr 1fr auto;gap:16px;align-items:end}
+#ag-profile-message{font-size:12px;color:#087e8b}
+@media(max-width:700px){.ag-profile-fields,.ag-rank-filter{grid-template-columns:1fr}.ag-player-bar strong{max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ag-player-sync{font-size:10px;padding:6px 10px}.ag-player-bar .ag-online-rank{font-size:10px}.ag-profile-gate{padding:20px}}

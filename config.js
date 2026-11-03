@@ -5,6 +5,7 @@ window.HUMA_CONFIG = Object.freeze({
   apiUrl: "https://script.google.com/macros/s/AKfycbwsKsP91-jUngvvqCiS7M4CadpWWn5REOUhipXFyz8fBUYOOUwQ_p_y2TH3WmIfD1Z0/exec",
   dictionaryApiUrl: "", // URL paket Apps Script menu Kamus. Kosong = ikut backend utama.
   worksApiUrl: "", // URL paket Apps Script Karya Siswa. Kosong = ikut backend utama.
+  gamesApiUrl: "", // URL /exec dari 04-APPSCRIPT-KLASEMEN-GAME. Wajib terpisah, tanpa fallback.
   schoolName: "Ruang belajar Bahasa Indonesia",
   // Otomatis: assets/bab/<ID_Bab>.jpg, sesuai ID_Bab di Spreadsheet.
   // Untuk nama/format lain, isi pemetaan, misalnya "B1": "assets/bab/surat-resmi.png".
